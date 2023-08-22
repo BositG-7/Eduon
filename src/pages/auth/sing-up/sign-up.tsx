@@ -23,25 +23,11 @@ function Login(props: LoginProps) {
          <form onSubmit={form.onSubmit(values => console.log(values))}>
             <input
                placeholder="Email"
-               // {...form.getInputProps('password')}
             />
-
-            <input
-               placeholder="Password" className="passwordInput"
-               // {...form.getInputProps('password')}
-            />
-
-            {/* <PasswordInput
-          mt="sm"
-          placeholder="Confirm password"
-          {...form.getInputProps('confirmPassword')}
-          
-          /> */}
-            <h3>Parolingizni unutdingizmi?</h3>
-            <button>Tizimga kirish</button>
+            <button>Davom etish</button>
          </form>
          <h2>
-            Akkauntingiz yo’qmi? unda <span>ro’yxatdan o’ting</span>
+            Akkauntingiz yo’qmi? unda <span>bu yerga</span> bosing
          </h2>
       </Box>
    );
