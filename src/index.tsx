@@ -6,12 +6,15 @@ import { Routes } from "routes";
 
 import Navbar from "components/navbar";
 
+import "./assets/styles/index.scss";
+
+
+
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
    <BrowserRouter>
       <MantineProvider>
-         <h1>sakl</h1>
          <Navbar />
          <Routes />
       </MantineProvider>
