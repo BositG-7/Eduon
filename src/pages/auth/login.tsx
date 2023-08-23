@@ -22,7 +22,7 @@ function Login(props: LoginProps) {
       <Box className="login">
          <form onSubmit={form.onSubmit(values => console.log(values))}>
             <input
-               placeholder="Email"
+               placeholder="Username"
                // {...form.getInputProps('password')}
             />
 

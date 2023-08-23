@@ -33,10 +33,19 @@ export namespace IForm {
    }
 }
 
+export interface IToken {
+   access: string
+   refresh: string
+}
+
 export namespace IApi {
    export namespace Register {
       export interface Request extends IForm.Register {}
       export interface Response extends IForm.Register {}
+   }
+   export namespace Login {
+      export interface Request extends IForm.Login {}
+      export interface Response extends IToken {}
    }
 }
 
