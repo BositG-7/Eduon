@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
+import { setSession } from "utils";
 
 import "../../assets/styles/login.scss";
 
@@ -26,18 +27,20 @@ function Login(props: LoginProps) {
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
 
-   const onLogin = async (data: Types.IForm.Login) => {
-      console.log(data);
+   const onLogin = async (par: Types.IForm.Login) => {
+      console.log(par);
 
       setLoading(true);
       try {
          console.log("nav");
 
-         const response = await Api.Login(data);
-         // Process the response if needed
+         const { data } = await Api.Login(par);
 
-         console.log(response);
-         navigate("/"); // Redirect to a different route after successful login
+         console.log(data);
+
+         setSession(data);
+
+         navigate("/");
       } catch (err: any) {
          console.log(err?.message);
       } finally {

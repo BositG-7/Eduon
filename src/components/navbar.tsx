@@ -54,7 +54,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             <Button
                variant="light"
                onClick={() => {
-                  navigate("/auth");
+                  navigate("/auth/login");
                }}
             >
                Kirish
