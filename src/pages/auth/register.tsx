@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, InputBase, Paper, PasswordInput,  Text } from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
 
@@ -38,7 +38,7 @@ const Register = () => {
          const { data: user } = await Api.Register(data);
 
          console.log("navi");
-         navigate("/");
+         navigate("auth/register");
          setLoading(false);
       } catch (err: any) {
          console.log(err?.message);
@@ -56,7 +56,7 @@ const Register = () => {
                         autoFocus
                         placeholder="First name"
                         sx={{
-                           input:{
+                           input: {
                               width: "100%",
                               height: "45px",
                               borderRadius: "16px",
@@ -70,8 +70,11 @@ const Register = () => {
                         }}
                         {...getInputProps("first_name")}
                      />
-                     <InputBase autoFocus placeholder="last name" sx={{
-                           input:{
+                     <InputBase
+                        autoFocus
+                        placeholder="last name"
+                        sx={{
+                           input: {
                               width: "100%",
                               height: "45px",
                               borderRadius: "16px",
@@ -82,9 +85,14 @@ const Register = () => {
                               color: "rgba(17, 17, 17, 0.36)",
                               backgroundColor: "rgba(17, 17, 17, 0.02)"
                            }
-                        }} {...getInputProps("last_name")} />
-                     <InputBase autoFocus placeholder="Name" sx={{
-                           input:{
+                        }}
+                        {...getInputProps("last_name")}
+                     />
+                     <InputBase
+                        autoFocus
+                        placeholder="Name"
+                        sx={{
+                           input: {
                               width: "100%",
                               height: "45px",
                               borderRadius: "16px",
@@ -95,12 +103,15 @@ const Register = () => {
                               color: "rgba(17, 17, 17, 0.36)",
                               backgroundColor: "rgba(17, 17, 17, 0.02)"
                            }
-                        }} {...getInputProps("username")} />
+                        }}
+                        {...getInputProps("username")}
+                     />
                      <InputBase
                         autoFocus
                         type="email"
-                        placeholder="Email" sx={{
-                           input:{
+                        placeholder="Email"
+                        sx={{
+                           input: {
                               width: "100%",
                               height: "45px",
                               borderRadius: "16px",
@@ -114,9 +125,11 @@ const Register = () => {
                         }}
                         {...getInputProps("email")}
                      />
-                     <PasswordInput placeholder="Password" sx={{
-                        border:'none',
-                           input:{
+                     <PasswordInput
+                        placeholder="Password"
+                        sx={{
+                           border: "none",
+                           input: {
                               width: "100%",
                               height: "45px",
                               borderRadius: "16px",
@@ -127,9 +140,12 @@ const Register = () => {
                               color: "rgba(17, 17, 17, 0.36)",
                               backgroundColor: "rgba(17, 17, 17, 0.02)"
                            }
-                        }} {...getInputProps("password")} />
-                     <PasswordInput sx={{
-                           input:{
+                        }}
+                        {...getInputProps("password")}
+                     />
+                     <PasswordInput
+                        sx={{
+                           input: {
                               width: "100%",
                               height: "45px",
                               borderRadius: "16px",
@@ -144,18 +160,19 @@ const Register = () => {
                         placeholder="Confirm password"
                         {...getInputProps("re_password")}
                      />
-                     <Button loading={loading} type="submit"
-                      sx={{
-
-                        color: 'rgba(0, 106, 255, 1)',
-                        height: '50px',
-                        backgroundColor:'rgba(231, 240, 255, 1)',
-                        fontSize: '20px',
-                      }}
+                     <Button
+                        loading={loading}
+                        type="submit"
+                        sx={{
+                           color: "rgba(0, 106, 255, 1)",
+                           height: "50px",
+                           backgroundColor: "rgba(231, 240, 255, 1)",
+                           fontSize: "20px"
+                        }}
                      >
                         Register
                      </Button>
-                     <Text size='22px' color="rgba(17, 17, 17, 0.36)" sx={{ alignSelf: "center" }}>
+                     <Text size="22px" color="rgba(17, 17, 17, 0.36)" sx={{ alignSelf: "center" }}>
                         Akkauntingiz bormi? unda <Link to="/auth/login">Login!</Link>
                      </Text>
                   </Flex>
