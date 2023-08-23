@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Box } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
@@ -41,7 +42,7 @@ function Login(props: LoginProps) {
             <button>Tizimga kirish</button>
          </form>
          <h2>
-            Akkauntingiz yo’qmi? unda <span>ro’yxatdan o’ting</span>
+            Akkauntingiz yo’qmi? unda <Link to="/auth/register">Register</Link>
          </h2>
       </Box>
    );

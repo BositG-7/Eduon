@@ -2,11 +2,10 @@ import { GENDER, JOB } from "./constants";
 
 export namespace IEntity {
    export interface User {
-      id: number;
       firstName: string;
       lastName: string;
       phone: string;
-      image: string | null;
+      img: string | null;
       balance: string;
       email: string;
       username: string;
@@ -14,9 +13,13 @@ export namespace IEntity {
       job: JOB
       birthday: string
       about: string
-      is_active: boolean;
-      is_spiker: boolean;
+      isActive: boolean;
+      isSpiker: boolean;
    }
+   export interface Tokens {
+      access: string
+      refresh: string
+    }
 }
 export namespace IForm {
    export interface Login {
@@ -24,12 +27,12 @@ export namespace IForm {
       password: string;
    }
    export interface Register {
-      firstName?: string;
-      lastName?: string;
+      first_name: string;
+      last_name: string;
       email: string;
       username: string;
       password: string;
-      confirmPassword: string;
+      re_password : string;
    }
 }
 
