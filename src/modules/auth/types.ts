@@ -46,9 +46,22 @@ export namespace IApi {
       export interface Request extends IForm.Register {}
       export interface Response extends IForm.Register {}
    }
+   export namespace Profile {
+      export interface Request {}
+      export interface Response extends IEntity.User {}
+    }
    export namespace Login {
       export interface Request extends IForm.Login {}
       export interface Response extends IToken {}
    }
 }
-
+export namespace IContext {
+   export interface Auth {
+     user: IEntity.User | null;
+     isLoading: boolean;
+     methods: {
+       login: (user: IEntity.User) => void;
+       logout: () => void;
+     };
+   }
+ }

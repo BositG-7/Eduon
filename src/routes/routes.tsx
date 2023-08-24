@@ -1,10 +1,13 @@
 import { Navigate, Route, Routes as Switch } from "react-router-dom";
+import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
 
 import AuthProtected from "./auth-protected";
 
 const Routes = () => {
-   const user = false;
+   const { user } = useAuth();
+
+   console.log(user);
 
    return (
       <Switch>

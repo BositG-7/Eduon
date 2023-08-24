@@ -8,3 +8,6 @@ export const Register = ({...params}: IApi.Register.Request) =>
 
   export const Login = ({...params}: IApi.Login.Request) =>
   http.post<IApi.Login.Response>('/token', objectToFormData({ ...params}))
+
+  export const Profile   = () =>
+   http.get("/me");
