@@ -4,6 +4,21 @@
    box-sizing: border-box;
    transition: 0.3s all linear;
    font-family: Gidroy-Medium;
+   list-style-type: none;
+   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+   width: 15px;
+}
+
+::-webkit-scrollbar-track {
+   background: var(--blue);
+}
+
+::-webkit-scrollbar-thumb {
+   background: var(--white);
+   border-radius: 1px;
 }
 
 :root {

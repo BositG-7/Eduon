@@ -1,3 +1,6 @@
+import Footer from "components/footer";
+
+import Courses from "./components/courses";
 import Header from "./components/header";
 import Statistic from "./components/statistic";
 
@@ -6,6 +9,8 @@ function Home() {
       <div>
          <Header />
          <Statistic />
+         <Courses />
+         <Footer />
       </div>
    );
 }
