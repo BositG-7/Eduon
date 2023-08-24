@@ -1,11 +1,13 @@
-import Header from "./components/header"
+import Header from "./components/header";
+import Statistic from "./components/statistic";
 
 function Home() {
-     return (
-          <>
-          <Header/>
-          </>
-     )
+   return (
+      <div>
+         <Header />
+         <Statistic />
+      </div>
+   );
 }
 
-export default Home
+export default Home;
