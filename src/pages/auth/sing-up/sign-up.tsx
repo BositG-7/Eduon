@@ -1,11 +1,11 @@
 import { Box } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
-import "../../assets/styles/login.scss";
+import "../../../assets/styles/login.scss";
 
-interface LoginProps {}
+interface SignUpProps {}
 
-function Login(props: LoginProps) {
+function SignUp(props: SignUpProps) {
    const form = useForm({
       initialValues: {
          password: "",
@@ -19,11 +19,9 @@ function Login(props: LoginProps) {
    });
 
    return (
-      <Box className="login">
+      <Box className="SignUp">
          <form onSubmit={form.onSubmit(values => console.log(values))}>
-            <input
-               placeholder="Email"
-            />
+            <input placeholder="Email" />
             <button>Davom etish</button>
          </form>
          <h2>
@@ -33,4 +31,4 @@ function Login(props: LoginProps) {
    );
 }
 
-export default Login;
+export default SignUp;

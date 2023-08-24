@@ -26,6 +26,7 @@ export namespace IForm {
       username: string;
       password: string;
    }
+
    export interface Register {
       first_name: string;
       last_name: string;
@@ -33,6 +34,10 @@ export namespace IForm {
       username: string;
       password: string;
       re_password : string;
+   }
+   export interface Verification {
+      email: string;
+     
    }
 }
 
