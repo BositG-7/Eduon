@@ -4,6 +4,9 @@
 .menu {
    display: none;
 }
+.login {
+   margin: 0;
+}
 
 @media screen and (max-width: 768px) {
    .navbar {
@@ -14,7 +17,6 @@
    }
    .login {
       display: none;
-      margin-left: 0;
    }
    .menu {
       display: "block";
