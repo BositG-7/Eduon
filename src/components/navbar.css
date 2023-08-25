@@ -1,3 +1,40 @@
 .active {
    color: blue;
 }
+.menu {
+   display: none;
+}
+
+@media screen and (max-width: 768px) {
+   .navbar {
+      padding: 50px 30px;
+   }
+   .title {
+      font-size: 10px;
+   }
+   .login {
+      display: none;
+      margin-left: 0;
+   }
+   .menu {
+      display: "block";
+      background-color: red;
+      align-items: "center";
+      justify-content: "center";
+   }
+}
+@media screen and (max-width: 568px) {
+   .navbar {
+      padding: 50px 16px;
+   }
+   .menu {
+      display: "block";
+      background-color: red;
+      align-items: "center";
+      justify-content: "center";
+   }
+
+   .title {
+      font-size: 10px;
+   }
+}

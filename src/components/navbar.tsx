@@ -2,11 +2,13 @@
 import React, { FunctionComponent } from "react"; // React import qilingan
 import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, Menu, Title } from "@mantine/core";
-import { IconLogout, IconSettings, IconUser } from "@tabler/icons-react";
+import { IconLogout, IconMenu, IconSettings, IconUser } from "@tabler/icons-react";
 import { useAuth } from "modules/auth/context";
 
 import Logo from "./Logo.svg";
 import Search from "./Search.svg";
+
+import "./navbar.css";
 
 interface NavbarProps {}
 
@@ -18,11 +20,13 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
       <Box
          p="24px 100px"
          sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+         className="navbar"
       >
-         <Box>
+         <Box className="img">
             <img src={Logo} alt="" />
          </Box>
          <Box
+            className="nav"
             sx={{
                display: "flex",
                justifyContent: "space-between",
@@ -38,6 +42,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             }}
          >
             <Title
+               className="title"
                size={14}
                onClick={() => {
                   navigate("/");
@@ -45,9 +50,15 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             >
                Bosh sahifa
             </Title>
-            <Title size={14}>Kurslar</Title>
-            <Title size={14}>FAQ</Title>
-            <Title size={14}>Biz haqimizda</Title>
+            <Title className="title" size={14}>
+               Kurslar
+            </Title>
+            <Title className="title" size={14}>
+               FAQ
+            </Title>
+            <Title className="title" size={14}>
+               Biz haqimizda
+            </Title>
          </Box>
          <Box
             sx={{
@@ -56,9 +67,10 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                alignItems: "center",
                gap: "30px"
             }}
+            className="login"
          >
             <img src={Search} alt="" />
-            {!user ? (
+            {user ? (
                <Menu shadow="md" width="max-content" position="bottom-end">
                   <Menu.Target>
                      <Avatar
@@ -96,6 +108,57 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                >
                   Kirish
                </Button>
+            )}
+         </Box>
+         <Box className="menu">
+            <img src={Search} alt="" />
+
+            {!user ? (
+               <Menu shadow="md" width="max-content" position="bottom-end">
+                  <Menu.Target>
+                     <Avatar
+                        sx={{ cursor: "pointer" }}
+                        radius="xl"
+                        alt="it's me"
+                        size="md"
+                        children={<IconMenu />}
+                     />
+                  </Menu.Target>
+                  <Menu.Dropdown>
+                     <Menu.Divider />
+
+                     <Menu.Item
+                        onClick={methods.logout}
+                        color="red"
+                        icon={<IconLogout size={14} />}
+                     >
+                        Logout
+                     </Menu.Item>
+                  </Menu.Dropdown>
+               </Menu>
+            ) : (
+               <Menu shadow="md" width="max-content" position="bottom-end">
+                  <Menu.Target>
+                     <Avatar
+                        sx={{ cursor: "pointer" }}
+                        radius="xl"
+                        alt="it's me"
+                        size="md"
+                        children={<IconMenu />}
+                     />
+                  </Menu.Target>
+                  <Menu.Dropdown>
+                     <Menu.Divider />
+                     <Menu.Item
+                        onClick={() => {
+                           navigate("/auth/login");
+                        }}
+                        icon={<IconSettings size={14} />}
+                     >
+                        Kirish
+                     </Menu.Item>
+                  </Menu.Dropdown>
+               </Menu>
             )}
          </Box>
       </Box>
