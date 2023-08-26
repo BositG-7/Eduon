@@ -114,7 +114,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             className="menu"
             sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "30px" }}
          >
-            {!user ? (
+            {user ? (
                <Menu shadow="md" width="max-content" position="bottom-end">
                   <Menu.Target>
                      <Avatar

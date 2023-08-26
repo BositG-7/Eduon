@@ -11,7 +11,7 @@ interface AuthProps {
 }
 
 const Auth = ({ children }: AuthProps) => {
-   const [{ user, isLoading, verfication }, setState] = useProfile();
+   const [{ user, isLoading, verfication, isResetPassword }, setState] = useProfile();
 
    if (isLoading) return <LoadingOverlay visible overlayBlur={2} />;
 
@@ -21,13 +21,16 @@ const Auth = ({ children }: AuthProps) => {
          clearSession();
          setState(prev => ({ ...prev, user: null, verfication: false }));
       },
-      setEmail: () => {
+      getEmail: () => {
          setState(prev => ({ ...prev, verfication: true }));
+      },
+      getPassword: () => {
+         setState(prev => ({ ...prev, isResetPassword: true }));
       }
    };
 
    return (
-      <AuthContext.Provider value={{ user, isLoading, methods, verfication }}>
+      <AuthContext.Provider value={{ user, isLoading, methods, verfication, isResetPassword }}>
          {children}
       </AuthContext.Provider>
    );

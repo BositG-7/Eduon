@@ -40,6 +40,11 @@ export namespace IForm {
       email: string;
      
    }
+   export interface ResetPassword {
+   
+      password:number | null
+     
+   }
 }
 
 export interface IToken {
@@ -63,6 +68,14 @@ export namespace IApi {
    export namespace SendEmail {
       export type Request ={
          email:string
+        
+      }
+   }
+   export namespace Checkpassword {
+      export type Request ={
+         email:string
+         activation_code:number | null
+        
       }
    }
 }
@@ -71,10 +84,12 @@ export namespace IContext {
      user: IEntity.User | null;
      isLoading: boolean;
      verfication:boolean
+     isResetPassword:boolean
      methods: {
        login: (user: IEntity.User) => void;
        logout: () => void;
-       setEmail:()=> void
+       getEmail:()=> void
+       getPassword:()=> void
      };
    }
  }

@@ -8,11 +8,12 @@ interface State {
    isLoading: boolean;
    user: Types.IEntity.User | null;
    verfication:boolean
+   isResetPassword:boolean
 }
 
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
    const { access } = getSession();
-   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null,verfication:!!access });
+   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null,verfication:false,isResetPassword:true });
 
   useEffect(() => {
     const request = async () => {
@@ -23,10 +24,10 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
         
         const user = Mappers.User(data);
 
-            setState({ user, isLoading: false,verfication:false });
+            setState({ user, isLoading: false,verfication:true,isResetPassword:true });
          } catch (err: any) {
        
-            setState({ user: null, isLoading: false,verfication:false });
+            setState({ user: null, isLoading: false,verfication:false,isResetPassword:true });
          }
       };
 
