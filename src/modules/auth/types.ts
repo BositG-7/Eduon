@@ -1,3 +1,4 @@
+
 import { GENDER, JOB } from "./constants";
 
 export namespace IEntity {
@@ -59,14 +60,21 @@ export namespace IApi {
       export interface Request extends IForm.Login {}
       export interface Response extends IToken {}
    }
+   export namespace SendEmail {
+      export type Request ={
+         email:string
+      }
+   }
 }
 export namespace IContext {
    export interface Auth {
      user: IEntity.User | null;
      isLoading: boolean;
+     verfication:boolean
      methods: {
        login: (user: IEntity.User) => void;
        logout: () => void;
+       setEmail:()=> void
      };
    }
  }

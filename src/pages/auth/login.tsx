@@ -39,7 +39,6 @@ function Login(props: LoginProps) {
          console.log(data);
 
          setSession(data);
-         window.location.href = "/"
       } catch (err: any) {
          console.log(err?.message);
       } finally {

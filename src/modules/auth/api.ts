@@ -11,3 +11,5 @@ export const Register = ({...params}: IApi.Register.Request) =>
 
   export const Profile   = () =>
    http.get("/me");
+   export const SendEmail = ({...params}: IApi.SendEmail.Request) =>
+   http.post('/user/send-email', objectToFormData({ ...params}))

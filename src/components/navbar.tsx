@@ -67,7 +67,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                alignItems: "center",
                gap: "30px"
             }}
-            className="login"
+            className="loginn"
          >
             <img src={Search} alt="" />
             {user ? (
@@ -103,24 +103,25 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                <Button
                   variant="light"
                   onClick={() => {
-                     navigate("/auth/login");
+                     navigate("/auth/verification");
                   }}
                >
                   Kirish
                </Button>
             )}
          </Box>
-         <Box className="menu">
-            <img src={Search} alt="" />
-
+         <Box
+            className="menu"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "30px" }}
+         >
             {!user ? (
                <Menu shadow="md" width="max-content" position="bottom-end">
                   <Menu.Target>
                      <Avatar
                         sx={{ cursor: "pointer" }}
-                        radius="xl"
+                        radius="sm"
                         alt="it's me"
-                        size="md"
+                        size="sm"
                         children={<IconMenu />}
                      />
                   </Menu.Target>
@@ -130,20 +131,20 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                      <Menu.Item
                         onClick={methods.logout}
                         color="red"
-                        icon={<IconLogout size={14} />}
+                        icon={<IconLogout size={10} />}
                      >
                         Logout
                      </Menu.Item>
                   </Menu.Dropdown>
                </Menu>
             ) : (
-               <Menu shadow="md" width="max-content" position="bottom-end">
+               <Menu shadow="sm" width="max-content" position="bottom-end">
                   <Menu.Target>
                      <Avatar
                         sx={{ cursor: "pointer" }}
                         radius="xl"
                         alt="it's me"
-                        size="md"
+                        size="sm"
                         children={<IconMenu />}
                      />
                   </Menu.Target>
@@ -151,9 +152,9 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                      <Menu.Divider />
                      <Menu.Item
                         onClick={() => {
-                           navigate("/auth/login");
+                           navigate("/auth/verification");
                         }}
-                        icon={<IconSettings size={14} />}
+                        icon={<IconSettings size={10} />}
                      >
                         Kirish
                      </Menu.Item>

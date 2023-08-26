@@ -2,9 +2,8 @@ import { FunctionComponent } from "react";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { notifications } from "@mantine/notifications";
-import { IconCheck } from "@tabler/icons-react";
 import { Types } from "modules/auth";
+import { SendEmail } from "modules/auth/api";
 
 interface VerificationProps {}
 
@@ -20,31 +19,26 @@ const Verification: FunctionComponent<VerificationProps> = () => {
       validate: yupResolver(schema)
    });
 
-   const onLogin = async (data: Types.IForm.Verification) => {
-      console.log(data); // Foydalanuvchi kiritgan ma'lumotlarni ko'rsatadi
+   const onSubmit = async (data: Types.IForm.Verification) => {
+      console.log("dwqdwq");
 
-      notifications.show({
-         title: "Talaba Qo'shildi!",
-         message: "Asosiy jadvalga qaytib tekshirib ko'ring",
-         icon: <IconCheck size="1rem" />
-      });
+      try {
+         await SendEmail(data);
+         // Yuborish muvaffaqiyatli yakunlandi
+         console.log("Email yuborildi!");
+      } catch (error) {
+         // Yuborish jarayonida xato yuzaga keldi
+         console.error("Emailni yuborishda xato:", error);
+      }
    };
 
    return (
-      <Box
-         className="login"
-         sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: "20px"
-         }}
-      >
+      <Box className="login" sx={{ display: "grid", placeItems: "center", gap: "30px" }}>
          <h1>Verification</h1>
-         <form onSubmit={form.onSubmit(onLogin)}>
+         <form onSubmit={form.onSubmit(onSubmit)}>
             <input placeholder="Email..." {...form.getInputProps("email")} />
             <button style={{ marginTop: "20px" }}>Submit</button>
+            <p>Email kiriting</p>
          </form>
       </Box>
    );

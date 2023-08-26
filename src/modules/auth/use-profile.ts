@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-import { clearSession, getSession } from "utils";
+import { getSession } from "utils";
 
 import { Api, Mappers, Types } from ".";
 
@@ -7,11 +7,12 @@ import { Api, Mappers, Types } from ".";
 interface State {
    isLoading: boolean;
    user: Types.IEntity.User | null;
+   verfication:boolean
 }
 
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
    const { access } = getSession();
-   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null });
+   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null,verfication:!!access });
 
   useEffect(() => {
     const request = async () => {
@@ -22,10 +23,10 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
         
         const user = Mappers.User(data);
 
-            setState({ user, isLoading: false });
+            setState({ user, isLoading: false,verfication:false });
          } catch (err: any) {
-            clearSession();
-            setState({ user: null, isLoading: false });
+       
+            setState({ user: null, isLoading: false,verfication:false });
          }
       };
 
