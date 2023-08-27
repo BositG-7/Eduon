@@ -39,8 +39,6 @@ function Login(props: LoginProps) {
          console.log(data);
 
          setSession(data);
-
-         navigate("/");
       } catch (err: any) {
          console.log(err?.message);
       } finally {

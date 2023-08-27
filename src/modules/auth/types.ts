@@ -1,3 +1,4 @@
+
 import { GENDER, JOB } from "./constants";
 
 export namespace IEntity {
@@ -26,13 +27,23 @@ export namespace IForm {
       username: string;
       password: string;
    }
+
    export interface Register {
       first_name: string;
       last_name: string;
-      email: string;
+
       username: string;
       password: string;
       re_password : string;
+   }
+   export interface Verification {
+      email: string;
+     
+   }
+   export interface ResetPassword {
+   
+      password:number | null
+     
    }
 }
 
@@ -54,14 +65,31 @@ export namespace IApi {
       export interface Request extends IForm.Login {}
       export interface Response extends IToken {}
    }
+   export namespace SendEmail {
+      export type Request ={
+         email:string
+        
+      }
+   }
+   export namespace Checkpassword {
+      export type Request ={
+         email:string
+         activation_code:number | null
+        
+      }
+   }
 }
 export namespace IContext {
    export interface Auth {
      user: IEntity.User | null;
      isLoading: boolean;
+     verfication:boolean
+     isResetPassword:boolean
      methods: {
        login: (user: IEntity.User) => void;
        logout: () => void;
+       getEmail:()=> void
+       getPassword:()=> void
      };
    }
  }
