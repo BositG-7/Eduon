@@ -29,7 +29,7 @@ const Routes = () => {
                path="register"
                element={
                   verfication && isResetPassword ? (
-                     <Auth.Register />
+                     <Auth.Register email={email} />
                   ) : (
                      <Navigate to="/auth/verification" />
                   )

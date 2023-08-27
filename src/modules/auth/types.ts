@@ -31,7 +31,7 @@ export namespace IForm {
    export interface Register {
       first_name: string;
       last_name: string;
-      email: string;
+
       username: string;
       password: string;
       re_password : string;

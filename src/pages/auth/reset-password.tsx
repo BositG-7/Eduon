@@ -1,5 +1,6 @@
 // ResetPassword.tsx
 import React, { FunctionComponent } from "react";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
@@ -21,6 +22,7 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = ({ email }) => {
       },
       validate: yupResolver(schema)
    });
+   const navigate = useNavigate();
 
    const onSubmit = async (data: Types.IForm.ResetPassword) => {
       try {
@@ -28,6 +30,7 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = ({ email }) => {
          console.log(data.password);
 
          await Checkpassword({ email, activation_code: data.password });
+         navigate("/auth/register");
 
          console.log("Checkpassword muvaffaqiyatli yakunlandi!");
       } catch (error) {
