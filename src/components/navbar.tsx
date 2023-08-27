@@ -50,7 +50,13 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             >
                Bosh sahifa
             </Title>
-            <Title className="title" size={14}>
+            <Title
+               onClick={() => {
+                  navigate("/kurslar");
+               }}
+               className="title"
+               size={14}
+            >
                Kurslar
             </Title>
             <Title className="title" size={14}>

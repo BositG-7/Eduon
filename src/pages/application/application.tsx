@@ -1,4 +1,4 @@
-import Home from "./bosh-sahifa/home";
+import BoshSahifa from "./bosh-sahifa/boshsahifa";
 
 interface ApplicationProps {}
 
@@ -9,7 +9,7 @@ const Application = (props: ApplicationProps) => {
 
    return (
       <>
-         <Home/>
+         <BoshSahifa />
       </>
    );
 };

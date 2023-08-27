@@ -4,7 +4,7 @@ import Courses from "./components/courses";
 import Header from "./components/header";
 import Statistic from "./components/statistic";
 
-function Home() {
+function BoshSahifa() {
    return (
       <div>
          <Header />
@@ -15,4 +15,4 @@ function Home() {
    );
 }
 
-export default Home;
+export default BoshSahifa;
