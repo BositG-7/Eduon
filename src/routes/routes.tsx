@@ -36,8 +36,9 @@ const Routes = () => {
                   )
                }
             />
-            <Route path="resetpassword" element={<Auth.ResetPassword email={email} />} />
-            <Route path="signup" element={<Auth.SignUp />} />
+            <Route path="checkpassword" element={<Auth.Checkpassword email={email} />} />
+            <Route path="resetemail" element={<Auth.Reset.ResetEmail setEmail={setEmail} />} />
+            <Route path="resetpassword" element={<Auth.Reset.ResetPassword email={email} />} />
             <Route path="verification" element={<Auth.Verification setEmail={setEmail} />} />
             <Route path="*" index element={<Navigate to="/auth/login" />} />
          </Route>

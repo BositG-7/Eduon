@@ -40,7 +40,11 @@ export namespace IForm {
       email: string;
      
    }
-   export interface ResetPassword {
+   export interface ResetEmail {
+      email: string;
+     
+   }
+   export interface Checkpassword {
    
       password:number | null
      

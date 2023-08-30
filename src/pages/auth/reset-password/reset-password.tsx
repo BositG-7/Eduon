@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { Types } from "modules/auth";
-import { Checkpassword } from "modules/auth/api";
+import { Api, Types } from "modules/auth";
 
-interface ResetPasswordProps {
+interface CheckpasswordProps {
    email: string;
 }
 
@@ -15,8 +14,8 @@ const schema = yup.object({
    password: yup.string().min(5).label("Password").required()
 });
 
-const ResetPassword: FunctionComponent<ResetPasswordProps> = ({ email }) => {
-   const form = useForm<Types.IForm.ResetPassword>({
+const Checkpassword: FunctionComponent<CheckpasswordProps> = ({ email }) => {
+   const form = useForm<Types.IForm.Checkpassword>({
       initialValues: {
          password: 0
       },
@@ -24,13 +23,13 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = ({ email }) => {
    });
    const navigate = useNavigate();
 
-   const onSubmit = async (data: Types.IForm.ResetPassword) => {
+   const onSubmit = async (data: Types.IForm.Checkpassword) => {
       try {
          console.log(email);
          console.log(data.password);
 
-         await Checkpassword({ email, activation_code: data.password });
-         navigate("/auth/register");
+         await Api.Checkpassword({ email, activation_code: data.password });
+         navigate("/auth/login");
 
          console.log("Checkpassword muvaffaqiyatli yakunlandi!");
       } catch (error) {
@@ -71,4 +70,4 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = ({ email }) => {
    );
 };
 
-export default ResetPassword;
+export default Checkpassword;

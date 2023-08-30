@@ -1,13 +1,13 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, Input, Text } from "@mantine/core";
+import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
-interface VerificationProps {
+interface ResetEmailProps {
    setEmail: (newEmail: string) => void;
 }
 
@@ -15,9 +15,9 @@ const schema = yup.object({
    email: yup.string().min(5).email().label("Email").required()
 });
 
-const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
+const ResetEmail: FunctionComponent<ResetEmailProps> = ({ setEmail }) => {
    const { methods } = useAuth();
-   const form = useForm<Types.IForm.Verification>({
+   const form = useForm<Types.IForm.ResetEmail>({
       initialValues: {
          email: ""
       },
@@ -25,7 +25,7 @@ const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
    });
    const navigete = useNavigate();
 
-   const onSubmit = async (data: Types.IForm.Verification) => {
+   const onSubmit = async (data: Types.IForm.ResetEmail) => {
       console.log(data);
 
       try {
@@ -34,7 +34,7 @@ const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
          methods.getEmail();
          setEmail(data.email);
 
-         navigete("/auth/checkpassword");
+         navigete("/auth/resetemail");
 
          // Yuborish muvaffaqiyatli yakunlandi
       } catch (error) {
@@ -64,7 +64,7 @@ const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
                   align="center"
                   p={20}
                >
-                  <h1>Verfication</h1>
+                  <h1>Reset Password</h1>
 
                   <Input
                      placeholder="Email..."
@@ -86,27 +86,10 @@ const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
                   />
                   <Button type="submit">Submit</Button>
                </Flex>
-               <Text
-                  sx={{
-                     display: "flex",
-                     justifyContent: "center",
-                     alignItems: "center",
-                     gap: "30px"
-                  }}
-               >
-                  Oldin royhatan otkan bolsangiz
-                  <Button
-                     onClick={() => {
-                        navigete("/auth/login");
-                     }}
-                  >
-                     Login qilish
-                  </Button>
-               </Text>
             </form>
          </Box>
       </Box>
    );
 };
 
-export default Verification;
+export default ResetEmail;
