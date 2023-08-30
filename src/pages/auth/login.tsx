@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { Api, Types } from "modules/auth";
+import { Api, Mappers, Types } from "modules/auth";
+import { useAuth } from "modules/auth/context";
 import { setSession } from "utils";
 
 import "../../assets/styles/login.scss";
@@ -16,6 +17,7 @@ const schema = yup.object({
 });
 
 function Login(props: LoginProps) {
+   const { methods } = useAuth();
    const form = useForm<Types.IForm.Login>({
       initialValues: {
          username: "",
@@ -35,10 +37,12 @@ function Login(props: LoginProps) {
          console.log("nav");
 
          const { data } = await Api.Login(par);
+         const { tokens, user }: any = data;
 
-         console.log(data);
+         setSession(tokens);
+         methods.login(Mappers.User(user));
 
-         setSession(data);
+         navigate("/");
       } catch (err: any) {
          console.log(err?.message);
       } finally {
