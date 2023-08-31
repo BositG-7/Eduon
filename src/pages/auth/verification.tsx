@@ -6,16 +6,15 @@ import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
+import { setSessionVerfication } from "services/store";
 
-interface VerificationProps {
-   setEmail: (newEmail: string) => void;
-}
+interface VerificationProps {}
 
 const schema = yup.object({
    email: yup.string().min(5).email().label("Email").required()
 });
 
-const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
+const Verification: FunctionComponent<VerificationProps> = () => {
    const { methods } = useAuth();
    const form = useForm<Types.IForm.Verification>({
       initialValues: {
@@ -32,7 +31,7 @@ const Verification: FunctionComponent<VerificationProps> = ({ setEmail }) => {
          await SendEmail(data);
 
          methods.getEmail();
-         setEmail(data.email);
+         setSessionVerfication(data);
 
          navigete("/auth/checkpassword");
 

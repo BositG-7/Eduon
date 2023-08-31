@@ -7,7 +7,7 @@ import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
 
 interface CheckpasswordProps {
-   email: string;
+   email: string | any;
 }
 
 const schema = yup.object({

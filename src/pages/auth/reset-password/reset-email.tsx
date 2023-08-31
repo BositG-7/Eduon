@@ -6,16 +6,15 @@ import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
+import { setSessionReset } from "services/store";
 
-interface ResetEmailProps {
-   setEmail: (newEmail: string) => void;
-}
+interface ResetEmailProps {}
 
 const schema = yup.object({
    email: yup.string().min(5).email().label("Email").required()
 });
 
-const ResetEmail: FunctionComponent<ResetEmailProps> = ({ setEmail }) => {
+const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    const { methods } = useAuth();
    const form = useForm<Types.IForm.ResetEmail>({
       initialValues: {
@@ -32,7 +31,7 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = ({ setEmail }) => {
          await SendEmail(data);
 
          methods.getEmail();
-         setEmail(data.email);
+         setSessionReset(data);
 
          navigete("/auth/resetemail");
 

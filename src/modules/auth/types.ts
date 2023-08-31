@@ -75,6 +75,15 @@ export namespace IApi {
         
       }
    }
+   export namespace ResetPassword {
+      export type Request ={
+         email:string;
+         activation_code:number;
+         new_password:string;
+         confirm_password :string
+        
+      }
+   }
    export namespace Checkpassword {
       export type Request ={
          email:string

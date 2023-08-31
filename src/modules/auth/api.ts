@@ -14,9 +14,14 @@ export const Register = ({...params}: IApi.Register.Request) =>
    http.get("/me");
    export const SendEmail = ({...params}: IApi.SendEmail.Request) =>
    http.post('/user/send-email', objectToFormData({ ...params}))
+   export const ResetPassword = ({...params}: IApi.ResetPassword.Request) =>
+   http.patch('/reset-passwd-confirm', objectToFormData({ ...params}))
 
    export const Checkpassword =  ({ email, activation_code }: IApi.Checkpassword.Request) => 
      http.post('/user/check-activate-code', objectToFormData({ email, activation_code})); 
+     export const ResetEmail =  ({ ...params }: IApi.SendEmail.Request) => 
+     http.post('/user/reset-passwd', objectToFormData({ params})); 
+
 
        
     
