@@ -18,6 +18,7 @@ export namespace IEntity {
       isSpiker: boolean;
    }
    export interface Tokens {
+      email: any;
       access: string
       refresh: string
     }
@@ -70,6 +71,12 @@ export namespace IApi {
       export interface Response extends IToken {}
    }
    export namespace SendEmail {
+      export type Request ={
+         email:string
+        
+      }
+   }
+   export namespace ResetEmail {
       export type Request ={
          email:string
         

@@ -5,16 +5,15 @@ import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
+import { clearSessionReset, getSessionReset } from "services/store";
 
-interface CheckpasswordProps {
-   email: string | any;
-}
+interface CheckpasswordProps {}
 
 const schema = yup.object({
    password: yup.string().min(5).label("Password").required()
 });
 
-const Checkpassword: FunctionComponent<CheckpasswordProps> = ({ email }) => {
+const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
    const form = useForm<Types.IForm.Checkpassword>({
       initialValues: {
          password: 0
@@ -25,13 +24,15 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = ({ email }) => {
 
    const onSubmit = async (data: Types.IForm.Checkpassword) => {
       try {
-         console.log(email);
          console.log(data.password);
+         const { email } = getSessionReset();
 
          await Api.Checkpassword({ email, activation_code: data.password });
          navigate("/auth/login");
 
          console.log("Checkpassword muvaffaqiyatli yakunlandi!");
+
+         clearSessionReset();
       } catch (error) {
          console.error("Checkpasswordda xato:", error);
       }
@@ -62,6 +63,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = ({ email }) => {
                      {...form.getInputProps("password")}
                      w="100%"
                   />
+
                   <Button>Submit</Button>
                </Flex>
             </form>

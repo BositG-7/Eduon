@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-import { getSession } from "utils";
+import { getSession } from "services/store";
 
 import { Api, Mappers, Types } from ".";
 
