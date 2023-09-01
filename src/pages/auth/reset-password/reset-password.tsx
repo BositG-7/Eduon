@@ -1,4 +1,5 @@
 // ResetPassword.tsx
+
 import React, { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
@@ -7,34 +8,46 @@ import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
 import { clearSessionReset, getSessionReset } from "services/store";
 
-interface CheckpasswordProps {}
+interface ResetPasswordProps {}
 
 const schema = yup.object({
-   password: yup.string().min(5).label("Password").required()
+   activation_code: yup.string().min(6).label("Activation Code").required(),
+   new_password: yup.string().min(6).label("New Password").required(),
+   confirm_password: yup.string().min(6).label("Confirm Password").required()
 });
 
-const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
-   const form = useForm<Types.IForm.Checkpassword>({
+const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
+   const form = useForm<Types.IForm.ResetPassword>({
       initialValues: {
-         password: 0
+         activation_code: "", // Initialize with an empty string, not 0
+         new_password: "",
+         confirm_password: ""
       },
       validate: yupResolver(schema)
    });
    const navigate = useNavigate();
 
-   const onSubmit = async (data: Types.IForm.Checkpassword) => {
-      try {
-         console.log(data.password);
-         const { email } = getSessionReset();
+   const onSubmit = async (data: Types.IForm.ResetPassword) => {
+      const { email } = getSessionReset();
 
-         await Api.Checkpassword({ email, activation_code: data.password });
+      console.log(email);
+      console.log(+data.activation_code);
+
+      console.log(data);
+      try {
+         await Api.ResetPassword({
+            email,
+            activation_code: +data.activation_code,
+            new_password: data.new_password,
+            confirm_password: data.confirm_password
+         });
          navigate("/auth/login");
 
-         console.log("Checkpassword muvaffaqiyatli yakunlandi!");
+         console.log("ResetPassword muvaffaqiyatli yakunlandi!");
 
          clearSessionReset();
       } catch (error) {
-         console.error("Checkpasswordda xato:", error);
+         console.error("ResetPasswordda xato:", error);
       }
    };
 
@@ -46,7 +59,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                   <h1>Check Code</h1>
 
                   <PasswordInput
-                     placeholder="Password"
+                     placeholder="Activation Code"
                      sx={{
                         border: "none",
                         input: {
@@ -60,11 +73,47 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                            backgroundColor: "rgba(17, 17, 17, 0.02)"
                         }
                      }}
-                     {...form.getInputProps("password")}
+                     {...form.getInputProps("activation_code")}
+                     w="100%"
+                  />
+                  <PasswordInput
+                     placeholder="New Password"
+                     sx={{
+                        border: "none",
+                        input: {
+                           height: "45px",
+                           borderRadius: "16px",
+                           outline: "none",
+                           border: "none",
+                           padding: "20px 15px",
+                           fontSize: "18px",
+                           color: "rgba(17, 17, 17, 0.36)",
+                           backgroundColor: "rgba(17, 17, 17, 0.02)"
+                        }
+                     }}
+                     {...form.getInputProps("new_password")}
+                     w="100%"
+                  />
+                  <PasswordInput
+                     placeholder="Confirm Password"
+                     sx={{
+                        border: "none",
+                        input: {
+                           height: "45px",
+                           borderRadius: "16px",
+                           outline: "none",
+                           border: "none",
+                           padding: "20px 15px",
+                           fontSize: "18px",
+                           color: "rgba(17, 17, 17, 0.36)",
+                           backgroundColor: "rgba(17, 17, 17, 0.02)"
+                        }
+                     }}
+                     {...form.getInputProps("confirm_password")}
                      w="100%"
                   />
 
-                  <Button>Submit</Button>
+                  <Button type="submit">Submit</Button>
                </Flex>
             </form>
          </Box>
@@ -72,4 +121,4 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
    );
 };
 
-export default Checkpassword;
+export default ResetPassword;

@@ -50,6 +50,15 @@ export namespace IForm {
       password:number | null
      
    }
+   export interface ResetPassword {
+   
+         email?:string;
+         activation_code:string;
+         new_password:string;
+         confirm_password :string
+        
+      }
+   
 }
 
 export interface IToken {
