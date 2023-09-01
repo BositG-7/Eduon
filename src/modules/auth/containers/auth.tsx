@@ -1,6 +1,6 @@
 import React from "react";
 import { LoadingOverlay } from "@mantine/core";
-import { clearSession } from "utils";
+import { clearSession } from "services/store";
 
 import { AuthContext } from "../context";
 import { IEntity } from "../types";
