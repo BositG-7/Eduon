@@ -30,7 +30,7 @@ const Routes = () => {
                   )
                }
             />
-            <Route path="checkpassword" element={<Auth.Checkpassword email={emailVerfication} />} />
+            <Route path="checkpassword" element={<Auth.Checkpassword  />} />
             <Route path="resetemail" element={<Auth.Reset.ResetEmail />} />
             <Route path="resetpassword" element={<Auth.Reset.ResetPassword email={emailReset} />} />
             <Route path="verification" element={<Auth.Verification />} />

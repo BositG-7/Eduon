@@ -5,16 +5,15 @@ import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
+import { getSessionVerfication } from "services/store";
 
-interface CheckpasswordProps {
-   email: string | any;
-}
+interface CheckpasswordProps {}
 
 const schema = yup.object({
    password: yup.string().min(5).label("Password").required()
 });
 
-const Checkpassword: FunctionComponent<CheckpasswordProps> = ({ email }) => {
+const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
    const form = useForm<Types.IForm.Checkpassword>({
       initialValues: {
          password: 0
@@ -25,8 +24,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = ({ email }) => {
 
    const onSubmit = async (data: Types.IForm.Checkpassword) => {
       try {
-         console.log(email);
-         console.log(data.password);
+         const { email }: any = getSessionVerfication();
 
          await Api.Checkpassword({ email, activation_code: data.password });
          navigate("/auth/register");
