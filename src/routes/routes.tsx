@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Navigate, Route, Routes as Switch } from "react-router-dom";
 import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
 import { getSessionReset, getSessionVerfication } from "services/store";
+
+import { TeacherPanel, UserPanel } from "../pages/dashboard";
 
 import AuthProtected from "./auth-protected";
 
@@ -30,12 +32,16 @@ const Routes = () => {
                   )
                }
             />
-            <Route path="checkpassword" element={<Auth.Checkpassword  />} />
+            <Route path="checkpassword" element={<Auth.Checkpassword />} />
             <Route path="resetemail" element={<Auth.Reset.ResetEmail />} />
             <Route path="resetpassword" element={<Auth.Reset.ResetPassword email={emailReset} />} />
             <Route path="verification" element={<Auth.Verification />} />
             <Route path="*" index element={<Navigate to="/auth/login" />} />
          </Route>
+         {/* AUTH */}
+         <Route path="dashboard/user" element={<UserPanel />} />
+         <Route path="dashboard/teacher" element={<TeacherPanel />} />
+         <Route path="*" index element={<Navigate to="/auth/login" />} />
 
          <Route path="*" element={<Navigate to={user ? "/" : "/auth/login"} />} />
       </Switch>
