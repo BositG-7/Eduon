@@ -18,6 +18,7 @@ export namespace IEntity {
       isSpiker: boolean;
    }
    export interface Tokens {
+      email: any;
       access: string
       refresh: string
     }
@@ -49,6 +50,15 @@ export namespace IForm {
       password:number | null
      
    }
+   export interface ResetPassword {
+   
+         email?:string;
+         activation_code:string;
+         new_password:string;
+         confirm_password :string
+        
+      }
+   
 }
 
 export interface IToken {
@@ -70,6 +80,12 @@ export namespace IApi {
       export interface Response extends IToken {}
    }
    export namespace SendEmail {
+      export type Request ={
+         email:string
+        
+      }
+   }
+   export namespace ResetEmail {
       export type Request ={
          email:string
         

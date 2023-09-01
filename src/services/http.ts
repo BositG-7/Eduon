@@ -1,7 +1,8 @@
 import { notifications } from '@mantine/notifications'
 import axios, { AxiosResponse } from 'axios'
 import config from 'config'
-import { getSession } from 'utils'
+
+import { getSession } from './store'
 
 export { AxiosError } from 'axios'
 

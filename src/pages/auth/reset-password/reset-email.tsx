@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
-import { SendEmail } from "modules/auth/api";
+import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 import { setSessionReset } from "services/store";
 
@@ -14,6 +14,7 @@ const schema = yup.object({
    email: yup.string().min(5).email().label("Email").required()
 });
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    const { methods } = useAuth();
    const form = useForm<Types.IForm.ResetEmail>({
@@ -28,14 +29,12 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
       console.log(data);
 
       try {
-         await SendEmail(data);
+         await ResetEmaill(data);
 
          methods.getEmail();
          setSessionReset(data);
 
-         navigete("/auth/resetemail");
-
-         // Yuborish muvaffaqiyatli yakunlandi
+         navigete("/auth/resetpassword");
       } catch (error) {
          console.error("Emailni yuborishda xato:", error);
       }

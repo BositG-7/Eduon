@@ -5,7 +5,7 @@ import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Mappers, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
-import { setSession } from "utils";
+import { setSession } from "services/store";
 
 import "../../assets/styles/login.scss";
 
