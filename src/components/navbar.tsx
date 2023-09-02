@@ -99,7 +99,18 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                            </Menu.Label>
                            <Menu.Divider />
                            <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item>
-                           <Menu.Item icon={<IconUser size={14} />}>Profile</Menu.Item>
+                           <Menu.Item
+                              icon={<IconUser size={14} />}
+                              onClick={() => {
+                                 if (user.isSpiker) {
+                                    navigate("/dashboard/teacher");
+                                 } else {
+                                    navigate("/dashboard/user");
+                                 }
+                              }}
+                           >
+                              Profile
+                           </Menu.Item>
                            <Menu.Item
                               onClick={methods.logout}
                               color="red"
@@ -142,6 +153,18 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                         </Menu.Target>
                         <Menu.Dropdown>
                            <Menu.Divider />
+                           <Menu.Item
+                              icon={<IconUser size={14} />}
+                              onClick={() => {
+                                 if (!user.isSpiker) {
+                                    navigate("/dashboard/user");
+                                 } else {
+                                    navigate("/dashboard/teacher");
+                                 }
+                              }}
+                           >
+                              Profile
+                           </Menu.Item>
 
                            <Menu.Item
                               onClick={methods.logout}
