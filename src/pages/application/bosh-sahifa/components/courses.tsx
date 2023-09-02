@@ -10,6 +10,8 @@ import xorijTillar from "../../../../assets/images/xorijTillar.png";
 import "../style/courses.scss";
 
 function Courses() {
+
+   
    return (
       <section className="courses">
          <div className="title">

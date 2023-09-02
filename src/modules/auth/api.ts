@@ -11,7 +11,7 @@ export const Register = ({...params}: IApi.Register.Request) =>
   http.post<IApi.Login.Response>('/user/token', objectToFormData({ ...params}))
 
   export const Profile   = () =>
-   http.get("/me");
+   http.get("/user/me");
    export const SendEmail = ({...params}: IApi.SendEmail.Request) =>
    http.post('/user/send-email', objectToFormData({ ...params}))
    export const ResetPassword = ({...params}: IApi.ResetPassword.Request) =>

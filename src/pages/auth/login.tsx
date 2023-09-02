@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { Api, Mappers, Types } from "modules/auth";
+import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
 import { setSession } from "services/store";
 
@@ -37,12 +37,15 @@ function Login(props: LoginProps) {
          console.log("nav");
 
          const { data } = await Api.Login(par);
-         const { tokens, user }: any = data;
+
+         console.log(data);
+         const tokens: any = data;
+
+         console.log(tokens);
 
          setSession(tokens);
-         methods.login(Mappers.User(user));
 
-         navigate("/");
+         window.location.href = "/";
       } catch (err: any) {
          console.log(err?.message);
       } finally {

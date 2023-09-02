@@ -23,7 +23,9 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
         console.log(data);
         
         const user = Mappers.User(data);
-
+        
+            console.log(user);
+            
             setState({ user, isLoading: false,verfication:true,isResetPassword:true });
          } catch (err: any) {
        

@@ -87,7 +87,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                               sx={{ cursor: "pointer" }}
                               radius="xl"
                               alt="it's me"
-                              size="xl"
+                              size="lg"
                               {...(user?.img
                                  ? { src: user.img }
                                  : { children: user?.username[0]?.toUpperCase() })}
