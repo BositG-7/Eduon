@@ -60,7 +60,7 @@ function Login(props: LoginProps) {
 
             <input type="password" placeholder="Password" {...form.getInputProps("password")} />
             <h2>
-               <Link to="/auth/resetemail">Reset Password</Link>
+               <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
             </h2>
 
             <button type="submit" disabled={loading}>

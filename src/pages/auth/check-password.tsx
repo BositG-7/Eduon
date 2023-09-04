@@ -40,7 +40,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
          <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
             <form onSubmit={form.onSubmit(onSubmit)}>
                <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
-                  <h1>Check Code</h1>
+                  <h1>Check Activate Code</h1>
 
                   <PasswordInput
                      placeholder="Password"
@@ -60,7 +60,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                      {...form.getInputProps("password")}
                      w="100%"
                   />
-                  <Button>Submit</Button>
+                  <Button> Davom etish</Button>
                </Flex>
             </form>
          </Box>

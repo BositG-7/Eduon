@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, Input, Text } from "@mantine/core";
+import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
@@ -54,17 +54,7 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   gap: "30px"
                }}
             >
-               <Flex
-                  sx={{ border: "1px solid " }}
-                  w="600px"
-                  direction="column"
-                  justify="center"
-                  gap={50}
-                  align="center"
-                  p={20}
-               >
-                  <h1>Verfication</h1>
-
+               <Flex w="350px" direction="column" justify="center" gap={20} align="center" p={20}>
                   <Input
                      placeholder="Email..."
                      sx={{
@@ -76,32 +66,30 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                            border: "none",
                            padding: "20px 15px",
                            fontSize: "18px",
-                           color: "rgba(17, 17, 17, 0.36)",
+                           color: "black",
                            backgroundColor: "rgba(17, 17, 17, 0.02)"
                         }
                      }}
                      {...form.getInputProps("email")}
                      w="100%"
                   />
-                  <Button type="submit">Submit</Button>
-               </Flex>
-               <Text
-                  sx={{
-                     display: "flex",
-                     justifyContent: "center",
-                     alignItems: "center",
-                     gap: "30px"
-                  }}
-               >
-                  Oldin royhatan otkan bolsangiz
-                  <Button
-                     onClick={() => {
-                        navigete("/auth/login");
-                     }}
-                  >
-                     Login qilish
+                  <Button w="100%" variant="light" type="submit">
+                     Davom etish
                   </Button>
-               </Text>
+                  <Box w="100%">
+                     <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        Akkauntingiz bormi? unda{" "}
+                        <span
+                           onClick={() => {
+                              navigete("/auth/login");
+                           }}
+                           style={{ color: "blue" }}
+                        >
+                           bu yerga bosing
+                        </span>
+                     </p>
+                  </Box>
+               </Flex>
             </form>
          </Box>
       </Box>
