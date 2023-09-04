@@ -1,4 +1,4 @@
-import { Kurslarim, YangiKurs } from "../components/index";
+import { Kurslarim, YangiKurs } from "../components";
 
 import style from "../styles/kurslarim-list.module.scss";
 
