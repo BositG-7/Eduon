@@ -22,8 +22,13 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             <></>
          ) : (
             <Box
-               p="24px 100px"
-               sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+               p="0px 100px"
+               sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "100px"
+               }}
                className="navbar"
             >
                <Box className="img">

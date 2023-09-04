@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Code, createStyles, getStylesRef, Group, Navbar, rem } from "@mantine/core";
-import { IconBellRinging, IconFingerprint, IconKey, IconReceipt2 } from "@tabler/icons-react";
+import { createStyles, getStylesRef, Navbar, rem } from "@mantine/core";
+import { IconFingerprint, IconReceipt2 } from "@tabler/icons-react";
 // IconSwitchHorizontal
 
 const useStyles = createStyles(theme => ({
@@ -61,10 +61,9 @@ const useStyles = createStyles(theme => ({
 }));
 
 const data = [
-   { link: "", label: "Profil", icon: IconBellRinging },
    { link: "", label: "Kurslarim", icon: IconReceipt2 },
-   { link: "", label: "Moliya", icon: IconFingerprint },
-   { link: "", label: "Ma'lumotlar", icon: IconKey }
+   { link: "", label: "Hisobim", icon: IconReceipt2 },
+   { link: "", label: "Profil", icon: IconFingerprint }
 ];
 
 function Sidebar() {
@@ -88,12 +87,7 @@ function Sidebar() {
 
    return (
       <Navbar width={{ sm: 300 }} p="md">
-         <Navbar.Section grow>
-            <Group className={classes.header} position="apart">
-               <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
-            </Group>
-            {links}
-         </Navbar.Section>
+         <Navbar.Section grow>{links}</Navbar.Section>
 
          {/* <Navbar.Section className={classes.footer}>
             <a href="#" className={classes.link} onClick={event => event.preventDefault()}>
