@@ -11,12 +11,16 @@ import "./assets/styles/index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
+console.log();
+
 root.render(
    <BrowserRouter>
       <MantineProvider>
          <Containers.Auth>
-            <Navbar />
-            <Routes />
+            <>
+               <Navbar />
+               <Routes />
+            </>
          </Containers.Auth>
       </MantineProvider>
    </BrowserRouter>

@@ -1,6 +1,6 @@
 import React from "react";
 import { LoadingOverlay } from "@mantine/core";
-import { clearSession } from "utils";
+import { clearSession } from "services/store";
 
 import { AuthContext } from "../context";
 import { IEntity } from "../types";
@@ -11,7 +11,7 @@ interface AuthProps {
 }
 
 const Auth = ({ children }: AuthProps) => {
-   const [{ user, isLoading }, setState] = useProfile();
+   const [{ user, isLoading, verfication, isResetPassword }, setState] = useProfile();
 
    if (isLoading) return <LoadingOverlay visible overlayBlur={2} />;
 
@@ -19,12 +19,20 @@ const Auth = ({ children }: AuthProps) => {
       login: (user: IEntity.User) => setState(prev => ({ ...prev, user })),
       logout: () => {
          clearSession();
-         setState(prev => ({ ...prev, user: null }));
+         setState(prev => ({ ...prev, user: null, verfication: false }));
+      },
+      getEmail: () => {
+         setState(prev => ({ ...prev, verfication: true }));
+      },
+      getPassword: () => {
+         setState(prev => ({ ...prev, isResetPassword: true }));
       }
    };
 
    return (
-      <AuthContext.Provider value={{ user, isLoading, methods }}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={{ user, isLoading, methods, verfication, isResetPassword }}>
+         {children}
+      </AuthContext.Provider>
    );
 };
 

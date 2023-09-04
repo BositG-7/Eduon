@@ -4,7 +4,7 @@
 .menu {
    display: none;
 }
-.login {
+.loginn {
    margin: 0;
 }
 
@@ -15,14 +15,13 @@
    .title {
       font-size: 10px;
    }
-   .login {
+   .loginn {
       display: none;
    }
    .menu {
-      display: "block";
-      background-color: red;
-      align-items: "center";
-      justify-content: "center";
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 }
 @media screen and (max-width: 568px) {
@@ -30,12 +29,10 @@
       padding: 50px 16px;
    }
    .menu {
-      display: "block";
-      background-color: red;
-      align-items: "center";
-      justify-content: "center";
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
-
    .title {
       font-size: 10px;
    }

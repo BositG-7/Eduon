@@ -4,19 +4,20 @@ import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
-import { SendEmail } from "modules/auth/api";
+import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
-import { setSessionVerfication } from "services/store";
+import { setSessionReset } from "services/store";
 
-interface VerificationProps {}
+interface ResetEmailProps {}
 
 const schema = yup.object({
    email: yup.string().min(5).email().label("Email").required()
 });
 
-const Verification: FunctionComponent<VerificationProps> = () => {
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    const { methods } = useAuth();
-   const form = useForm<Types.IForm.Verification>({
+   const form = useForm<Types.IForm.ResetEmail>({
       initialValues: {
          email: ""
       },
@@ -24,18 +25,16 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    });
    const navigete = useNavigate();
 
-   const onSubmit = async (data: Types.IForm.Verification) => {
+   const onSubmit = async (data: Types.IForm.ResetEmail) => {
       console.log(data);
 
       try {
-         await SendEmail(data);
+         await ResetEmaill(data);
 
          methods.getEmail();
-         setSessionVerfication(data);
+         setSessionReset(data);
 
-         navigete("/auth/checkpassword");
-
-         // Yuborish muvaffaqiyatli yakunlandi
+         navigete("/auth/resetpassword");
       } catch (error) {
          console.error("Emailni yuborishda xato:", error);
       }
@@ -54,7 +53,9 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   gap: "30px"
                }}
             >
-               <Flex w="350px" direction="column" justify="center" gap={20} align="center" p={20}>
+               <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
+                  <h1>Reset Password</h1>
+
                   <Input
                      placeholder="Email..."
                      sx={{
@@ -66,29 +67,14 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                            border: "none",
                            padding: "20px 15px",
                            fontSize: "18px",
-                           color: "black",
+                           color: "rgba(17, 17, 17, 0.36)",
                            backgroundColor: "rgba(17, 17, 17, 0.02)"
                         }
                      }}
                      {...form.getInputProps("email")}
                      w="100%"
                   />
-                  <Button w="100%" variant="light" type="submit">
-                     Davom etish
-                  </Button>
-                  <Box w="100%">
-                     <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        Akkauntingiz bormi? unda{" "}
-                        <span
-                           onClick={() => {
-                              navigete("/auth/login");
-                           }}
-                           style={{ color: "blue" }}
-                        >
-                           bu yerga bosing
-                        </span>
-                     </p>
-                  </Box>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
          </Box>
@@ -96,4 +82,4 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    );
 };
 
-export default Verification;
+export default ResetEmail;

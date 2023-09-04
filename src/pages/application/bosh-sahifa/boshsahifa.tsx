@@ -1,3 +1,5 @@
+
+
 import Footer from "components/footer";
 
 import Courses from "./components/courses";
@@ -5,7 +7,8 @@ import Header from "./components/header";
 import Statistic from "./components/statistic";
 import TopCourse from "./components/top-course";
 
-function Home() {
+function BoshSahifa() {
+  
    return (
       <div>
          <Header />
@@ -17,4 +20,4 @@ function Home() {
    );
 }
 
-export default Home;
+export default BoshSahifa;

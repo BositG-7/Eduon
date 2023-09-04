@@ -1,0 +1,104 @@
+.card {
+   width: 222px;
+   .img {
+      width: 100%;
+      height: 148px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 10px;
+      span {
+         position: absolute;
+         bottom: 10px;
+         right: 10px;
+         padding: 5px 5px 0px 5px;
+         margin: 0;
+         background-color: #fff;
+         border-radius: 5px;
+      }
+   }
+   .title {
+      width: 196px;
+      color: rgba(17, 17, 17, 0.72);
+      font-family: Gidroy-Medium;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 13px;
+   }
+   .title2 {
+      width: 222px;
+      color: rgba(17, 17, 17, 0.72);
+      font-family: Gidroy-Medium;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 13px;
+   }
+   .info {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 19px;
+      .wrap {
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         .ball {
+            color: var(--Blue, #006aff);
+            font-family: Gidroy-Medium;
+            font-size: 14px;
+            font-weight: 500;
+         }
+         .nechta {
+            color: rgba(0, 106, 255, 0.36);
+            font-family: Gidroy-Medium;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+         }
+         .count {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+         }
+      }
+   }
+   .hr {
+      background: rgba(17, 17, 17, 0.06);
+      height: 2px;
+      margin-bottom: 12px;
+   }
+   .btn {
+      width: 222px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .price {
+         display: flex;
+         gap: 3px;
+         & > p:first-child {
+            color: rgba(17, 17, 17, 0.72);
+            font-family: Gidroy-Medium;
+            font-size: 16px;
+            font-weight: 500;
+         }
+         & > p:last-child {
+            color: rgba(17, 17, 17, 0.36);
+            font-family: Gidroy-Medium;
+            font-size: 16px;
+            font-weight: 500;
+         }
+      }
+      & > button {
+         border-radius: 12px;
+         background: rgba(17, 17, 17, 0.06);
+         color: rgba(17, 17, 17, 0.54);
+         font-family: Gidroy-Medium;
+         font-size: 14px;
+         font-weight: 500;
+         padding: 10px 20px;
+         border: none;
+      }
+      .button {
+         width: 222px;
+      }
+   }
+}

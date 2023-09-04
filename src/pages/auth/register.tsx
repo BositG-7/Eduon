@@ -4,9 +4,9 @@ import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
+import { clearSessionVerfication, getSessionVerfication } from "services/store";
 
 const schema = yup.object({
-   email: yup.string().email().label("Email").required(),
    username: yup.string().min(4).label("Username").required(),
    password: yup.string().min(1).label("Password").required(),
    re_password: yup
@@ -21,7 +21,7 @@ const Register = () => {
       initialValues: {
          first_name: "",
          last_name: "",
-         email: "",
+
          username: "",
          password: "",
          re_password: ""
@@ -34,12 +34,21 @@ const Register = () => {
    const onRegister = async (data: Types.IForm.Register) => {
       console.log(data);
       setLoading(true);
+
+      const { email }: any = getSessionVerfication();
+
       try {
-         const { data: user } = await Api.Register(data);
+         const requestData = {
+            ...data,
+            email
+         };
+
+         await Api.Register(requestData);
 
          console.log("navi");
          navigate("auth/register");
          setLoading(false);
+         clearSessionVerfication();
       } catch (err: any) {
          console.log(err?.message);
          setLoading(false);
@@ -106,25 +115,7 @@ const Register = () => {
                         }}
                         {...getInputProps("username")}
                      />
-                     <InputBase
-                        autoFocus
-                        type="email"
-                        placeholder="Email"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
-                        {...getInputProps("email")}
-                     />
+
                      <PasswordInput
                         placeholder="Password"
                         sx={{

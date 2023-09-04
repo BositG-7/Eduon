@@ -62,7 +62,6 @@ function Courses({ deviceType }: any) {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
             className="carousel"
-            className="boxes"
          >
             <article className="box">
                <img src={marketing} alt="marketing" />
@@ -116,4 +115,4 @@ function Courses({ deviceType }: any) {
    );
 }
 
-export default Courses;
+export default Courses
