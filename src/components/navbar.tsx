@@ -98,7 +98,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                               Hi 👋🏻 {user?.email}
                            </Menu.Label>
                            <Menu.Divider />
-                           <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item>
+
                            <Menu.Item
                               icon={<IconUser size={14} />}
                               onClick={() => {
