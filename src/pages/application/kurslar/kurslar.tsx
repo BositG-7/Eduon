@@ -7,9 +7,9 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const navigete = useNavigate();
 
    return (
-      <>
-         <h1>Kurslar page</h1>
-      </>
+      <div>
+         <h1>hello</h1>
+      </div>
    );
 };
 

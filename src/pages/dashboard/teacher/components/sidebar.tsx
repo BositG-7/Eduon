@@ -99,7 +99,7 @@ function Sidebar() {
    ));
 
    return (
-      <Navbar height={700} width={{ sm: 300 }} p="md">
+      <Navbar height={700} width={{ sm: 250 }} p="md">
          <Navbar.Section grow>
             <Group className={classes.header} position="apart">
                <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>

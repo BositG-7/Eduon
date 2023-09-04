@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { KurslarimList } from "./pages/index";
 import { Sidebar } from "./components";
 
 import style from "./styles/panel.module.scss";
@@ -12,8 +13,7 @@ const TeacherPanel = (props: TeacherPanelProps) => {
       <div className={style.teacherPanel}>
          <Sidebar />
          <div className={style.main}>
-            main
-            {/** Shu yerga pagelarni chaqirasizlar */}
+            <KurslarimList />
          </div>
       </div>
    );
