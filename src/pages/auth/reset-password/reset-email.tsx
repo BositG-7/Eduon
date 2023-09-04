@@ -35,8 +35,10 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
          setSessionReset(data);
 
          navigete("/auth/resetpassword");
-      } catch (error) {
-         console.error("Emailni yuborishda xato:", error);
+      } catch (error: any) {
+         // notifications.show(err.message);
+
+         console.log(error.data.email[0]);
       }
    };
 

@@ -36,8 +36,8 @@ const Verification: FunctionComponent<VerificationProps> = () => {
          navigete("/auth/checkpassword");
 
          // Yuborish muvaffaqiyatli yakunlandi
-      } catch (error) {
-         console.error("Emailni yuborishda xato:", error);
+      } catch (error: any) {
+         console.log( error?.message);
       }
    };
 

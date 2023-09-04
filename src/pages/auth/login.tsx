@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+// import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
 import { setSession } from "services/store";
@@ -47,6 +48,8 @@ function Login(props: LoginProps) {
 
          window.location.href = "/";
       } catch (err: any) {
+         // notifications.show(err.message);
+
          console.log(err?.message);
       } finally {
          setLoading(false);
