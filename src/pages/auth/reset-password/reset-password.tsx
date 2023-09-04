@@ -113,7 +113,7 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
                      w="100%"
                   />
 
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
          </Box>

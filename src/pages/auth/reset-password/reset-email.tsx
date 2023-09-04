@@ -53,15 +53,7 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
                   gap: "30px"
                }}
             >
-               <Flex
-                  sx={{ border: "1px solid " }}
-                  w="600px"
-                  direction="column"
-                  justify="center"
-                  gap={50}
-                  align="center"
-                  p={20}
-               >
+               <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Reset Password</h1>
 
                   <Input
@@ -82,7 +74,7 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
                      {...form.getInputProps("email")}
                      w="100%"
                   />
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
          </Box>
