@@ -1,1 +1,1 @@
-export {}
+export {default as Moliya} from './moliya'
