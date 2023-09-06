@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { clearSessionVerfication, getSessionVerfication } from "services/store";
 
@@ -50,7 +51,9 @@ const Register = () => {
          setLoading(false);
          clearSessionVerfication();
       } catch (err: any) {
-         console.log(err?.message);
+         notifications.show({
+            message: err.data.username
+         });
          setLoading(false);
       }
    };

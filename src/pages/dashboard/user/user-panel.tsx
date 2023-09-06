@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Sidebar } from "./components";
+
+import { Sidebar } from "../teacher/components";
 
 import style from "./styles/panel.module.scss";
 

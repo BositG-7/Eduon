@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { getSessionVerfication } from "services/store";
 
@@ -30,8 +31,10 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
          navigate("/auth/register");
 
          console.log("Checkpassword muvaffaqiyatli yakunlandi!");
-      } catch (error) {
-         console.error("Checkpasswordda xato:", error);
+      } catch (error: any) {
+         notifications.show({
+            message: error.data.invalid_code
+         });
       }
    };
 
@@ -60,7 +63,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                      {...form.getInputProps("password")}
                      w="100%"
                   />
-                  <Button> Davom etish</Button>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
          </Box>

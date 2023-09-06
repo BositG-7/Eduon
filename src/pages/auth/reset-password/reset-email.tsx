@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
@@ -36,9 +37,9 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
 
          navigete("/auth/resetpassword");
       } catch (error: any) {
-         // notifications.show(err.message);
-
-         console.log(error.data.email[0]);
+         notifications.show({
+            message: error.data.email
+         });
       }
    };
 

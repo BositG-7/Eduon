@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { clearSessionReset, getSessionReset } from "services/store";
 
@@ -30,10 +31,6 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
    const onSubmit = async (data: Types.IForm.ResetPassword) => {
       const { email } = getSessionReset();
 
-      console.log(email);
-      console.log(+data.activation_code);
-
-      console.log(data);
       try {
          await Api.ResetPassword({
             email,
@@ -46,8 +43,10 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          console.log("ResetPassword muvaffaqiyatli yakunlandi!");
 
          clearSessionReset();
-      } catch (error) {
-         console.error("ResetPasswordda xato:", error);
+      } catch (error: any) {
+         notifications.show({
+            message: error.data.activation_code
+         });
       }
    };
 

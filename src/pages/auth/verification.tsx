@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
@@ -28,16 +29,17 @@ const Verification: FunctionComponent<VerificationProps> = () => {
       console.log(data);
 
       try {
-         await SendEmail(data);
-
          methods.getEmail();
          setSessionVerfication(data);
+         await SendEmail(data);
 
          navigete("/auth/checkpassword");
 
          // Yuborish muvaffaqiyatli yakunlandi
       } catch (error: any) {
-         console.log( error?.message);
+         notifications.show({
+            message: error.data.email
+         });
       }
    };
 
