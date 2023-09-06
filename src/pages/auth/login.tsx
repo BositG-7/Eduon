@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+// import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { setSession } from "utils";
+import { useAuth } from "modules/auth/context";
+import { setSession } from "services/store";
 
 import "../../assets/styles/login.scss";
 
@@ -16,6 +18,7 @@ const schema = yup.object({
 });
 
 function Login(props: LoginProps) {
+   const { methods } = useAuth();
    const form = useForm<Types.IForm.Login>({
       initialValues: {
          username: "",
@@ -37,9 +40,16 @@ function Login(props: LoginProps) {
          const { data } = await Api.Login(par);
 
          console.log(data);
+         const tokens: any = data;
 
-         setSession(data);
+         console.log(tokens);
+
+         setSession(tokens);
+
+         window.location.href = "/";
       } catch (err: any) {
+         // notifications.show(err.message);
+
          console.log(err?.message);
       } finally {
          setLoading(false);
@@ -52,6 +62,9 @@ function Login(props: LoginProps) {
             <input placeholder="Username" {...form.getInputProps("username")} />
 
             <input type="password" placeholder="Password" {...form.getInputProps("password")} />
+            <h2>
+               <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
+            </h2>
 
             <button type="submit" disabled={loading}>
                {loading ? "Loading..." : "Tizimga kirish"}

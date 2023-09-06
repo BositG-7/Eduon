@@ -1,7 +1,8 @@
 import { notifications } from '@mantine/notifications'
 import axios, { AxiosResponse } from 'axios'
 import config from 'config'
-import { getSession } from 'utils'
+
+import { getSession } from './store'
 
 export { AxiosError } from 'axios'
 
@@ -10,6 +11,9 @@ const http = axios.create({ baseURL: config.api.baseURL })
 http.interceptors.request.use(
   request => {
     const { access = '' } = getSession()
+
+    console.log(access);
+    
 
     // @ts-ignore
     request.headers = {

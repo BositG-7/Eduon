@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Api, Types } from "modules/auth";
+import { clearSessionVerfication, getSessionVerfication } from "services/store";
 
 const schema = yup.object({
    username: yup.string().min(4).label("Username").required(),
@@ -15,7 +16,7 @@ const schema = yup.object({
       .required()
 });
 
-const Register = ({ email }: any) => {
+const Register = () => {
    const { getInputProps, onSubmit } = useForm<Types.IForm.Register>({
       initialValues: {
          first_name: "",
@@ -33,6 +34,9 @@ const Register = ({ email }: any) => {
    const onRegister = async (data: Types.IForm.Register) => {
       console.log(data);
       setLoading(true);
+
+      const { email }: any = getSessionVerfication();
+
       try {
          const requestData = {
             ...data,
@@ -44,6 +48,7 @@ const Register = ({ email }: any) => {
          console.log("navi");
          navigate("auth/register");
          setLoading(false);
+         clearSessionVerfication();
       } catch (err: any) {
          console.log(err?.message);
          setLoading(false);
