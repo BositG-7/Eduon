@@ -6,7 +6,6 @@ import { IconLogout, IconMenu, IconSettings, IconUser } from "@tabler/icons-reac
 import { useAuth } from "modules/auth/context";
 
 import Logo from "./Logo.svg";
-import Search from "./Search.svg";
 
 import "./navbar.css";
 
@@ -84,7 +83,6 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   }}
                   className="loginn"
                >
-                  <img src={Search} alt="" />
                   {user ? (
                      <Menu shadow="md" width="max-content" position="bottom-end">
                         <Menu.Target>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text, Title } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
@@ -31,36 +31,30 @@ function Login(props: LoginProps) {
    });
 
    const [loading, setLoading] = useState(false);
-   const navigate = useNavigate();
 
    const onLogin = async (par: Types.IForm.Login) => {
-      console.log(par);
-
       setLoading(true);
       try {
-         console.log("nav");
-
          const { data } = await Api.Login(par);
 
-         console.log(data);
          const tokens: any = data;
-
-         console.log(tokens);
 
          setSession(tokens);
 
          window.location.href = "/";
       } catch (err: any) {
          // notifications.show(err.message);
-
-         console.log(err?.message);
       } finally {
          setLoading(false);
       }
    };
 
    return (
-      <Box h="90vh" w="100%" sx={{ display: "grid", placeItems: "center" }}>
+      <Box
+         h="90vh"
+         w="100%"
+         sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "100px" }}
+      >
          <div className="right">
             <img src={cursor} alt="cursor" />
          </div>
@@ -68,7 +62,7 @@ function Login(props: LoginProps) {
          <form onSubmit={form.onSubmit(onLogin)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
-                  <Flex direction="column" gap={22} w="100%">
+                  <Flex direction="column" gap={15} w="100%">
                      <InputBase
                         autoFocus
                         placeholder="username"
@@ -80,11 +74,11 @@ function Login(props: LoginProps) {
                         placeholder="Password"
                         radius="sm"
                         sx={{
-                           border: "none",
+                           border: "none"
                         }}
                         {...form.getInputProps("password")}
                      />
-                     <Title size="sm">
+                     <Title size="12" mt="0">
                         <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
                      </Title>
 
@@ -92,7 +86,7 @@ function Login(props: LoginProps) {
                         loading={loading}
                         type="submit"
                         sx={{
-                           borderRadius:'5px',
+                           borderRadius: "5px",
                            color: "rgba(0, 106, 255, 1)",
                            height: "50px",
                            backgroundColor: "rgba(231, 240, 255, 1)",
@@ -109,12 +103,13 @@ function Login(props: LoginProps) {
                            alignItems: "center",
                            justifyContent: "center",
                            gap: "10px",
-                           '&:hover': {
-                              color:'white'
-                            }
+                           "&:hover": {
+                              color: "white"
+                           }
                         }}
                      >
-                        Akkauntingiz yo’qmi? unda <Link to="/auth/register">ro’yxatdan o’ting!</Link>
+                        Akkauntingiz yo’qmi? unda{" "}
+                        <Link to="/auth/register">ro’yxatdan o’ting!</Link>
                      </Text>
                   </Flex>
                </Flex>
@@ -128,15 +123,3 @@ function Login(props: LoginProps) {
 }
 
 export default Login;
-
-// eslint-disable-next-line no-lone-blocks
-{
-   /* <input placeholder="Username" {...form.getInputProps("username")} />
-
-<input type="password" placeholder="Password" {...form.getInputProps("password")} />
-
-
-<button type="submit" disabled={loading}>
-
-</button> */
-}
