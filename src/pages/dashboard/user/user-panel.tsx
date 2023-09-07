@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Sidebar } from "./components";
+import { Kurslarim } from "./pages/index";
+import { Navbar, Pagination, Sidebar } from "./components";
 
 import style from "./styles/panel.module.scss";
 
@@ -12,8 +13,27 @@ const UserPanel = (props: TeacherPanelProps) => {
       <div className={style.userPanel}>
          <Sidebar />
          <div className={style.main}>
-            main
-            {/** Shu yerga pagelarni chaqirasizlar */}
+            <div className={style.kurslarim}>
+               <Navbar
+                  links={[
+                     { link: "/", label: "Barchasi" },
+                     { link: "/", label: "Progresdagi" },
+                     { link: "/", label: "Saqlangan" },
+                     { link: "/", label: "Tugatilgan" }
+                  ]}
+               />
+               <div className={style.kurslarimList}>
+                  <Kurslarim />
+                  <Kurslarim />
+                  <Kurslarim />
+                  <Kurslarim />
+                  <Kurslarim />
+                  <Kurslarim />
+                  <Kurslarim />
+                  <Kurslarim />
+               </div>
+               <Pagination />
+            </div>
          </div>
       </div>
    );
