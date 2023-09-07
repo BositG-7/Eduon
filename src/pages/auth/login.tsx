@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box } from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 // import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
-import { clearSessionReset, clearSessionVerfication, setSession } from "services/store";
+import { setSession } from "services/store";
 
 import "../../assets/styles/login.scss";
 
@@ -29,11 +29,6 @@ function Login(props: LoginProps) {
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
-
-   useEffect(() => {
-      clearSessionVerfication();
-      clearSessionReset();
-   }, []);
 
    const onLogin = async (par: Types.IForm.Login) => {
       console.log(par);
@@ -62,24 +57,94 @@ function Login(props: LoginProps) {
    };
 
    return (
-      <Box className="login">
+      <Box h="90vh" w="100%" sx={{ display: "grid", placeItems: "center" }}>
          <form onSubmit={form.onSubmit(onLogin)}>
-            <input placeholder="Username" {...form.getInputProps("username")} />
+            <Paper bg="var(--paper-bg)" w={400}>
+               <Flex direction="column" gap={20} align="center" p={20}>
+                  <Flex direction="column" gap={22} w="100%">
+                     <InputBase
+                        autoFocus
+                        placeholder="username"
+                        sx={{
+                           input: {
+                              width: "100%",
+                              height: "45px",
+                              borderRadius: "16px",
+                              outline: "none",
+                              border: "none",
+                              padding: "20px 15px",
+                              fontSize: "18px",
+                              color: "rgba(17, 17, 17, 0.36)",
+                              backgroundColor: "rgba(17, 17, 17, 0.02)"
+                           }
+                        }}
+                        {...form.getInputProps("username")}
+                     />
 
-            <input type="password" placeholder="Password" {...form.getInputProps("password")} />
-            <h2>
-               <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
-            </h2>
+                     <PasswordInput
+                        placeholder="Password"
+                        sx={{
+                           border: "none",
+                           input: {
+                              width: "100%",
+                              height: "45px",
+                              borderRadius: "16px",
+                              outline: "none",
+                              border: "none",
+                              padding: "20px 15px",
+                              fontSize: "18px",
+                              color: "rgba(17, 17, 17, 0.36)",
+                              backgroundColor: "rgba(17, 17, 17, 0.02)"
+                           }
+                        }}
+                        {...form.getInputProps("password")}
+                     />
+                     <h6>
+                        <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
+                     </h6>
 
-            <button type="submit" disabled={loading}>
-               {loading ? "Loading..." : "Tizimga kirish"}
-            </button>
+                     <Button
+                        loading={loading}
+                        type="submit"
+                        sx={{
+                           color: "rgba(0, 106, 255, 1)",
+                           height: "50px",
+                           backgroundColor: "rgba(231, 240, 255, 1)",
+                           fontSize: "20px"
+                        }}
+                     >
+                        {loading ? "Loading..." : "Tizimga kirish"}
+                     </Button>
+                     <Text
+                        size="15px"
+                        color="rgba(17, 17, 17, 0.36)"
+                        sx={{
+                           display: "flex",
+                           alignItems: "center",
+                           justifyContent: "center",
+                           gap: "10px"
+                        }}
+                     >
+                        Akkauntingiz yo’qmi? unda <Link to="/auth/login">ro’yxatdan o’ting!</Link>
+                     </Text>
+                  </Flex>
+               </Flex>
+            </Paper>
          </form>
-         <h2>
-            Akkauntingiz yo’qmi? unda <Link to="/auth/register">Register</Link>
-         </h2>
       </Box>
    );
 }
 
 export default Login;
+
+// eslint-disable-next-line no-lone-blocks
+{
+   /* <input placeholder="Username" {...form.getInputProps("username")} />
+
+<input type="password" placeholder="Password" {...form.getInputProps("password")} />
+
+
+<button type="submit" disabled={loading}>
+ 
+</button> */
+}

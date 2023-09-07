@@ -62,7 +62,7 @@ const Register = () => {
    };
 
    return (
-      <Box h="80vh" sx={{ display: "grid", placeItems: "center" }}>
+      <Box h="90vh" w="100%" sx={{ display: "grid", placeItems: "center" }}>
          <form onSubmit={onSubmit(onRegister)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
