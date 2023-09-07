@@ -1,12 +1,13 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
-import { setSessionReset } from "services/store";
+import { clearSessionReset, setSessionReset } from "services/store";
 
 interface ResetEmailProps {}
 
@@ -25,6 +26,9 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    });
    const navigete = useNavigate();
 
+   useEffect(() => {
+      clearSessionReset();
+   }, []);
    const onSubmit = async (data: Types.IForm.ResetEmail) => {
       console.log(data);
 
@@ -36,9 +40,9 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
 
          navigete("/auth/resetpassword");
       } catch (error: any) {
-         // notifications.show(err.message);
-
-         console.log(error.data.email[0]);
+         notifications.show({
+            message: error.data.email
+         });
       }
    };
 

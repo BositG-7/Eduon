@@ -1,0 +1,82 @@
+.wrapper {
+   width: 252px;
+   display: flex;
+   flex-direction: column;
+   row-gap: 18px;
+   .img {
+      width: 252px;
+      height: 158px;
+      background-position: center;
+      background-size: cover;
+      border-radius: 16px;
+   }
+   .title {
+      width: 196px;
+      color: rgba(17, 17, 17, 0.72);
+      font-family: Gidroy-Medium;
+      font-size: 16px;
+      font-weight: 500;
+   }
+   .progress {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      .progresInNumber {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: space-between;
+         & > p {
+            color: #111;
+            font-family: Gidroy-Medium;
+            font-size: 14px;
+            font-weight: 500;
+         }
+         .persent {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            p {
+               font-family: Gidroy-Medium;
+               font-size: 14px;
+               font-weight: 500;
+            }
+            & > p:first-child {
+               color: #111;
+               opacity: 0.72;
+            }
+            & > p:last-child {
+               color: rgba(17, 17, 17, 0.36);
+            }
+         }
+      }
+      .diagramma {
+         width: 252px;
+         height: 8px;
+         border-radius: 12px;
+         background: #f1f1f1;
+         .diagrammaItem {
+            width: 50%;
+            height: 8px;
+            border-radius: 12px;
+            background: var(--Blue, #006aff);
+         }
+      }
+   }
+   .btn {
+      width: 252px;
+      padding: 12px 0;
+      border-radius: 12px;
+      background: rgba(17, 17, 17, 0.06);
+      color: rgba(17, 17, 17, 0.54);
+      font-family: Gidroy-Medium;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: normal;
+      border: none;
+      transition: all 0.02s ease;
+      &:active {
+         transform: scale(0.99);
+      }
+   }
+}

@@ -1,11 +1,12 @@
 // ResetPassword.tsx
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { getSessionVerfication } from "services/store";
+import { clearSessionReset, getSessionVerfication } from "services/store";
 
 interface CheckpasswordProps {}
 
@@ -22,6 +23,10 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
    });
    const navigate = useNavigate();
 
+   useEffect(() => {
+      clearSessionReset();
+   }, []);
+
    const onSubmit = async (data: Types.IForm.Checkpassword) => {
       try {
          const { email }: any = getSessionVerfication();
@@ -30,8 +35,10 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
          navigate("/auth/register");
 
          console.log("Checkpassword muvaffaqiyatli yakunlandi!");
-      } catch (error) {
-         console.error("Checkpasswordda xato:", error);
+      } catch (error: any) {
+         notifications.show({
+            message: error.data.invalid_code
+         });
       }
    };
 
@@ -60,7 +67,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                      {...form.getInputProps("password")}
                      w="100%"
                   />
-                  <Button> Davom etish</Button>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
          </Box>

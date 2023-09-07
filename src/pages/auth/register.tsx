@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionVerfication, getSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerfication, getSessionVerfication } from "services/store";
 
 const schema = yup.object({
    username: yup.string().min(4).label("Username").required(),
@@ -29,6 +30,9 @@ const Register = () => {
       validate: yupResolver(schema)
    });
 
+   useEffect(() => {
+      clearSessionReset();
+   }, []);
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
    const onRegister = async (data: Types.IForm.Register) => {
@@ -50,13 +54,15 @@ const Register = () => {
          setLoading(false);
          clearSessionVerfication();
       } catch (err: any) {
-         console.log(err?.message);
+         notifications.show({
+            message: err.data.username
+         });
          setLoading(false);
       }
    };
 
    return (
-      <Box h="80vh" sx={{ display: "grid", placeItems: "center" }}>
+      <Box h="90vh" w="100%" sx={{ display: "grid", placeItems: "center" }}>
          <form onSubmit={onSubmit(onRegister)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
