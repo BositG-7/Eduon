@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box } from "@mantine/core";
@@ -6,7 +6,7 @@ import { useForm, yupResolver } from "@mantine/form";
 // import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
-import { setSession } from "services/store";
+import { clearSessionReset, clearSessionVerfication, setSession } from "services/store";
 
 import "../../assets/styles/login.scss";
 
@@ -29,6 +29,11 @@ function Login(props: LoginProps) {
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
+
+   useEffect(() => {
+      clearSessionVerfication();
+      clearSessionReset();
+   }, []);
 
    const onLogin = async (par: Types.IForm.Login) => {
       console.log(par);

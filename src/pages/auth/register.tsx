@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionVerfication, getSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerfication, getSessionVerfication } from "services/store";
 
 const schema = yup.object({
    username: yup.string().min(4).label("Username").required(),
@@ -30,6 +30,9 @@ const Register = () => {
       validate: yupResolver(schema)
    });
 
+   useEffect(() => {
+      clearSessionReset();
+   }, []);
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
    const onRegister = async (data: Types.IForm.Register) => {
