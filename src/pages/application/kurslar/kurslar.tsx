@@ -27,12 +27,12 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                Xo‘sh bugun qanday bilimlar o‘rganamiz?
             </Title>
             <Divider my="sm" />
-            <Flex gap={25} mt='40px'>
+            <Flex gap={25} mt='30px'>
                <Button size='md' variant="light" color="#E7F0FF" sx={{fontWeight: "normal"}} >Barchasi</Button>
-               <Button size='md'  sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Bepul</Button>
-               <Button size='md'  sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Zo‘rlari</Button>
-               <Button size='md'  sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Marketing</Button>
-               <Button size='md'  sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Dasturlash</Button>
+               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Bepul</Button>
+               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Zo‘rlari</Button>
+               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Marketing</Button>
+               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Dasturlash</Button>
             </Flex>
          </Box>
       </Box>

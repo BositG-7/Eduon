@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text, Title } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 // import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
 import { setSession } from "services/store";
+
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
 
 import "../../assets/styles/login.scss";
 
@@ -58,6 +61,10 @@ function Login(props: LoginProps) {
 
    return (
       <Box h="90vh" w="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <div className="right">
+            <img src={cursor} alt="cursor" />
+         </div>
+
          <form onSubmit={form.onSubmit(onLogin)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
@@ -65,48 +72,27 @@ function Login(props: LoginProps) {
                      <InputBase
                         autoFocus
                         placeholder="username"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
+                        radius="sm"
                         {...form.getInputProps("username")}
                      />
 
                      <PasswordInput
                         placeholder="Password"
+                        radius="sm"
                         sx={{
                            border: "none",
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
                         }}
                         {...form.getInputProps("password")}
                      />
-                     <h6>
+                     <Title size="sm">
                         <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
-                     </h6>
+                     </Title>
 
                      <Button
                         loading={loading}
                         type="submit"
                         sx={{
+                           borderRadius:'5px',
                            color: "rgba(0, 106, 255, 1)",
                            height: "50px",
                            backgroundColor: "rgba(231, 240, 255, 1)",
@@ -122,15 +108,21 @@ function Login(props: LoginProps) {
                            display: "flex",
                            alignItems: "center",
                            justifyContent: "center",
-                           gap: "10px"
+                           gap: "10px",
+                           '&:hover': {
+                              color:'white'
+                            }
                         }}
                      >
-                        Akkauntingiz yo’qmi? unda <Link to="/auth/login">ro’yxatdan o’ting!</Link>
+                        Akkauntingiz yo’qmi? unda <Link to="/auth/register">ro’yxatdan o’ting!</Link>
                      </Text>
                   </Flex>
                </Flex>
             </Paper>
          </form>
+         <div className="left">
+            <img src={threeD} alt="threeD" />
+         </div>
       </Box>
    );
 }
@@ -145,6 +137,6 @@ export default Login;
 
 
 <button type="submit" disabled={loading}>
- 
+
 </button> */
 }

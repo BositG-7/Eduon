@@ -66,97 +66,31 @@ const Register = () => {
          <form onSubmit={onSubmit(onRegister)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
-                  <Flex direction="column" gap={22} w="100%">
+               <Flex direction="column" gap={22} w="100%">
                      <InputBase
                         autoFocus
-                        placeholder="First name"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
-                        {...getInputProps("first_name")}
-                     />
-                     <InputBase
-                        autoFocus
-                        placeholder="last name"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
-                        {...getInputProps("last_name")}
-                     />
-                     <InputBase
-                        autoFocus
-                        placeholder="Name"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
+                        placeholder="username"
+                        radius="sm"
                         {...getInputProps("username")}
                      />
 
                      <PasswordInput
                         placeholder="Password"
+                        radius="sm"
                         sx={{
-                           border: "none",
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
+                           border: "none"
                         }}
                         {...getInputProps("password")}
                      />
                      <PasswordInput
+                     placeholder="Confirm password"
+                        radius="sm"
                         sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
+                           border: "none"
                         }}
-                        placeholder="Confirm password"
                         {...getInputProps("re_password")}
                      />
+
                      <Button
                         loading={loading}
                         type="submit"
@@ -164,12 +98,15 @@ const Register = () => {
                            color: "rgba(0, 106, 255, 1)",
                            height: "50px",
                            backgroundColor: "rgba(231, 240, 255, 1)",
-                           fontSize: "20px"
+                           fontSize: "20px",
+                           "&:hover": {
+                              color: "white"
+                           }
                         }}
                      >
                         Register
                      </Button>
-                     <Text size="22px" color="rgba(17, 17, 17, 0.36)" sx={{ alignSelf: "center" }}>
+                     <Text size="16px" color="rgba(17, 17, 17, 0.36)" sx={{ alignSelf: "center" }}>
                         Akkauntingiz bormi? unda <Link to="/auth/login">Login!</Link>
                      </Text>
                   </Flex>

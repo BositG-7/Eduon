@@ -29,7 +29,7 @@ const Routes = () => {
             <Route path="login" element={<Auth.Login />} />
             <Route
                path="register"
-               element={verfication ? <Auth.Register /> : <Navigate to="/auth/verification" />}
+               element={ !verfication ? <Auth.Register /> : <Navigate to="/auth/verification" />}
             />
             <Route
                path="checkpassword"
