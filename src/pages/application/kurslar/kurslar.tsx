@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Checkbox, Divider, Flex, Title } from "@mantine/core";
-import { AiFillStar } from "react-icons/ai";
+import { Box, Button, Checkbox, Divider, Flex, InputBase, Title } from "@mantine/core";
+import { AiFillStar, AiOutlineSend } from "react-icons/ai";
 
 import { useList } from "../../../modules/kurslar/hooks/course-use-list";
 
@@ -15,8 +15,9 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const [checked, setChecked] = useState(false);
 
    return (
-      <Box>
-         <Box>
+      <Box mb={50}>
+         <Flex direction='column'>
+            <Flex direction="column" justify="center" align="center">
             <Title size="60px" color="#006AFF" sx={{ marginTop: "50px", textAlign: "center" }}>
                Xush kelibsiz
             </Title>
@@ -32,8 +33,16 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
             >
                Xo‘sh bugun qanday bilimlar o‘rganamiz?
             </Title>
-            <Divider my="sm" />
-            <Flex gap={100}>
+            <Flex>
+               <InputBase mb={20} autoFocus placeholder="kursni yozing..." radius="5px" w="400px" bg="#E7F0FF" p="8px" />
+               <Box sx={{ position: "relative", top: "17px", right: "30px" }}>
+                  <AiOutlineSend />
+               </Box>
+            </Flex>
+            </Flex>
+
+            <Divider my="lg" />
+            <Flex gap={150}>
                <Flex sx={{ flexDirection: "column" }}>
                   <Title color="grey" size={16} mt={30}>
                      Narx
@@ -161,7 +170,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   </Flex>
                </Flex>
 
-               <Flex sx={{ flexDirection: "column" }}>
+               <Flex align='center' sx={{ flexDirection: "column"  }}>
                   <Flex gap={25} mt="30px">
                      <Button size="md" variant="light" color="#E7F0FF" sx={{ fontWeight: "normal" }}>
                         Barchasi
@@ -176,7 +185,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                         Dasturlash
                      </Button>
                   </Flex>
-                  <Flex sx={{ flexWrap: "wrap" }}>
+                  <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr", gap: "25px" }}>
                      {
                         // @ts-ignore
                         console.log(course.results)
@@ -184,24 +193,27 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      {
                         // @ts-ignore
                         course.results?.map((item, idx) => {
-
                            if (idx > 8) {
-                              console.log(idx)
+                              console.log(idx);
                               return;
                            }
 
                            // eslint-disable-next-line consistent-return
                            return (
                               <>
-                                 <SingleCourse img={item.image} price={item.price} />
+                                 <SingleCourse img={item.image} price={item.price} name={item.name} view={item.view} />
                               </>
                            );
                         })
                      }
-                  </Flex>
+                  </Box>
+
+                  <Button mt={40} size='lg' w={200}>Yana ko'rish</Button>
                </Flex>
             </Flex>
-         </Box>
+         </Flex>
+
+
       </Box>
    );
 };
