@@ -67,7 +67,13 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   >
                      Kurslar
                   </Title>
-                  <Title className="title" size={14}>
+                  <Title
+                     onClick={() => {
+                        navigate("/faq");
+                     }}
+                     className="title"
+                     size={14}
+                  >
                      FAQ
                   </Title>
                   <Title className="title" size={14}>

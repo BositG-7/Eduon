@@ -23,13 +23,14 @@ const Routes = () => {
       <Switch>
          <Route path="" element={<Application.BoshSahifa />} />
          <Route path="kurslar" element={<Application.Kurslar />} />
+         <Route path="faq" element={<Application.Faq />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>
             <Route path="login" element={<Auth.Login />} />
             <Route
                path="register"
-               element={ !verfication ? <Auth.Register /> : <Navigate to="/auth/verification" />}
+               element={!verfication ? <Auth.Register /> : <Navigate to="/auth/verification" />}
             />
             <Route
                path="checkpassword"
