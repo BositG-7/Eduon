@@ -8,6 +8,9 @@ import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { clearSessionReset, getSessionVerfication } from "services/store";
 
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
+
 interface CheckpasswordProps {}
 
 const schema = yup.object({
@@ -17,7 +20,7 @@ const schema = yup.object({
 const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
    const form = useForm<Types.IForm.Checkpassword>({
       initialValues: {
-         password: 0
+         password: null
       },
       validate: yupResolver(schema)
    });
@@ -44,9 +47,16 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form onSubmit={form.onSubmit(onSubmit)}>
-               <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
+               <Flex w="355px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Check Activate Code</h1>
 
                   <PasswordInput
@@ -70,6 +80,9 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                   <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );

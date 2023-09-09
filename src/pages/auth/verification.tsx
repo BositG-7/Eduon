@@ -9,6 +9,9 @@ import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 import { clearSessionReset, clearSessionVerfication, setSessionVerfication } from "services/store";
 
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
+
 interface VerificationProps {}
 
 const schema = yup.object({
@@ -50,7 +53,14 @@ const Verification: FunctionComponent<VerificationProps> = () => {
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "220px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form
                onSubmit={form.onSubmit(onSubmit)}
                style={{
@@ -98,6 +108,9 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   </Box>
                </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );

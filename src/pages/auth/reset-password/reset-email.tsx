@@ -9,6 +9,9 @@ import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 import { clearSessionReset, setSessionReset } from "services/store";
 
+import cursor from "../../../assets/images/cursor.png";
+import threeD from "../../../assets/images/threeD.png";
+
 interface ResetEmailProps {}
 
 const schema = yup.object({
@@ -48,7 +51,14 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form
                onSubmit={form.onSubmit(onSubmit)}
                style={{
@@ -83,6 +93,9 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
                   <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );
