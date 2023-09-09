@@ -1,12 +1,18 @@
 import { FunctionComponent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Divider,  Flex,  Title } from "@mantine/core";
+import { Box, Button, Checkbox, Divider, Flex, Title } from "@mantine/core";
+import { AiFillStar } from "react-icons/ai";
+
+import { useList } from "../../../modules/kurslar/hooks/course-use-list";
+
+import SingleCourse from "./components/single-course";
 
 interface KurslarProps {}
 
 const Kurslar: FunctionComponent<KurslarProps> = () => {
    const navigete = useNavigate();
-   const [searchValue, onSearchChange] = useState("");
+   const { course, isLoading } = useList();
+   const [checked, setChecked] = useState(false);
 
    return (
       <Box>
@@ -27,12 +33,173 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                Xo‘sh bugun qanday bilimlar o‘rganamiz?
             </Title>
             <Divider my="sm" />
-            <Flex gap={25} mt='30px'>
-               <Button size='md' variant="light" color="#E7F0FF" sx={{fontWeight: "normal"}} >Barchasi</Button>
-               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Bepul</Button>
-               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Zo‘rlari</Button>
-               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Marketing</Button>
-               <Button size='md' variant="light" sx={{backgroundColor:'white', color:'gray', fontWeight: "normal" }}>Dasturlash</Button>
+            <Flex gap={100}>
+               <Flex sx={{ flexDirection: "column" }}>
+                  <Title color="grey" size={16} mt={30}>
+                     Narx
+                  </Title>
+                  <Flex gap={10} sx={{ marginTop: "10px" }}>
+                     <Flex gap={10} sx={{ flexDirection: "column" }}>
+                        <Button>10.000</Button>
+                        <Button>100.000</Button>
+                     </Flex>
+                     <Flex gap={10} sx={{ flexDirection: "column" }}>
+                        <Button>1.000.000</Button>
+                        <Button>10.000.000</Button>
+                     </Flex>
+                  </Flex>
+
+                  <Divider my="lg" />
+                  <Title mb={20} color="grey" size={16} mt={10}>
+                     Reyting
+                  </Title>
+
+                  <Flex gap={10} sx={{ flexDirection: "column" }}>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Flex gap={5}>
+                           <AiFillStar color="blue" size={22} />
+                           <Title color="blue" size="sm">
+                              4,5-5 (12,965)
+                           </Title>
+                        </Flex>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Flex gap={5}>
+                           <AiFillStar color="blue" size={22} />
+                           <Title color="blue" size="sm">
+                              4,0-4,5 (98,144)
+                           </Title>
+                        </Flex>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Flex gap={5}>
+                           <AiFillStar color="blue" size={22} />
+                           <Title color="blue" size="sm">
+                              3,0-4,0 (6,387)
+                           </Title>
+                        </Flex>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Flex gap={5}>
+                           <AiFillStar color="blue" size={22} />
+                           <Title color="blue" size="sm">
+                              2,0-3,0 (165)
+                           </Title>
+                        </Flex>
+                        <Checkbox />
+                     </Flex>
+                  </Flex>
+
+                  <Divider my="lg" />
+                  <Title mb={20} color="grey" size={16} mt={10}>
+                     Til
+                  </Title>
+
+                  <Flex gap={10} sx={{ flexDirection: "column" }}>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           O’zbekcha
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Ruscha
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Inglizcha
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                  </Flex>
+
+                  <Divider my="lg" />
+                  <Title mb={20} color="grey" size={16} mt={10}>
+                     Bo‘limlar
+                  </Title>
+
+                  <Flex gap={10} sx={{ flexDirection: "column" }}>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Frontend
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Backend
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Flutter
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Mobile
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
+                        <Title color="rgba(17, 17, 17, 0.72)" size={16} mt={10}>
+                           Sun’iy intelekt
+                        </Title>
+                        <Checkbox />
+                     </Flex>
+                     <Button h={50} mt={20} mb={10} sx={{ borderRadius: "10px" }}>
+                        Ko‘rsatish
+                     </Button>
+                  </Flex>
+               </Flex>
+
+               <Flex sx={{ flexDirection: "column" }}>
+                  <Flex gap={25} mt="30px">
+                     <Button size="md" variant="light" color="#E7F0FF" sx={{ fontWeight: "normal" }}>
+                        Barchasi
+                     </Button>
+                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
+                        Zo‘rlari
+                     </Button>
+                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
+                        Marketing
+                     </Button>
+                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
+                        Dasturlash
+                     </Button>
+                  </Flex>
+                  <Flex sx={{ flexWrap: "wrap" }}>
+                     {
+                        // @ts-ignore
+                        console.log(course.results)
+                     }
+                     {
+                        // @ts-ignore
+                        course.results?.map((item, idx) => {
+
+                           if (idx > 8) {
+                              console.log(idx)
+                              return;
+                           }
+
+                           // eslint-disable-next-line consistent-return
+                           return (
+                              <>
+                                 <SingleCourse img={item.image} price={item.price} />
+                              </>
+                           );
+                        })
+                     }
+                  </Flex>
+               </Flex>
             </Flex>
          </Box>
       </Box>
