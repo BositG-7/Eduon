@@ -22,6 +22,8 @@ export const Register = ({...params}: IApi.Register.Request) =>
      export const ResetEmaill =  ({ ...params }: IApi.ResetEmail.Request) => 
      http.post('/user/reset-passwd', objectToFormData({ ...params})); 
 
-
+export const RefleshToken = ({refresh}:IApi.Refresh.Request)=>{
+  http.post("/user/token/refresh",{refresh})
+}
        
     

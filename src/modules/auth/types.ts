@@ -18,7 +18,7 @@ export namespace IEntity {
       isSpiker: boolean;
    }
    export interface Tokens {
-      email: any;
+      email?: any;
       access: string
       refresh: string
     }
@@ -104,6 +104,12 @@ export namespace IApi {
       export type Request ={
          email:string
          activation_code:number | null
+        
+      }
+   }
+   export namespace Refresh {
+      export type Request ={
+     refresh:string
         
       }
    }
