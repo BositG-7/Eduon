@@ -16,33 +16,33 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
 
    return (
       <Box mb={50}>
-         <Flex direction='column'>
+         <Flex direction="column">
             <Flex direction="column" justify="center" align="center">
-            <Title size="60px" color="#006AFF" sx={{ marginTop: "50px", textAlign: "center" }}>
-               Xush kelibsiz
-            </Title>
-            <Title sx={{ textAlign: "center" }}>ilm izlanuvchi</Title>
-            <Title
-               size="20px"
-               sx={{
-                  fontWeight: "normal",
-                  textAlign: "center",
-                  marginTop: "15px",
-                  marginBottom: "50px"
-               }}
-            >
-               Xo‘sh bugun qanday bilimlar o‘rganamiz?
-            </Title>
-            <Flex>
-               <InputBase mb={20} autoFocus placeholder="kursni yozing..." radius="5px" w="400px" bg="#E7F0FF" p="8px" />
-               <Box sx={{ position: "relative", top: "17px", right: "30px" }}>
-                  <AiOutlineSend />
-               </Box>
-            </Flex>
+               <Title size="60px" color="#006AFF" sx={{ marginTop: "50px", textAlign: "center" }}>
+                  Xush kelibsiz
+               </Title>
+               <Title sx={{ textAlign: "center" }}>ilm izlanuvchi</Title>
+               <Title
+                  size="20px"
+                  sx={{
+                     fontWeight: "normal",
+                     textAlign: "center",
+                     marginTop: "15px",
+                     marginBottom: "50px"
+                  }}
+               >
+                  Xo‘sh bugun qanday bilimlar o‘rganamiz?
+               </Title>
+               <Flex>
+                  <InputBase mb={20} autoFocus placeholder="kursni yozing..." radius="5px" w="400px" bg="#E7F0FF" p="8px" />
+                  <Box sx={{ position: "relative", top: "17px", right: "30px" }}>
+                     <AiOutlineSend />
+                  </Box>
+               </Flex>
             </Flex>
 
             <Divider my="lg" />
-            <Flex gap={150}>
+            <Flex gap={150} ml="20px">
                <Flex sx={{ flexDirection: "column" }}>
                   <Title color="grey" size={16} mt={30}>
                      Narx
@@ -170,7 +170,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   </Flex>
                </Flex>
 
-               <Flex align='center' sx={{ flexDirection: "column"  }}>
+               <Flex align="center" sx={{ flexDirection: "column" }}>
                   <Flex gap={25} mt="30px">
                      <Button size="md" variant="light" color="#E7F0FF" sx={{ fontWeight: "normal" }}>
                         Barchasi
@@ -208,12 +208,12 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      }
                   </Box>
 
-                  <Button mt={40} size='lg' w={200}>Yana ko'rish</Button>
+                  <Button mt={40} size="lg" w={200}>
+                     Yana ko'rish
+                  </Button>
                </Flex>
             </Flex>
          </Flex>
-
-
       </Box>
    );
 };
