@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { notifications } from "@mantine/notifications";
-import {  getSession, setSession } from "services/store";
+import { getSession, setSession } from "services/store";
 
 import { Api, Mappers, Types } from ".";
 
@@ -25,27 +25,21 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
 
             const user = Mappers.User(data);
 
-            
             setState({ user, isLoading: false, verfication: true, isResetPassword: true });
          } catch (err: any) {
             try {
-             const token =   Api.RefleshToken({refresh})
+               const token = Api.RefleshToken({ refresh });
 
-             console.log(token);
+               console.log(token);
 
-             const tokens = {
-               access:token,
-               refresh
-             }
+               const tokens = {
+                  access: token,
+                  refresh
+               };
 
-             
-// @ts-ignore
-             setSession(tokens)
-
-             
-
-             
-            } catch (error:any) {
+               // @ts-ignore
+               setSession(tokens);
+            } catch (error: any) {
                notifications.show({
                   message: "Qaytadan royhatan otin"
                });

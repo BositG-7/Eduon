@@ -26,7 +26,7 @@ export const CourseTop = () => http.get("/course_top");
 export const CourseNew = () => http.get("/course_new");
 
 export const TopSpeaker = () => http.get("/speaker_top");
-export const RefleshToken = ({refresh}:IApi.Refresh.Request)=>{
+export const RefleshToken = ({refresh  }:IApi.Refresh.Request)=>{
   http.post("/user/token/refresh",{refresh})
 }
        
