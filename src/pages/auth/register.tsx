@@ -36,6 +36,7 @@ const Register = () => {
    useEffect(() => {
       clearSessionReset();
    }, []);
+
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
    const onRegister = async (data: Types.IForm.Register) => {
@@ -65,11 +66,7 @@ const Register = () => {
    };
 
    return (
-      <Box
-         h="90vh"
-         w="100%"
-         sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-      >
+      <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
          <div className="right">
             <img src={cursor} alt="cursor" />
          </div>
@@ -78,12 +75,7 @@ const Register = () => {
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
                   <Flex direction="column" gap={22} w="100%">
-                     <InputBase
-                        autoFocus
-                        placeholder="username"
-                        radius="sm"
-                        {...getInputProps("username")}
-                     />
+                     <InputBase autoFocus placeholder="username" radius="sm" {...getInputProps("username")} />
 
                      <PasswordInput
                         placeholder="Password"
