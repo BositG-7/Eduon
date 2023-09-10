@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-catch */
-import http from 'services/http'
- import { objectToFormData } from 'utils'
+import http from "services/http";
+import { objectToFormData } from "utils";
 
-import { IApi } from './types'
+import { IApi } from "./types";
 
 export const Register = ({...params}: IApi.Register.Request) =>
   http.post<IApi.Register.Response>('/user/register', objectToFormData({ ...params}))
