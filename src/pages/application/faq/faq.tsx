@@ -10,7 +10,7 @@ const Faq: FunctionComponent<FaqProps> = () => {
 
    return (
       <>
-         <Flex justify="center" align="center" direction="column" gap="40px" h="90vh">
+         <Flex justify="center" align="center" direction="column" gap="40px" h="auto">
             <Titlee />
             <Category />
          </Flex>

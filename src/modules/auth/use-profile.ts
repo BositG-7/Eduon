@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-import { getSession } from "services/store";
+import { notifications } from "@mantine/notifications";
+import {  getSession, setSession } from "services/store";
 
 import { Api, Mappers, Types } from ".";
 
@@ -12,6 +13,7 @@ interface State {
 
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
    const { access } = getSession();
+   const { refresh } = getSession();
    const [state, setState] = React.useState<State>({ isLoading: !!access, user: null, verfication: false, isResetPassword: true });
 
    useEffect(() => {
@@ -23,10 +25,31 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
 
             const user = Mappers.User(data);
 
-            console.log(user);
-
+            
             setState({ user, isLoading: false, verfication: true, isResetPassword: true });
          } catch (err: any) {
+            try {
+             const token =   Api.RefleshToken({refresh})
+
+             console.log(token);
+
+             const tokens = {
+               access:token,
+               refresh
+             }
+
+             
+// @ts-ignore
+             setSession(tokens)
+
+             
+
+             
+            } catch (error:any) {
+               notifications.show({
+                  message: "Qaytadan royhatan otin"
+               });
+            }
             setState({ user: null, isLoading: false, verfication: false, isResetPassword: true });
          }
       };

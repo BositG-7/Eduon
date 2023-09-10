@@ -1,0 +1,133 @@
+.top-speaker {
+   padding: 50px 110px;
+
+   .title {
+      text-align: center;
+
+      h1 {
+         font-size: 46px;
+         color: var(--black);
+         font-family: Gidroy-Bold;
+
+         span {
+            color: var(--blue);
+         }
+      }
+   }
+   .boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 40px;
+      padding-top: 40px;
+
+      .box {
+         padding: 15px 20px;
+         border: 2px solid rgba(17, 17, 17, 0.04);
+         border-radius: 30px;
+         cursor: pointer;
+         text-align: center;
+
+         img {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+         }
+
+         .text {
+            padding-top: 15px;
+            text-transform: capitalize;
+
+            h3 {
+               color: var(--black);
+               font-size: 20px;
+            }
+            h2 {
+               font-size: 16px;
+               padding-top: 5px;
+            }
+            .view {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               padding-top: 15px;
+               gap: 10px;
+
+               .fa-star {
+                  color: var(--blue);
+                  font-size: 18px;
+               }
+               h2 {
+                  color: var(--blue);
+                  font-weight: 500;
+
+                  span {
+                     color: rgba(0, 106, 255, 0.36);
+                  }
+               }
+            }
+            button {
+               width: 100%;
+               background-color: rgba(17, 17, 17, 0.06);
+               border: none;
+               font-size: 18px;
+               color: rgba(17, 17, 17, 0.54);
+               border-radius: 12px;
+               padding: 12px 0;
+               margin-top: 15px;
+               cursor: pointer;
+
+               &:active {
+                  transform: scale(0.9);
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width: 1200px) {
+      padding: 50px 70px;
+   }
+   @media screen and (max-width: 992px) {
+      padding: 50px 50px;
+   }
+   @media screen and (max-width: 768px) {
+      padding: 50px 30px;
+
+      .title {
+         h1 {
+            font-size: 36px;
+         }
+      }
+   }
+   @media screen and (max-width: 568px) {
+      padding: 0px 16px;
+      .title {
+         h1 {
+            font-size: 30px;
+         }
+      }
+      .boxes {
+         gap: 20px;
+
+         .box {
+            padding: 15px 5px;
+            border-radius: 10px;
+            .text {
+               h3 {
+                  font-size: 16px;
+               }
+               h2 {
+                  font-size: 14px;
+               }
+               .view {
+                  gap: 5px;
+               }
+               button {
+                  padding: 7px;
+                  font-size: 16px;
+                  border-radius: 6px;
+               }
+            }
+         }
+      }
+   }
+}

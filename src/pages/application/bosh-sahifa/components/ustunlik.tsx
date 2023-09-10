@@ -8,7 +8,10 @@ const Ustunlik: FunctionComponent<UstunlikProps> = () => {
    const navigete = useNavigate();
 
    return (
-      <Box mt={100} mb={100}>
+      <Box mt={10} mb={150}>
+       <Title color='blue' size={18} sx={{textAlign:'center'}}>USTUNLIK</Title>
+       <Title mt={16} size={40} sx={{textAlign:'center'}}> <span style={{color:'rgba(0, 106, 255, 1)'}} >Nega</span>  aynan EduOn?</Title>
+      <Box mt={50} >
          <Flex justify="center">
             <Flex gap={200}>
                <Box h={100} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px" }}>
@@ -58,6 +61,7 @@ const Ustunlik: FunctionComponent<UstunlikProps> = () => {
                </Box>
             </Flex>
          </Flex>
+      </Box>
       </Box>
    );
 };
