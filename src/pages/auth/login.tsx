@@ -53,7 +53,7 @@ function Login(props: LoginProps) {
       <Box
          h="90vh"
          w="100%"
-         sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "100px" }}
+         sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
       >
          <div className="right">
             <img src={cursor} alt="cursor" />

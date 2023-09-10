@@ -7,6 +7,9 @@ import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { clearSessionReset, clearSessionVerfication, getSessionVerfication } from "services/store";
 
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
+
 const schema = yup.object({
    username: yup.string().min(4).label("Username").required(),
    password: yup.string().min(1).label("Password").required(),
@@ -62,11 +65,19 @@ const Register = () => {
    };
 
    return (
-      <Box h="90vh" w="100%" sx={{ display: "grid", placeItems: "center" }}>
+      <Box
+         h="90vh"
+         w="100%"
+         sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
+      >
+         <div className="right">
+            <img src={cursor} alt="cursor" />
+         </div>
+
          <form onSubmit={onSubmit(onRegister)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
-               <Flex direction="column" gap={22} w="100%">
+                  <Flex direction="column" gap={22} w="100%">
                      <InputBase
                         autoFocus
                         placeholder="username"
@@ -83,7 +94,7 @@ const Register = () => {
                         {...getInputProps("password")}
                      />
                      <PasswordInput
-                     placeholder="Confirm password"
+                        placeholder="Confirm password"
                         radius="sm"
                         sx={{
                            border: "none"
@@ -113,6 +124,10 @@ const Register = () => {
                </Flex>
             </Paper>
          </form>
+
+         <div className="left">
+            <img src={threeD} alt="threeD" />
+         </div>
       </Box>
    );
 };

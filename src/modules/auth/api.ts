@@ -21,8 +21,16 @@ export const Checkpassword = ({ email, activation_code }: IApi.Checkpassword.Req
 export const ResetEmaill = ({ ...params }: IApi.ResetEmail.Request) =>
    http.post("/user/reset-passwd", objectToFormData({ ...params }));
 
+<<<<<<< HEAD
 export const CourseTop = () => http.get("/course_top");
 
 export const CourseNew = () => http.get("/course_new");
 
 export const TopSpeaker = () => http.get("/speaker_top");
+=======
+export const RefleshToken = ({refresh}:IApi.Refresh.Request)=>{
+  http.post("/user/token/refresh",{refresh})
+}
+       
+    
+>>>>>>> origin/main
