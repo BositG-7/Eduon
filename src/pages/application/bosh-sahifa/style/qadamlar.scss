@@ -1,0 +1,122 @@
+.qadamlar {
+   padding: 50px 110px;
+
+   .title {
+      text-align: center;
+
+      h3 {
+         color: var(--blue);
+         font-family: Gidroy-Bold;
+      }
+      h1 {
+         color: var(--black);
+         font-size: 46px;
+         width: 512px;
+         margin: 10px auto;
+         span {
+            color: var(--blue);
+         }
+      }
+   }
+   .boxes {
+      padding-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: center;
+      .text {
+         .box {
+            margin-top: 30px;
+            h3 {
+               color: var(--blue);
+               font-size: 22px;
+            }
+            p {
+               color: var(--black);
+               padding-top: 5px;
+               font-size: 18px;
+               width: 280px;
+
+               span {
+                  color: var(--blue);
+                  text-decoration: underline;
+                  cursor: pointer;
+               }
+            }
+         }
+      }
+      .image {
+         img {
+            width: 100%;
+         }
+      }
+   }
+   @media screen and (max-width: 1200px) {
+      padding: 50px 70px;
+   }
+   @media screen and (max-width: 992px) {
+      padding: 50px 50px;
+      .boxes {
+         display: grid;
+         grid-template-columns: 1fr 1.2fr;
+         gap: 30px;
+         .text {
+            .box {
+               margin-top: 20px;
+               h3 {
+                  font-size: 20px;
+               }
+               p {
+                  width: 100%;
+                  font-size: 16px;
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width: 768px) {
+      padding: 50px 30px;
+
+      .title {
+         h3 {
+            font-size: 20px;
+         }
+         h1 {
+            font-size: 35px;
+            width: 100%;
+         }
+      }
+      .boxes {
+         display: grid;
+         grid-template-columns: 1fr;
+         gap: 30px;
+         padding-top: 0px;
+         .text {
+            .box {
+               text-align: center;
+               margin-top: 20px;
+               h3 {
+                  font-size: 18px;
+               }
+               p {
+                  width: 100%;
+                  font-size: 15px;
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width: 568px) {
+      padding: 50px 16px;
+
+      .title {
+         h3 {
+            font-size: 16px;
+         }
+         h1 {
+            font-size: 25px;
+            width: 100%;
+         }
+      }
+   }
+}
