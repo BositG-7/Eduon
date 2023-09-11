@@ -185,7 +185,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                         Dasturlash
                      </Button>
                   </Flex>
-                  <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr", gap: "25px" }}>
+                  <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
                      {
                         // @ts-ignore
                         console.log(course.results)
@@ -201,7 +201,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                            // eslint-disable-next-line consistent-return
                            return (
                               <>
-                                 <SingleCourse img={item.image} price={item.price} name={item.name} view={item.view} />
+                                 <SingleCourse  img={item.image} price={item.price} name={item.name} view={item.view} />
                               </>
                            );
                         })

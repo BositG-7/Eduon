@@ -24,7 +24,7 @@ const SingleCourse: FunctionComponent<CourseProps> = ({ img, name, price, view }
                         height: "250px",
                         backgroundSize: "cover",
                         borderRadius: "25px",
-                        boxShadow: "2px 2px 5px rgba(0, 106, 255, 1)"
+                        border:'1px solid #000'
                      }}
                      src={img}
                      alt=""
