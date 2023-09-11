@@ -1,1 +1,1 @@
-export { default as Courses } from './courses/courses'
+export { default as Kurslarim } from "./kurslarim";

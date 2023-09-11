@@ -1,15 +1,3 @@
-// import style from "../styles/sidebar.module.scss";
-
-// interface SidebarProps {}
-
-// const Sidebar = (props: SidebarProps) => {
-//    const s = "";
-
-//    return <div className={style.sidebar}>Sidebar</div>;
-// };
-
-// export default Sidebar;
-
 import { useState } from "react";
 import { Code, createStyles, getStylesRef, Group, Navbar, rem } from "@mantine/core";
 import { IconBellRinging, IconFingerprint, IconKey, IconReceipt2 } from "@tabler/icons-react";
@@ -99,7 +87,7 @@ function Sidebar() {
    ));
 
    return (
-      <Navbar height={700} width={{ sm: 300 }} p="md">
+      <Navbar width={{ sm: 300 }} p="md">
          <Navbar.Section grow>
             <Group className={classes.header} position="apart">
                <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>

@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { KurslarimList } from "./pages/index";
+import Moliya from "./pages/moliya";
 import { Sidebar } from "./components";
-import { Moliya } from "./pages";
 
 import style from "./styles/panel.module.scss";
 
-interface TeacherPanelProps { }
+interface TeacherPanelProps {}
 
 const TeacherPanel = (props: TeacherPanelProps) => {
    const s = "";
@@ -12,7 +13,10 @@ const TeacherPanel = (props: TeacherPanelProps) => {
    return (
       <div className={style.teacherPanel}>
          <Sidebar />
-         <Moliya />
+         <div className={style.main}>
+            <KurslarimList />
+            <Moliya />
+         </div>
       </div>
    );
 };

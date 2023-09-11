@@ -1,1 +1,1 @@
-export {default as Moliya} from './moliya'
+export { default as KurslarimList } from "./kurslarim-list";

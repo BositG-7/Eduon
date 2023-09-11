@@ -1,12 +1,16 @@
 // ResetPassword.tsx
 
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionReset, getSessionReset } from "services/store";
+import { clearSessionReset, clearSessionVerfication, getSessionReset } from "services/store";
+
+import cursor from "../../../assets/images/cursor.png";
+import threeD from "../../../assets/images/threeD.png";
 
 interface ResetPasswordProps {}
 
@@ -27,13 +31,16 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
    });
    const navigate = useNavigate();
 
+   useEffect(() => {
+      clearSessionVerfication();
+   }, []);
+
    const onSubmit = async (data: Types.IForm.ResetPassword) => {
       const { email } = getSessionReset();
 
       console.log(email);
-      console.log(+data.activation_code);
-
       console.log(data);
+
       try {
          await Api.ResetPassword({
             email,
@@ -46,14 +53,25 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          console.log("ResetPassword muvaffaqiyatli yakunlandi!");
 
          clearSessionReset();
-      } catch (error) {
-         console.error("ResetPasswordda xato:", error);
+      } catch (error: any) {
+         console.log(error);
+
+         notifications.show({
+            message: error.data.activation_code
+         });
       }
    };
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form onSubmit={form.onSubmit(onSubmit)}>
                <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Check Code</h1>
@@ -113,9 +131,12 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
                      w="100%"
                   />
 
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );

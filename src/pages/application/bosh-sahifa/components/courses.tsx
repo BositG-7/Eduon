@@ -8,6 +8,7 @@ import sotuv from "../../../../assets/images/sotuv.png";
 import xorijTillar from "../../../../assets/images/xorijTillar.png";
 
 import "../style/courses.scss";
+import "react-multi-carousel/lib/styles.css";
 
 function Courses() {
    return (
@@ -71,4 +72,4 @@ function Courses() {
    );
 }
 
-export default Courses;
+export default Courses

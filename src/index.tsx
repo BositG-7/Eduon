@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import { Containers } from "modules/auth";
 // eslint-disable-next-line import/order
 import ReactDOM from "react-dom/client";
@@ -18,6 +19,7 @@ root.render(
       <MantineProvider>
          <Containers.Auth>
             <>
+               <Notifications position="top-right" />
                <Navbar />
                <Routes />
             </>

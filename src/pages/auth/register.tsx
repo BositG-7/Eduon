@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionVerfication, getSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerfication, getSessionVerfication } from "services/store";
+
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
 
 const schema = yup.object({
    username: yup.string().min(4).label("Username").required(),
@@ -29,6 +33,10 @@ const Register = () => {
       validate: yupResolver(schema)
    });
 
+   useEffect(() => {
+      clearSessionReset();
+   }, []);
+
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
    const onRegister = async (data: Types.IForm.Register) => {
@@ -50,107 +58,42 @@ const Register = () => {
          setLoading(false);
          clearSessionVerfication();
       } catch (err: any) {
-         console.log(err?.message);
+         notifications.show({
+            message: err.data.username
+         });
          setLoading(false);
       }
    };
 
    return (
-      <Box h="80vh" sx={{ display: "grid", placeItems: "center" }}>
+      <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
+         <div className="right">
+            <img src={cursor} alt="cursor" />
+         </div>
+
          <form onSubmit={onSubmit(onRegister)}>
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
                   <Flex direction="column" gap={22} w="100%">
-                     <InputBase
-                        autoFocus
-                        placeholder="First name"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
-                        {...getInputProps("first_name")}
-                     />
-                     <InputBase
-                        autoFocus
-                        placeholder="last name"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
-                        {...getInputProps("last_name")}
-                     />
-                     <InputBase
-                        autoFocus
-                        placeholder="Name"
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
-                        {...getInputProps("username")}
-                     />
+                     <InputBase autoFocus placeholder="username" radius="sm" {...getInputProps("username")} />
 
                      <PasswordInput
                         placeholder="Password"
+                        radius="sm"
                         sx={{
-                           border: "none",
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
+                           border: "none"
                         }}
                         {...getInputProps("password")}
                      />
                      <PasswordInput
-                        sx={{
-                           input: {
-                              width: "100%",
-                              height: "45px",
-                              borderRadius: "16px",
-                              outline: "none",
-                              border: "none",
-                              padding: "20px 15px",
-                              fontSize: "18px",
-                              color: "rgba(17, 17, 17, 0.36)",
-                              backgroundColor: "rgba(17, 17, 17, 0.02)"
-                           }
-                        }}
                         placeholder="Confirm password"
+                        radius="sm"
+                        sx={{
+                           border: "none"
+                        }}
                         {...getInputProps("re_password")}
                      />
+
                      <Button
                         loading={loading}
                         type="submit"
@@ -158,18 +101,25 @@ const Register = () => {
                            color: "rgba(0, 106, 255, 1)",
                            height: "50px",
                            backgroundColor: "rgba(231, 240, 255, 1)",
-                           fontSize: "20px"
+                           fontSize: "20px",
+                           "&:hover": {
+                              color: "white"
+                           }
                         }}
                      >
                         Register
                      </Button>
-                     <Text size="22px" color="rgba(17, 17, 17, 0.36)" sx={{ alignSelf: "center" }}>
+                     <Text size="16px" color="rgba(17, 17, 17, 0.36)" sx={{ alignSelf: "center" }}>
                         Akkauntingiz bormi? unda <Link to="/auth/login">Login!</Link>
                      </Text>
                   </Flex>
                </Flex>
             </Paper>
          </form>
+
+         <div className="left">
+            <img src={threeD} alt="threeD" />
+         </div>
       </Box>
    );
 };

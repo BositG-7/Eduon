@@ -1,12 +1,16 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, Input, Text } from "@mantine/core";
+import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
-import { setSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerfication, setSessionVerfication } from "services/store";
+
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
 
 interface VerificationProps {}
 
@@ -22,28 +26,41 @@ const Verification: FunctionComponent<VerificationProps> = () => {
       },
       validate: yupResolver(schema)
    });
+
+   useEffect(() => {
+      clearSessionVerfication();
+      clearSessionReset();
+   }, []);
    const navigete = useNavigate();
 
    const onSubmit = async (data: Types.IForm.Verification) => {
       console.log(data);
 
       try {
-         await SendEmail(data);
-
          methods.getEmail();
          setSessionVerfication(data);
+         await SendEmail(data);
 
          navigete("/auth/checkpassword");
 
          // Yuborish muvaffaqiyatli yakunlandi
-      } catch (error) {
-         console.error("Emailni yuborishda xato:", error);
+      } catch (error: any) {
+         notifications.show({
+            message: error.data.email
+         });
       }
    };
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "220px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form
                onSubmit={form.onSubmit(onSubmit)}
                style={{
@@ -54,17 +71,7 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   gap: "30px"
                }}
             >
-               <Flex
-                  sx={{ border: "1px solid " }}
-                  w="600px"
-                  direction="column"
-                  justify="center"
-                  gap={50}
-                  align="center"
-                  p={20}
-               >
-                  <h1>Verfication</h1>
-
+               <Flex w="350px" direction="column" justify="center" gap={20} align="center" p={20}>
                   <Input
                      placeholder="Email..."
                      sx={{
@@ -76,33 +83,34 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                            border: "none",
                            padding: "20px 15px",
                            fontSize: "18px",
-                           color: "rgba(17, 17, 17, 0.36)",
+                           color: "black",
                            backgroundColor: "rgba(17, 17, 17, 0.02)"
                         }
                      }}
                      {...form.getInputProps("email")}
                      w="100%"
                   />
-                  <Button type="submit">Submit</Button>
-               </Flex>
-               <Text
-                  sx={{
-                     display: "flex",
-                     justifyContent: "center",
-                     alignItems: "center",
-                     gap: "30px"
-                  }}
-               >
-                  Oldin royhatan otkan bolsangiz
-                  <Button
-                     onClick={() => {
-                        navigete("/auth/login");
-                     }}
-                  >
-                     Login qilish
+                  <Button w="100%" variant="light" type="submit">
+                     Davom etish
                   </Button>
-               </Text>
+                  <Box w="100%">
+                     <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        Akkauntingiz bormi? unda{" "}
+                        <span
+                           onClick={() => {
+                              navigete("/auth/login");
+                           }}
+                           style={{ color: "blue" }}
+                        >
+                           bu yerga bosing
+                        </span>
+                     </p>
+                  </Box>
+               </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );

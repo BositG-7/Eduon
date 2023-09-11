@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 import cursor from "../../../../assets/images/cursor.png";
-import play from "../../../../assets/images/play.png";
 import threeD from "../../../../assets/images/threeD.png";
 
 import "../style/header.scss";
 
 function Header() {
+   const navigete = useNavigate();
+
    return (
       <section className="header">
          <div className="title">
@@ -13,11 +16,14 @@ function Header() {
             <p>Kelajak yoshlariga sifatli ta'lim berishda o'z hissangizni qo'shing</p>
          </div>
          <div className="buttons">
-            <button className="share-subject">Kurslar</button>
-            <div className="flex">
-               <img src={play} alt="play" />
-               <h3>Videoni ko‘rish</h3>
-            </div>
+            <button
+               className="share-subject"
+               onClick={() => {
+                  navigete("/kurslar");
+               }}
+            >
+               Kurslar
+            </button>
          </div>
 
          <div className="right">

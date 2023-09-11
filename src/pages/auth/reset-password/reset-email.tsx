@@ -1,12 +1,16 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
-import { setSessionReset } from "services/store";
+import { clearSessionReset, setSessionReset } from "services/store";
+
+import cursor from "../../../assets/images/cursor.png";
+import threeD from "../../../assets/images/threeD.png";
 
 interface ResetEmailProps {}
 
@@ -25,6 +29,9 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    });
    const navigete = useNavigate();
 
+   useEffect(() => {
+      clearSessionReset();
+   }, []);
    const onSubmit = async (data: Types.IForm.ResetEmail) => {
       console.log(data);
 
@@ -35,14 +42,23 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
          setSessionReset(data);
 
          navigete("/auth/resetpassword");
-      } catch (error) {
-         console.error("Emailni yuborishda xato:", error);
+      } catch (error: any) {
+         notifications.show({
+            message: error.data.email
+         });
       }
    };
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form
                onSubmit={form.onSubmit(onSubmit)}
                style={{
@@ -53,15 +69,7 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
                   gap: "30px"
                }}
             >
-               <Flex
-                  sx={{ border: "1px solid " }}
-                  w="600px"
-                  direction="column"
-                  justify="center"
-                  gap={50}
-                  align="center"
-                  p={20}
-               >
+               <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Reset Password</h1>
 
                   <Input
@@ -82,9 +90,12 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
                      {...form.getInputProps("email")}
                      w="100%"
                   />
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit"> Davom etish</Button>
                </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );

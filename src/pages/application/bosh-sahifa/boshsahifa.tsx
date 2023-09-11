@@ -1,15 +1,25 @@
 import Footer from "components/footer";
 
+import Boxes from "./components/boxes";
 import Courses from "./components/courses";
 import Header from "./components/header";
+import Steps from "./components/qadamlar";
 import Statistic from "./components/statistic";
+import TopCourse from "./components/top-course";
+import TopSpeakers from "./components/top-speaker";
+import NewCourse from "./components/yangi-kurslar";
 
 function BoshSahifa() {
    return (
       <div>
          <Header />
-         <Statistic />
+         <Boxes />
+         <TopCourse />
+         <NewCourse />
+         <TopSpeakers />
          <Courses />
+         <Statistic />
+         <Steps />
          <Footer />
       </div>
    );

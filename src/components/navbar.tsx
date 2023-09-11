@@ -6,7 +6,6 @@ import { IconLogout, IconMenu, IconSettings, IconUser } from "@tabler/icons-reac
 import { useAuth } from "modules/auth/context";
 
 import Logo from "./Logo.svg";
-import Search from "./Search.svg";
 
 import "./navbar.css";
 
@@ -22,8 +21,13 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             <></>
          ) : (
             <Box
-               p="24px 100px"
-               sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+               p="0px 100px"
+               sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "100px"
+               }}
                className="navbar"
             >
                <Box className="img">
@@ -63,7 +67,13 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   >
                      Kurslar
                   </Title>
-                  <Title className="title" size={14}>
+                  <Title
+                     onClick={() => {
+                        navigate("/faq");
+                     }}
+                     className="title"
+                     size={14}
+                  >
                      FAQ
                   </Title>
                   <Title className="title" size={14}>
@@ -79,7 +89,6 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   }}
                   className="loginn"
                >
-                  <img src={Search} alt="" />
                   {user ? (
                      <Menu shadow="md" width="max-content" position="bottom-end">
                         <Menu.Target>
@@ -87,7 +96,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                               sx={{ cursor: "pointer" }}
                               radius="xl"
                               alt="it's me"
-                              size="xl"
+                              size="lg"
                               {...(user?.img
                                  ? { src: user.img }
                                  : { children: user?.username[0]?.toUpperCase() })}
@@ -98,8 +107,19 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                               Hi 👋🏻 {user?.email}
                            </Menu.Label>
                            <Menu.Divider />
-                           <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item>
-                           <Menu.Item icon={<IconUser size={14} />}>Profile</Menu.Item>
+
+                           <Menu.Item
+                              icon={<IconUser size={14} />}
+                              onClick={() => {
+                                 if (user.isSpiker) {
+                                    navigate("/dashboard/teacher");
+                                 } else {
+                                    navigate("/dashboard/user");
+                                 }
+                              }}
+                           >
+                              Profile
+                           </Menu.Item>
                            <Menu.Item
                               onClick={methods.logout}
                               color="red"
@@ -142,6 +162,18 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                         </Menu.Target>
                         <Menu.Dropdown>
                            <Menu.Divider />
+                           <Menu.Item
+                              icon={<IconUser size={14} />}
+                              onClick={() => {
+                                 if (!user.isSpiker) {
+                                    navigate("/dashboard/user");
+                                 } else {
+                                    navigate("/dashboard/teacher");
+                                 }
+                              }}
+                           >
+                              Profile
+                           </Menu.Item>
 
                            <Menu.Item
                               onClick={methods.logout}
