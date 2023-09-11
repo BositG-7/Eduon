@@ -12,6 +12,8 @@ const Routes = () => {
    const verfication = getSessionVerfication().email;
    const reset = getSessionReset().email;
 
+   console.log(user);
+
    return (
       <Switch>
          <Route path="" element={<Application.BoshSahifa />} />
