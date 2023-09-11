@@ -5,6 +5,7 @@ import { TeacherPanel, UserPanel } from "pages/dashboard";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
 import AuthProtected from "./auth-protected";
+import DashboardRoute from "./dashboard-route";
 
 const Routes = () => {
    const { user } = useAuth();
@@ -19,6 +20,7 @@ const Routes = () => {
          <Route path="" element={<Application.BoshSahifa />} />
          <Route path="kurslar" element={<Application.Kurslar />} />
          <Route path="faq" element={<Application.Faq />} />
+         <Route path="biz-haqimizda" element={<Application.BizHaqimizda />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>
@@ -32,9 +34,11 @@ const Routes = () => {
          </Route>
 
          {/* Dashboard */}
-         <Route path="dashboard/user" element={<UserPanel />} />
-         <Route path="dashboard/teacher" element={<TeacherPanel />} />
-         <Route path="*" index element={<Navigate to="/auth/login" />} />
+         <Route path="dashboard" element={<DashboardRoute allowed={!!user} redirectURL="/" />}>
+            <Route path="user" element={!user?.isSpiker ? <TeacherPanel /> : <UserPanel />} />
+
+            <Route path="*" index element={<Navigate to="/dashboard/user" />} />
+         </Route>
 
          <Route path="*" element={<Navigate to={user ? "/" : "/auth/login"} />} />
       </Switch>

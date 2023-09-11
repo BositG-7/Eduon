@@ -1,14 +1,14 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-interface ProtectedRouteProps {
+interface DashboardRouteProps {
    allowed: boolean;
    redirectURL?: string;
 }
 
-const ProtectedRoute = ({ allowed = false, redirectURL = "/" }: ProtectedRouteProps) => {
+const DashboardRoute = ({ allowed = false, redirectURL = "/" }: DashboardRouteProps) => {
    if (allowed) return <Outlet />;
 
    return <Navigate to={redirectURL} />;
 };
 
-export default ProtectedRoute;
+export default DashboardRoute;

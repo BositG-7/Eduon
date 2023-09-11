@@ -110,6 +110,9 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                            color: "blue" // O'zgarishi mumkin
                         }
                      }}
+                     onClick={() => {
+                        navigate("/biz-haqimizda");
+                     }}
                      size={14}
                   >
                      Biz haqimizda
