@@ -50,11 +50,7 @@ function Login(props: LoginProps) {
    };
 
    return (
-      <Box
-         h="90vh"
-         w="100%"
-         sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-      >
+      <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
          <div className="right">
             <img src={cursor} alt="cursor" />
          </div>
@@ -63,12 +59,7 @@ function Login(props: LoginProps) {
             <Paper bg="var(--paper-bg)" w={400}>
                <Flex direction="column" gap={20} align="center" p={20}>
                   <Flex direction="column" gap={15} w="100%">
-                     <InputBase
-                        autoFocus
-                        placeholder="username"
-                        radius="sm"
-                        {...form.getInputProps("username")}
-                     />
+                     <InputBase autoFocus placeholder="username" radius="sm" {...form.getInputProps("username")} />
 
                      <PasswordInput
                         placeholder="Password"
@@ -108,8 +99,7 @@ function Login(props: LoginProps) {
                            }
                         }}
                      >
-                        Akkauntingiz yo’qmi? unda{" "}
-                        <Link to="/auth/register">ro’yxatdan o’ting!</Link>
+                        Akkauntingiz yo’qmi? unda <Link to="/auth/register">ro’yxatdan o’ting!</Link>
                      </Text>
                   </Flex>
                </Flex>

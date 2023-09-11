@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 interface DashboardRouteProps {
    allowed: boolean;
@@ -6,9 +6,11 @@ interface DashboardRouteProps {
 }
 
 const DashboardRoute = ({ allowed = false, redirectURL = "/" }: DashboardRouteProps) => {
+   const navigete = useNavigate();
+
    if (allowed) return <Outlet />;
 
-   return <Navigate to={redirectURL} />;
+   return <Navigate to="/" />;
 };
 
 export default DashboardRoute;

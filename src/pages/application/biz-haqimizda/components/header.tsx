@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Box, Text, Title } from "@mantine/core";
+import { Flex, Text, Title } from "@mantine/core";
 
 interface HeaderProps {}
 
@@ -8,7 +8,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
 
    return (
       <>
-         <Box h="150px" maw="674px">
+         <Flex mt="30" justify="center" align="center" direction="column" h="auto" maw="674px">
             <Title
                sx={{
                   color: "#111", // Text color
@@ -41,7 +41,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
                   fontWeight: 400, // Font weight (400 for normal)
                   lineHeight: "normal" // Line height (normal)
                }}
-               ml="60px" // Left margin in pixels
+               ml="50px" // Left margin in pixels
                mt="20px" // Top margin in pixels
                mb="20px" // Bottom margin in pixels
                maw="573px"
@@ -49,7 +49,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
                Treninglar, seminarlar, vebinar va online darsliklar uchun yagona o`zbek tilidagi platforma. Muvaffaqiyatli insonlar ilmi bilan
                bo`lishamiz.
             </Text>
-         </Box>
+         </Flex>
       </>
    );
 };

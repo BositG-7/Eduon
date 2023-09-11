@@ -15,13 +15,13 @@ function BoshSahifa() {
       <div>
          <Header />
          <Boxes />
+         <Steps />
          <TopCourse />
          <NewCourse />
          <TopSpeakers />
          <Courses />
-         <Ustunlik/>
+         <Ustunlik />
          <Statistic />
-         <Steps />
          <Footer />
       </div>
    );

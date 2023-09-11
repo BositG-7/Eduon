@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "modules/auth/context";
+
 import activy from "../../../../assets/images/activity.png";
 import cateyory from "../../../../assets/images/category.png";
 import profile from "../../../../assets/images/profile.png";
@@ -5,10 +8,23 @@ import profile from "../../../../assets/images/profile.png";
 import "../style/boxes.scss";
 
 function Boxes() {
+   const navigete = useNavigate();
+
+   const { user } = useAuth();
+
    return (
       <section className="container">
          <div className="boxes">
-            <article className="box">
+            <article
+               className="box"
+               onClick={() => {
+                  if (user) {
+                     navigete("/dashboard/user");
+                  } else if (!user) {
+                     navigete("/auth/login");
+                  }
+               }}
+            >
                <img src={profile} alt="profile" />
                <h3>Profile</h3>
             </article>
