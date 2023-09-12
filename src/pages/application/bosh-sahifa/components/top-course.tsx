@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { CourseTop } from "modules/auth/api";
 
 import "../style/top-course.scss";
-import "react-multi-carousel/lib/styles.css";
 
 export interface Results {
    id: number;
