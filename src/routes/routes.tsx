@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes as Switch } from "react-router-dom";
 import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
+import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
 import { TeacherPanel, UserPanel } from "pages/dashboard";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
@@ -19,6 +20,7 @@ const Routes = () => {
       <Switch>
          <Route path="" element={<Application.BoshSahifa />} />
          <Route path="kurslar" element={<Application.Kurslar />} />
+         <Route path="kurslar/kurs/:kursID" element={<SinglePageCourse />} />
          <Route path="faq" element={<Application.Faq />} />
          <Route path="biz-haqimizda" element={<Application.BizHaqimizda />} />
 

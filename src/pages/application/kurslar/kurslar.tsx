@@ -198,7 +198,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                            // eslint-disable-next-line consistent-return
                            return (
                               <>
-                                 <Course  img={item.image} price={item.price} name={item.name} view={item.view} />
+                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} />
                               </>
                            );
                         })

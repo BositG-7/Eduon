@@ -9,27 +9,29 @@ interface CourseProps {
    name?: string;
    price?: number;
    view?: string;
+   id: string;
 }
 
-const Course: FunctionComponent<CourseProps> = ({ img, name, price, view }) => {
+const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view }) => {
    const navigete = useNavigate();
 
    return (
       <Box>
          <Flex>
             <Box>
-            <Link to="/auth/login"><img
+               <Link to={`/kurslar/kurs/${id}`}>
+                  <img
                      style={{
                         width: "300px",
                         height: "250px",
                         backgroundSize: "cover",
                         borderRadius: "25px",
-                        border:'1px solid #000'
+                        border: "1px solid #000"
                      }}
                      src={img}
                      alt=""
-                  /></Link>
-                  
+                  />
+               </Link>
 
                <Flex mt={10} justify="space-between">
                   <Title color="gray" size={16}>
