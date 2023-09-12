@@ -11,12 +11,11 @@ export const useList = () => {
          try {
             const { data } = await Api.Course.List();
             const course = data;
-            
+
             setState({ course, isLoading: false });
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
             setState({ course: [], isLoading: false });
-            console.log(err.message);
          }
       };
 
@@ -24,5 +23,3 @@ export const useList = () => {
    }, []);
    return state;
 };
-
-// console.log(typeof [1, 2, 4])

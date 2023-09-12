@@ -37,3 +37,10 @@ export namespace IQuery {
       }
     }
   }
+
+
+  type User = 'firstName' | 'lastName' | 'age'
+
+  type Person = Extract<User, 'firstName'>
+
+ 

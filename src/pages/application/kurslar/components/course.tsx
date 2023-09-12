@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import {  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, Divider, Flex, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 import { BsBookmarkDash } from "react-icons/bs";
@@ -11,14 +11,14 @@ interface CourseProps {
    view?: string;
 }
 
-const SingleCourse: FunctionComponent<CourseProps> = ({ img, name, price, view }) => {
+const Course: FunctionComponent<CourseProps> = ({ img, name, price, view }) => {
    const navigete = useNavigate();
 
    return (
       <Box>
          <Flex>
             <Box>
-                  <img
+            <Link to="/auth/login"><img
                      style={{
                         width: "300px",
                         height: "250px",
@@ -28,7 +28,8 @@ const SingleCourse: FunctionComponent<CourseProps> = ({ img, name, price, view }
                      }}
                      src={img}
                      alt=""
-                  />
+                  /></Link>
+                  
 
                <Flex mt={10} justify="space-between">
                   <Title color="gray" size={16}>
@@ -70,4 +71,4 @@ const SingleCourse: FunctionComponent<CourseProps> = ({ img, name, price, view }
    );
 };
 
-export default SingleCourse;
+export default Course;
