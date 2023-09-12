@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text, Title } from "@mantine/core";
@@ -6,7 +6,7 @@ import { useForm, yupResolver } from "@mantine/form";
 // import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
-import { setSession } from "services/store";
+import { clearSessionVerfication, setSession } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
@@ -30,6 +30,9 @@ function Login(props: LoginProps) {
       validate: yupResolver(schema)
    });
 
+   useEffect(() => {
+      clearSessionVerfication();
+   }, []);
    const [loading, setLoading] = useState(false);
 
    const onLogin = async (par: Types.IForm.Login) => {

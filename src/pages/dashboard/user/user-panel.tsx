@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import Sidebar from "layouts/sidebar";
+
 import { Kurslarim } from "./pages/index";
-import { Navbar, Pagination, Sidebar } from "./components";
+import { Navbar, Pagination } from "./components";
 
 import style from "./styles/panel.module.scss";
 

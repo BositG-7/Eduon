@@ -1,18 +1,15 @@
-import { FunctionComponent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FunctionComponent } from "react";
 import { Box, Button, Checkbox, Divider, Flex, InputBase, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
 
 import { useList } from "../../../modules/kurslar/hooks/course-use-list";
 
-import SingleCourse from "./components/single-course";
+import Course from "./components/course";
 
 interface KurslarProps {}
 
 const Kurslar: FunctionComponent<KurslarProps> = () => {
-   const navigete = useNavigate();
    const { course, isLoading } = useList();
-   const [checked, setChecked] = useState(false);
 
    return (
       <Box mb={50}>
@@ -201,7 +198,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                            // eslint-disable-next-line consistent-return
                            return (
                               <>
-                                 <SingleCourse  img={item.image} price={item.price} name={item.name} view={item.view} />
+                                 <Course  img={item.image} price={item.price} name={item.name} view={item.view} />
                               </>
                            );
                         })
