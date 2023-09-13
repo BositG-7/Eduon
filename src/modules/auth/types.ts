@@ -18,9 +18,9 @@ export namespace IEntity {
    }
    export interface Tokens {
       email: any;
-      access: string;
-      refresh: string;
-   }
+      access: string
+      refresh: string
+    }
 }
 export namespace IForm {
    export interface Login {
@@ -90,10 +90,11 @@ export namespace IApi {
       };
    }
    export namespace Checkpassword {
-      export type Request = {
-         email: string;
-         activation_code: number | null;
-      };
+      export type Request ={
+         email:string
+         activation_code:number | null
+        
+      }
    }
 }
 export namespace IContext {
@@ -109,5 +110,4 @@ export namespace IContext {
          getPassword: () => void;
       };
    }
-}
-
+ }

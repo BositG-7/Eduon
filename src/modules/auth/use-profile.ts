@@ -3,33 +3,30 @@ import { getSession } from "services/store";
 
 import { Api, Mappers, Types } from ".";
 
-
 interface State {
    isLoading: boolean;
    user: Types.IEntity.User | null;
-   verfication:boolean
-   isResetPassword:boolean
+   verfication: boolean;
+   isResetPassword: boolean;
 }
 
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
    const { access } = getSession();
-   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null,verfication:false,isResetPassword:true });
+   const { refresh } = getSession();
+   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null, verfication: false, isResetPassword: true });
 
-  useEffect(() => {
-    const request = async () => {
-      try {
-        const { data } = await Api.Profile();
+   useEffect(() => {
+      const request = async () => {
+         try {
+            const { data } = await Api.Profile();
 
-        console.log(data);
-        
-        const user = Mappers.User(data);
-        
-            console.log(user);
-            
-            setState({ user, isLoading: false,verfication:true,isResetPassword:true });
+            console.log(data);
+
+            const user = Mappers.User(data);
+
+            setState({ user, isLoading: false, verfication: true, isResetPassword: true });
          } catch (err: any) {
-       
-            setState({ user: null, isLoading: false,verfication:false,isResetPassword:true });
+            setState({ user: null, isLoading: false, verfication: false, isResetPassword: true });
          }
       };
 

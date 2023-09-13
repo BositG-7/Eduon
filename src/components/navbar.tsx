@@ -1,12 +1,11 @@
 // @ts-nocheck
 import React, { FunctionComponent } from "react"; // React import qilingan
 import { useNavigate } from "react-router-dom";
-import { Avatar, Box, Button, Menu, Title } from "@mantine/core";
+import { Avatar, Box, Button, Menu } from "@mantine/core";
 import { IconLogout, IconMenu, IconSettings, IconUser } from "@tabler/icons-react";
 import { useAuth } from "modules/auth/context";
 
 import Logo from "./Logo.svg";
-import Search from "./Search.svg";
 
 import "./navbar.css";
 
@@ -50,7 +49,15 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                      lineHeight: "normal"
                   }}
                >
-                  <Title
+                  <Button
+                     sx={{
+                        background: "none",
+                        color: "black",
+                        ":hover": {
+                           background: "none", // O'zgarishi mumkin
+                           color: "blue" // O'zgarishi mumkin
+                        }
+                     }}
                      className="title"
                      size={14}
                      onClick={() => {
@@ -58,22 +65,58 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                      }}
                   >
                      Bosh sahifa
-                  </Title>
-                  <Title
+                  </Button>
+                  <Button
                      onClick={() => {
                         navigate("/kurslar");
+                     }}
+                     sx={{
+                        background: "none",
+                        color: "black",
+                        ":hover": {
+                           background: "none", // O'zgarishi mumkin
+                           color: "blue" // O'zgarishi mumkin
+                        }
                      }}
                      className="title"
                      size={14}
                   >
                      Kurslar
-                  </Title>
-                  <Title className="title" size={14}>
+                  </Button>
+                  <Button
+                     onClick={() => {
+                        navigate("/faq");
+                     }}
+                     className="title"
+                     size={14}
+                     sx={{
+                        background: "none",
+                        color: "black",
+                        ":hover": {
+                           background: "none", // O'zgarishi mumkin
+                           color: "blue" // O'zgarishi mumkin
+                        }
+                     }}
+                  >
                      FAQ
-                  </Title>
-                  <Title className="title" size={14}>
+                  </Button>
+                  <Button
+                     className="title"
+                     sx={{
+                        background: "none",
+                        color: "black",
+                        ":hover": {
+                           background: "none", // O'zgarishi mumkin
+                           color: "blue" // O'zgarishi mumkin
+                        }
+                     }}
+                     onClick={() => {
+                        navigate("/biz-haqimizda");
+                     }}
+                     size={14}
+                  >
                      Biz haqimizda
-                  </Title>
+                  </Button>
                </Box>
                <Box
                   sx={{
@@ -84,7 +127,6 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   }}
                   className="loginn"
                >
-                  <img src={Search} alt="" />
                   {user ? (
                      <Menu shadow="md" width="max-content" position="bottom-end">
                         <Menu.Target>
@@ -93,9 +135,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                               radius="xl"
                               alt="it's me"
                               size="lg"
-                              {...(user?.img
-                                 ? { src: user.img }
-                                 : { children: user?.username[0]?.toUpperCase() })}
+                              {...(user?.img ? { src: user.img } : { children: user?.username[0]?.toUpperCase() })}
                            />
                         </Menu.Target>
                         <Menu.Dropdown>
@@ -116,11 +156,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                            >
                               Profile
                            </Menu.Item>
-                           <Menu.Item
-                              onClick={methods.logout}
-                              color="red"
-                              icon={<IconLogout size={14} />}
-                           >
+                           <Menu.Item onClick={methods.logout} color="red" icon={<IconLogout size={14} />}>
                               Logout
                            </Menu.Item>
                         </Menu.Dropdown>
@@ -148,13 +184,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   {user ? (
                      <Menu shadow="md" width="max-content" position="bottom-end">
                         <Menu.Target>
-                           <Avatar
-                              sx={{ cursor: "pointer" }}
-                              radius="sm"
-                              alt="it's me"
-                              size="sm"
-                              children={<IconMenu />}
-                           />
+                           <Avatar sx={{ cursor: "pointer" }} radius="sm" alt="it's me" size="sm" children={<IconMenu />} />
                         </Menu.Target>
                         <Menu.Dropdown>
                            <Menu.Divider />
@@ -171,11 +201,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                               Profile
                            </Menu.Item>
 
-                           <Menu.Item
-                              onClick={methods.logout}
-                              color="red"
-                              icon={<IconLogout size={10} />}
-                           >
+                           <Menu.Item onClick={methods.logout} color="red" icon={<IconLogout size={10} />}>
                               Logout
                            </Menu.Item>
                         </Menu.Dropdown>
@@ -183,13 +209,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   ) : (
                      <Menu shadow="sm" width="max-content" position="bottom-end">
                         <Menu.Target>
-                           <Avatar
-                              sx={{ cursor: "pointer" }}
-                              radius="xl"
-                              alt="it's me"
-                              size="sm"
-                              children={<IconMenu />}
-                           />
+                           <Avatar sx={{ cursor: "pointer" }} radius="xl" alt="it's me" size="sm" children={<IconMenu />} />
                         </Menu.Target>
                         <Menu.Dropdown>
                            <Menu.Divider />

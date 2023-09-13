@@ -29,11 +29,7 @@ const Auth = ({ children }: AuthProps) => {
       }
    };
 
-   return (
-      <AuthContext.Provider value={{ user, isLoading, methods, verfication, isResetPassword }}>
-         {children}
-      </AuthContext.Provider>
-   );
+   return <AuthContext.Provider value={{ user, isLoading, methods, verfication, isResetPassword }}>{children}</AuthContext.Provider>;
 };
 
 export default Auth;

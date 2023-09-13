@@ -1,12 +1,16 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
-import { setSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerfication, setSessionVerfication } from "services/store";
+
+import cursor from "../../assets/images/cursor.png";
+import threeD from "../../assets/images/threeD.png";
 
 interface VerificationProps {}
 
@@ -22,28 +26,41 @@ const Verification: FunctionComponent<VerificationProps> = () => {
       },
       validate: yupResolver(schema)
    });
+
+   useEffect(() => {
+      clearSessionVerfication();
+      clearSessionReset();
+   }, []);
    const navigete = useNavigate();
 
    const onSubmit = async (data: Types.IForm.Verification) => {
       console.log(data);
 
       try {
-         await SendEmail(data);
-
          methods.getEmail();
          setSessionVerfication(data);
+         await SendEmail(data);
 
          navigete("/auth/checkpassword");
 
          // Yuborish muvaffaqiyatli yakunlandi
       } catch (error: any) {
-         console.log( error?.message);
+         notifications.show({
+            message: error.data.email
+         });
       }
    };
 
    return (
       <Box h="100vh" w="100%">
-         <Box h="100%" sx={{ display: "grid", placeItems: "center" }}>
+         <Box
+            h="90vh"
+            w="100%"
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "220px" }}
+         >
+            <div className="right">
+               <img src={cursor} alt="cursor" />
+            </div>
             <form
                onSubmit={form.onSubmit(onSubmit)}
                style={{
@@ -91,6 +108,9 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   </Box>
                </Flex>
             </form>
+            <div className="left">
+               <img src={threeD} alt="threeD" />
+            </div>
          </Box>
       </Box>
    );

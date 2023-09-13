@@ -1,119 +1,39 @@
-import { useState } from "react";
-import Carousel from "react-multi-carousel";
-
-import banner from "../../../../assets/images/banner.png";
-import by from "../../../../assets/images/by.png";
+import { useEffect, useState } from "react";
+import { CourseTop } from "modules/auth/api";
 
 import "../style/top-course.scss";
-import "react-multi-carousel/lib/styles.css";
 
-export interface TopCourses {
-   banner: string;
-   by: string;
-   text: string;
-   price: string;
-   free?: string; 
-   star: string;
-   subscribe: string;
-   view: string;
-   sale?: string;
+export interface Results {
+   id: number;
+   name: string;
+   price: number;
+   view: number;
+   image: string;
+   review_count: number;
+}
+
+export interface TopCoursess {
+   count: number;
+   next: null;
+   previous: null;
+   results: Results[];
 }
 
 function TopCourse({ deviceType }: any) {
-   const [pricing, setPricing] = useState<TopCourses[]>([
-      {
-         banner,
-         by,
-         price: "2 750 000",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      },
-      {
-         banner,
-         by,
-         price: "0",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      },
-      {
-         banner,
-         by,
-         price: "0",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      }
-      ,
-      {
-         banner,
-         by,
-         price: "2 750 000",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      },
-      {
-         banner,
-         by,
-         price: "2 750 000",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      },
-      {
-         banner,
-         by,
-         price: "0",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      },
-      {
-         banner,
-         by,
-         price: "0",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      }
-      ,
-      {
-         banner,
-         by,
-         price: "2 750 000",
-         text: "Biznesda CRM sistemadan foydalanish va o‘rnatish",
-         star: "4,2",
-         subscribe: "(12,965)",
-         view: "54,112"
-      }
-   ]);
-   const responsive = {
-      desktop: {
-         breakpoint: { max: 3000, min: 1024 },
-         items: 4,
-         slidesToSlide: 1 // optional, default to 1.
-      },
-      tablet: {
-         breakpoint: { max: 1024, min: 464 },
-         items: 3,
-         slidesToSlide: 1 // optional, default to 1.
-      },
-      mobile: {
-         breakpoint: { max: 464, min: 0 },
-         items: 1,
-         slidesToSlide: 1 // optional, default to 1.
-      }
-   };
+   const [pricing, setPricing] = useState<TopCoursess[]>();
 
+   useEffect(() => {
+      const fetch = async () => {
+         const { data }: any = await CourseTop();
+
+         console.log(data.results);
+         setPricing(data.results);
+      };
+
+      fetch();
+   }, []);
+
+   // if (!pricing) return null;
    return (
       <section className="top-course">
          <div className="title">
@@ -121,33 +41,39 @@ function TopCourse({ deviceType }: any) {
                <span>Top</span> kurslar
             </h1>
          </div>
-
-         <Carousel
-            swipeable={false}
-            draggable={false}
-            showDots={true}
-            responsive={responsive}
-            ssr={true}
-            infinite={true}
-            autoPlay={deviceType !== "mobile"}
-            autoPlaySpeed={3000}
-            keyBoardControl={true}
-            customTransition="all 1"
-            transitionDuration={1000}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            deviceType={deviceType}
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-            className="carousel"
-         >
-         {pricing.map((item, idx) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={idx}>
-         <img src={item.banner} alt="banner" />
-            </div>
-         ))}
-         </Carousel>
+         <div className="boxes">
+            {/* @ts-ignore */}
+            {pricing?.slice(0, 4).map(item => (
+               // @ts-ignore
+               <div className="box" key={item.id}>
+                  {/* @ts-ignore */}
+                  <img src={item.image} alt="banner" />
+                  <div className="text">
+                     <div className="flex">
+                        {/* @ts-ignore */}
+                        <h3>{item.name}</h3>
+                        <i className="fa-regular fa-bookmark" />
+                     </div>
+                     <div className="statistic">
+                        <div className="star">
+                           <i className="fa-solid fa-star" />
+                           <h2>4,2</h2>
+                        </div>
+                        <div className="view">
+                           <i className="fa-solid fa-eye" />
+                           {/* @ts-ignore */}
+                           <h2>{item.view}</h2>
+                        </div>
+                     </div>
+                     <div className="price">
+                        {/* @ts-ignore */}
+                        <h3>{item.price}<span>/so'm</span></h3>
+                        <h2>Xarid qilish</h2>
+                     </div>
+                  </div>
+               </div>
+            ))}
+         </div>
       </section>
    );
 }
