@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Sidebar from "layouts/sidebar";
-
+import Sidebar from "./components/sidebar";
 import { Hisobim } from "./pages/index";
 
 import style from "./styles/panel.module.scss";

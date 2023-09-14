@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { Box, Button, Checkbox, Divider, Flex, InputBase, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
 
-import { useList } from "../../../modules/kurslar/hooks/course-use-list";
+import { useList } from "../../../modules/kurslar/hooks/use-list";
 
 import Course from "./components/course";
 
@@ -198,7 +198,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                            // eslint-disable-next-line consistent-return
                            return (
                               <>
-                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} />
+                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} rating={item.rating} />
                               </>
                            );
                         })
