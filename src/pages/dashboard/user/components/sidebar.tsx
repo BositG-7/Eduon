@@ -6,8 +6,6 @@ import {  createStyles,  getStylesRef,   Navbar, rem } from "@mantine/core";
 import { BiFolderMinus } from "react-icons/bi";
 import {  BsPerson } from "react-icons/bs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import {  HiOutlineDocumentText } from "react-icons/hi";
-import {  RiWallet3Fill } from "react-icons/ri";
 
 const useStyles = createStyles(theme => ({
    header: {
@@ -58,10 +56,8 @@ const useStyles = createStyles(theme => ({
 }));
 
 const data = [
-   { link: "/dashboard/hospitals", label: "Moliya", icon: BiFolderMinus },
-   { link: "/dashboard/booking", label: "Kurslarim", icon: RiWallet3Fill },
-   { link: "/dashboard/hospitals", label: "Profil", icon: BsPerson },
-   { link: "/dashboard/hospitals", label: "Ma’lumotlar", icon: HiOutlineDocumentText },
+   { link: "/dashboard/hospitals", label: "Kurslarim", icon: BiFolderMinus },
+   { link: "/dashboard/booking", label: "Profil", icon: BsPerson }
 ];
 
 function Sidebar() {

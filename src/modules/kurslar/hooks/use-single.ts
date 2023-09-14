@@ -3,8 +3,11 @@ import { notifications } from "@mantine/notifications";
 
 import { Api, Types } from "..";
 
-export const useList = () => {
+
+
+export const useSingle = (id: string) => {
    const [state, setState] = useState<Types.IQuery.Course.List>({ isLoading: true, course: [] });
+   
 
    useEffect(() => {
       const request = async () => {
