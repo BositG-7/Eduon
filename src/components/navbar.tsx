@@ -30,7 +30,12 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                }}
                className="navbar"
             >
-               <Box className="img">
+               <Box
+                  className="img"
+                  onClick={() => {
+                     navigate("/");
+                  }}
+               >
                   <img src={Logo} alt="" />
                </Box>
                <Box
