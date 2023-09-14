@@ -16,7 +16,6 @@ export default function KurslarimList() {
          </div>
          <div className={style.hr} />
          <div>
-            {" "}
             <p className={style.title}>Yangi kurs</p>
             <div className={style.courseList}>
                <YangiKurs />

@@ -37,7 +37,7 @@ const Routes = () => {
 
          {/* Dashboard */}
          <Route path="dashboard" element={<DashboardRoute allowed={!!user} redirectURL="/" />}>
-            <Route path="user" element={!user?.isSpiker ? <TeacherPanel /> : <UserPanel />} />
+            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user" />} />
          </Route>

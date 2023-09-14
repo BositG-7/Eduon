@@ -6,18 +6,13 @@ import Kurslarim from "./pages/kurslarim";
 
 import style from "./styles/panel.module.scss";
 
-interface TeacherPanelProps {}
-
-const UserPanel = (props: TeacherPanelProps) => {
+export const UserPanel = (props: any) => {
    const { course } = useList();
+   // @ts-ignore
+   const count = course.results.length;
 
    // eslint-disable-next-line no-console
    console.log(course);
-
-   const handlePageChange = (page: number) => {
-      // eslint-disable-next-line no-console
-      console.log(page);
-   };
 
    return (
       <div className={style.userPanel}>
@@ -37,11 +32,9 @@ const UserPanel = (props: TeacherPanelProps) => {
                   {course && course?.results?.map(item => <Kurslarim key={item.id} name={item.name} id={item.id} img={item.image} />)}
                </div>
                {/* @ts-ignore */}
-               {course && <Pagination course={course} pageSize={2} handlePageChange={() => handlePageChange(page)} />}
+               {course && <Pagination count={course.results.length} />}
             </div>
          </div>
       </div>
    );
 };
-
-export default UserPanel;
