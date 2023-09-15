@@ -196,13 +196,11 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
                      {
                         // @ts-ignore
-                        console.log(course.results)
                      }
                      {
                         // @ts-ignore
                         course.results?.map((item, idx) => {
                            if (idx > 8) {
-                              console.log(idx);
                               return;
                            }
 

@@ -2,7 +2,12 @@ import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CourseNew } from "modules/auth/api";
 
-import "../style/yangi-kurslar.scss";
+import Footer from "components/footer";
+
+import Steps from "../bosh-sahifa/components/qadamlar";
+import Statistic from "../bosh-sahifa/components/statistic";
+
+import "../bosh-sahifa/style/yangi-kurslar.scss"
 
 export interface Results {
    id: number;
@@ -20,7 +25,7 @@ export interface NewCourses {
    results: Results[];
 }
 
-function NewCourse() {
+function NewCoursess() {
    const [pricing, setPricing] = useState<NewCourses[]>();
 
    const navigete = useNavigate()
@@ -37,7 +42,8 @@ function NewCourse() {
 
    // if (!pricing) return null;
    return (
-      <section className="top-course" data-aos="zoom-out-left" data-aos-duration="2000">
+      <>
+      <section className="top-course">
          <div className="title">
             <h1>
                <span>Yangi</span> kurslar
@@ -45,7 +51,7 @@ function NewCourse() {
          </div>
          <div className="boxes">
             {/* @ts-ignore */}
-            {pricing?.slice(0, 4).map(item => (
+            {pricing?.map(item => (
                // @ts-ignore
                <div className="box" key={item.id}>
                   {/* @ts-ignore */}
@@ -78,18 +84,13 @@ function NewCourse() {
                </div>
             ))}
          </div>
-         <div className="link">
-         <button
-               className="share-subject"
-               onClick={() => {
-                  navigete("/new-courses");
-               }}
-            >
-               Barchasi
-            </button>
-         </div>
       </section>
+      <Statistic />
+      <Steps/>
+      <Footer />
+   </>
    );
 }
 
-export default NewCourse;
+export default NewCoursess;
+
