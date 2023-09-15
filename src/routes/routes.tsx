@@ -22,8 +22,12 @@ const Routes = () => {
    return (
       <Switch>
          <Route path="" element={<Application.BoshSahifa />} />
+         
          <Route path="kurslar" element={<Application.Kurslar />} />
          <Route path="faq" element={<Application.Faq />} />
+         <Route path="top-courses" element={<Application.TopCourses />} />
+         <Route path="new-courses" element={<Application.NewCoursess />} />
+         <Route path="speakers" element={<Application.Speakerss />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>

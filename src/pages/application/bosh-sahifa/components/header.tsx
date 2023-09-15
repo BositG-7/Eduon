@@ -9,7 +9,7 @@ function Header() {
    const navigete = useNavigate();
 
    return (
-      <section className="header">
+      <section className="header" data-aos="zoom-in" data-aos-duration="1500">
          <div className="title">
             <h1>Onlayn o’qitish</h1>
             <span>platformasi</span>

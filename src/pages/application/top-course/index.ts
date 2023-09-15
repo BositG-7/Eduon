@@ -1,0 +1,1 @@
+export { default as TopCourses } from "./top-course";

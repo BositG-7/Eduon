@@ -6,7 +6,7 @@ import "../style/boxes.scss";
 
 function Boxes() {
    return (
-      <section className="container">
+      <section className="container" data-aos="zoom-in" data-aos-duration="1500">
          <div className="boxes">
             <article className="box">
                <img src={profile} alt="profile" />

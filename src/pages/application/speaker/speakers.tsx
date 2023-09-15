@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { TopSpeaker } from "modules/auth/api";
 
-import "../style/top-speaker.scss";
+import Footer from "components/footer";
+
+import Steps from "../bosh-sahifa/components/qadamlar";
+import Statistic from "../bosh-sahifa/components/statistic";
+
+import "../bosh-sahifa/style/top-speaker.scss";
 
 export interface Results {
    speaker: string;
@@ -20,9 +24,8 @@ export interface TopSpeakerss {
    results: Results[];
 }
 
-function TopSpeakers() {
+function Speakerss() {
    const [speaker, setSpeaker] = useState<TopSpeakerss[]>();
-   const navigete = useNavigate();
 
    useEffect(() => {
       const fetch = async () => {
@@ -36,7 +39,8 @@ function TopSpeakers() {
 
    // if (!pricing) return null;
    return (
-      <section className="top-speaker" data-aos="fade-down">
+      <>
+      <section className="top-speaker">
          <div className="title">
             <h1>
                <span>70 dan</span> ortiq mutaxasislar
@@ -44,7 +48,7 @@ function TopSpeakers() {
          </div>
          <div className="boxes">
             {/* @ts-ignore */}
-            {speaker?.slice(0, 4).map(item => (
+            {speaker?.map(item => (
                // @ts-ignore
                <div className="box" key={item.id}>
                   {/* @ts-ignore */}
@@ -67,18 +71,12 @@ function TopSpeakers() {
                </div>
             ))}
          </div>
-         <div className="link">
-            <button
-               className="share-subject"
-               onClick={() => {
-                  navigete("/speakers");
-               }}
-            >
-               Barchasi
-            </button>
-         </div>
       </section>
+      <Statistic />
+         <Steps/>
+         <Footer />
+      </>
    );
 }
 
-export default TopSpeakers;
+export default Speakerss;
