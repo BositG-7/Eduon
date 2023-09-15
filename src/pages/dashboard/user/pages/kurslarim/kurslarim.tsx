@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useList } from "modules/kurslar/hooks/use-list";
+import { useList } from "modules/kurslar/hooks/course-use-list";
 
 import Kurs from "./components/kurs";
 

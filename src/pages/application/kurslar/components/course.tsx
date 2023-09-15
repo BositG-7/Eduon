@@ -5,12 +5,12 @@ import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 import { BsBookmarkDash } from "react-icons/bs";
 
 interface CourseProps {
-   img: string;
+   img ?: string;
    name?: string;
    price?: number;
    view?: string;
-   id: string;
-   rating: number
+   id ?: string;
+   rating ?: number
 }
 
 const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, rating }) => {

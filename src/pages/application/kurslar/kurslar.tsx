@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { Box, Button, Checkbox, Divider, Flex, InputBase, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
 
-import { useList } from "../../../modules/kurslar/hooks/use-list";
+import { useList } from "../../../modules/kurslar/hooks/course-use-list";
 
 import Course from "./components/course";
 
