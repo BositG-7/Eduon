@@ -13,6 +13,21 @@ export namespace IEntity {
       img: string;
       review_count: number;
    }
+
+   export interface SingleCourse {
+      name: string;
+      description: string;
+      speaker: number;
+      comment: string;
+      video: string;
+   }
+
+   export interface Speaker {
+      first_name: string;
+      last_name: string;
+      email: string;
+      speaker: string;
+   }
 }
 
 export namespace IApi {
@@ -24,7 +39,14 @@ export namespace IApi {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.Course {}
+         export interface Response extends IEntity.SingleCourse {}
+      }
+
+      export namespace Speaker {
+         export interface Request {
+            id: string;
+         }
+         export interface Response extends IEntity.Speaker {}
       }
    }
 }
@@ -34,6 +56,15 @@ export namespace IQuery {
       export interface List {
         isLoading: boolean;
         course: IEntity.Course[];
+      }
+      export interface Single{
+         isLoading: boolean;
+         course: IEntity.SingleCourse[];
+      }
+
+      export interface Speaker{
+         isLoading: boolean;
+         teacher: IEntity.Speaker[];
       }
     }
   }
