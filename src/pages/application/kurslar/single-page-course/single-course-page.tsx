@@ -18,12 +18,12 @@ interface SinglePageCourseProps {}
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { kursID = "" } = useParams<{ kursID: string }>();
    const navigete = useNavigate();
-   const { course } = useSingle('1');
+   const { course } = useSingle(kursID);
    // @ts-ignore
    const { speaker } = course
    const { teacher} = useSpeaker(speaker)
 
-   console.log(teacher)
+   console.log(course)
    // @ts-ignore
    console.log(course?.comment?.text);
    // @ts-ignore
