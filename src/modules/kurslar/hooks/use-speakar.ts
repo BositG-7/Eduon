@@ -9,11 +9,9 @@ export const useSpeaker = (id: string) => {
    useEffect(() => {
       const request = async () => {
          try {
-            console.log(id)
-            const { data } = await Api.Course.Speaker('1');
+            const { data } = await Api.Course.Speaker(id);
             const teacher = data;
 
-            console.log(data)
             // @ts-ignore
             setState({ teacher, isLoading: false });
          } catch (err: any) {

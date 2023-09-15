@@ -11,6 +11,8 @@ interface KurslarProps {}
 const Kurslar: FunctionComponent<KurslarProps> = () => {
    const { course, isLoading } = useList();
 
+   console.log(course);
+
    return (
       <Box mb={50}>
          <Flex direction="column">
