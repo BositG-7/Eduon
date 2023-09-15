@@ -18,6 +18,8 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
       { value: 80, label: '' },
     ];
 
+   console.log(course);
+
    return (
       <Box mb={50}>
          <Flex direction="column">

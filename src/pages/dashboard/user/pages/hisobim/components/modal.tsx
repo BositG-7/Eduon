@@ -11,9 +11,9 @@ function Demo() {
     const [selectedRadio, setSelectedRadio] = useState('');
 
     const handleSubmit = () => {
-        console.log("Text input value", inputValue);
+        // console.log("Text input value", inputValue);
 
-        console.log("Selected Radio", selectedRadio);
+        // console.log("Selected Radio", selectedRadio);
         close()
     }
      

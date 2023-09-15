@@ -20,15 +20,22 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const navigete = useNavigate();
    const { course } = useSingle(kursID);
    // @ts-ignore
-   const { speaker } = course
-   const { teacher} = useSpeaker(speaker)
+   const { speaker } = course;
+   const { teacher } = useSpeaker(speaker);
 
    console.log(course)
+   console.log(teacher);
    // @ts-ignore
-   console.log(course?.comment?.text);
+   if (course && course.video && course.video[0]) {
+      // @ts-ignore
+      console.log(course.video[0].video);
+   } else {
+      console.log("Video topilmadi yoki mavjud emas");
+   }
+
    // @ts-ignore
-   
-   console.log(course)
+
+   console.log(course);
    return (
       <Box pl={100} pt={20}>
          <Flex justify="space-between" pr={100}>
@@ -101,8 +108,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   <Title>Spiker va o’xshash kurslar</Title>
 
                   <Flex pt={50} pb={100} gap={50}>
-                     <SpeakersCourse/>
-                     <SpeakersCourse/>
+                     <SpeakersCourse />
+                     <SpeakersCourse />
                   </Flex>
                </Box>
             </Box>
@@ -118,8 +125,9 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   autoPlay
                   loop
                   muted
+                  controls
                   // @ts-ignore
-                  src={course?.video?.video}
+                  src={course?.video && course.video[0] && course.video[0].video ? course.video[0].video : ""}
                />
                <Title fw={500} size={24}>
                   12,400,000 <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>so'm</span>{" "}
