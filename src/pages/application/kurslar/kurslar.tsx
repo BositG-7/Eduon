@@ -15,7 +15,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const [checked, setChecked] = useState(false);
 
    return (
-      <Box mb={50}>
+      <Box mb={50} data-aos="zoom-out-up" data-aos-duration="2000">
          <Flex direction="column">
             <Flex direction="column" justify="center" align="center">
                <Title size="60px" color="#006AFF" sx={{ marginTop: "50px", textAlign: "center" }}>

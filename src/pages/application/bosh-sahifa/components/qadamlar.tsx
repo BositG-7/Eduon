@@ -4,7 +4,7 @@ import "../style/qadamlar.scss";
 
 function Steps() {
    return (
-      <section className="qadamlar">
+      <section className="qadamlar" data-aos="fade-down-left">
          <div className="title">
             <h3>Qadamlar</h3>
             <h1>
@@ -12,7 +12,7 @@ function Steps() {
                <span> qanday</span> boshlash mumkin?
             </h1>
          </div>
-         <div className="boxes">
+         <div className="boxes"data-aos="fade-down-left">
             <div className="text">
                <div className="box">
                   <h3>Ro’yxatdan o’tish</h3>

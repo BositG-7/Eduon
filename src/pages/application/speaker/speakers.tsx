@@ -40,40 +40,40 @@ function Speakerss() {
    // if (!pricing) return null;
    return (
       <>
-      <section className="top-speaker">
-         <div className="title">
-            <h1>
-               <span>70 dan</span> ortiq mutaxasislar
-            </h1>
-         </div>
-         <div className="boxes">
-            {/* @ts-ignore */}
-            {speaker?.map(item => (
-               // @ts-ignore
-               <div className="box" key={item.id}>
-                  {/* @ts-ignore */}
-                  <img src={item.image} alt="avatar" />
-                  <div className="text">
+         <section className="top-speaker" data-aos="zoom-out-left" data-aos-duration="2000">
+            <div className="title">
+               <h1>
+                  <span>70 dan</span> ortiq mutaxasislar
+               </h1>
+            </div>
+            <div className="boxes">
+               {/* @ts-ignore */}
+               {speaker?.map(item => (
+                  // @ts-ignore
+                  <div className="box" key={item.id}>
                      {/* @ts-ignore */}
-                     <h3>{item.job}</h3>
-                     {/* @ts-ignore */}
-                     <h2>{item.company}</h2>
-                     <div className="view">
-                        <i className="fa-solid fa-star" />
+                     <img src={item.image} alt="avatar" />
+                     <div className="text">
+                        {/* @ts-ignore */}
+                        <h3>{item.job}</h3>
+                        {/* @ts-ignore */}
+                        <h2>{item.company}</h2>
+                        <div className="view">
+                           <i className="fa-solid fa-star" />
 
-                        <h2>
-                           4,6{/* @ts-ignore */}
-                           <span> ({item.view})</span>
-                        </h2>
+                           <h2>
+                              4,6{/* @ts-ignore */}
+                              <span> ({item.view})</span>
+                           </h2>
+                        </div>
+                        <button>Profil</button>
                      </div>
-                     <button>Profil</button>
                   </div>
-               </div>
-            ))}
-         </div>
-      </section>
-      <Statistic />
-         <Steps/>
+               ))}
+            </div>
+         </section>
+         <Statistic />
+         <Steps />
          <Footer />
       </>
    );
