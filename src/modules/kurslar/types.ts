@@ -32,6 +32,40 @@ export namespace IEntity {
 
 export namespace IApi {
    export namespace Course {
+      export namespace Create {
+         export interface Request {
+            // name: string;
+            // description: string;
+            // price?: string;
+            // image: any;
+            // keyword: string;
+            // whosCourse: string;
+            // view?: number;
+            // discount?: number;
+            // language?: string;
+            // type?: string;
+            // degree?: string;
+            // speaker?: number;
+            // category?: number;
+
+            formData: any;
+         }
+         export interface Response {
+            name: string;
+            description: string;
+            price?: string;
+            image: any;
+            keyword: string;
+            whosCourse: string;
+            view?: number;
+            discount?: number;
+            language?: string;
+            type?: string;
+            degree?: string;
+            speaker?: number;
+            category?: number;
+         }
+      }
       export namespace List {
          export type Response = IEntity.Course[];
       }
@@ -52,26 +86,23 @@ export namespace IApi {
 }
 
 export namespace IQuery {
-    export namespace Course {
+   export namespace Course {
       export interface List {
-        isLoading: boolean;
-        course: IEntity.Course[];
+         isLoading: boolean;
+         course: IEntity.Course[];
       }
-      export interface Single{
+      export interface Single {
          isLoading: boolean;
          course: IEntity.SingleCourse[];
       }
 
-      export interface Speaker{
+      export interface Speaker {
          isLoading: boolean;
          teacher: IEntity.Speaker[];
       }
-    }
-  }
+   }
+}
 
+type User = "firstName" | "lastName" | "age";
 
-  type User = 'firstName' | 'lastName' | 'age'
-
-  type Person = Extract<User, 'firstName'>
-
- 
+type Person = Extract<User, "firstName">;

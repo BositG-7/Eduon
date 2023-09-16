@@ -1,6 +1,6 @@
 import { Navbar } from "./components/index";
 import Sidebar from "./components/sidebar";
-import Kurslarim from "./pages/kurslarim/kurslarim";
+import CourseCreate from "./pages/create-course/create-course";
 
 import style from "./styles/panel.module.scss";
 
@@ -23,7 +23,7 @@ const UserPanel = (props: TeacherPanelProps) => {
                   ]}
                />
             </div>
-            <Kurslarim />
+            <CourseCreate />
          </div>
       </div>
    );
