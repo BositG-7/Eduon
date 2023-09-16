@@ -69,8 +69,7 @@ const Register = () => {
          h="90vh"
          w="100%"
          sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-         data-aos="fade-up"
-         data-aos-anchor-placement="bottom-top">
+>
          <div className="right">
             <img src={cursor} alt="cursor" />
          </div>
