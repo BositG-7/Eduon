@@ -1,29 +1,47 @@
+// React ve diğer bağımlılıkları içe aktarın
 import { BrowserRouter } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { Containers } from "modules/auth";
 // eslint-disable-next-line import/order
+import { Containers } from "modules/auth";
 import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "react-query";
+// eslint-disable-next-line import/order
 import { Routes } from "routes";
+import { QueryParamProvider } from "use-query-params";
+import { ReactRouter6Adapter } from "use-query-params/adapters/react-router-6";
 
 import Navbar from "components/navbar";
 
 import "./assets/styles/index.scss";
 
+// React uygulamasını oluşturmak için bir kök (root) oluşturun
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
-console.log();
+// React Query istemcisi oluşturun
+const client = new QueryClient();
 
+// Kök öğeyi render et
 root.render(
    <BrowserRouter>
-      <MantineProvider>
-         <Containers.Auth>
-            <>
-               <Notifications position="top-right" />
-               <Navbar />
-               <Routes />
-            </>
-         </Containers.Auth>
-      </MantineProvider>
+      <QueryParamProvider adapter={ReactRouter6Adapter}>
+         <QueryClientProvider client={client}>
+            <MantineProvider>
+               {/* Auth bileşeni içindeki alt bileşenleri oluşturun */}
+               <Containers.Auth>
+                  <>
+                     {/* Sağ üst köşede bildirimleri göstermek için bir bildirim bileşeni ekleyin */}
+                     <Notifications position="top-right" />
+
+                     {/* Sayfa üstündeki gezinme çubuğunu oluşturun */}
+                     <Navbar />
+
+                     {/* Sayfa içeriğini ve rotaları oluşturun */}
+                     <Routes />
+                  </>
+               </Containers.Auth>
+            </MantineProvider>
+         </QueryClientProvider>
+      </QueryParamProvider>
    </BrowserRouter>
 );
