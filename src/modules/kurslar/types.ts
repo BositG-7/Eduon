@@ -17,6 +17,40 @@ export namespace IEntity {
 
 export namespace IApi {
    export namespace Course {
+
+      export namespace Create{
+         export interface Request {
+            name: string;
+            description:string;
+            price?:string;
+            image:any;
+            keyword:string;
+            whosCourse:string;
+            view?:number;
+            discount?:number;
+            language?:string;
+            type?:string;
+            degree?:string;
+            speaker?:number;
+            category?:number;
+
+         }
+         export interface Response{
+            name: string;
+            description:string;
+            price?:string;
+            image:any;
+            keyword:string;
+            whosCourse:string;
+            view?:number;
+            discount?:number;
+            language?:string;
+            type?:string;
+            degree?:string;
+            speaker?:number;
+            category?:number;            
+         }
+      }
       export namespace List {
          export type Response = IEntity.Course[];
       }

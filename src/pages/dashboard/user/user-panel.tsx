@@ -14,7 +14,7 @@ const UserPanel = (props: TeacherPanelProps) => {
         <div className={style.userPanel}>
             <Sidebar />
             <div className={style.kurslarim}>
-                {/* <CreateCourse/> */}
+                <CreateCourse/>
             </div>
         </div>
     );
