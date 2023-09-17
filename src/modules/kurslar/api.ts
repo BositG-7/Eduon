@@ -13,3 +13,8 @@ export const Course = {
 
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>
    http.post<IApi.Course.Create.Response>("/course_create/", objectToFormData(formData));
+export const CourseTop = () => http.get("/course_top");
+
+export const CourseNew = () => http.get("/course_new");
+
+export const TopSpeaker = () => http.get("/speaker_top");

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TopSpeaker } from "modules/auth/api";
+import { TopSpeaker } from "modules/kurslar/api";
 
 import Footer from "components/footer";
 

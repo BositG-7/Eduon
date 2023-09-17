@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CourseNew } from "modules/auth/api";
+import { CourseNew } from "modules/kurslar/api";
 
 import Footer from "components/footer";
 

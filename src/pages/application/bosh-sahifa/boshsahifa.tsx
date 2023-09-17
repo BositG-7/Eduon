@@ -12,7 +12,7 @@ import NewCourse from "./components/yangi-kurslar";
 
 function BoshSahifa() {
    return (
-      <div>
+      <div style={{ overflow: "hidden" }}>
          <Header />
          <Boxes />
          <TopCourses />

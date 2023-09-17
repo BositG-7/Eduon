@@ -87,6 +87,7 @@ const CourseCreate: React.FC = () => {
       formData.append("type", courseData.type);
       formData.append("degree", courseData.degree);
 
+      console.log(formData.get("price"));
       console.log(formData.get("image"));
 
       try {
