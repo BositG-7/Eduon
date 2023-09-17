@@ -1,5 +1,6 @@
 .top-course {
    padding: 50px 110px;
+   overflow-x: hidden;
 
    .title {
       text-align: center;
@@ -117,6 +118,24 @@
                   }
                }
             }
+         }
+      }
+   }
+   .link {
+      text-align: center;
+      padding-top: 50px;
+
+      button {
+         color: var(--white);
+         background: var(--blue);
+         border: none;
+         border-radius: 14px;
+         padding: 15px 50px;
+         font-size: 18px;
+         cursor: pointer;
+
+         &:active{
+            transform: scale(0.9)
          }
       }
    }

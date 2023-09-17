@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { CourseTop } from "modules/auth/api";
+import { useNavigate } from "react-router-dom";
+import { CourseTop } from "modules/kurslar/api";
 
 import "../style/top-course.scss";
 
@@ -22,6 +23,8 @@ export interface TopCoursess {
 function TopCourse({ deviceType }: any) {
    const [pricing, setPricing] = useState<TopCoursess[]>();
 
+   const navigete = useNavigate();
+
    useEffect(() => {
       const fetch = async () => {
          const { data }: any = await CourseTop();
@@ -34,7 +37,7 @@ function TopCourse({ deviceType }: any) {
 
    // if (!pricing) return null;
    return (
-      <section className="top-course">
+      <section className="top-course" data-aos="fade-right" data-aos-duration="2000">
          <div className="title">
             <h1>
                <span>Top</span> kurslar
@@ -65,13 +68,26 @@ function TopCourse({ deviceType }: any) {
                         </div>
                      </div>
                      <div className="price">
-                        {/* @ts-ignore */}
-                        <h3>{item.price}<span>/so'm</span></h3>
+                        <h3>
+                           {/* @ts-ignore */}
+                           {item.price}
+                           <span>/so'm</span>
+                        </h3>
                         <h2>Xarid qilish</h2>
                      </div>
                   </div>
                </div>
             ))}
+         </div>
+         <div className="link">
+            <button
+               className="share-subject"
+               onClick={() => {
+                  navigete("/top-courses");
+               }}
+            >
+               Barchasi
+            </button>
          </div>
       </section>
    );

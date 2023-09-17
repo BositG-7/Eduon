@@ -13,7 +13,7 @@ function Boxes() {
    const { user } = useAuth();
 
    return (
-      <section className="container">
+      <section className="container" data-aos="zoom-in" data-aos-duration="1500">
          <div className="boxes">
             <article
                className="box"

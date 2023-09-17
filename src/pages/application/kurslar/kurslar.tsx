@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { Box, Button, Checkbox, Divider, Flex, InputBase, Pagination, Slider, Title } from "@mantine/core";
+import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "@mantine/core";
+import { useList } from "modules/kurslar/hooks/course-use-list";
+// eslint-disable-next-line import/order
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
-
-import { useList } from "../../../modules/kurslar/hooks/course-use-list";
 
 import Course from "./components/course";
 
@@ -15,10 +15,10 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const [activePage, setPage] = React.useState(1);
 
    const marks = [
-      { value: 20, label: '' },
-      { value: 50, label: '' },
-      { value: 80, label: '' },
-    ];
+      { value: 20, label: "" },
+      { value: 50, label: "" },
+      { value: 80, label: "" }
+   ];
 
 
    return (
@@ -54,7 +54,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   <Title color="grey" size={16} mt={30}>
                      Narx
                   </Title>
-                  <Slider size={8}  marks={marks} value={value} onChange={setValue} pt={20} defaultValue={50} />
+                  <Slider size={8} marks={marks} value={value} onChange={setValue} pt={20} defaultValue={50} />
                   <Title mt="md" size="sm">
                      onChange value: <b>{value}</b>
                   </Title>
@@ -198,6 +198,9 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      
                      {
                         // @ts-ignore
+                     }
+                     {
+                        // @ts-ignore
                         course.results?.map((item, idx) => {
                            if (idx > 8) {
                               return;
@@ -214,29 +217,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   </Box>
 
                   
-               <Pagination pt={50} value={activePage} onChange={setPage} total={10}  getItemProps={(page) => ({
-          component: 'a',
-          href: `#page-${page}`,
-        })}
-        getControlProps={(control) => {
-          if (control === 'first') {
-            return { component: 'a', href: '#page-0' };
-          }
-
-          if (control === 'last') {
-            return { component: 'a', href: '#page-10' };
-          }
-
-          if (control === 'next') {
-            return { component: 'a', href: '#page-2' };
-          }
-
-          if (control === 'previous') {
-            return { component: 'a', href: '#page-1' };
-          }
-
-          return {};
-        }} />;
+              
                </Flex>
             </Flex>
          </Flex>

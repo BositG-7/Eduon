@@ -1,6 +1,6 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CourseNew } from "modules/auth/api";
+import { CourseNew } from "modules/kurslar/api";
 
 import "../style/yangi-kurslar.scss";
 
@@ -23,7 +23,7 @@ export interface NewCourses {
 function NewCourse() {
    const [pricing, setPricing] = useState<NewCourses[]>();
 
-   const navigete = useNavigate()
+   const navigete = useNavigate();
 
    useEffect(() => {
       const fetch = async () => {
@@ -37,7 +37,7 @@ function NewCourse() {
 
    // if (!pricing) return null;
    return (
-      <section className="top-course">
+      <section className="top-course" data-aos="zoom-out-left" data-aos-duration="2000">
          <div className="title">
             <h1>
                <span>Yangi</span> kurslar
@@ -68,7 +68,8 @@ function NewCourse() {
                         </div>
                      </div>
                      <div className="price">
-                        <h3>{/* @ts-ignore */}
+                        <h3>
+                           {/* @ts-ignore */}
                            {item.price}
                            <span>/so'm</span>
                         </h3>
@@ -79,10 +80,10 @@ function NewCourse() {
             ))}
          </div>
          <div className="link">
-         <button
+            <button
                className="share-subject"
                onClick={() => {
-                  navigete("/kurslar");
+                  navigete("/new-courses");
                }}
             >
                Barchasi

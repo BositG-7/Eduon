@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { TopSpeaker } from "modules/auth/api";
+import { useNavigate } from "react-router-dom";
+import { TopSpeaker } from "modules/kurslar/api";
 
 import "../style/top-speaker.scss";
 
@@ -21,6 +22,7 @@ export interface TopSpeakerss {
 
 function TopSpeakers() {
    const [speaker, setSpeaker] = useState<TopSpeakerss[]>();
+   const navigete = useNavigate();
 
    useEffect(() => {
       const fetch = async () => {
@@ -34,7 +36,7 @@ function TopSpeakers() {
 
    // if (!pricing) return null;
    return (
-      <section className="top-speaker">
+      <section className="top-speaker" data-aos="fade-down">
          <div className="title">
             <h1>
                <span>70 dan</span> ortiq mutaxasislar
@@ -64,6 +66,16 @@ function TopSpeakers() {
                   </div>
                </div>
             ))}
+         </div>
+         <div className="link">
+            <button
+               className="share-subject"
+               onClick={() => {
+                  navigete("/speakers");
+               }}
+            >
+               Barchasi
+            </button>
          </div>
       </section>
    );

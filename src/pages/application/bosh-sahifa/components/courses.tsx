@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import biznes from "../../../../assets/images/biznes.png";
 import dasturlash from "../../../../assets/images/dasturlash.png";
 import design from "../../../../assets/images/design.png";
@@ -10,6 +12,8 @@ import xorijTillar from "../../../../assets/images/xorijTillar.png";
 import "../style/courses.scss";
 
 function Courses() {
+   const navigete = useNavigate();
+
    return (
       <section className="courses">
          <div className="title">
@@ -67,8 +71,18 @@ function Courses() {
                <h2>62 ta kurs</h2>
             </article>
          </div>
+         <div className="link">
+            <button
+               className="share-subject"
+               onClick={() => {
+                  navigete("/kurslar");
+               }}
+            >
+               Barchasi
+            </button>
+         </div>
       </section>
    );
 }
 
-export default Courses
+export default Courses;

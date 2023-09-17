@@ -52,7 +52,8 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    };
 
    return (
-      <Box h="100vh" w="100%">
+      <Box h="100vh" w="100%" data-aos="fade-up"
+      data-aos-anchor-placement="bottom-up">
          <Box
             h="90vh"
             w="100%"

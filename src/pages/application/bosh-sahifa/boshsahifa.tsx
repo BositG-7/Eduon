@@ -5,23 +5,24 @@ import Courses from "./components/courses";
 import Header from "./components/header";
 import Steps from "./components/qadamlar";
 import Statistic from "./components/statistic";
-import TopCourse from "./components/top-course";
+import TopCourses from "./components/top-course";
 import TopSpeakers from "./components/top-speaker";
 import Ustunlik from "./components/ustunlik";
 import NewCourse from "./components/yangi-kurslar";
 
 function BoshSahifa() {
    return (
-      <div>
+      <div style={{ overflow: "hidden" }}>
          <Header />
          <Boxes />
-         <Steps />
-         <TopCourse />
+         <TopCourses />
          <NewCourse />
          <TopSpeakers />
          <Courses />
          <Ustunlik />
          <Statistic />
+         <Steps />
+
          <Footer />
       </div>
    );

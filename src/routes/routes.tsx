@@ -23,11 +23,15 @@ const Routes = () => {
    return (
       <Switch>
          <Route path="" element={<Application.BoshSahifa />} />
+
          <Route path="kurslar" element={<Application.Kurslar />} />
          <Route path="kurslar/kurs/:kursID" element={<SinglePageCourse />} />
          <Route path="kurslar/speaker/:speakerID" element={<SinglePageSpeaker />} />
          <Route path="faq" element={<Application.Faq />} />
          <Route path="biz-haqimizda" element={<Application.BizHaqimizda />} />
+         <Route path="top-courses" element={<Application.TopCourses />} />
+         <Route path="new-courses" element={<Application.NewCoursess />} />
+         <Route path="speakers" element={<Application.Speakerss />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>
@@ -42,7 +46,9 @@ const Routes = () => {
 
          {/* Dashboard */}
          <Route path="dashboard" element={<DashboardRoute allowed={!!user} redirectURL="/" />}>
-            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />} />
+            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />}>
+               <Route />
+            </Route>
             <Route path="user/kurs/:adminKursSingle" element={<SingleKurs />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user" />} />
