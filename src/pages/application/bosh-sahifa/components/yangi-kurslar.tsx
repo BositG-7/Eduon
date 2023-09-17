@@ -29,7 +29,6 @@ function NewCourse() {
       const fetch = async () => {
          const { data }: any = await CourseNew();
 
-         console.log(data.results);
          setPricing(data.results);
       };
 

@@ -1,6 +1,5 @@
 const ENV = process.env;
 
-console.log(ENV);
 
 const config = {
 	api: {

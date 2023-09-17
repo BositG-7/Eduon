@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "@mantine/core";
+import { Box, Button, Checkbox, Divider, Flex, InputBase, Pagination, Slider, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
 
 import { useList } from "../../../modules/kurslar/hooks/course-use-list";
@@ -12,13 +12,14 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const { course, isLoading } = useList();
    const [value, setValue] = React.useState(50);
 
+   const [activePage, setPage] = React.useState(1);
+
    const marks = [
       { value: 20, label: '' },
       { value: 50, label: '' },
       { value: 80, label: '' },
     ];
 
-   console.log(course);
 
    return (
       <Box mb={50}>
@@ -194,15 +195,11 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      </Button>
                   </Flex>
                   <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
-                     {
-                        // @ts-ignore
-                        console.log(course.results)
-                     }
+                     
                      {
                         // @ts-ignore
                         course.results?.map((item, idx) => {
                            if (idx > 8) {
-                              console.log(idx);
                               return;
                            }
 
@@ -216,9 +213,30 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      }
                   </Box>
 
-                  <Button mt={40} size="lg" w={200}>
-                     Yana ko'rish
-                  </Button>
+                  
+               <Pagination pt={50} value={activePage} onChange={setPage} total={10}  getItemProps={(page) => ({
+          component: 'a',
+          href: `#page-${page}`,
+        })}
+        getControlProps={(control) => {
+          if (control === 'first') {
+            return { component: 'a', href: '#page-0' };
+          }
+
+          if (control === 'last') {
+            return { component: 'a', href: '#page-10' };
+          }
+
+          if (control === 'next') {
+            return { component: 'a', href: '#page-2' };
+          }
+
+          if (control === 'previous') {
+            return { component: 'a', href: '#page-1' };
+          }
+
+          return {};
+        }} />;
                </Flex>
             </Flex>
          </Flex>
@@ -227,6 +245,3 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
 };
 
 export default Kurslar;
-function useState(arg0: number): [any, any] {
-   throw new Error("Function not implemented.");
-}

@@ -26,7 +26,6 @@ function TopSpeakers() {
       const fetch = async () => {
          const { data }: any = await TopSpeaker();
 
-         console.log(data.results);
          setSpeaker(data.results);
       };
 

@@ -26,7 +26,6 @@ function TopCourse({ deviceType }: any) {
       const fetch = async () => {
          const { data }: any = await CourseTop();
 
-         console.log(data.results);
          setPricing(data.results);
       };
 

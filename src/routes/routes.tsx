@@ -3,6 +3,7 @@ import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
 // eslint-disable-next-line import/no-named-as-default
 import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
+import SinglePageSpeaker from "pages/application/kurslar/single-page-speaker/single-page-speaker";
 import { TeacherPanel, UserPanel } from "pages/dashboard";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
 import { getSessionReset, getSessionVerfication } from "services/store";
@@ -24,6 +25,7 @@ const Routes = () => {
          <Route path="" element={<Application.BoshSahifa />} />
          <Route path="kurslar" element={<Application.Kurslar />} />
          <Route path="kurslar/kurs/:kursID" element={<SinglePageCourse />} />
+         <Route path="kurslar/speaker/:speakerID" element={<SinglePageSpeaker />} />
          <Route path="faq" element={<Application.Faq />} />
          <Route path="biz-haqimizda" element={<Application.BizHaqimizda />} />
 
