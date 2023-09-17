@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CourseTop } from "modules/auth/api";
+import { CourseTop } from "modules/kurslar/api";
 
 import Footer from "components/footer";
 

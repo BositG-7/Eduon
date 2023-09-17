@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TopSpeaker } from "modules/auth/api";
+import { TopSpeaker } from "modules/kurslar/api";
 
 import "../style/top-speaker.scss";
 

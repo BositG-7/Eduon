@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CourseTop } from "modules/auth/api";
+import { CourseTop } from "modules/kurslar/api";
 
 import "../style/top-course.scss";
 
@@ -68,7 +68,8 @@ function TopCourse({ deviceType }: any) {
                         </div>
                      </div>
                      <div className="price">
-                        <h3>{/* @ts-ignore */}
+                        <h3>
+                           {/* @ts-ignore */}
                            {item.price}
                            <span>/so'm</span>
                         </h3>
