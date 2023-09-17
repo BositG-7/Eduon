@@ -1,6 +1,6 @@
 import { Navbar } from "./components/index";
 import Sidebar from "./components/sidebar";
-import CreateCourse from "./pages/create-course/create-course";
+import CourseCreate from "./pages/create-course/create-course";
 
 import style from "./styles/panel.module.scss";
 
@@ -14,7 +14,6 @@ const UserPanel = (props: TeacherPanelProps) => {
          <Sidebar />
          <div className={style.main}>
             <div className={style.kurslarim}>
-
                <Navbar
                   links={[
                      { link: "/", label: "Barchasi" },
@@ -24,7 +23,7 @@ const UserPanel = (props: TeacherPanelProps) => {
                   ]}
                />
             </div>
-            <CreateCourse />
+            <CourseCreate />
          </div>
       </div>
    );

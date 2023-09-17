@@ -40,7 +40,7 @@ function Speakerss() {
    // if (!pricing) return null;
    return (
       <>
-         <section className="top-speaker">
+         <section className="top-speaker" data-aos="zoom-out-left" data-aos-duration="2000">
             <div className="title">
                <h1>
                   <span>70 dan</span> ortiq mutaxasislar

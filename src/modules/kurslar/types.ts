@@ -32,7 +32,6 @@ export namespace IEntity {
 
 export namespace IApi {
    export namespace Course {
-
       export namespace Create {
          export interface Request {
             name: string;
@@ -49,6 +48,7 @@ export namespace IApi {
             speaker?: number;
             category?: number;
 
+            formData: any;
          }
          export interface Response {
             name: string;
@@ -64,28 +64,6 @@ export namespace IApi {
             degree?: string;
             speaker?: number;
             category?: number;
-         }
-      }
-      export namespace GetCategory {
-
-         export interface Request{
-            page?:number;
-            page_size?:number;
-         }
-         export interface Response {
-            count: number;
-            next: string;
-            previous: string;
-            results: CategoryResults[];
-         }
-         export interface CategoryResults{
-            id?:number;
-            name:string;
-            lft?:number;
-            rght?:number;
-            tree_id?:number
-            level?:number
-            parent?:number
          }
       }
       export namespace List {
@@ -125,8 +103,6 @@ export namespace IQuery {
    }
 }
 
-
-type User = 'firstName' | 'lastName' | 'age'
-
+type User = "firstName" | "lastName" | "age";
 type Person = Extract<User, 'firstName'>
 

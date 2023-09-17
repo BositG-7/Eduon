@@ -5,7 +5,6 @@ import { Api, Types } from "..";
 
 export const useList = () => {
    const [state, setState] = useState<Types.IQuery.Course.List>({ isLoading: true, course: [] });
-   
 
    useEffect(() => {
       const request = async () => {

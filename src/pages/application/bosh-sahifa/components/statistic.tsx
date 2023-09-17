@@ -2,7 +2,7 @@ import "../style/statistic.scss";
 
 function Statistic() {
    return (
-      <section className="statictic">
+      <section className="statictic" data-aos="fade-left" data-aos-duration="2000">
          <div className="boxes">
             <div className="box">
                <h3>1,8 mln</h3>

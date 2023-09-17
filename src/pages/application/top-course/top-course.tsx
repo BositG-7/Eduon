@@ -28,7 +28,6 @@ export interface TopCoursess {
 function TopCourses() {
    const [pricing, setPricing] = useState<TopCoursess[]>();
 
-
    useEffect(() => {
       const fetch = async () => {
          const { data }: any = await CourseTop();
@@ -42,7 +41,7 @@ function TopCourses() {
    // if (!pricing) return null;
    return (
       <>
-         <section className="top-course">
+         <section className="top-course" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
             <div className="title">
                <h1>
                   <span>Top</span> kurslar
@@ -86,7 +85,7 @@ function TopCourses() {
             </div>
          </section>
          <Statistic />
-         <Steps/>
+         <Steps />
          <Footer />
       </>
    );

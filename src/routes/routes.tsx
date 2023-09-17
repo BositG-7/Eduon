@@ -44,7 +44,9 @@ const Routes = () => {
 
          {/* Dashboard */}
          <Route path="dashboard" element={<DashboardRoute allowed={!!user} redirectURL="/" />}>
-            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />} />
+            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />}>
+               <Route />
+            </Route>
             <Route path="user/kurs/:adminKursSingle" element={<SingleKurs />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user" />} />
