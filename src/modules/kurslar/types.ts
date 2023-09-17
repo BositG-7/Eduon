@@ -13,6 +13,15 @@ export namespace IEntity {
       img: string;
       review_count: number;
    }
+   export interface GenreResults {
+      id: number;
+      name: string;
+      lft: number;
+      rght: number;
+      tree_id: number;
+      level: number;
+      parent: number;
+   }
 
    export interface SingleCourse {
       name: string;
@@ -27,6 +36,12 @@ export namespace IEntity {
       last_name: string;
       email: string;
       speaker: string;
+   }
+   export interface Genre {
+      count: number;
+      next: string | number;
+      previous: number;
+      results: GenreResults[];
    }
 }
 
@@ -82,6 +97,10 @@ export namespace IApi {
          }
          export interface Response extends IEntity.Speaker {}
       }
+      export namespace Genre {
+         export interface Request {}
+         export interface Response extends IEntity.Genre {}
+      }
    }
 }
 
@@ -99,6 +118,10 @@ export namespace IQuery {
       export interface Speaker {
          isLoading: boolean;
          teacher: IEntity.Speaker[];
+      }
+      export interface Genre {
+         isLoading: boolean;
+         genre: IEntity.Genre[];
       }
    }
 }

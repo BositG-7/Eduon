@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, FileInput, Flex, Paper, Select, Textarea, TextInput } from "@mantine/core";
 import { CreateCourse } from "modules/kurslar/api";
+import { useGenre } from "modules/kurslar/hooks/use-genre";
 
 const CourseCreate: React.FC = () => {
    const [courseData, setCourseData] = useState({
@@ -18,6 +19,9 @@ const CourseCreate: React.FC = () => {
       degree: "",
       image: []
    });
+   const { genre } = useGenre();
+
+   console.log(genre);
 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -49,17 +53,6 @@ const CourseCreate: React.FC = () => {
          console.error("No file selected");
       }
    };
-   const sendCourseData = async () => {
-      try {
-         // @ts-ignore
-
-         const response = await CreateCourse(courseData);
-
-         console.log("Response from server:", response.data);
-      } catch (error) {
-         console.error("Error:", error);
-      }
-   };
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -86,9 +79,6 @@ const CourseCreate: React.FC = () => {
       formData.append("language", courseData.language);
       formData.append("type", courseData.type);
       formData.append("degree", courseData.degree);
-
-      console.log(formData.get("price"));
-      console.log(formData.get("image"));
 
       try {
          // @ts-ignore
