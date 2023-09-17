@@ -21,8 +21,6 @@ const CourseCreate: React.FC = () => {
    });
    const { genre } = useGenre();
 
-   console.log(genre);
-
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
 
@@ -79,6 +77,8 @@ const CourseCreate: React.FC = () => {
       formData.append("language", courseData.language);
       formData.append("type", courseData.type);
       formData.append("degree", courseData.degree);
+
+      console.log(formData.get("image"));
 
       try {
          // @ts-ignore

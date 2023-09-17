@@ -5,12 +5,12 @@ import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 import { BsBookmarkDash } from "react-icons/bs";
 
 interface CourseProps {
-   img ?: string;
+   img?: string;
    name?: string;
    price?: number;
    view?: string;
-   id ?: string;
-   rating ?: number
+   id?: string;
+   rating?: number;
 }
 
 const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, rating }) => {
@@ -44,12 +44,15 @@ const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, ra
                <Flex mt={4} gap={15}>
                   <Flex gap={5}>
                      <AiFillStar color="rgba(0, 106, 255, 1)" />
-                     {rating ? (<Title color="rgba(0, 106, 255, 1)" size={12}>
-                        {rating}
-                     </Title>): (<Title color="rgba(0, 106, 255, 1)" size={12}>
-                        500
-                     </Title>)}
-                     
+                     {rating ? (
+                        <Title color="rgba(0, 106, 255, 1)" size={12}>
+                           {rating}
+                        </Title>
+                     ) : (
+                        <Title color="rgba(0, 106, 255, 1)" size={12}>
+                           500
+                        </Title>
+                     )}
                   </Flex>
                   <Flex gap={2}>
                      <AiOutlineEye color="rgba(0, 106, 255, 1)" />
