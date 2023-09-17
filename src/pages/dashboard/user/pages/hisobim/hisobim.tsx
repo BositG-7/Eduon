@@ -14,6 +14,7 @@ const Hisobim: FunctionComponent<HisobimProps> = () => {
     return (
         <div className={style.container}>
             <div className={style.cards}>
+                
 
                 <div className={style['card-information']}>
                     <div className={`${style.balans} ${style.first}`}>

@@ -13,42 +13,79 @@ export namespace IEntity {
       img: string;
       review_count: number;
    }
+
+   export interface SingleCourse {
+      name: string;
+      description: string;
+      speaker: number;
+      comment: string;
+      video: string;
+   }
+
+   export interface Speaker {
+      first_name: string;
+      last_name: string;
+      email: string;
+      speaker: string;
+   }
 }
 
 export namespace IApi {
    export namespace Course {
 
-      export namespace Create{
+      export namespace Create {
          export interface Request {
             name: string;
-            description:string;
-            price?:string;
-            image:any;
-            keyword:string;
-            whosCourse:string;
-            view?:number;
-            discount?:number;
-            language?:string;
-            type?:string;
-            degree?:string;
-            speaker?:number;
-            category?:number;
+            description: string;
+            price?: string;
+            image: any;
+            keyword: string;
+            whosCourse: string;
+            view?: number;
+            discount?: number;
+            language?: string;
+            type?: string;
+            degree?: string;
+            speaker?: number;
+            category?: number;
 
          }
-         export interface Response{
+         export interface Response {
             name: string;
-            description:string;
-            price?:string;
-            image:any;
-            keyword:string;
-            whosCourse:string;
-            view?:number;
-            discount?:number;
-            language?:string;
-            type?:string;
-            degree?:string;
-            speaker?:number;
-            category?:number;            
+            description: string;
+            price?: string;
+            image: any;
+            keyword: string;
+            whosCourse: string;
+            view?: number;
+            discount?: number;
+            language?: string;
+            type?: string;
+            degree?: string;
+            speaker?: number;
+            category?: number;
+         }
+      }
+      export namespace GetCategory {
+
+         export interface Request{
+            page?:number;
+            page_size?:number;
+         }
+         export interface Response {
+            count: number;
+            next: string;
+            previous: string;
+            results: CategoryResults[];
+         }
+         export interface CategoryResults{
+            id?:number;
+            name:string;
+            lft?:number;
+            rght?:number;
+            tree_id?:number
+            level?:number
+            parent?:number
          }
       }
       export namespace List {
@@ -58,23 +95,38 @@ export namespace IApi {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.Course {}
+         export interface Response extends IEntity.SingleCourse { }
+      }
+
+      export namespace Speaker {
+         export interface Request {
+            id: string;
+         }
+         export interface Response extends IEntity.Speaker { }
       }
    }
 }
 
 export namespace IQuery {
-    export namespace Course {
+   export namespace Course {
       export interface List {
-        isLoading: boolean;
-        course: IEntity.Course[];
+         isLoading: boolean;
+         course: IEntity.Course[];
       }
-    }
-  }
+      export interface Single {
+         isLoading: boolean;
+         course: IEntity.SingleCourse[];
+      }
+
+      export interface Speaker {
+         isLoading: boolean;
+         teacher: IEntity.Speaker[];
+      }
+   }
+}
 
 
-  type User = 'firstName' | 'lastName' | 'age'
+type User = 'firstName' | 'lastName' | 'age'
 
-  type Person = Extract<User, 'firstName'>
+type Person = Extract<User, 'firstName'>
 
- 

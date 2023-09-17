@@ -1,23 +1,33 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import Sidebar from "layouts/sidebar";
-
-import { CreateCourse } from "./pages/index";
+import { Navbar } from "./components/index";
+import Sidebar from "./components/sidebar";
+import CreateCourse from "./pages/create-course/create-course";
 
 import style from "./styles/panel.module.scss";
 
 interface TeacherPanelProps { }
 
 const UserPanel = (props: TeacherPanelProps) => {
-    const s = "";
+   const i = 0;
 
-    return (
-        <div className={style.userPanel}>
-            <Sidebar />
+   return (
+      <div className={style.userPanel}>
+         <Sidebar />
+         <div className={style.main}>
             <div className={style.kurslarim}>
-                <CreateCourse/>
+
+               <Navbar
+                  links={[
+                     { link: "/", label: "Barchasi" },
+                     { link: "/", label: "Progresdagi" },
+                     { link: "/", label: "Saqlangan" },
+                     { link: "/", label: "Tugatilgan" }
+                  ]}
+               />
             </div>
-        </div>
-    );
+            <CreateCourse />
+         </div>
+      </div>
+   );
 };
 
 export default UserPanel;

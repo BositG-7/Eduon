@@ -136,7 +136,7 @@ const CourseCreate: React.FC = () => {
                     <Flex
                         justify="space-between"
                         pb="md">
-                        <TextInput
+                        <Select
                             label="Category"
                             name="category"
                             type='number'

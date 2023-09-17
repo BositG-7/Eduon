@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { Box, Button, Checkbox, Divider, Flex, InputBase, Title } from "@mantine/core";
+import React, { FunctionComponent } from "react";
+import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
 
 import { useList } from "../../../modules/kurslar/hooks/course-use-list";
@@ -10,6 +10,15 @@ interface KurslarProps {}
 
 const Kurslar: FunctionComponent<KurslarProps> = () => {
    const { course, isLoading } = useList();
+   const [value, setValue] = React.useState(50);
+
+   const marks = [
+      { value: 20, label: '' },
+      { value: 50, label: '' },
+      { value: 80, label: '' },
+    ];
+
+   console.log(course);
 
    return (
       <Box mb={50}>
@@ -40,19 +49,21 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
 
             <Divider my="lg" />
             <Flex gap={150} ml="20px">
-               <Flex sx={{ flexDirection: "column" }}>
+               <Flex w="15vw" sx={{ flexDirection: "column" }}>
                   <Title color="grey" size={16} mt={30}>
                      Narx
                   </Title>
-                  <Flex gap={10} sx={{ marginTop: "10px" }}>
-                     <Flex gap={10} sx={{ flexDirection: "column" }}>
-                        <Button>10.000</Button>
-                        <Button>100.000</Button>
-                     </Flex>
-                     <Flex gap={10} sx={{ flexDirection: "column" }}>
-                        <Button>1.000.000</Button>
-                        <Button>10.000.000</Button>
-                     </Flex>
+                  <Slider size={8}  marks={marks} value={value} onChange={setValue} pt={20} defaultValue={50} />
+                  <Title mt="md" size="sm">
+                     onChange value: <b>{value}</b>
+                  </Title>
+                  <Flex justify="space-between" pt={20}>
+                     <Title fw={500} size={12}>
+                        10.000 <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>so'm</span>{" "}
+                     </Title>
+                     <Title fw={500} size={12}>
+                        10,000,000 <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>so'm</span>{" "}
+                     </Title>
                   </Flex>
 
                   <Divider my="lg" />
@@ -185,20 +196,18 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
                      {
                         // @ts-ignore
-                        console.log(course.results)
                      }
                      {
                         // @ts-ignore
                         course.results?.map((item, idx) => {
                            if (idx > 8) {
-                              console.log(idx);
                               return;
                            }
 
                            // eslint-disable-next-line consistent-return
                            return (
                               <>
-                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} />
+                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} rating={item.rating} />
                               </>
                            );
                         })
@@ -216,3 +225,6 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
 };
 
 export default Kurslar;
+function useState(arg0: number): [any, any] {
+   throw new Error("Function not implemented.");
+}
