@@ -10,7 +10,7 @@ export namespace IEntity {
       name: string;
       price: number;
       view: number;
-      img: string;
+      image: string;
       review_count: number;
    }
    export interface GenreResults {
@@ -82,7 +82,7 @@ export namespace IApi {
          }
       }
       export namespace List {
-         export type Response = IEntity.Course[];
+         export type Response = IEntity.Course;
       }
       export namespace Single {
          export interface Request {
@@ -108,7 +108,7 @@ export namespace IQuery {
    export namespace Course {
       export interface List {
          isLoading: boolean;
-         course: IEntity.Course[];
+         course: IEntity.Course | null;
       }
       export interface Single {
          isLoading: boolean;
