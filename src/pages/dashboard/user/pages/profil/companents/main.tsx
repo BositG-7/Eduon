@@ -34,6 +34,7 @@ const Main: FunctionComponent<MainProps> = () => {
       about: user?.about || "",
       is_active: true,
       is_spiker: true,
+      job:user?.job||"",
       gender: user?.gender || ""
    });
 
@@ -126,13 +127,13 @@ const Main: FunctionComponent<MainProps> = () => {
 
                         <InputBase
                            label="Kasbingiz"
-                           placeholder="email"
-                           type="email"
+                           placeholder="Kasbingizni kriting..."
+                           type="text"
                            radius="sm"
                            sx={{
                               border: "none"
                            }}
-                           value={formValues.email}
+                           value={formValues.job}
                            onChange={e => handleInputChange("email", e.target.value)}
                         />
                      </Flex>
