@@ -28,6 +28,10 @@ export namespace IEntity {
       email: string;
       speaker: string;
    }
+
+   export interface Category {
+      
+   }
 }
 
 export namespace IApi {
@@ -99,6 +103,10 @@ export namespace IQuery {
       export interface Speaker {
          isLoading: boolean;
          teacher: IEntity.Speaker[];
+      }
+
+      export interface Category{
+
       }
    }
 }
