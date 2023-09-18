@@ -4,8 +4,10 @@ import { Application, Auth } from "pages";
 // eslint-disable-next-line import/no-named-as-default
 import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
 import SinglePageSpeaker from "pages/application/kurslar/single-page-speaker/single-page-speaker";
-import { TeacherPanel, UserPanel } from "pages/dashboard";
+import { Hisobim } from "pages/dashboard/user/pages";
+import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
+import Kurslarim from "pages/dashboard/user/pages/kurslarim/kurslarim";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
 import AuthProtected from "./auth-protected";
@@ -45,11 +47,12 @@ const Routes = () => {
          </Route>
 
          {/* Dashboard */}
-         <Route path="dashboard" element={<DashboardRoute allowed={!!user} redirectURL="/" />}>
-            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />}>
-               <Route />
-            </Route>
-            <Route path="user/kurs/:adminKursSingle" element={<SingleKurs />} />
+         <Route path="dashboard/user" element={<DashboardRoute allowed={!user?.isSpiker} redirectURL="/" />}>
+            <Route path="hisobim" element={<Hisobim />} />
+            <Route path="kurslarim" element={<Kurslarim />} />
+            <Route path="kurs-qoshish" element={<CourseCreate />} />
+
+            <Route path="kurs/:adminKursSingle" element={<SingleKurs />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user" />} />
          </Route>
