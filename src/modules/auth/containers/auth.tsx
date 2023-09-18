@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { LoadingOverlay } from "@mantine/core";
 import { clearSession } from "services/store";
 
@@ -12,6 +13,7 @@ interface AuthProps {
 
 const Auth = ({ children }: AuthProps) => {
    const [{ user, isLoading, verfication, isResetPassword }, setState] = useProfile();
+   const navigete = useNavigate();
 
    if (isLoading) return <LoadingOverlay visible overlayBlur={2} />;
 
@@ -20,6 +22,7 @@ const Auth = ({ children }: AuthProps) => {
       logout: () => {
          clearSession();
          setState(prev => ({ ...prev, user: null, verfication: false }));
+         navigete("/");
       },
       getEmail: () => {
          setState(prev => ({ ...prev, verfication: true }));

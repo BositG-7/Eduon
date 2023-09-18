@@ -8,6 +8,7 @@ import { Hisobim } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
 import Kurslarim from "pages/dashboard/user/pages/kurslarim/kurslarim";
+import { Profile } from "pages/dashboard/user/pages/profil";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
 import AuthProtected from "./auth-protected";
@@ -51,10 +52,11 @@ const Routes = () => {
             <Route path="hisobim" element={<Hisobim />} />
             <Route path="kurslarim" element={<Kurslarim />} />
             <Route path="kurs-qoshish" element={<CourseCreate />} />
+            <Route path="profil" element={<Profile />} />
 
             <Route path="kurs/:adminKursSingle" element={<SingleKurs />} />
 
-            <Route path="*" index element={<Navigate to="/dashboard/user" />} />
+            <Route path="*" index element={<Navigate to="/dashboard/user/hisobim" />} />
          </Route>
 
          <Route path="*" element={<Navigate to={user ? "/" : "/auth/login"} />} />

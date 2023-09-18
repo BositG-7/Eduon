@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  createStyles,  getStylesRef,   Navbar, rem } from "@mantine/core";
+import { createStyles, getStylesRef, Navbar, rem } from "@mantine/core";
 // eslint-disable-next-line import/order
 import { BiFolderMinus } from "react-icons/bi";
-import {  BsPerson } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const useStyles = createStyles(theme => ({
@@ -13,7 +13,6 @@ const useStyles = createStyles(theme => ({
       marginBottom: `calc(${theme.spacing.md} * 1.5)`,
       borderBottom: `${rem(2)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`
    },
-
 
    link: {
       ...theme.fn.focusStyles(),
@@ -50,14 +49,14 @@ const useStyles = createStyles(theme => ({
             color: "#3629B7"
          }
       }
-   },
-
-   
+   }
 }));
 
 const data = [
-   { link: "/dashboard/hospitals", label: "Kurslarim", icon: BiFolderMinus },
-   { link: "/dashboard/booking", label: "Profil", icon: BsPerson }
+   { link: "/dashboard/user/kurslarim", label: "Kurslarim", icon: BiFolderMinus },
+   { link: "/dashboard/user/profil", label: "Profil", icon: BsPerson },
+   { link: "/dashboard/user/hisobim", label: "Hisobim", icon: BsPerson },
+   { link: "/dashboard/user/kurs-qoshish", label: "Kurs-qoshish", icon: BsPerson }
 ];
 
 function Sidebar() {
@@ -109,10 +108,7 @@ function Sidebar() {
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
                <Navbar sx={{ height: "100vh" }} width={{ sm: 260 }} p="md">
-                  <Navbar.Section grow>
-                     {links}
-                  </Navbar.Section>
-                  
+                  <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
             </>
          )}
