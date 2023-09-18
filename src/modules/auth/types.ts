@@ -18,9 +18,9 @@ export namespace IEntity {
    }
    export interface Tokens {
       email: any;
-      access: string
-      refresh: string
-    }
+      access: string;
+      refresh: string;
+   }
 }
 export namespace IForm {
    export interface Login {
@@ -50,6 +50,22 @@ export namespace IForm {
       activation_code: string;
       new_password: string;
       confirm_password: string;
+   }
+
+   export interface UserProfil {
+      first_name?: string;
+      last_name?: string;
+      birthday?: string;
+      gender?: string;
+      phone?: string;
+      image: string;
+      balance: string;
+      email: string;
+      job?: string;
+      username: string;
+      about: string;
+      is_active: boolean;
+      is_spiker: boolean;
    }
 }
 
@@ -90,11 +106,10 @@ export namespace IApi {
       };
    }
    export namespace Checkpassword {
-      export type Request ={
-         email:string
-         activation_code:number | null
-        
-      }
+      export type Request = {
+         email: string;
+         activation_code: number | null;
+      };
    }
 }
 export namespace IContext {
@@ -110,4 +125,4 @@ export namespace IContext {
          getPassword: () => void;
       };
    }
- }
+}
