@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes as Switch } from "react-router-dom";
 import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
-// eslint-disable-next-line import/no-named-as-default
 import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
 import SinglePageSpeaker from "pages/application/kurslar/single-page-speaker/single-page-speaker";
+import TeachePanel from "pages/dashboard/teacher/pages/teacherPanel/teacherPanel";
 import { Hisobim } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
@@ -58,6 +58,10 @@ const Routes = () => {
 
             <Route path="*" index element={<Navigate to="/dashboard/user/hisobim" />} />
          </Route>
+         <Route path="dashboard/teacher" element={<TeachePanel/>} />
+           
+
+         
 
          <Route path="*" element={<Navigate to={user ? "/" : "/auth/login"} />} />
       </Switch>

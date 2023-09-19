@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import * as yup from "yup";
-import { Box, Button, Flex, InputBase, Paper, Radio } from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
@@ -32,10 +32,10 @@ const Main: FunctionComponent<MainProps> = () => {
       username: user?.username || "",
       birthday: user?.birthday || "",
       about: user?.about || "",
-      is_active: true,
-      is_spiker: true,
+      is_active: !!user?.isActive,
+      is_spiker: !!user?.isSpiker,
       job: user?.job || "",
-      gender: user?.gender || ""
+    
    });
 
    const handleInputChange = (name: string, value: string) => {
@@ -64,7 +64,7 @@ const Main: FunctionComponent<MainProps> = () => {
 
    return (
       <div>
-         <Box h="100vh" w="70%" sx={{ display: "flex", justifyContent: "start", alignItems: "start" }}>
+         <Box h="100vh" w="100%" sx={{ display: "flex", justifyContent: "start", alignItems: "start" }}>
             <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSumbit}>
                <Paper bg="var(--paper-bg)" w="100%">
                   <Flex gap={20} align="center" p={20}>
@@ -130,7 +130,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         />
 
                         <InputBase
-                           label="Kasbingiz"
+                           label="Kasbi/status"
                            placeholder="Kasbingizni kriting..."
                            type="text"
                            radius="sm"
@@ -143,29 +143,8 @@ const Main: FunctionComponent<MainProps> = () => {
                      </Flex>
                   </Flex>
                </Paper>
-               <Paper bg="var(--paper-bg)" w="92%" sx={{ marginLeft: "20px" }}>
-                  <Radio.Group label="Jinsi">
-                     <Flex sx={{ gap: "20px" }}>
-                        <Radio
-                           label="O'g'il"
-                           value="O'g'il"
-                           labelPosition="left"
-                           style={radio}
-                           checked={formValues.gender === "O'g'il"}
-                           onChange={() => handleInputChange("gender", "O'g'il")}
-                        />
-                        <Radio
-                           label="Qiz"
-                           value="Qiz"
-                           labelPosition="left"
-                           style={radio}
-                           checked={formValues.gender === "Qiz"}
-                           onChange={() => handleInputChange("gender", "Qiz")}
-                        />
-                     </Flex>
-                  </Radio.Group>
-               </Paper>
-               <Flex>
+            
+               <Flex gap={20} justify="center" align="center" >
                   <Button
                      type="submit"
                      sx={{
@@ -174,7 +153,6 @@ const Main: FunctionComponent<MainProps> = () => {
                         backgroundColor: "rgba(231, 240, 255, 1)",
                         fontSize: "20px",
                         marginTop: "40px",
-                        marginLeft: "190px",
                         "&:hover": {
                            color: "white"
                         }

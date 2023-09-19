@@ -1,3 +1,4 @@
+
 import { GENDER, JOB } from "./constants";
 
 export namespace IEntity {
@@ -109,6 +110,23 @@ export namespace IApi {
       export type Request = {
          email: string;
          activation_code: number | null;
+      };
+   };
+   export namespace EditProfil{
+      export type Request={
+         first_name?:string;
+         last_name?:string;
+         phone?:string;
+         image?:string;
+         balance?:string;
+         email:string;
+         username:string;
+         gender?:string;
+         job?:string;
+         birthday?:string;
+         about?:string;
+         is_active?:boolean;
+         is_spiker?:boolean;
       };
    }
 }
