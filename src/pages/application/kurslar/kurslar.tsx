@@ -26,7 +26,8 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const marks = [
       { value: 20, label: "" },
       { value: 50, label: "" },
-      { value: 80, label: "" }
+      { value: 80, label: "" },
+      { value: 1000, label: "1000" }
    ];
 
    return (
@@ -62,7 +63,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   <Title color="grey" size={16} mt={30}>
                      Narx
                   </Title>
-                  <Slider size={8} marks={marks} value={value} onChange={setValue} pt={20} defaultValue={50} />
+                  <Slider max={1000} size={8} marks={marks} value={value} onChange={setValue} pt={20} defaultValue={10000} />
                   <Title mt="md" size="sm">
                      onChange value: {value}
                   </Title>
