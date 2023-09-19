@@ -14,6 +14,7 @@ import Kurslarim from "pages/dashboard/user/pages/kurslarim/kurslarim";
 import { Profile } from "pages/dashboard/user/pages/profil";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
+import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
 
@@ -59,10 +60,11 @@ const Routes = () => {
             <Route path="*" index element={<Navigate to="/dashboard/user/kurslarim" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<UserRoute allowed={!!user?.isSpiker} redirectURL="/" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/teacher" />}>
             <Route path="kurslarim" element={<KurslarimList />} />
             <Route path="malumotla" element={<Malumotlar />} />
             <Route path="moliya" element={<Moliya />} />
+            <Route path="profil" element={<Profile />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/kurslarim" />} />
          </Route>
@@ -71,11 +73,11 @@ const Routes = () => {
             path="dashboard"
             element={
                // eslint-disable-next-line no-nested-ternary
-               user ? user.isSpiker ? <Navigate to="/dashboard/user" /> : <Navigate to="/dashboard/teacher" /> : <Navigate to="/auth/login" />
+               user ? user.isSpiker ? <Navigate to="/dashboard/teacher" /> : <Navigate to="/dashboard/user" /> : <Navigate to="/auth/login" />
             }
          />
 
-         <Route path="*" element={<Navigate to={user ? "/" : "/auth/login"} />} />
+         <Route path="*" element={<Navigate to={user ? "/dashboard" : "/auth/login"} />} />
       </Switch>
    );
 };
