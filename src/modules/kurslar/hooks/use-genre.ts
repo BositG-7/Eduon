@@ -3,19 +3,20 @@ import { notifications } from "@mantine/notifications";
 
 import { Api, Types } from "..";
 
-export const useList = () => {
-   const [state, setState] = useState<Types.IQuery.Course.List>({ isLoading: true, course: null });
+export const useGenre = () => {
+   const [state, setState] = useState<Types.IQuery.Course.Genre>({ isLoading: true, genre: [] });
 
    useEffect(() => {
       const request = async () => {
          try {
-            const { data } = await Api.Course.List();
-            const course = data;
+            const { data } = await Api.Course.Genre();
+            const genre = data;
 
-            setState({ course, isLoading: false });
+            // @ts-ignore
+            setState({ genre, isLoading: false });
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
-            setState({ course: null, isLoading: false });
+            setState({ genre: [], isLoading: false });
          }
       };
 

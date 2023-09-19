@@ -3,6 +3,9 @@ import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "
 import { useList } from "modules/kurslar/hooks/course-use-list";
 // eslint-disable-next-line import/order
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
+import { Paginated } from "utils/paginate";
+
+import Paginate from "components/pagination";
 
 import Course from "./components/course";
 
@@ -12,14 +15,20 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const { course, isLoading } = useList();
    const [value, setValue] = React.useState(50);
 
-   const [activePage, setPage] = React.useState(1);
+   const [pageSize, setPageSize] = React.useState<number>(9);
+   const [currentPage, setCurrentPage] = React.useState<number>(1);
+   const handlePageChange = (page: number) => {
+      setCurrentPage(page);
+      console.log(page);
+   };
+
+   const paginated = Paginated({ currentPage, pageSize });
 
    const marks = [
       { value: 20, label: "" },
       { value: 50, label: "" },
       { value: 80, label: "" }
    ];
-
 
    return (
       <Box mb={50}>
@@ -194,30 +203,16 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                         Dasturlash
                      </Button>
                   </Flex>
-                  <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
-                     
-                     {
-                        // @ts-ignore
-                     }
-                     {
-                        // @ts-ignore
-                        course.results?.map((item, idx) => {
-                           if (idx > 8) {
-                              return;
-                           }
+                  <Flex align="center" sx={{ flexDirection: "column" }}>
+                     <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
+                        {paginated.map(item => (
+                           <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
+                        ))}
+                     </Box>
 
-                           // eslint-disable-next-line consistent-return
-                           return (
-                              <>
-                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} rating={item.rating} />
-                              </>
-                           );
-                        })
-                     }
-                  </Box>
-
-                  
-              
+                     {/* @ts-ignore */}
+                     <Paginate total={course?.results?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                  </Flex>
                </Flex>
             </Flex>
          </Flex>
