@@ -9,7 +9,7 @@ export const Course = {
    Single: (id: string) => http.get<IApi.Course.Single.Response>(`/course_detail/${id}`),
 
    Speaker: (id: string) => http.get<IApi.Course.Speaker.Response>(`/speaker_profile/${id}`),
-   Genre: () => http.get<IApi.Course.Genre.Response>(`/category`)
+   Category: () => http.get<IApi.Course.Category.Response>(`/category`)
 };
 
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>

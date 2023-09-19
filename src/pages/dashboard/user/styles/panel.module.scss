@@ -23,5 +23,11 @@
    display: flex;
    flex-direction: column;
    row-gap: 36px;
+   position: relative;
    padding: 0px 26px 60px 26px;
+}
+
+
+.main{
+   width: 100%;
 }

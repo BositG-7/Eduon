@@ -13,7 +13,7 @@ export namespace IEntity {
       image: string;
       review_count: number;
    }
-   export interface GenreResults {
+   export interface CategoryResults {
       id: number;
       name: string;
       lft: number;
@@ -37,11 +37,13 @@ export namespace IEntity {
       email: string;
       speaker: string;
    }
-   export interface Genre {
+   export interface Category {
+      id: any;
+      name: any;
       count: number;
       next: string | number;
       previous: number;
-      results: GenreResults[];
+      results: CategoryResults[];
    }
 }
 
@@ -49,29 +51,29 @@ export namespace IApi {
    export namespace Course {
       export namespace Create {
          export interface Request {
-            // name: string;
-            // description: string;
-            // price?: string;
-            // image: any;
-            // keyword: string;
-            // whosCourse: string;
-            // view?: number;
-            // discount?: number;
-            // language?: string;
-            // type?: string;
-            // degree?: string;
-            // speaker?: number;
-            // category?: number;
+            name: string;
+            description: string;
+            price?: string;
+            image: any[];
+            key_word: string;
+            whos_course: string;
+            view?: number;
+            discount?: number;
+            language?: string;
+            type?: string;
+            degree?: string;
+            speaker?: number;
+            category?: number;
 
-            formData: any;
+         
          }
          export interface Response {
             name: string;
             description: string;
             price?: string;
-            image: any;
-            keyword: string;
-            whosCourse: string;
+            image: any[];
+            key_word: string;
+            whos_course: string;
             view?: number;
             discount?: number;
             language?: string;
@@ -88,18 +90,18 @@ export namespace IApi {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.SingleCourse {}
+         export interface Response extends IEntity.SingleCourse { }
       }
 
       export namespace Speaker {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.Speaker {}
+         export interface Response extends IEntity.Speaker { }
       }
-      export namespace Genre {
+      export namespace Category {
          export interface Request {}
-         export interface Response extends IEntity.Genre {}
+         export interface Response extends IEntity.Category {}
       }
    }
 }
@@ -119,13 +121,13 @@ export namespace IQuery {
          isLoading: boolean;
          teacher: IEntity.Speaker[];
       }
-      export interface Genre {
-         isLoading: boolean;
-         genre: IEntity.Genre[];
+      export interface Category {
+         isLoading?: boolean;
+         category: IEntity.Category[];
       }
    }
 }
 
 type User = "firstName" | "lastName" | "age";
+type Person = Extract<User, 'firstName'>
 
-type Person = Extract<User, "firstName">;
