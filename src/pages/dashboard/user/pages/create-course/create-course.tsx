@@ -1,25 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, FileInput, Flex, Paper, Select, Textarea, TextInput } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 import { CreateCourse } from "modules/kurslar/api";
+import { useCategory } from "modules/kurslar/hooks/use-category";
 
 const CourseCreate: React.FC = () => {
     const [courseData, setCourseData] = useState({
         name: "",
         description: "",
         price: "",
-        keyword: "",
-        whosCourse: "",
+        key_word: "",
+        whos_course: "",
         view: 0,
         discount: 0,
         category: 0,
         language: "",
-        speaker: 0,
+        speaker: 1,
         type: "",
         degree: "",
-        image: []
+        image: [],
     });
+    const { category } = useCategory();
+    const [categoryOptions, setCategory]: any = useState([])
+
+    useEffect(() => {
+        // @ts-expect-error
+
+        if (Array.isArray(category.results)) {
+            // @ts-expect-error
+            const categoryOptions1 = category.results.map((item: any) => ({
+                label: item.name, value:
+                    item.id
+            }));
+
+            setCategory(categoryOptions1)
+        } else {
+            notifications.show({ message: "Category is not an array", color: "red" });
+
+        }
+    }, [category])
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+
         const { name, value } = e.target;
 
         setCourseData({
@@ -35,9 +57,11 @@ const CourseCreate: React.FC = () => {
                 [name]: value
             });
         } else {
-            console.error("Value is null");
+            notifications.show({ message: "Value is null", color: "red" });
+
         }
     };
+
     const handleImageUpload = (files: any) => {
         if (files) {
             setCourseData({
@@ -46,58 +70,27 @@ const CourseCreate: React.FC = () => {
                 image: [files]
             });
         } else {
-            console.error("No file selected");
+            notifications.show({ message: "No file selected", color: "red" });
+
         }
     };
-    const sendCourseData = async () => {
-        try {
-            // @ts-ignore
 
-            const response = await CreateCourse(courseData);
 
-            console.log("Response from server:", response.data);
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        console.log(courseData);
-
-        const formData = new FormData();
-
-        formData.append("name", courseData.name);
-        formData.append("description", courseData.description);
-        formData.append("price", courseData.price);
-        formData.append("whosCourse", courseData.whosCourse);
-        formData.append("keyword", courseData.keyword);
-        if (courseData.image.length > 0) {
-            for (let i = 0; i < courseData.image.length; i++) {
-                formData.append("image", courseData.image[i]);
-            }
-        }
-        // @ts-ignore
-        formData.append("category", +courseData.category);
-        // @ts-ignore
-
-        formData.append("discount", +courseData.discount);
-        formData.append("language", courseData.language);
-        formData.append("type", courseData.type);
-        formData.append("degree", courseData.degree);
-
-        console.log(formData.get("price"));
-        console.log(formData.get("image"));
+        // eslint-disable-next-line prefer-destructuring
+        courseData.image = courseData.image[0]
 
         try {
-            // @ts-ignore
+            const response = await CreateCourse(courseData);
 
-            const response = await CreateCourse(formData);
+            notifications.show({ message: "Course created successfully", color: "green" });
 
-            console.log("Response from server:", response.data);
-        } catch (error) {
-            console.error("Error:", error);
+        } catch (error: any) {
+
+            notifications.show({ message: error.message, color: "red" });
         }
     };
 
@@ -138,8 +131,8 @@ const CourseCreate: React.FC = () => {
                     <Flex justify="space-between" pb="md">
                         <TextInput
                             label="Whos Course"
-                            name="whosCourse"
-                            value={courseData.whosCourse}
+                            name="whos_course"
+                            value={courseData.whos_course}
                             w="60%"
                             placeholder="Write course mentor"
                             onChange={handleInputChange}
@@ -157,22 +150,21 @@ const CourseCreate: React.FC = () => {
                     </Flex>
                     <TextInput
                         label="Keyword"
-                        name="keyword"
-                        value={courseData.keyword}
+                        name="key_word"
+                        value={courseData.key_word}
                         placeholder="Write keywords ex: #python"
                         onChange={handleInputChange}
                         pb="md"
                         required
                     />
                     <Flex justify="space-between" pb="md">
-                        <TextInput
+                        <Select
                             label="Category"
                             name="category"
-                            type="number"
-                            value={courseData.category}
+                            data={categoryOptions}
                             w="60%"
                             placeholder="Write course category"
-                            onChange={handleInputChange}
+                            onChange={value => handleSelectChange('category', value)}
                         />
                         <TextInput
                             label="Discount"
@@ -188,7 +180,7 @@ const CourseCreate: React.FC = () => {
                         <Select
                             label="Language"
                             name="language"
-                            data={["russian", "english", "uzbek"]}
+                            data={["ru", "en", "uz"]}
                             value={courseData.language}
                             placeholder="Select a language"
                             onChange={value => handleSelectChange("language", value)}

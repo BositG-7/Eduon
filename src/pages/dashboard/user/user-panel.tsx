@@ -23,7 +23,8 @@ const UserPanel = (props: TeacherPanelProps) => {
                   ]}
                />
             </div>
-            <CourseCreate />
+         <CourseCreate />
+            
          </div>
       </div>
    );

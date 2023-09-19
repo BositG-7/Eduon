@@ -7,7 +7,7 @@ export const Results = (item: any): IEntity.Results => ({
    name: get(item, "name"),
    price: get(item, "price"),
    view: get(item, "view"),
-   img: get(item, "image"),
+   image: get(item, "image"),
    review_count: get(item, "review_count")
 });
 

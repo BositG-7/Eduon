@@ -9,12 +9,10 @@ export const useSingle = (id: string) => {
    useEffect(() => {
       const request = async () => {
          try {
-            console.log(id);
 
             const { data } = await Api.Course.Single(id);
             const course = data;
 
-            console.log(data);
             // @ts-ignore
             setState({ course, isLoading: false });
          } catch (err: any) {

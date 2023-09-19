@@ -10,8 +10,17 @@ export namespace IEntity {
       name: string;
       price: number;
       view: number;
-      img: string;
+      image: string;
       review_count: number;
+   }
+   export interface CategoryResults {
+      id: number;
+      name: string;
+      lft: number;
+      rght: number;
+      tree_id: number;
+      level: number;
+      parent: number;
    }
 
    export interface SingleCourse {
@@ -28,9 +37,13 @@ export namespace IEntity {
       email: string;
       speaker: string;
    }
-
    export interface Category {
-      
+      id: any;
+      name: any;
+      count: number;
+      next: string | number;
+      previous: number;
+      results: CategoryResults[];
    }
 }
 
@@ -41,9 +54,9 @@ export namespace IApi {
             name: string;
             description: string;
             price?: string;
-            image: any;
-            keyword: string;
-            whosCourse: string;
+            image: any[];
+            key_word: string;
+            whos_course: string;
             view?: number;
             discount?: number;
             language?: string;
@@ -52,15 +65,15 @@ export namespace IApi {
             speaker?: number;
             category?: number;
 
-            formData: any;
+         
          }
          export interface Response {
             name: string;
             description: string;
             price?: string;
-            image: any;
-            keyword: string;
-            whosCourse: string;
+            image: any[];
+            key_word: string;
+            whos_course: string;
             view?: number;
             discount?: number;
             language?: string;
@@ -71,7 +84,7 @@ export namespace IApi {
          }
       }
       export namespace List {
-         export type Response = IEntity.Course[];
+         export type Response = IEntity.Course;
       }
       export namespace Single {
          export interface Request {
@@ -86,6 +99,10 @@ export namespace IApi {
          }
          export interface Response extends IEntity.Speaker { }
       }
+      export namespace Category {
+         export interface Request {}
+         export interface Response extends IEntity.Category {}
+      }
    }
 }
 
@@ -93,7 +110,7 @@ export namespace IQuery {
    export namespace Course {
       export interface List {
          isLoading: boolean;
-         course: IEntity.Course[];
+         course: IEntity.Course | null;
       }
       export interface Single {
          isLoading: boolean;
@@ -104,9 +121,9 @@ export namespace IQuery {
          isLoading: boolean;
          teacher: IEntity.Speaker[];
       }
-
-      export interface Category{
-
+      export interface Category {
+         isLoading?: boolean;
+         category: IEntity.Category[];
       }
    }
 }

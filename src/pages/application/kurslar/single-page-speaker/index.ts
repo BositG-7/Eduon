@@ -1,0 +1,1 @@
+export { default as SingleCoursePage } from "./single-page-speaker";

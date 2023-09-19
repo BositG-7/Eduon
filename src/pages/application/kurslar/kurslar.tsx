@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "@mantine/core";
+import { Box, Button, Checkbox, Divider, Flex, InputBase, Pagination, Slider, Title } from "@mantine/core";
 import { useList } from "modules/kurslar/hooks/course-use-list";
 // eslint-disable-next-line import/order
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
@@ -12,13 +12,13 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const { course, isLoading } = useList();
    const [value, setValue] = React.useState(50);
 
+   const [activePage, setPage] = React.useState(1);
+
    const marks = [
       { value: 20, label: "" },
       { value: 50, label: "" },
       { value: 80, label: "" }
    ];
-
-   console.log(course);
 
    return (
       <Box mb={50}>
@@ -194,29 +194,55 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      </Button>
                   </Flex>
                   <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
-                     {
-                        // @ts-ignore
-                     }
-                     {
-                        // @ts-ignore
+                     {course &&
+                        course.results &&
                         course.results?.map((item, idx) => {
                            if (idx > 8) {
-                              return;
+                              return null;
                            }
 
-                           // eslint-disable-next-line consistent-return
                            return (
-                              <>
-                                 <Course id={item.id} img={item.image} price={item.price} name={item.name} view={item.view} rating={item.rating} />
-                              </>
+                              <Course
+                                 key={item.id}
+                                 id={String(item.id)}
+                                 img={item.image}
+                                 price={item.price}
+                                 name={item.name}
+                                 view={String(item.view)}
+                              />
                            );
-                        })
-                     }
+                        })}
                   </Box>
+                  <Pagination
+                     pt={50}
+                     value={activePage}
+                     onChange={setPage}
+                     total={10}
+                     getItemProps={page => ({
+                        component: "a",
+                        href: `#page-${page}`
+                     })}
+                     getControlProps={control => {
+                        if (control === "first") {
+                           return { component: "a", href: "#page-0" };
+                        }
 
-                  <Button mt={40} size="lg" w={200}>
-                     Yana ko'rish
-                  </Button>
+                        if (control === "last") {
+                           return { component: "a", href: "#page-10" };
+                        }
+
+                        if (control === "next") {
+                           return { component: "a", href: "#page-2" };
+                        }
+
+                        if (control === "previous") {
+                           return { component: "a", href: "#page-1" };
+                        }
+
+                        return {};
+                     }}
+                  />
+                  ;
                </Flex>
             </Flex>
          </Flex>
@@ -225,6 +251,3 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
 };
 
 export default Kurslar;
-function useState(arg0: number): [any, any] {
-   throw new Error("Function not implemented.");
-}

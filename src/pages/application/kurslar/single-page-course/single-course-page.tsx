@@ -23,8 +23,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { speaker } = course;
    const { teacher } = useSpeaker(speaker);
 
-   console.log(course)
-   console.log(teacher);
    // @ts-ignore
    if (course && course.video && course.video[0]) {
       // @ts-ignore
@@ -35,7 +33,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    // @ts-ignore
 
-   console.log(course);
    return (
       <Box pl={100} pt={20}>
          <Flex justify="space-between" pr={100}>
