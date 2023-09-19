@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { KurslarimList } from "./pages/index";
-import Moliya from "./pages/moliya";
+
+import Malumotlar from "./pages/malumotlar";
 import { Sidebar } from "./components";
 
 import style from "./styles/panel.module.scss";
@@ -14,8 +14,7 @@ const TeacherPanel = (props: TeacherPanelProps) => {
       <div className={style.teacherPanel}>
          <Sidebar />
          <div className={style.main}>
-            <KurslarimList />
-            <Moliya />
+            <Malumotlar />
          </div>
       </div>
    );

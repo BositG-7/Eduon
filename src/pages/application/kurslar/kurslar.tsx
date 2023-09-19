@@ -19,7 +19,6 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const [currentPage, setCurrentPage] = React.useState<number>(1);
    const handlePageChange = (page: number) => {
       setCurrentPage(page);
-      console.log(page);
    };
 
    const paginated = Paginated({ currentPage, pageSize });
@@ -65,7 +64,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   </Title>
                   <Slider size={8} marks={marks} value={value} onChange={setValue} pt={20} defaultValue={50} />
                   <Title mt="md" size="sm">
-                     onChange value: <b>{value}</b>
+                     onChange value: {value}
                   </Title>
                   <Flex justify="space-between" pt={20}>
                      <Title fw={500} size={12}>
