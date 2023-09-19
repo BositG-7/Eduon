@@ -3,7 +3,7 @@ import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
 import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
 import SinglePageSpeaker from "pages/application/kurslar/single-page-speaker/single-page-speaker";
-import TeachePanel from "pages/dashboard/teacher/pages/teacherPanel/teacherPanel";
+import { Profil } from "pages/dashboard/teacher/pages/teacherPanel";
 import { Hisobim } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
@@ -58,7 +58,7 @@ const Routes = () => {
 
             <Route path="*" index element={<Navigate to="/dashboard/user/hisobim" />} />
          </Route>
-         <Route path="dashboard/teacher" element={<TeachePanel/>} />
+         <Route path="dashboard/teacher" element={<Profil/>} />
            
 
          

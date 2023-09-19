@@ -1,2 +1,2 @@
 
-export { default as TeacherPanel } from "./teacherPanel";
+export { default as Profil } from "./Profil";

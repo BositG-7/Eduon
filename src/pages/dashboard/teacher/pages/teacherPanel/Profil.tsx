@@ -5,11 +5,10 @@ import { useAuth } from "modules/auth/context";
 import { Img, Main } from "./companents";
 
 
-interface TeachePanelProps {
-    
-}
+interface ProfilProps {}
  
-const TeachePanel: FunctionComponent<TeachePanelProps> = () => {
+const Profil: FunctionComponent<ProfilProps> = () => {
+    
     const { user } =useAuth()
 
     return ( 
@@ -24,4 +23,4 @@ const TeachePanel: FunctionComponent<TeachePanelProps> = () => {
              );
 }
  
-export default TeachePanel;
+export default Profil;
