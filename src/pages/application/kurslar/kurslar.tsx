@@ -1,8 +1,11 @@
 import React, { FunctionComponent } from "react";
-import { Box, Button, Checkbox, Divider, Flex, InputBase, Pagination, Slider, Title } from "@mantine/core";
+import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "@mantine/core";
 import { useList } from "modules/kurslar/hooks/course-use-list";
 // eslint-disable-next-line import/order
 import { AiFillStar, AiOutlineSend } from "react-icons/ai";
+import { Paginated } from "utils/paginate";
+
+import Paginate from "components/pagination";
 
 import Course from "./components/course";
 
@@ -12,7 +15,14 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const { course, isLoading } = useList();
    const [value, setValue] = React.useState(50);
 
-   const [activePage, setPage] = React.useState(1);
+   const [pageSize, setPageSize] = React.useState<number>(9);
+   const [currentPage, setCurrentPage] = React.useState<number>(1);
+   const handlePageChange = (page: number) => {
+      setCurrentPage(page);
+      console.log(page);
+   };
+
+   const paginated = Paginated({ currentPage, pageSize });
 
    const marks = [
       { value: 20, label: "" },
@@ -193,56 +203,16 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                         Dasturlash
                      </Button>
                   </Flex>
-                  <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
-                     {course &&
-                        course.results &&
-                        course.results?.map((item, idx) => {
-                           if (idx > 8) {
-                              return null;
-                           }
+                  <Flex align="center" sx={{ flexDirection: "column" }}>
+                     <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
+                        {paginated.map(item => (
+                           <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
+                        ))}
+                     </Box>
 
-                           return (
-                              <Course
-                                 key={item.id}
-                                 id={String(item.id)}
-                                 img={item.image}
-                                 price={item.price}
-                                 name={item.name}
-                                 view={String(item.view)}
-                              />
-                           );
-                        })}
-                  </Box>
-                  <Pagination
-                     pt={50}
-                     value={activePage}
-                     onChange={setPage}
-                     total={10}
-                     getItemProps={page => ({
-                        component: "a",
-                        href: `#page-${page}`
-                     })}
-                     getControlProps={control => {
-                        if (control === "first") {
-                           return { component: "a", href: "#page-0" };
-                        }
-
-                        if (control === "last") {
-                           return { component: "a", href: "#page-10" };
-                        }
-
-                        if (control === "next") {
-                           return { component: "a", href: "#page-2" };
-                        }
-
-                        if (control === "previous") {
-                           return { component: "a", href: "#page-1" };
-                        }
-
-                        return {};
-                     }}
-                  />
-                  ;
+                     {/* @ts-ignore */}
+                     <Paginate total={course?.results?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                  </Flex>
                </Flex>
             </Flex>
          </Flex>
