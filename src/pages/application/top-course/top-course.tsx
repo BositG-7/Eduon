@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CourseTop } from "modules/kurslar/api";
 
 import Footer from "components/footer";
@@ -28,6 +29,8 @@ export interface TopCoursess {
 function TopCourses() {
    const [pricing, setPricing] = useState<TopCoursess[]>();
 
+   const navigete = useNavigate();
+
    useEffect(() => {
       const fetch = async () => {
          const { data }: any = await CourseTop();
@@ -50,8 +53,17 @@ function TopCourses() {
             <div className="boxes">
                {/* @ts-ignore */}
                {pricing?.map(item => (
-                  // @ts-ignore
-                  <div className="box" key={item.id}>
+                  <div
+                     className="box"
+                     onClick={() => {
+                        console.log("qdqwdwdq");
+                        // @ts-ignore
+
+                        navigete(`/kurslar/kurs/${item.id}`);
+                     }}
+                     // @ts-ignore
+                     key={item.id}
+                  >
                      {/* @ts-ignore */}
                      <img src={item.image} alt="banner" />
                      <div className="text">
