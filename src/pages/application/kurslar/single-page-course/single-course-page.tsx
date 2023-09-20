@@ -20,7 +20,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const navigete = useNavigate();
    const { course } = useSingle(kursID);
    // @ts-ignore
-   const { speaker } = course;
+   const { speaker = 2 }: number = course;
+
    const { teacher } = useSpeaker(speaker);
 
    // @ts-ignore

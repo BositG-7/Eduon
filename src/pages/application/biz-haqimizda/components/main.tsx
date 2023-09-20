@@ -38,7 +38,8 @@ const Main: FunctionComponent<MainProps> = () => {
                         fontWeight: 500
                      }}
                   >
-                     EduOn MFaktor tomonidan har kimga, hamma joyda hayotni o'zgartiradigan ta'lim tajribalarini taqdim etish niyatida asos solingan.
+                     InfoNex MFaktor tomonidan har kimga, hamma joyda hayotni o'zgartiradigan ta'lim tajribalarini taqdim etish niyatida asos
+                     solingan.
                   </Text>
                   <Text
                      sx={{
@@ -62,7 +63,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         fontWeight: 500
                      }}
                   >
-                     O'zbekistonning dan ortiq eng yaxshi universitetlari va soha o'qituvchilari EduOn bilan hamkorlik qilib, kurslar,
+                     O'zbekistonning dan ortiq eng yaxshi universitetlari va soha o'qituvchilari InfoNex bilan hamkorlik qilib, kurslar,
                      mutaxassisliklar, sertifikatlar va diplom dasturlarini taklif qilmoqdalar.
                   </Text>
                </Flex>
@@ -91,7 +92,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         fontWeight: 500
                      }}
                   >
-                     EduOn dagi har bir kursni jahon miqyosidagi universitetlar va kompaniyalarning ustozlari o'qitadilar, shuning uchun siz istagan
+                     InfoNex dagi har bir kursni jahon miqyosidagi universitetlar va kompaniyalarning ustozlari o'qitadilar, shuning uchun siz istagan
                      vaqtingizda va istagan joyda yangi narsalarni o'rganishingiz mumkin.
                   </Text>
                   <Text
