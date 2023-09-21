@@ -9,17 +9,21 @@ interface ProfilProps {}
 const Profil: FunctionComponent<ProfilProps> = () => {
    const { user } = useAuth();
 
+
    return (
       <Box>
-         <Flex w="100%" justify="center">
+         <Flex w="100%" justify="start">
             <SegmentedControl
                data={[
-                  { label: "React", value: "react" },
-                  { label: "React", value: "react" }
+                  { label: "Ma’lumotlar", value: "ma’lumotlar" },
+                  { label: "Karta", value: "karta" },
+                  { label: "Parol", value: "parol" }
                ]}
+               style={{ background:"white" } }
             />
          </Flex>
-         <Flex w="100%" justify="space-around">
+         <hr />
+         <Flex w="100%" justify="space-around" mt="30px">
             <Img />
             <Main />
          </Flex>
@@ -27,4 +31,4 @@ const Profil: FunctionComponent<ProfilProps> = () => {
    );
 };
 
-export default Profil;
+export default Profil
