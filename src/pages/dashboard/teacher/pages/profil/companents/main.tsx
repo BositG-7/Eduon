@@ -1,8 +1,9 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
+import { SpikkerCart } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface MainProps {}
@@ -19,8 +20,24 @@ const schema = yup.object({
 
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
+   
+   useEffect(()=>{
+       try {
+        const { data }:any = SpikkerCart()
+    
+    console.log(
+        data
+    );
+       } catch (error:any) {
+           console.log(error.messege);
+           
+        
+       }
+    
+    
+})
 
-   console.log(user);
+   
 
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",

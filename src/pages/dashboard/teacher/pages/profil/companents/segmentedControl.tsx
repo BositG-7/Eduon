@@ -8,8 +8,9 @@ const MySegmentedControl: FunctionComponent<SegmentedControlProps> = () => {
     
     const { user } = useAuth();
     
+   
     return (  
-        <MantineSegmentedControl data={[  ]}/>
+        <MantineSegmentedControl data={[]}/>
     );
 }
 

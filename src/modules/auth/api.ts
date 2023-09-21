@@ -18,6 +18,9 @@ export const Checkpassword = ({ email, activation_code }: IApi.Checkpassword.Req
    
    export const EditProfil = ({ username, ...params }: IApi.EditProfil.Request) =>
    http.post("/user/check-activate-code", objectToFormData({ username, ...params }));
+   
+   export const SpikkerCart = () =>
+   http.get("/speaker_card");
 export const ResetEmaill = ({ ...params }: IApi.ResetEmail.Request) => http.post("/user/reset-passwd", objectToFormData({ ...params }));
 
 export const RefleshToken = ({ refresh }: any) => {
