@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createStyles, getStylesRef, Navbar, rem } from "@mantine/core";
+import { Box, Button, createStyles, getStylesRef, Navbar, rem } from "@mantine/core";
 // eslint-disable-next-line import/order
 import { BiFolderMinus } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { RiWallet3Fill } from "react-icons/ri";
+import { TbSquareChevronsLeft, TbSquareChevronsRight } from "react-icons/tb";
 
 const useStyles = createStyles(theme => ({
    header: {
@@ -55,8 +55,8 @@ const useStyles = createStyles(theme => ({
 }));
 
 const data = [
-   { link: "/dashboard/teacher/moliya", label: "Moliya", icon: BiFolderMinus },
    { link: "/dashboard/teacher/kurslarim", label: "Kurslarim", icon: RiWallet3Fill },
+   { link: "/dashboard/teacher/moliya", label: "Moliya", icon: BiFolderMinus },
    { link: "/dashboard/teacher/profil", label: "Profil", icon: BsPerson },
    { link: "/dashboard/teacher/malumotla", label: "Ma’lumotlar", icon: HiOutlineDocumentText }
 ];
@@ -105,7 +105,7 @@ function Sidebar() {
    };
 
    return (
-      <div className="sidebar">
+      <Box h="100vh">
          {sidebarVisible && (
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
@@ -114,10 +114,10 @@ function Sidebar() {
                </Navbar>
             </>
          )}
-         <button className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
-            {sidebarVisible ? <FiChevronLeft /> : <FiChevronRight />}
-         </button>
-      </div>
+         <Button w='80%'  m='0 26px ' className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
+            {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight />}
+         </Button>
+      </Box>
    );
 }
 

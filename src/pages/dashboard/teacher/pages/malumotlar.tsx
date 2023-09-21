@@ -7,7 +7,7 @@ import video from "../../../../assets/images/video.png";
 
 export default function Malumotlar() {
    return (
-      <Flex gap={60}>
+      <Flex gap={60} p={20}>
          <Box pl={50}>
             <Box>
                <Title color="rgba(0, 106, 255, 1)">Umumiy ma’lumot</Title>
@@ -23,7 +23,7 @@ export default function Malumotlar() {
                </Title>
                <Title size={24}>Kurs mavzusini tanlang.</Title>
                <Title pt={20} size={18} w={420} sx={{ fontWeight: 500 }}>
-                  O'zingiz tajribaga ega va yoqtirgan biror-bir mavzu tanlang. EduOn’da siz tanlagan mavzu bo'yicha talab va raqobatni tushunishga
+                  O'zingiz tajribaga ega va yoqtirgan biror-bir mavzu tanlang. InfoNex’da siz tanlagan mavzu bo'yicha talab va raqobatni tushunishga
                   yordam beradigan bir nechta foydali vositalar mavjud.
                </Title>
             </Box>
@@ -47,7 +47,7 @@ export default function Malumotlar() {
                   Talabalar siz o'rgatayotgan bilimlarni qanday amaliyotda qo'llashlarini aniqlab oling.
                </Title>
                <Title pt={20} size={18} w={430} sx={{ fontWeight: 500 }}>
-                  EduOn o'quvchilari o'zlarining bilimlarini amaliy mashg'ulotlarda qo'llashni yaxshi ko'radilar. Siz kiritishingiz mumkin bo'lgan
+                  InfoNex o'quvchilari o'zlarining bilimlarini amaliy mashg'ulotlarda qo'llashni yaxshi ko'radilar. Siz kiritishingiz mumkin bo'lgan
                   turli xil amaliyot turlari mavjud, shuning uchun siz o'zingizning mavzuingiz uchun eng yaxshisini tanlab olishingiz kerak.
                </Title>
             </Box>
@@ -85,12 +85,12 @@ export default function Malumotlar() {
 
             <Flex align='center' gap={10}>
                <BsFillCircleFill size={24} color="rgba(0, 106, 255, 1)" />
-               <Title size={14}> <span style={{fontSize:24, color:'rgba(0, 106, 255, 1)'}}>Eduon </span>  22.05 20:00</Title>
+               <Title size={14}> <span style={{fontSize:24, color:'rgba(0, 106, 255, 1)'}}>InfoNex </span>  22.05 20:00</Title>
             </Flex>
             <Title pt={10} pl={30} w={470} size={24}>Sizning **** **** **** 4566 kartangizga pul o’tkazildi</Title>
             <Flex pt={50} align='center' gap={10}>
                <BsFillCircleFill size={24} color="rgba(118, 118, 118, 1)" />
-               <Title color="rgba(118, 118, 118, 1)" size={14}> <span style={{fontSize:24, color:'rgba(118, 118, 118, 1)'}}>Eduon </span>  22.05 20:00</Title>
+               <Title color="rgba(118, 118, 118, 1)" size={14}> <span style={{fontSize:24, color:'rgba(118, 118, 118, 1)'}}>InfoNex </span>  22.05 20:00</Title>
             </Flex>
             <Title pt={10} pl={30} w={470} size={24}>Sizning **** **** **** 4566 kartangizga pul o’tkazildi</Title>
          </Box>
