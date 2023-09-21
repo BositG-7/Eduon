@@ -56,7 +56,6 @@ function TopCourses() {
                   <div
                      className="box"
                      onClick={() => {
-                        console.log("qdqwdwdq");
                         // @ts-ignore
 
                         navigete(`/kurslar/kurs/${item.id}`);

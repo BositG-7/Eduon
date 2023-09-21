@@ -24,16 +24,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    const { teacher } = useSpeaker(speaker);
 
-   // @ts-ignore
-   if (course && course.video && course.video[0]) {
-      // @ts-ignore
-      console.log(course.video[0].video);
-   } else {
-      console.log("Video topilmadi yoki mavjud emas");
-   }
-
-   // @ts-ignore
-
    return (
       <Box pl={100} pt={20}>
          <Flex justify="space-between" pr={100}>
