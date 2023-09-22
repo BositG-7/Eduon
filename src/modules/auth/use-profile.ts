@@ -9,7 +9,7 @@ interface State {
    verfication: boolean;
    isResetPassword: boolean;
 }
-
+// @ts-ignore
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
    const { access } = getSession();
    const { refresh } = getSession();

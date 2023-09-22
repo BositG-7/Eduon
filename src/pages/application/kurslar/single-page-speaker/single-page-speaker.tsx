@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Button, Divider, Flex, Title } from "@mantine/core";
+import { Box, Button,  Flex, Title } from "@mantine/core";
 import { useSpeaker } from "modules/kurslar/hooks/use-speakar";
 import { Paginated } from "utils/paginate";
 
@@ -26,9 +26,8 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
    const paginated = Paginated({ currentPage, pageSize });
 
    return (
-      <Box mb={50}>
+      <Box mb={50} pt={50}>
          <Flex direction="column">
-            <Divider my="lg" />
             <Box>
                <Flex gap={50} pl={100} pb={50}>
                   <Box>

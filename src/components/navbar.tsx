@@ -30,14 +30,22 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                }}
                className="navbar"
             >
-               <Box
+               <Button
+                  bg="none"
+                  sx={{
+                     border: "none",
+                     ":hover": {
+                        background: "none", // O'zgarishi mumkin
+                        color: "blue" // O'zgarishi mumkin
+                     }
+                  }}
                   className="img"
                   onClick={() => {
                      navigate("/");
                   }}
                >
                   <img src={Logo} alt="" />
-               </Box>
+               </Button>
                <Box
                   className="nav"
                   sx={{
