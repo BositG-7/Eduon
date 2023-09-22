@@ -38,8 +38,8 @@ const Verification: FunctionComponent<VerificationProps> = () => {
 
       try {
          methods.getEmail();
-         setSessionVerfication(data);
          await SendEmail(data);
+         setSessionVerfication(data);
 
          navigete("/auth/checkpassword");
 
@@ -52,13 +52,8 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    };
 
    return (
-      <Box h="100vh" w="100%" data-aos="fade-up"
-      data-aos-anchor-placement="bottom-up">
-         <Box
-            h="90vh"
-            w="100%"
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "220px" }}
-         >
+      <Box h="100vh" w="100%" data-aos="fade-up" data-aos-anchor-placement="bottom-up">
+         <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "220px" }}>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>

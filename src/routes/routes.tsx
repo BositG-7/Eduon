@@ -62,7 +62,7 @@ const Routes = () => {
             <Route path="*" index element={<Navigate to="/dashboard/user/kurslarim" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/teacher" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="kurslarim" element={<KurslarimList />} />
             <Route path="malumotla" element={<Malumotlar />} />
             <Route path="moliya" element={<Moliya />} />
