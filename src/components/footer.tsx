@@ -35,11 +35,11 @@ function Footer() {
                <h3>Manzillar</h3>
                <p>Toshkent sh. Yakkasaroy t. Shota Rustaveli 1-tor ko'chasi, 6-uy</p>
                <h2>+998 99 702 00 88</h2>
-               <h4>Info@eduon.uz</h4>
+               <h4>Info@infonex.uz</h4>
             </div>
          </div>
          <h6>
-            © <span>EduOn.</span> Barcha huquqlar himoyalangan
+            © <span>InfoNex.</span> Barcha huquqlar himoyalangan
          </h6>
       </section>
    );

@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  createStyles,  getStylesRef,   Navbar, rem } from "@mantine/core";
+import { createStyles, getStylesRef, Navbar, rem } from "@mantine/core";
 // eslint-disable-next-line import/order
 import { BiFolderMinus } from "react-icons/bi";
-import {  BsPerson } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import {  HiOutlineDocumentText } from "react-icons/hi";
-import {  RiWallet3Fill } from "react-icons/ri";
+import { HiOutlineDocumentText } from "react-icons/hi";
+import { RiWallet3Fill } from "react-icons/ri";
 
 const useStyles = createStyles(theme => ({
    header: {
@@ -15,7 +15,6 @@ const useStyles = createStyles(theme => ({
       marginBottom: `calc(${theme.spacing.md} * 1.5)`,
       borderBottom: `${rem(2)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`
    },
-
 
    link: {
       ...theme.fn.focusStyles(),
@@ -52,16 +51,14 @@ const useStyles = createStyles(theme => ({
             color: "#3629B7"
          }
       }
-   },
-
-   
+   }
 }));
 
 const data = [
-   { link: "/dashboard/hospitals", label: "Moliya", icon: BiFolderMinus },
-   { link: "/dashboard/booking", label: "Kurslarim", icon: RiWallet3Fill },
-   { link: "/dashboard/hospitals", label: "Profil", icon: BsPerson },
-   { link: "/dashboard/hospitals", label: "Ma’lumotlar", icon: HiOutlineDocumentText },
+   { link: "/dashboard/teacher/moliya", label: "Moliya", icon: BiFolderMinus },
+   { link: "/dashboard/teacher/kurslarim", label: "Kurslarim", icon: RiWallet3Fill },
+   { link: "/dashboard/teacher/profil", label: "Profil", icon: BsPerson },
+   { link: "/dashboard/teacher/malumotla", label: "Ma’lumotlar", icon: HiOutlineDocumentText }
 ];
 
 function Sidebar() {
@@ -113,10 +110,7 @@ function Sidebar() {
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
                <Navbar sx={{ height: "100vh" }} width={{ sm: 260 }} p="md">
-                  <Navbar.Section grow>
-                     {links}
-                  </Navbar.Section>
-                  
+                  <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
             </>
          )}

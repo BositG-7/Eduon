@@ -1,2 +1,2 @@
 
-export { default as Profil } from "./data";
+export { default as Profil } from "./profil";

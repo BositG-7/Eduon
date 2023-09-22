@@ -1,14 +1,14 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import Sidebar from "pages/dashboard/user/components/sidebar";
+import { Sidebar } from "pages/dashboard/teacher/components";
 
 import style from "../pages/dashboard/user/styles/panel.module.scss";
 
-interface DashboardRouteProps {
+interface AdminRouteProps {
    allowed: boolean;
    redirectURL?: string;
 }
 
-const DashboardRoute = ({ allowed = false, redirectURL = "/" }: DashboardRouteProps) => {
+const AdminRoute = ({ allowed = false, redirectURL = "/" }: AdminRouteProps) => {
    const navigete = useNavigate();
 
    if (allowed)
@@ -26,4 +26,4 @@ const DashboardRoute = ({ allowed = false, redirectURL = "/" }: DashboardRoutePr
    return <Navigate to="/" />;
 };
 
-export default DashboardRoute;
+export default AdminRoute;

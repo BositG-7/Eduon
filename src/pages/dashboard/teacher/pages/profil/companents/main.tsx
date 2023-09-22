@@ -20,24 +20,16 @@ const schema = yup.object({
 
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
-   
-   useEffect(()=>{
-       try {
-        const { data }:any = SpikkerCart()
-    
-    console.log(
-        data
-    );
-       } catch (error:any) {
-           console.log(error.messege);
-           
-        
-       }
-    
-    
-})
 
-   
+   useEffect(() => {
+      try {
+         const { data }: any = SpikkerCart();
+
+         console.log(data);
+      } catch (error: any) {
+         console.log(error.messege);
+      }
+   });
 
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",
@@ -51,8 +43,7 @@ const Main: FunctionComponent<MainProps> = () => {
       about: user?.about || "",
       is_active: !!user?.isActive,
       is_spiker: !!user?.isSpiker,
-      job: user?.job || "",
-    
+      job: user?.job || ""
    });
 
    const handleInputChange = (name: string, value: string) => {
@@ -75,13 +66,12 @@ const Main: FunctionComponent<MainProps> = () => {
    const radio = {
       border: "1px solid blue",
       padding: "9px",
-      borderRadius: "5px",
-      width: "210px"
+      borderRadius: "5px"
    };
 
    return (
       <div>
-         <Box h="100vh" w="100%" sx={{ display: "flex", justifyContent: "start", alignItems: "start" }}>
+         <Box h="100vh" w="100%" sx={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
             <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSumbit}>
                <Paper bg="var(--paper-bg)" w="100%">
                   <Flex gap={20} align="center" p={20}>
@@ -160,8 +150,8 @@ const Main: FunctionComponent<MainProps> = () => {
                      </Flex>
                   </Flex>
                </Paper>
-            
-               <Flex gap={20} justify="center" align="center" >
+
+               <Flex gap={20} justify="center" align="center">
                   <Button
                      type="submit"
                      sx={{
@@ -169,7 +159,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         height: "50px",
                         backgroundColor: "rgba(231, 240, 255, 1)",
                         fontSize: "20px",
-                        marginTop: "40px",
+                        marginTop: "10px",
                         "&:hover": {
                            color: "white"
                         }

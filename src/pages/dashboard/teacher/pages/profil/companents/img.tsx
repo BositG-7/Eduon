@@ -10,7 +10,7 @@ const Img: FunctionComponent<ImgProps> = () => {
    const { user } = useAuth();
 
    return (
-      <Box w="12%">
+      <Box>
       <Image maw="177px" mx="0"  radius="md" src={userImage} alt="User Image" />
       </Box>
    )

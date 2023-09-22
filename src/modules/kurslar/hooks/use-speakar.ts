@@ -3,7 +3,7 @@ import { notifications } from "@mantine/notifications";
 
 import { Api, Types } from "..";
 
-export const useSpeaker = (id: string) => {
+export const useSpeaker = (id: number | string) => {
    const [state, setState] = useState<Types.IQuery.Course.Speaker>({ isLoading: true, teacher: [] });
 
    useEffect(() => {
@@ -21,6 +21,6 @@ export const useSpeaker = (id: string) => {
       };
 
       request();
-   }, []);
+   }, [id]);
    return state;
 };

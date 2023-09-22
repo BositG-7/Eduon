@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react";
 import { Flex } from "@mantine/core";
 
+import Footer from "components/footer";
+
 import { Category, Form, Hamkor, Header, Main } from "./components";
 
 interface BizHaqimizdaProps {}
@@ -16,6 +18,7 @@ const BizHaqimizda: FunctionComponent<BizHaqimizdaProps> = () => {
             <Main />
             <Category />
             <Form />
+            <Footer />
          </Flex>
       </>
    );

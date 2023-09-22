@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, Radio } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
+import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface MainProps {}
@@ -45,8 +46,16 @@ const Main: FunctionComponent<MainProps> = () => {
       });
    };
 
-   const handleSumbit = (e: React.FormEvent) => {
+   const handleSumbit = async (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
+      
+      try {
+         await EditProfil(formValues)
+         window.location.reload()
+      } catch (error:any) {
+         console.log(error);
+         
+      }
       console.log(formValues);
    };
 
@@ -174,7 +183,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         backgroundColor: "rgba(231, 240, 255, 1)",
                         fontSize: "20px",
                         marginTop: "40px",
-                        marginLeft: "190px",
+                        marginLeft: "170px",
                         "&:hover": {
                            color: "white"
                         }
