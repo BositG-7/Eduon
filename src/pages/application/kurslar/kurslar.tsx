@@ -202,7 +202,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
                         {
                            // @ts-ignore
-                           course.map(item => (
+                           course?.map(item => (
                               <Course
                                  key={item.id}
                                  id={String(item.id)}
@@ -216,7 +216,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                      </Box>
 
                      {/* @ts-ignore */}
-                     <Paginate total={course?.results?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                     <Paginate total={course?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
                   </Flex>
                </Flex>
             </Flex>
