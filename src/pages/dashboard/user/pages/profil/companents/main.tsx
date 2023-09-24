@@ -33,8 +33,8 @@ const Main: FunctionComponent<MainProps> = () => {
       username: user?.username || "",
       birthday: user?.birthday || "",
       about: user?.about || "",
-      is_active: true,
-      is_spiker: true,
+      is_active: !!user?.isActive,
+      is_spiker: !!user?.isSpiker,
       job: user?.job || "",
       gender: user?.gender || ""
    });
@@ -48,13 +48,12 @@ const Main: FunctionComponent<MainProps> = () => {
 
    const handleSumbit = async (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
-      
+
       try {
-         await EditProfil(formValues)
-         window.location.reload()
-      } catch (error:any) {
+         await EditProfil(formValues);
+         window.location.reload();
+      } catch (error: any) {
          console.log(error);
-         
       }
       console.log(formValues);
    };
