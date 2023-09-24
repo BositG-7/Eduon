@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, createStyles, getStylesRef, Navbar, rem } from "@mantine/core";
+import { Button, createStyles, Flex, getStylesRef, Navbar, rem } from "@mantine/core";
+// eslint-disable-next-line import/order
 import { BiFolderMinus } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { HiOutlineDocumentText } from "react-icons/hi";
@@ -103,19 +104,22 @@ function Sidebar() {
    };
 
    return (
-      <Navbar h="100vh">
+      <Flex direction="column" align="center" h="auto">
          {sidebarVisible && (
             <>
-               <Box onClick={hideSidebar} />
-               <Navbar sx={{ height: "100vh" }} width={{ sm: 260 }} p="md">
+               <div className="blur-overlay" onClick={hideSidebar} />
+               <Navbar sx={{ height: "auto", border: "none" }} width={{ sm: 260 }} p="md">
                   <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
-               <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
+               {/* <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
                   {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight size={24} />}
-               </Button>
+               </Button> */}
             </>
          )}
-      </Navbar>
+         <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
+            {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight />}
+         </Button>
+      </Flex>
    );
 }
 

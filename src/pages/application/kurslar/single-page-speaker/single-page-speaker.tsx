@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Button,  Flex, Title } from "@mantine/core";
-import { useSpeaker } from "modules/kurslar/hooks/use-speakar";
+import { Box, Button, Flex, Title } from "@mantine/core";
+import { useSpeaker } from "modules/kurslar/hooks/use-speaker";
 import { Paginated } from "utils/paginate";
 
 import Paginate from "components/pagination";

@@ -24,9 +24,8 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
    const paginated = Paginated({ currentPage, pageSize });
 
    const marks = [
-      { value: 20, label: "" },
-      { value: 50, label: "" },
-      { value: 80, label: "" },
+      { value: 0, label: "0" },
+      { value: 500, label: "" },
       { value: 1000, label: "1000" }
    ];
 

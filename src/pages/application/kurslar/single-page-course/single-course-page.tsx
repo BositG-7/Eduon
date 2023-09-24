@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Divider, Flex, Title } from "@mantine/core";
 // eslint-disable-next-line import/order
 import { useSingle } from "modules/kurslar/hooks/use-single";
-import { useSpeaker } from "modules/kurslar/hooks/use-speakar";
+import { useSpeaker } from "modules/kurslar/hooks/use-speaker";
 // eslint-disable-next-line import/order
 import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 // eslint-disable-next-line import/order

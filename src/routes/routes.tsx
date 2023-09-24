@@ -21,6 +21,8 @@ import UserRoute from "./user-route";
 const Routes = () => {
    const { user } = useAuth();
 
+   console.log(user);
+
    const verfication = getSessionVerfication().email;
    const reset = getSessionReset().email;
 

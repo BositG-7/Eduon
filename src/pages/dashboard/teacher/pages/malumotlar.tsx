@@ -7,7 +7,7 @@ import video from "../../../../assets/images/video.png";
 
 export default function Malumotlar() {
    return (
-      <Flex gap={60} p={20}>
+      <Flex w="100%" gap={30} sx={{ overflow: "hidden" }} p={20}>
          <Box pl={50}>
             <Box>
                <Title color="rgba(0, 106, 255, 1)">Umumiy ma’lumot</Title>
@@ -78,21 +78,31 @@ export default function Malumotlar() {
                   </Title>
                </Flex>
             </Flex>
-            <Flex justify='space-between' pt={20}>
-                <Title  size={0}>.</Title>
-               <PiNumberCircleOneFill size={52} color="rgba(0, 106, 255, 1)"  />
+            <Flex justify="space-between" pt={20}>
+               <Title size={0}>.</Title>
+               <PiNumberCircleOneFill size={52} color="rgba(0, 106, 255, 1)" />
             </Flex>
 
-            <Flex align='center' gap={10}>
+            <Flex align="center" gap={10}>
                <BsFillCircleFill size={24} color="rgba(0, 106, 255, 1)" />
-               <Title size={14}> <span style={{fontSize:24, color:'rgba(0, 106, 255, 1)'}}>InfoNex </span>  22.05 20:00</Title>
+               <Title size={14}>
+                  {" "}
+                  <span style={{ fontSize: 24, color: "rgba(0, 106, 255, 1)" }}>InfoNex </span> 22.05 20:00
+               </Title>
             </Flex>
-            <Title pt={10} pl={30} w={470} size={24}>Sizning **** **** **** 4566 kartangizga pul o’tkazildi</Title>
-            <Flex pt={50} align='center' gap={10}>
+            <Title pt={10} pl={30} w={470} size={24}>
+               Sizning **** **** **** 4566 kartangizga pul o’tkazildi
+            </Title>
+            <Flex pt={50} align="center" gap={10}>
                <BsFillCircleFill size={24} color="rgba(118, 118, 118, 1)" />
-               <Title color="rgba(118, 118, 118, 1)" size={14}> <span style={{fontSize:24, color:'rgba(118, 118, 118, 1)'}}>InfoNex </span>  22.05 20:00</Title>
+               <Title color="rgba(118, 118, 118, 1)" size={14}>
+                  {" "}
+                  <span style={{ fontSize: 24, color: "rgba(118, 118, 118, 1)" }}>InfoNex </span> 22.05 20:00
+               </Title>
             </Flex>
-            <Title pt={10} pl={30} w={470} size={24}>Sizning **** **** **** 4566 kartangizga pul o’tkazildi</Title>
+            <Title pt={10} pl={30} w={470} size={24}>
+               Sizning **** **** **** 4566 kartangizga pul o’tkazildi
+            </Title>
          </Box>
       </Flex>
    );

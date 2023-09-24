@@ -1,4 +1,5 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Box } from "@mantine/core";
 import { Sidebar } from "pages/dashboard/teacher/components";
 
 import style from "../pages/dashboard/user/styles/panel.module.scss";
@@ -9,13 +10,15 @@ interface AdminRouteProps {
 }
 
 const AdminRoute = ({ allowed = false, redirectURL = "/" }: AdminRouteProps) => {
-   const navigete = useNavigate();
+   const navigate = useNavigate();
 
    if (allowed)
       return (
          <>
             <div className={style.userPanel}>
-               <Sidebar />
+               <Box sx={{ borderRight: "0.5px solid rgba(118, 118, 118, 1)" }}>
+                  <Sidebar />
+               </Box>
                <div className={style.main}>
                   <Outlet />
                </div>
@@ -23,7 +26,7 @@ const AdminRoute = ({ allowed = false, redirectURL = "/" }: AdminRouteProps) => 
          </>
       );
 
-   return <Navigate to="/" />;
+   return <Navigate to={redirectURL} />;
 };
 
 export default AdminRoute;
