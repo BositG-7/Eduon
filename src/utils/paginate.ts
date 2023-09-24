@@ -2,12 +2,11 @@ import _ from "lodash";
 import { useList } from "modules/kurslar/hooks/course-use-list";
 
 interface PaginateProps {
-   
    currentPage: number;
    pageSize: number;
 }
 
-export const Paginated = ({  currentPage, pageSize }: PaginateProps) => {
+export const Paginated = ({ currentPage, pageSize }: PaginateProps) => {
    const { course } = useList();
 
    const startIndex: number = (currentPage - 1) * pageSize;

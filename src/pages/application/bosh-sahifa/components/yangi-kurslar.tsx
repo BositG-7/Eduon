@@ -29,7 +29,7 @@ function NewCourse() {
       const fetch = async () => {
          const { data }: any = await CourseNew();
 
-         setPricing(data.results);
+         setPricing(data);
       };
 
       fetch();

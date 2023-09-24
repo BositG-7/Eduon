@@ -1,17 +1,17 @@
 import { Navigate, Route, Routes as Switch } from "react-router-dom";
 import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
-// eslint-disable-next-line import/no-named-as-default
 import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
 import SinglePageSpeaker from "pages/application/kurslar/single-page-speaker/single-page-speaker";
 import { KurslarimList } from "pages/dashboard/teacher/pages";
 import Malumotlar from "pages/dashboard/teacher/pages/malumotlar";
 import Moliya from "pages/dashboard/teacher/pages/moliya";
+import { Profil } from "pages/dashboard/teacher/pages/profil";
 import { Hisobim } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
 import Kurslarim from "pages/dashboard/user/pages/kurslarim/kurslarim";
-import { Profile } from "pages/dashboard/user/pages/profil";
+import { ProfileUser } from "pages/dashboard/user/pages/profil";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
 import AdminRoute from "./admin-route";
@@ -55,18 +55,18 @@ const Routes = () => {
             <Route path="kurslarim" element={<Kurslarim />} />
             <Route path="hisobim" element={<Hisobim />} />
             <Route path="kurs-qoshish" element={<CourseCreate />} />
-            <Route path="profil" element={<Profile />} />
+            <Route path="profil" element={<ProfileUser />} />
 
             <Route path="kurs/:adminKursSingle" element={<SingleKurs />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user/kurslarim" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/teacher" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="kurslarim" element={<KurslarimList />} />
             <Route path="malumotla" element={<Malumotlar />} />
             <Route path="moliya" element={<Moliya />} />
-            <Route path="profil" element={<Profile />} />
+            <Route path="profil" element={<Profil />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/kurslarim" />} />
          </Route>

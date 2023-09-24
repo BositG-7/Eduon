@@ -23,11 +23,7 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
 
    const paginated = Paginated({ currentPage, pageSize });
 
-   const marks = [
-      { value: 0, label: "0" },
-      { value: 500, label: "" },
-      { value: 1000, label: "1000" }
-   ];
+   const marks = [{ value: 1000, label: "1000" }];
 
    return (
       <Box mb={50}>
@@ -204,13 +200,23 @@ const Kurslar: FunctionComponent<KurslarProps> = () => {
                   </Flex>
                   <Flex align="center" sx={{ flexDirection: "column" }}>
                      <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
-                        {paginated.map(item => (
-                           <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
-                        ))}
+                        {
+                           // @ts-ignore
+                           course?.map(item => (
+                              <Course
+                                 key={item.id}
+                                 id={String(item.id)}
+                                 img={item.image}
+                                 price={item.price}
+                                 name={item.name}
+                                 view={String(item.view)}
+                              />
+                           ))
+                        }
                      </Box>
 
                      {/* @ts-ignore */}
-                     <Paginate total={course?.results?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                     <Paginate total={course?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
                   </Flex>
                </Flex>
             </Flex>

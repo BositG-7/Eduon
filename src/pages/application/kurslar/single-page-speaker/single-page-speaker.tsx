@@ -2,11 +2,10 @@ import React, { FunctionComponent } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button, Flex, Title } from "@mantine/core";
 import { useSpeaker } from "modules/kurslar/hooks/use-speaker";
+import { useSpeakerCourse } from "modules/kurslar/hooks/use-speaker-course";
 import { Paginated } from "utils/paginate";
 
-import Paginate from "components/pagination";
-
-import { useList } from "../../../../modules/kurslar/hooks/course-use-list";
+// import Paginate from "components/pagination";
 import Course from "../components/course";
 
 interface SinglePageSpeakerProps {}
@@ -14,8 +13,8 @@ interface SinglePageSpeakerProps {}
 const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
    const { speakerID = "" } = useParams<{ speakerID: string }>();
    const { teacher } = useSpeaker(speakerID);
+   const { speakerCourse } = useSpeakerCourse(speakerID);
 
-   const { course, isLoading } = useList();
 
    const [pageSize, setPageSize] = React.useState<number>(8);
    const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -94,13 +93,13 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
                      </Button>
                   </Flex>
                   <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr", gap: "20px" }}>
-                     {paginated.map(item => (
-                        <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
+                     {speakerCourse.map(item => (
+                        <Course key={item.id} id={String(item.id)} img={item.image} name={item.name} />
                      ))}
                   </Box>
 
                   {/* @ts-ignore */}
-                  <Paginate total={course?.results?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                  {/* <Paginate total={course?.results?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} /> */}
                </Flex>
             </Box>
          </Flex>

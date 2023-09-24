@@ -23,6 +23,7 @@ const CourseCreate: React.FC = () => {
    const { category } = useCategory();
    const [categoryOptions, setCategory]: any = useState([]);
 
+   console.log(categoryOptions);
    console.log(category);
 
    useEffect(() => {

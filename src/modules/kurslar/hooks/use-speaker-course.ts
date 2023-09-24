@@ -3,20 +3,20 @@ import { notifications } from "@mantine/notifications";
 
 import { Api, Types } from "..";
 
-export const useSpeaker = (id: number | string) => {
-   const [state, setState] = useState<Types.IQuery.Course.Speaker>({ isLoading: true, teacher: [] });
+export const useSpeakerCourse = (id: number | string) => {
+   const [state, setState] = useState<Types.IQuery.Course.SpeakerCourse>({ isLoading: true, speakerCourse: [] });
 
    useEffect(() => {
       const request = async () => {
          try {
-            const { data } = await Api.Course.Speaker(id);
-            const teacher = data;
+            const { data } = await Api.Course.SpeakerCourse(id);
+            const speakerCourse = data;
 
             // @ts-ignore
-            setState({ teacher, isLoading: false });
+            setState({ speakerCourse, isLoading: false });
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
-            setState({ teacher: [], isLoading: false });
+            setState({ speakerCourse: [], isLoading: false });
          }
       };
 

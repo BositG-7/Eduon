@@ -38,7 +38,8 @@ const Kurslarim: FunctionComponent<KurslarimProps> = () => {
             />
          </div>
          <div className={style.kurslarimList}>
-            {paginated.map(item => (
+            {/* @ts-ignore */}
+            {course.map(item => (
                <Kurs key={item.id} name={item.name} id={item.id} img={item.image} />
             ))}
          </div>

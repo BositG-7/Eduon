@@ -5,6 +5,11 @@ export namespace IEntity {
       previous: string;
       results: Results[];
    }
+   export interface SpeakerCourse {
+      id: number;
+      name: string;
+      image: string;
+   }
    export interface Results {
       id: number;
       name: string;
@@ -65,7 +70,7 @@ export namespace IApi {
             speaker?: number;
             category?: number;
 
-         
+
          }
          export interface Response {
             name: string;
@@ -99,6 +104,12 @@ export namespace IApi {
          }
          export interface Response extends IEntity.Speaker { }
       }
+      export namespace SpeakerCourse {
+         export interface Request {
+            id: string;
+         }
+         export interface Response extends IEntity.SpeakerCourse { }
+      }
       export namespace Category {
          export interface Request {}
          export interface Response extends IEntity.Category {}
@@ -120,6 +131,10 @@ export namespace IQuery {
       export interface Speaker {
          isLoading: boolean;
          teacher: IEntity.Speaker[];
+      }
+      export interface SpeakerCourse {
+         isLoading: boolean;
+         speakerCourse: IEntity.SpeakerCourse[];
       }
       export interface Category {
          isLoading?: boolean;

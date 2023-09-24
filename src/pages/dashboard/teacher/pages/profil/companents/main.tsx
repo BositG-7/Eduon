@@ -1,9 +1,9 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import * as yup from "yup";
-import { Box, Button, Flex, InputBase, Paper, Radio } from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
-import { EditProfil } from "modules/auth/api";
+import { SpikkerCart } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface MainProps {}
@@ -21,7 +21,15 @@ const schema = yup.object({
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
 
-   console.log(user);
+   useEffect(() => {
+      try {
+         const { data }: any = SpikkerCart();
+
+         console.log(data);
+      } catch (error: any) {
+         console.log(error.messege);
+      }
+   });
 
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",
@@ -33,10 +41,9 @@ const Main: FunctionComponent<MainProps> = () => {
       username: user?.username || "",
       birthday: user?.birthday || "",
       about: user?.about || "",
-      is_active: true,
-      is_spiker: true,
-      job: user?.job || "",
-      gender: user?.gender || ""
+      is_active: !!user?.isActive,
+      is_spiker: !!user?.isSpiker,
+      job: user?.job || ""
    });
 
    const handleInputChange = (name: string, value: string) => {
@@ -46,16 +53,8 @@ const Main: FunctionComponent<MainProps> = () => {
       });
    };
 
-   const handleSumbit = async (e: React.FormEvent) => {
+   const handleSumbit = (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
-      
-      try {
-         await EditProfil(formValues)
-         window.location.reload()
-      } catch (error:any) {
-         console.log(error);
-         
-      }
       console.log(formValues);
    };
 
@@ -67,13 +66,12 @@ const Main: FunctionComponent<MainProps> = () => {
    const radio = {
       border: "1px solid blue",
       padding: "9px",
-      borderRadius: "5px",
-      width: "210px"
+      borderRadius: "5px"
    };
 
    return (
       <div>
-         <Box h="100vh" w="70%" sx={{ display: "flex", justifyContent: "start", alignItems: "start" }}>
+         <Box h="100vh" w="100%" sx={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
             <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSumbit}>
                <Paper bg="var(--paper-bg)" w="100%">
                   <Flex gap={20} align="center" p={20}>
@@ -139,7 +137,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         />
 
                         <InputBase
-                           label="Kasbingiz"
+                           label="Kasbi/status"
                            placeholder="Kasbingizni kriting..."
                            type="text"
                            radius="sm"
@@ -152,29 +150,8 @@ const Main: FunctionComponent<MainProps> = () => {
                      </Flex>
                   </Flex>
                </Paper>
-               <Paper bg="var(--paper-bg)" w="92%" sx={{ marginLeft: "20px" }}>
-                  <Radio.Group label="Jinsi">
-                     <Flex sx={{ gap: "20px" }}>
-                        <Radio
-                           label="O'g'il"
-                           value="O'g'il"
-                           labelPosition="left"
-                           style={radio}
-                           checked={formValues.gender === "O'g'il"}
-                           onChange={() => handleInputChange("gender", "O'g'il")}
-                        />
-                        <Radio
-                           label="Qiz"
-                           value="Qiz"
-                           labelPosition="left"
-                           style={radio}
-                           checked={formValues.gender === "Qiz"}
-                           onChange={() => handleInputChange("gender", "Qiz")}
-                        />
-                     </Flex>
-                  </Radio.Group>
-               </Paper>
-               <Flex>
+
+               <Flex gap={20} justify="center" align="center">
                   <Button
                      type="submit"
                      sx={{
@@ -182,8 +159,7 @@ const Main: FunctionComponent<MainProps> = () => {
                         height: "50px",
                         backgroundColor: "rgba(231, 240, 255, 1)",
                         fontSize: "20px",
-                        marginTop: "40px",
-                        marginLeft: "170px",
+                        marginTop: "10px",
                         "&:hover": {
                            color: "white"
                         }
