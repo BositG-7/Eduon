@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Divider, Flex, Title } from "@mantine/core";
 // eslint-disable-next-line import/order
 import { useSingle } from "modules/kurslar/hooks/use-single";
-import { useSpeaker } from "modules/kurslar/hooks/use-speakar";
+import { useSpeaker } from "modules/kurslar/hooks/use-speaker";
 // eslint-disable-next-line import/order
 import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 // eslint-disable-next-line import/order
@@ -20,18 +20,9 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const navigete = useNavigate();
    const { course } = useSingle(kursID);
    // @ts-ignore
-   const { speaker } = course;
+   const { speaker = 2 }: number = course;
+
    const { teacher } = useSpeaker(speaker);
-
-   // @ts-ignore
-   if (course && course.video && course.video[0]) {
-      // @ts-ignore
-      console.log(course.video[0].video);
-   } else {
-      console.log("Video topilmadi yoki mavjud emas");
-   }
-
-   // @ts-ignore
 
    return (
       <Box pl={100} pt={20}>

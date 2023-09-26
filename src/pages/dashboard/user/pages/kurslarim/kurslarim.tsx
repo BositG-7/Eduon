@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { useList } from "modules/kurslar/hooks/course-use-list";
 
-import { Paginate, Paginated } from "../../components";
+import { Navbar, Paginate, Paginated } from "../../components";
 
 import Kurs from "./components/kurs";
 
@@ -27,8 +27,19 @@ const Kurslarim: FunctionComponent<KurslarimProps> = () => {
 
    return (
       <>
+         <div className={style.kurslarim}>
+            <Navbar
+               links={[
+                  { link: "/", label: "Barchasi" },
+                  { link: "/", label: "Progresdagi" },
+                  { link: "/", label: "Saqlangan" },
+                  { link: "/", label: "Tugatilgan" }
+               ]}
+            />
+         </div>
          <div className={style.kurslarimList}>
-            {paginated.map(item => (
+            {/* @ts-ignore */}
+            {course.map(item => (
                <Kurs key={item.id} name={item.name} id={item.id} img={item.image} />
             ))}
          </div>

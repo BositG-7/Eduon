@@ -1,24 +1,30 @@
 import { Navigate, Route, Routes as Switch } from "react-router-dom";
 import { useAuth } from "modules/auth/context";
 import { Application, Auth } from "pages";
-// eslint-disable-next-line import/no-named-as-default
 import SinglePageCourse from "pages/application/kurslar/single-page-course/single-course-page";
 import SinglePageSpeaker from "pages/application/kurslar/single-page-speaker/single-page-speaker";
-import { TeacherPanel, UserPanel } from "pages/dashboard";
+import { KurslarimList } from "pages/dashboard/teacher/pages";
+import Malumotlar from "pages/dashboard/teacher/pages/malumotlar";
+import Moliya from "pages/dashboard/teacher/pages/moliya";
+import { Profil } from "pages/dashboard/teacher/pages/profil";
+import { Hisobim } from "pages/dashboard/user/pages";
+import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleKurs from "pages/dashboard/user/pages/kurslarim/components/single-kurs";
+import Kurslarim from "pages/dashboard/user/pages/kurslarim/kurslarim";
+import { ProfileUser } from "pages/dashboard/user/pages/profil";
 import { getSessionReset, getSessionVerfication } from "services/store";
 
+import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
-import DashboardRoute from "./dashboard-route";
+import UserRoute from "./user-route";
 
 const Routes = () => {
    const { user } = useAuth();
 
+   console.log(user);
+
    const verfication = getSessionVerfication().email;
    const reset = getSessionReset().email;
-
-   console.log(user);
-   console.log(window.location.pathname);
 
    return (
       <Switch>
@@ -45,16 +51,35 @@ const Routes = () => {
          </Route>
 
          {/* Dashboard */}
-         <Route path="dashboard" element={<DashboardRoute allowed={!!user} redirectURL="/" />}>
-            <Route path="user" element={user?.isSpiker ? <TeacherPanel /> : <UserPanel />}>
-               <Route />
-            </Route>
-            <Route path="user/kurs/:adminKursSingle" element={<SingleKurs />} />
+         <Route path="dashboard/user" element={<UserRoute allowed={!user?.isSpiker} redirectURL="/" />}>
+            <Route path="kurslarim" element={<Kurslarim />} />
+            <Route path="hisobim" element={<Hisobim />} />
+            <Route path="kurs-qoshish" element={<CourseCreate />} />
+            <Route path="profil" element={<ProfileUser />} />
 
-            <Route path="*" index element={<Navigate to="/dashboard/user" />} />
+            <Route path="kurs/:adminKursSingle" element={<SingleKurs />} />
+
+            <Route path="*" index element={<Navigate to="/dashboard/user/kurslarim" />} />
          </Route>
 
-         <Route path="*" element={<Navigate to={user ? "/" : "/auth/login"} />} />
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
+            <Route path="kurslarim" element={<KurslarimList />} />
+            <Route path="malumotla" element={<Malumotlar />} />
+            <Route path="moliya" element={<Moliya />} />
+            <Route path="profil" element={<Profil />} />
+
+            <Route path="*" index element={<Navigate to="/dashboard/teacher/kurslarim" />} />
+         </Route>
+
+         <Route
+            path="dashboard"
+            element={
+               // eslint-disable-next-line no-nested-ternary
+               user ? user.isSpiker ? <Navigate to="/dashboard/teacher" /> : <Navigate to="/dashboard/user" /> : <Navigate to="/auth/login" />
+            }
+         />
+
+         <Route path="*" element={<Navigate to={user ? "/dashboard" : "/auth/login"} />} />
       </Switch>
    );
 };

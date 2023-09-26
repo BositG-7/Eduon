@@ -29,7 +29,7 @@ function NewCourse() {
       const fetch = async () => {
          const { data }: any = await CourseNew();
 
-         setPricing(data.results);
+         setPricing(data);
       };
 
       fetch();
@@ -47,7 +47,15 @@ function NewCourse() {
             {/* @ts-ignore */}
             {pricing?.slice(0, 4).map(item => (
                // @ts-ignore
-               <div className="box" key={item.id}>
+               <div
+                  className="box"
+                  onClick={() => {
+                     // @ts-ignore
+                     navigete(`/kurslar/kurs/${item.id}`);
+                  }}
+                  // @ts-ignore
+                  key={item.id}
+               >
                   {/* @ts-ignore */}
                   <img src={item.image} alt="banner" />
                   <div className="text">

@@ -28,7 +28,7 @@ function TopSpeakers() {
       const fetch = async () => {
          const { data }: any = await TopSpeaker();
 
-         setSpeaker(data.results);
+         setSpeaker(data);
       };
 
       fetch();
@@ -46,7 +46,15 @@ function TopSpeakers() {
             {/* @ts-ignore */}
             {speaker?.slice(0, 4).map(item => (
                // @ts-ignore
-               <div className="box" key={item.id}>
+               <div
+                  className="box"
+                  onClick={() => {
+                     // @ts-expect-error
+                     navigete(`kurslar/speaker/${item.speaker}`);
+                  }}
+                  // @ts-expect-error
+                  key={item.id}
+               >
                   {/* @ts-ignore */}
                   <img src={item.image} alt="avatar" />
                   <div className="text">

@@ -31,7 +31,7 @@ const Hamkor: FunctionComponent<HamkorProps> = () => {
                   lineHeight: "normal"
                }}
             >
-               EduOnga{" "}
+               InfoNexga{" "}
                <span
                   style={{
                      fontSize: "46px",

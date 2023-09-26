@@ -11,10 +11,7 @@ const http = axios.create({ baseURL: config.api.baseURL })
 http.interceptors.request.use(
   request => {
     const { access = '' } = getSession()
-
-    console.log(access);
     
-
     // @ts-ignore
     request.headers = {
       ...request.headers,

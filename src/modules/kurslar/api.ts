@@ -8,7 +8,8 @@ export const Course = {
 
    Single: (id: string) => http.get<IApi.Course.Single.Response>(`/course_detail/${id}`),
 
-   Speaker: (id: string) => http.get<IApi.Course.Speaker.Response>(`/speaker_profile/${id}`),
+   Speaker: (id: any) => http.get<IApi.Course.Speaker.Response>(`/speaker_profile/${id}`),
+   SpeakerCourse: (id: any) => http.get<IApi.Course.SpeakerCourse.Response>(`/speaker_course_list/${id}`),
    Category: () => http.get<IApi.Course.Category.Response>(`/category`)
 };
 

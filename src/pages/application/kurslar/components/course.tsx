@@ -16,6 +16,7 @@ interface CourseProps {
 const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, rating }) => {
    const navigete = useNavigate();
 
+   console.log(name);
    return (
       <Box>
          <Flex>

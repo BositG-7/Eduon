@@ -12,6 +12,8 @@ export const useList = () => {
             const { data } = await Api.Course.List();
             const course = data;
 
+            console.log(data);
+
             setState({ course, isLoading: false });
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
