@@ -19,7 +19,7 @@ const Moliya: FunctionComponent<MoliyaProps> = () => (
 
                     <div className={style['card-holder']}>
                         <p className={style['card-holder-p-first']}>Karta egasi</p>
-                        <p className={style['card-holder-p-second']}>Ibrohim Ismagilov</p>
+                            <p className={style['card-holder-p-second']}>Ibrohim Ismagilov</p>
                     </div>
 
                     <div className={style['card-expiry-date']}>

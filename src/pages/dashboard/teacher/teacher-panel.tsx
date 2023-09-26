@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { KurslarimList } from "./pages/index";
+// import { KurslarimList } from "./pages/index";
 import Moliya from "./pages/moliya";
 import { Sidebar } from "./components";
 
@@ -14,7 +14,7 @@ const TeacherPanel = (props: TeacherPanelProps) => {
       <div className={style.teacherPanel}>
          <Sidebar />
          <div className={style.main}>
-            <KurslarimList />
+            {/* <KurslarimList /> */}
             <Moliya />
          </div>
       </div>

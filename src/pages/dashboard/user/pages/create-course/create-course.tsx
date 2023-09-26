@@ -1,8 +1,13 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
-import { Button, Container, FileInput, Flex, Paper, Select, Textarea, TextInput } from "@mantine/core";
+import { Button, Container, FileInput, Flex, Paper, Select, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { CreateCourse } from "modules/kurslar/api";
 import { useCategory } from "modules/kurslar/hooks/use-category";
+// eslint-disable-next-line import/order
+import ReactQuill from "react-quill";
+
+import "react-quill/dist/quill.snow.css";
 
 const CourseCreate: React.FC = () => {
     const [courseData, setCourseData] = useState({
@@ -74,6 +79,12 @@ const CourseCreate: React.FC = () => {
 
         }
     };
+    const handleDescriptionChange = (value: string) => {
+        setCourseData({
+            ...courseData,
+            description: value,
+        });
+    };
 
 
 
@@ -109,16 +120,15 @@ const CourseCreate: React.FC = () => {
                         pt="xl"
                         required
                     />
-                    <Textarea
-                        label="Description"
-                        name="description"
-                        value={courseData.description}
-                        placeholder="Write course description"
-                        onChange={handleInputChange}
-                        w="100%"
-                        pb="md"
-                        required
-                    />
+                    <div className="description-editor">
+                        <label>Description</label>
+                        <ReactQuill
+                            value={courseData.description}
+                            onChange={handleDescriptionChange}
+                            placeholder="Write course description"
+                            style={{borderRadius:"10px"}}
+                        />
+                    </div>
                     <TextInput
                         label="Price"
                         name="price"
