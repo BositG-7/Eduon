@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import Malumotlar from "./pages/malumotlar";
+import Informations from "./pages/informations";
 import { Sidebar } from "./components";
 
 import style from "./styles/panel.module.scss";
@@ -16,7 +16,7 @@ const TeacherPanel = (props: TeacherPanelProps) => {
       <div className={style.teacherPanel}>
          <Sidebar />
          <div className={style.main}>
-            <Malumotlar />
+            <Informations />
          </div>
       </div>
    );

@@ -7,7 +7,7 @@ import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
-import { clearSessionReset, clearSessionVerfication, setSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerification, setSessionVerification } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
@@ -28,18 +28,18 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    });
 
    useEffect(() => {
-      clearSessionVerfication();
+      clearSessionVerification();
       clearSessionReset();
    }, []);
    const navigete = useNavigate();
 
    const onSubmit = async (data: Types.IForm.Verification) => {
-      console.log(data);
+
 
       try {
          methods.getEmail();
          await SendEmail(data);
-         setSessionVerfication(data);
+         setSessionVerification(data);
 
          navigete("/auth/checkpassword");
 

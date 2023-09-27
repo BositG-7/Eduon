@@ -54,10 +54,10 @@ const useStyles = createStyles(theme => ({
 }));
 
 const data = [
-   { link: "/dashboard/teacher/kurslarim", label: "Kurslarim", icon: RiWallet3Fill },
-   { link: "/dashboard/teacher/moliya", label: "Moliya", icon: BiFolderMinus },
-   { link: "/dashboard/teacher/profil", label: "Profil", icon: BsPerson },
-   { link: "/dashboard/teacher/malumotla", label: "Ma’lumotlar", icon: HiOutlineDocumentText }
+   { link: "/dashboard/teacher/my-courses", label: "Kurslarim", icon: RiWallet3Fill },
+   { link: "/dashboard/teacher/finance", label: "Moliya", icon: BiFolderMinus },
+   { link: "/dashboard/teacher/profile", label: "Profile", icon: BsPerson },
+   { link: "/dashboard/teacher/informations", label: "Ma’lumotlar", icon: HiOutlineDocumentText }
 ];
 
 function Sidebar() {

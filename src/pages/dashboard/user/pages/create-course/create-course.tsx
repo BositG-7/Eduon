@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, FileInput, Flex, Paper, Select, Textarea, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import { CreateCourse } from "modules/kurslar/api";
-import { useCategory } from "modules/kurslar/hooks/use-category";
+import { CreateCourse } from "modules/courses/api";
+import { useCategory } from "modules/courses/hooks/use-category";
 
 const CourseCreate: React.FC = () => {
    const [courseData, setCourseData] = useState({
@@ -23,8 +23,7 @@ const CourseCreate: React.FC = () => {
    const { category } = useCategory();
    const [categoryOptions, setCategory]: any = useState([]);
 
-   console.log(categoryOptions);
-   console.log(category);
+
 
    useEffect(() => {
       if (Array.isArray(category)) {

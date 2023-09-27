@@ -81,7 +81,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   </Button>
                   <Button
                      onClick={() => {
-                        navigate("/kurslar");
+                        navigate("/courses");
                      }}
                      sx={{
                         background: "none",
@@ -98,7 +98,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                   </Button>
                   <Button
                      onClick={() => {
-                        navigate("/faq");
+                        navigate("/question");
                      }}
                      className="title"
                      size={14}
@@ -124,7 +124,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                         }
                      }}
                      onClick={() => {
-                        navigate("/biz-haqimizda");
+                        navigate("/about");
                      }}
                      size={14}
                   >

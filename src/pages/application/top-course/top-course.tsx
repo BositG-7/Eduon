@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CourseTop } from "modules/kurslar/api";
+import { CourseTop } from "modules/courses/api";
 
 import Footer from "components/footer";
 
-import Steps from "../bosh-sahifa/components/qadamlar";
-import Statistic from "../bosh-sahifa/components/statistic";
+import Statistic from "../home/components/statistic";
+import Steps from "../home/components/steps";
 
-import "../bosh-sahifa/style/top-course.scss";
+import "../home/style/top-course.scss";
 import "react-multi-carousel/lib/styles.css";
 
 export interface Results {
@@ -58,7 +58,7 @@ function TopCourses() {
                      onClick={() => {
                         // @ts-ignore
 
-                        navigete(`/kurslar/kurs/${item.id}`);
+                        navigete(`/courses/course/${item.id}`);
                      }}
                      // @ts-ignore
                      key={item.id}
