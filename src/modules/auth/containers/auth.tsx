@@ -12,7 +12,7 @@ interface AuthProps {
 }
 
 const Auth = ({ children }: AuthProps) => {
-   const [{ user, isLoading, verfication, isResetPassword }, setState] = useProfile();
+   const [{ user, isLoading, verification: verfication, isResetPassword }, setState] = useProfile();
    const navigete = useNavigate();
 
    if (isLoading) return <LoadingOverlay visible overlayBlur={2} />;
@@ -21,11 +21,11 @@ const Auth = ({ children }: AuthProps) => {
       login: (user: IEntity.User) => setState(prev => ({ ...prev, user })),
       logout: () => {
          clearSession();
-         setState(prev => ({ ...prev, user: null, verfication: false }));
+         setState(prev => ({ ...prev, user: null, verification: false }));
          navigete("/");
       },
       getEmail: () => {
-         setState(prev => ({ ...prev, verfication: true }));
+         setState(prev => ({ ...prev, verification: true }));
       },
       getPassword: () => {
          setState(prev => ({ ...prev, isResetPassword: true }));

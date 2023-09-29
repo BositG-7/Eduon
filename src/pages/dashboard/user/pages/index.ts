@@ -1,2 +1,2 @@
-export { default as Hisobim } from "./hisobim/hisobim";
-export { default as Kurslarim } from "./kurslarim/components/kurs";
+export { default as MyAccount } from "./my-account/my-account";
+export { default as MyCourses } from "./my-courses/components/course";

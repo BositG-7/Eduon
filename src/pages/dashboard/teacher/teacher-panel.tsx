@@ -1,0 +1,25 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
+import React from "react";
+
+import Informations from "./pages/informations";
+import { Sidebar } from "./components";
+
+import style from "./styles/panel.module.scss";
+
+interface TeacherPanelProps {}
+
+const TeacherPanel = (props: TeacherPanelProps) => {
+   const s = "";
+
+   return (
+      <div className={style.teacherPanel}>
+         <Sidebar />
+         <div className={style.main}>
+            <Informations />
+         </div>
+      </div>
+   );
+};
+
+export default TeacherPanel;

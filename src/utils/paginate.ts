@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useList } from "modules/kurslar/hooks/course-use-list";
+import { useList } from "modules/courses/hooks/course-use-list";
 
 interface PaginateProps {
    currentPage: number;
