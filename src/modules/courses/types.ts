@@ -80,6 +80,7 @@ export namespace IApi {
             category?: number;
          }
          export interface Response {
+            id:number
             name: string;
             description: string;
             price?: string;
@@ -93,6 +94,29 @@ export namespace IApi {
             degree?: string;
             speaker?: number;
             category?: number;
+         }
+      }
+      export namespace VideoUpload {
+         export interface Request {
+            title: string;
+            description: string;
+            duration?: string;
+            video?: any;
+            author: number;
+            course: number;
+            module?: number;
+            file?: number;
+         }
+         export interface Response {
+            id?: number;
+            title: string;
+            description: string;
+            duration?: string;
+            video?: string;
+            author: number;
+            course: number;
+            module?: number;
+            file?: number;
          }
       }
       export namespace List {
@@ -118,8 +142,8 @@ export namespace IApi {
          }
       }
       export namespace Category {
-         export interface Request {}
-         export interface Response extends IEntity.Category {}
+         export interface Request { }
+         export interface Response extends IEntity.Category { }
       }
    }
 }

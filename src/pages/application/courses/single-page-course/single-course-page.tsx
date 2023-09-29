@@ -16,26 +16,28 @@ import SpeakersCourse from "./components/speakers-course";
 interface SinglePageCourseProps {}
 
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
-   const { kursID = "" } = useParams<{ kursID: string }>();
+   const { courseID = "" } = useParams<{ courseID: string }>();
    const navigete = useNavigate();
-   const  course  = useSingle(kursID);
+   const course = useSingle(courseID);
 
-   const  {speaker=2} = course;
+   const { speaker = 2 } = course;
 
-   const teacher  = useSpeaker(speaker);
+   // @ts-expect-error
+   console.log(course.video[0]?.video);
 
+   const teacher = useSpeaker(speaker);
+
+   console.log(course);
 
    return (
       <Box pl={100} pt={20}>
          <Flex justify="space-between" pr={100}>
             <Box w="50vw">
                <Title size={54} sx={{ lineHeight: "normal" }}>
-
                   {course.name}
                </Title>
 
                <Title pt={15} size={18} color="rgba(17, 17, 17, 0.54)" sx={{ fontWeight: 400 }}>
-
                   {course.description}
                </Title>
                <Flex pt={20} align="center" gap={35}>
@@ -115,7 +117,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   loop
                   muted
                   controls
-                  src={course?.video.video}
+                  // @ts-expect-error
+                  src={course.video[0]?.video}
                />
                <Title fw={500} size={24}>
                   12,400,000 <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>so'm</span>{" "}

@@ -16,12 +16,11 @@ interface CourseProps {
 const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, rating }) => {
    const navigete = useNavigate();
 
-
    return (
       <Box>
          <Flex>
             <Box>
-               <Link to={`/kurslar/kurs/${id}`}>
+               <Link to={`/courses/course/${id}`}>
                   <img
                      style={{
                         width: "300px",
