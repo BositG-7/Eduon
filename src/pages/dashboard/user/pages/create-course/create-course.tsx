@@ -7,6 +7,8 @@ import { useCategory } from "modules/kurslar/hooks/use-category";
 // eslint-disable-next-line import/order
 import ReactQuill from "react-quill";
 
+import VideoUpload from "./components/video-upload";
+
 import "react-quill/dist/quill.snow.css";
 
 const CourseCreate: React.FC = () => {
@@ -27,13 +29,12 @@ const CourseCreate: React.FC = () => {
     });
     const { category } = useCategory();
     const [categoryOptions, setCategory]: any = useState([])
+    const [courseDetailUpload, setCourseDetailUpload] = useState<null | number>(null)
 
     useEffect(() => {
-        // @ts-expect-error
 
-        if (Array.isArray(category.results)) {
-            // @ts-expect-error
-            const categoryOptions1 = category.results.map((item: any) => ({
+        if (category) {
+            const categoryOptions1 = category.map((item: any) => ({
                 label: item.name, value:
                     item.id
             }));
@@ -93,17 +94,23 @@ const CourseCreate: React.FC = () => {
 
         // eslint-disable-next-line prefer-destructuring
         courseData.image = courseData.image[0]
-
+        
         try {
-            const response = await CreateCourse(courseData);
+            const {data} = await CreateCourse(courseData);
 
+            console.log(data);
+            
             notifications.show({ message: "Course created successfully", color: "green" });
-
+            setCourseDetailUpload(data.id)
         } catch (error: any) {
 
             notifications.show({ message: error.message, color: "red" });
         }
-    };
+    }
+
+    if (courseDetailUpload) {
+       return  <VideoUpload courseDetailUpload={courseDetailUpload} />
+    }
 
     return (
         <Container w="100%">
@@ -126,7 +133,7 @@ const CourseCreate: React.FC = () => {
                             value={courseData.description}
                             onChange={handleDescriptionChange}
                             placeholder="Write course description"
-                            style={{borderRadius:"10px"}}
+                            style={{ borderRadius: "10px" }}
                         />
                     </div>
                     <TextInput

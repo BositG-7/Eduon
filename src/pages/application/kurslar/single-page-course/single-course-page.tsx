@@ -24,6 +24,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    const { teacher } = useSpeaker(speaker);
 
+   console.log(course);
+   
    return (
       <Box pl={100} pt={20}>
          <Flex justify="space-between" pr={100}>
