@@ -69,8 +69,6 @@ export namespace IApi {
             degree?: string;
             speaker?: number;
             category?: number;
-
-
          }
          export interface Response {
             name: string;
@@ -95,20 +93,20 @@ export namespace IApi {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.SingleCourse { }
+         export interface Response extends IEntity.SingleCourse {}
       }
 
       export namespace Speaker {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.Speaker { }
+         export interface Response extends IEntity.Speaker {}
       }
       export namespace SpeakerCourse {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.SpeakerCourse { }
+         export interface Response extends IEntity.SpeakerCourse {}
       }
       export namespace Category {
          export interface Request {}
@@ -144,5 +142,4 @@ export namespace IQuery {
 }
 
 type User = "firstName" | "lastName" | "age";
-type Person = Extract<User, 'firstName'>
-
+type Person = Extract<User, "firstName">;

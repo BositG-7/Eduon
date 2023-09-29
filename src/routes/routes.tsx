@@ -51,7 +51,7 @@ const Routes = () => {
          </Route>
 
          {/* Dashboard */}
-         <Route path="dashboard/user" element={<UserRoute allowed={!user?.isSpiker} redirectURL="/" />}>
+         <Route path="dashboard/user" element={<UserRoute allowed={!user?.isSpiker} redirectURL="/dashboard/teacher" />}>
             <Route path="kurslarim" element={<Kurslarim />} />
             <Route path="hisobim" element={<Hisobim />} />
             <Route path="kurs-qoshish" element={<CourseCreate />} />
