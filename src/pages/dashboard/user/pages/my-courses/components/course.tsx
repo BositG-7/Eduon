@@ -15,7 +15,7 @@ export default function Course({ name, id, img }: CourseProps) {
       <div
          className={style.wrapper}
          onClick={() => {
-            navigete(`/dashboard/user/courses/${id}`);
+            navigete(`/dashboard/user/course/${id}`);
          }}
       >
          <div className={style.img} style={{ backgroundImage: `url(${img})` }} />
