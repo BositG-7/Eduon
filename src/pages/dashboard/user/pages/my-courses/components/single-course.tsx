@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 interface SingleKursProps {}
 
 const SingleCourse: FunctionComponent<SingleKursProps> = () => {
-   const { adminKursSingle } = useParams<{ adminKursSingle: string }>();
+   const { adminCourseSingle } = useParams<{ adminCourseSingle: string }>();
 
-   return <h1>{adminKursSingle}</h1>;
+   return <h1>{adminCourseSingle}</h1>;
 };
 
 export default SingleCourse;

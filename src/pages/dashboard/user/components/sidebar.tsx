@@ -53,10 +53,10 @@ const useStyles = createStyles(theme => ({
 }));
 
 const data = [
-   { link: "/dashboard/user/kurslarim", label: "Kurslarim", icon: BiFolderMinus },
-   { link: "/dashboard/user/profil", label: "Profil", icon: BsPerson },
-   { link: "/dashboard/user/hisobim", label: "Hisobim", icon: BsPerson },
-   { link: "/dashboard/user/kurs-qoshish", label: "Kurs-qoshish", icon: BsPerson }
+   { link: "/dashboard/user/my-courses", label: "Kurslarim", icon: BiFolderMinus },
+   { link: "/dashboard/user/profile", label: "Profil", icon: BsPerson },
+   { link: "/dashboard/user/my-account", label: "Hisobim", icon: BsPerson },
+   { link: "/dashboard/user/create-course", label: "Kurs-qoshish", icon: BsPerson }
 ];
 
 function Sidebar() {
@@ -104,21 +104,21 @@ function Sidebar() {
 
    return (
       <Flex direction="column" align="center" h="auto">
-      {sidebarVisible && (
-         <>
-            <div className="blur-overlay" onClick={hideSidebar} />
-            <Navbar sx={{ height: "auto", border: "none" }} width={{ sm: 260 }} p="md">
-               <Navbar.Section grow>{links}</Navbar.Section>
-            </Navbar>
-            {/* <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
+         {sidebarVisible && (
+            <>
+               <div className="blur-overlay" onClick={hideSidebar} />
+               <Navbar sx={{ height: "auto", border: "none" }} width={{ sm: 260 }} p="md">
+                  <Navbar.Section grow>{links}</Navbar.Section>
+               </Navbar>
+               {/* <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
                {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight size={24} />}
             </Button> */}
-         </>
-      )}
-      <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
-         {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight />}
-      </Button>
-   </Flex>
+            </>
+         )}
+         <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
+            {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight />}
+         </Button>
+      </Flex>
    );
 }
 

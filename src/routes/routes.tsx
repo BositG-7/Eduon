@@ -21,14 +21,10 @@ import UserRoute from "./user-route";
 const Routes = () => {
    const { user } = useAuth();
 
-
    const verification = getSessionVerification().email;
    const reset = getSessionReset().email;
 
-
-
    return (
-
       <Switch>
          <Route path="" element={<Application.Home />} />
 
@@ -64,7 +60,7 @@ const Routes = () => {
             <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="my-courses" element={<MyCoursesList />} />
             <Route path="informations" element={<Informations />} />
             <Route path="finance" element={<Finance />} />

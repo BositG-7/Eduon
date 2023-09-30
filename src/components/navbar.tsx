@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { FunctionComponent } from "react"; // React import qilingan
 import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, Menu } from "@mantine/core";
@@ -72,6 +71,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                         }
                      }}
                      className="title"
+                     // @ts-ignore
+
                      size={14}
                      onClick={() => {
                         navigate("/");
@@ -92,6 +93,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                         }
                      }}
                      className="title"
+                     // @ts-ignore
                      size={14}
                   >
                      Kurslar
@@ -101,6 +103,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                         navigate("/question");
                      }}
                      className="title"
+                     // @ts-ignore
+
                      size={14}
                      sx={{
                         background: "none",
@@ -126,6 +130,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                      onClick={() => {
                         navigate("/about");
                      }}
+                     // @ts-ignore
+
                      size={14}
                   >
                      Biz haqimizda

@@ -1,8 +1,15 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
-import { Button, Container, FileInput, Flex, Paper, Select, Textarea, TextInput } from "@mantine/core";
+import { Button, Container, FileInput, Flex, Paper, Select, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { CreateCourse } from "modules/courses/api";
 import { useCategory } from "modules/courses/hooks/use-category";
+// eslint-disable-next-line import/order
+import ReactQuill from "react-quill";
+
+import VideoUpload from "./components/video-upload";
+
+import "react-quill/dist/quill.snow.css";
 
 const CourseCreate: React.FC = () => {
    const [courseData, setCourseData] = useState({
@@ -22,11 +29,10 @@ const CourseCreate: React.FC = () => {
    });
    const { category } = useCategory();
    const [categoryOptions, setCategory]: any = useState([]);
-
-
+   const [courseDetailUpload, setCourseDetailUpload] = useState<null | number>(null);
 
    useEffect(() => {
-      if (Array.isArray(category)) {
+      if (category) {
          const categoryOptions1 = category.map((item: any) => ({
             label: item.name,
             value: item.id
@@ -69,6 +75,12 @@ const CourseCreate: React.FC = () => {
          notifications.show({ message: "No file selected", color: "red" });
       }
    };
+   const handleDescriptionChange = (value: string) => {
+      setCourseData({
+         ...courseData,
+         description: value
+      });
+   };
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -77,13 +89,20 @@ const CourseCreate: React.FC = () => {
       courseData.image = courseData.image[0];
 
       try {
-         const response = await CreateCourse(courseData);
+         const { data } = await CreateCourse(courseData);
+
+         console.log(data);
 
          notifications.show({ message: "Course created successfully", color: "green" });
+         setCourseDetailUpload(data.id);
       } catch (error: any) {
          notifications.show({ message: error.message, color: "red" });
       }
    };
+
+   if (courseDetailUpload) {
+      return <VideoUpload courseDetailUpload={courseDetailUpload} />;
+   }
 
    return (
       <Container w="100%">
@@ -100,16 +119,15 @@ const CourseCreate: React.FC = () => {
                   pt="xl"
                   required
                />
-               <Textarea
-                  label="Description"
-                  name="description"
-                  value={courseData.description}
-                  placeholder="Write course description"
-                  onChange={handleInputChange}
-                  w="100%"
-                  pb="md"
-                  required
-               />
+               <div className="description-editor">
+                  <label>Description</label>
+                  <ReactQuill
+                     value={courseData.description}
+                     onChange={handleDescriptionChange}
+                     placeholder="Write course description"
+                     style={{ borderRadius: "10px" }}
+                  />
+               </div>
                <TextInput
                   label="Price"
                   name="price"

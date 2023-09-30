@@ -34,14 +34,12 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    const navigete = useNavigate();
 
    const onSubmit = async (data: Types.IForm.Verification) => {
-
-
       try {
          methods.getEmail();
          await SendEmail(data);
          setSessionVerification(data);
 
-         navigete("/auth/checkpassword");
+         navigete("/auth/check-password");
 
          // Yuborish muvaffaqiyatli yakunlandi
       } catch (error: any) {

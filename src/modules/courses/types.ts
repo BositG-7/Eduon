@@ -29,13 +29,13 @@ export namespace IEntity {
    }
 
    export interface Comment {
-      text: string
-      course: number
-      author: number
+      text: string;
+      course: number;
+      author: number;
    }
    export interface Video {
-      video: string
-      module: number
+      video: string;
+      module: number;
    }
    export interface SingleCourse {
       name: string;
@@ -78,10 +78,9 @@ export namespace IApi {
             degree?: string;
             speaker?: number;
             category?: number;
-
-
          }
          export interface Response {
+            id:number
             name: string;
             description: string;
             price?: string;
@@ -97,6 +96,29 @@ export namespace IApi {
             category?: number;
          }
       }
+      export namespace VideoUpload {
+         export interface Request {
+            title: string;
+            description: string;
+            duration?: string;
+            video?: any;
+            author: number;
+            course: number;
+            module?: number;
+            file?: number;
+         }
+         export interface Response {
+            id?: number;
+            title: string;
+            description: string;
+            duration?: string;
+            video?: string;
+            author: number;
+            course: number;
+            module?: number;
+            file?: number;
+         }
+      }
       export namespace List {
          export type Response = IEntity.Course;
       }
@@ -109,19 +131,19 @@ export namespace IApi {
          export interface Request {
             id: string;
          }
-         export interface Response extends IEntity.Speaker { }
+         export interface Response extends IEntity.Speaker {}
       }
       export namespace SpeakerCourse {
          export interface Request {
             id: string;
          }
          export interface Response {
-            data: IEntity.SpeakerCourse[]
+            data: IEntity.SpeakerCourse[];
          }
       }
       export namespace Category {
-         export interface Request {}
-         export interface Response extends IEntity.Category {}
+         export interface Request { }
+         export interface Response extends IEntity.Category { }
       }
    }
 }
@@ -153,5 +175,4 @@ export namespace IQuery {
 }
 
 type User = "firstName" | "lastName" | "age";
-type Person = Extract<User, 'firstName'>
-
+type Person = Extract<User, "firstName">;
