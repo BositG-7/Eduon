@@ -22,7 +22,7 @@ const Form: FunctionComponent<FormProps> = () => {
 
    const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      // Bu erda `formData` ni ishlatishingiz mumkin, masalan, uni serverga yuborishingiz mumkin
+      console.log(formData);
    };
 
    return (
@@ -47,6 +47,7 @@ const Form: FunctionComponent<FormProps> = () => {
                      <InputBase
                         name="name"
                         radius="24px"
+                        required
                         w="100%"
                         p="30px 24px"
                         bg="rgba(250, 250, 250, 0.24)"
@@ -80,6 +81,8 @@ const Form: FunctionComponent<FormProps> = () => {
                      <InputBase
                         name="email"
                         w="100%"
+                        type="email"
+                        required
                         placeholder="Misol: infonexplatform@gmail.com"
                         radius="24px"
                         p="30px 24px"
@@ -114,6 +117,7 @@ const Form: FunctionComponent<FormProps> = () => {
                         name="phone"
                         placeholder="+998 (xx) xxx-xx-xx"
                         radius="24px"
+                        required
                         w="100%"
                         p="30px 24px"
                         bg="rgba(250, 250, 250, 0.24)"
@@ -160,6 +164,7 @@ const Form: FunctionComponent<FormProps> = () => {
                      Xabaringiz
                   </Title>
                   <Textarea
+                     required
                      name="message"
                      radius="24px"
                      w="100%"

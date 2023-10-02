@@ -29,9 +29,15 @@ function Speakerss() {
 
    useEffect(() => {
       const fetch = async () => {
-         const { data }: any = await TopSpeaker();
+         try {
+            const { data }: any = await TopSpeaker();
 
-         setSpeaker(data.results);
+            console.log(data);
+
+            setSpeaker(data);
+         } catch (error) {
+            console.log(error);
+         }
       };
 
       fetch();
