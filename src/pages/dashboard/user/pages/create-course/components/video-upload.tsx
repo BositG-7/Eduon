@@ -67,7 +67,13 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
                   pb="md"
                   required
                />
-               <FileInput label="Video File" name="videoFile" onChange={files => handleVideoFileChange(files)} accept="video/*" required />
+               <FileInput
+               label="Video File" 
+               name="videoFile" 
+               placeholder="Click to choose video"
+               onChange={files => handleVideoFileChange(files)} 
+               accept="video/*" 
+               required />
                <TextInput
                   label="Author"
                   name="author"
