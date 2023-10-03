@@ -150,7 +150,7 @@ const CourseCreate: React.FC = () => {
                   <FileInput
                      name="image"
                      label="Select an Image"
-                     placeholder="Upload an image"
+                     placeholder="Click to choose picture"
                      onChange={handleImageUpload}
                      accept="image/*"
                      required

@@ -33,11 +33,13 @@ const Routes = () => {
          <Route path="courses" element={<Application.Courses />} />
          <Route path="courses/course/:courseID" element={<SinglePageCourse />} />
          <Route path="courses/speaker/:speakerID" element={<SinglePageSpeaker />} />
+         <Route path="courses/speaker/:speakerID" element={<SinglePageSpeaker />} />
          <Route path="question" element={<Application.Question />} />
          <Route path="about" element={<Application.About />} />
          <Route path="top-courses" element={<Application.TopCourses />} />
          <Route path="new-courses" element={<Application.NewCourses />} />
          <Route path="speakers" element={<Application.Speakers />} />
+         <Route path="shartlar" element={<Application.Shartlar />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>
@@ -62,7 +64,7 @@ const Routes = () => {
             <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="my-courses" element={<MyCoursesList />} />
             <Route path="informations" element={<Informations />} />
             <Route path="finance" element={<Finance />} />
