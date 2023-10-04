@@ -1,8 +1,6 @@
 import { FunctionComponent } from "react";
 import { BsArrowDownUp } from "react-icons/bs";
 
-import Demo from "./components/modal";
-
 import style from './styles/hisobim.module.scss'
 
 

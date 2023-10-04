@@ -55,6 +55,7 @@ const Main: FunctionComponent<MainProps> = () => {
 
    const handleSumbit = (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
+      
       console.log(formValues);
    };
 
