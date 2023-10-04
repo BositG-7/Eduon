@@ -12,7 +12,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       title: "",
       course: courseDetailUpload,
       video: null as File | null,
-      author: 0,
+
       description: "",
       duration: ""
       // module:1,
@@ -67,21 +67,8 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
                   pb="md"
                   required
                />
-               <FileInput
-               label="Video File" 
-               name="videoFile" 
-               placeholder="Click to choose video"
-               onChange={files => handleVideoFileChange(files)} 
-               accept="video/*" 
-               required />
-               <TextInput
-                  label="Author"
-                  name="author"
-                  value={videoData.author}
-                  onChange={handleInputChange}
-                  placeholder="Enter author name"
-                  pb="md"
-               />
+               <FileInput label="Video File" name="videoFile" onChange={files => handleVideoFileChange(files)} accept="video/*" required />
+
                <Textarea
                   label="Description"
                   name="description"

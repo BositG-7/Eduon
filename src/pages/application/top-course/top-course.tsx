@@ -35,7 +35,7 @@ function TopCourses() {
       const fetch = async () => {
          const { data }: any = await CourseTop();
 
-         setPricing(data.results);
+         setPricing(data);
       };
 
       fetch();
