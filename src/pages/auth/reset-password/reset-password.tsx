@@ -7,7 +7,7 @@ import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionReset, clearSessionVerfication, getSessionReset } from "services/store";
+import { clearSessionReset, clearSessionVerification, getSessionReset } from "services/store";
 
 import cursor from "../../../assets/images/cursor.png";
 import threeD from "../../../assets/images/threeD.png";
@@ -32,14 +32,12 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
    const navigate = useNavigate();
 
    useEffect(() => {
-      clearSessionVerfication();
+      clearSessionVerification();
    }, []);
 
    const onSubmit = async (data: Types.IForm.ResetPassword) => {
       const { email } = getSessionReset();
 
-      console.log(email);
-      console.log(data);
 
       try {
          await Api.ResetPassword({
@@ -50,11 +48,9 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          });
          navigate("/auth/login");
 
-         console.log("ResetPassword muvaffaqiyatli yakunlandi!");
 
          clearSessionReset();
       } catch (error: any) {
-         console.log(error);
 
          notifications.show({
             message: error.data.activation_code

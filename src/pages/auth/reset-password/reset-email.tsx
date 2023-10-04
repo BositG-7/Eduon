@@ -33,7 +33,7 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
       clearSessionReset();
    }, []);
    const onSubmit = async (data: Types.IForm.ResetEmail) => {
-      console.log(data);
+
 
       try {
          await ResetEmaill(data);

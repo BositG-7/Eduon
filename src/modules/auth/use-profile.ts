@@ -6,14 +6,14 @@ import { Api, Mappers, Types } from ".";
 interface State {
    isLoading: boolean;
    user: Types.IEntity.User | null;
-   verfication: boolean;
+   verification: boolean;
    isResetPassword: boolean;
 }
-// @ts-ignore
+
 const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
    const { access } = getSession();
    const { refresh } = getSession();
-   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null, verfication: false, isResetPassword: true });
+   const [state, setState] = React.useState<State>({ isLoading: !!access, user: null, verification: false, isResetPassword: true });
 
    useEffect(() => {
       const request = async () => {
@@ -23,9 +23,9 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
 
             const user = Mappers.User(data);
 
-            setState({ user, isLoading: false, verfication: true, isResetPassword: true });
+            setState({ user, isLoading: false, verification: true, isResetPassword: true });
          } catch (err: any) {
-            setState({ user: null, isLoading: false, verfication: false, isResetPassword: true });
+            setState({ user: null, isLoading: false, verification: false, isResetPassword: true });
          }
       };
 

@@ -1,2 +1,2 @@
 
-export { default as ProfileUser }  from "./profile"
+export { default as ProfileUser }  from "../profile/profile"

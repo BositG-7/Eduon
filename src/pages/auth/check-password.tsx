@@ -6,7 +6,7 @@ import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionReset, getSessionVerfication } from "services/store";
+import { clearSessionReset, getSessionVerification } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
@@ -32,12 +32,11 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
 
    const onSubmit = async (data: Types.IForm.Checkpassword) => {
       try {
-         const { email }: any = getSessionVerfication();
+         const { email }: any = getSessionVerification();
 
          await Api.Checkpassword({ email, activation_code: data.password });
          navigate("/auth/register");
 
-         console.log("Checkpassword muvaffaqiyatli yakunlandi!");
       } catch (error: any) {
          notifications.show({
             message: error.data.invalid_code

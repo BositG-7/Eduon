@@ -1,3 +1,3 @@
-export { default as Kurslarim } from "./kurslarim";
+export { default as MyCourses } from "./my-courses";
+export { default as NewCourses } from "./new-course";
 export { default as Sidebar } from "./sidebar";
-export { default as YangiKurs } from "./yangi-kurs";

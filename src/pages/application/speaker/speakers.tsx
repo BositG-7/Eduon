@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { TopSpeaker } from "modules/kurslar/api";
+import { TopSpeaker } from "modules/courses/api";
 
 import Footer from "components/footer";
 
-import Steps from "../bosh-sahifa/components/qadamlar";
-import Statistic from "../bosh-sahifa/components/statistic";
+import Statistic from "../home/components/statistic";
+import Steps from "../home/components/steps";
 
-import "../bosh-sahifa/style/top-speaker.scss";
+import "../home/style/top-speaker.scss";
 
 export interface Results {
    speaker: string;
@@ -29,9 +29,15 @@ function Speakerss() {
 
    useEffect(() => {
       const fetch = async () => {
-         const { data }: any = await TopSpeaker();
+         try {
+            const { data }: any = await TopSpeaker();
 
-         setSpeaker(data.results);
+            console.log(data);
+
+            setSpeaker(data);
+         } catch (error) {
+            console.log(error);
+         }
       };
 
       fetch();

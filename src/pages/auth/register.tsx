@@ -5,7 +5,7 @@ import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text } from "@manti
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { clearSessionReset, clearSessionVerfication, getSessionVerfication } from "services/store";
+import { clearSessionReset, clearSessionVerification, getSessionVerification } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
@@ -40,10 +40,9 @@ const Register = () => {
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
    const onRegister = async (data: Types.IForm.Register) => {
-      console.log(data);
       setLoading(true);
 
-      const { email }: any = getSessionVerfication();
+      const { email }: any = getSessionVerification();
 
       try {
          const requestData = {
@@ -53,10 +52,9 @@ const Register = () => {
 
          await Api.Register(requestData);
 
-         console.log("navi");
          navigate("auth/register");
          setLoading(false);
-         clearSessionVerfication();
+         clearSessionVerification();
       } catch (err: any) {
          notifications.show({
             message: err.data.username

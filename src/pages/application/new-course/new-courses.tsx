@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CourseNew } from "modules/kurslar/api";
+import { CourseNew } from "modules/courses/api";
 
 import Footer from "components/footer";
 
-import Steps from "../bosh-sahifa/components/qadamlar";
-import Statistic from "../bosh-sahifa/components/statistic";
+import Statistic from "../home/components/statistic";
+import Steps from "../home/components/steps";
 
-import "../bosh-sahifa/style/yangi-kurslar.scss";
+import "../home/style/new-courses.scss";
 
 export interface Results {
    id: number;
