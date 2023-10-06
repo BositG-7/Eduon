@@ -11,13 +11,14 @@ import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleCourse from "pages/dashboard/user/pages/my-courses/components/single-course";
 import MyCourses from "pages/dashboard/user/pages/my-courses/my-courses";
-import { ProfileUser } from "pages/dashboard/user/pages/profil";
-// import { ProfileUser } from "pages/dashboard/user/pages/profile";
+import ProfileUser from "pages/dashboard/user/pages/profile/profile";
 import { getSessionReset, getSessionVerification } from "services/store";
 
 import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
+
+const { user } = useAuth();
 
 const Routes = () => {
    const { user } = useAuth();

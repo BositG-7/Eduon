@@ -7,7 +7,7 @@ import { Demo,  Main } from "./companents";
 
 interface ProfileProps {}
 
-const Profile: FunctionComponent<ProfileProps> = () => {
+const ProfileUser: FunctionComponent<ProfileProps> = () => {
    const { user } = useAuth();
 
    return (
@@ -24,4 +24,4 @@ const Profile: FunctionComponent<ProfileProps> = () => {
    )
 };
 
-export default Profile;
+export default ProfileUser;
