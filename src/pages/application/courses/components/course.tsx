@@ -4,6 +4,8 @@ import { Box, Button, Divider, Flex, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 import { BsBookmarkDash } from "react-icons/bs";
 
+import Demo from "./modal";
+
 interface CourseProps {
    img?: string;
    name?: string;
@@ -70,10 +72,8 @@ const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, ra
                   ) : (
                      <Button>Bepul</Button>
                   )}
-
-                  <Button variant="light">Xarid qilish</Button>
+                     <Demo/>
                </Flex>
-               {/* {!price ? <h1>{price}</h1> : <Button>Bepul</Button>} */}
             </Box>
          </Flex>
       </Box>

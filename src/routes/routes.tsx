@@ -11,14 +11,14 @@ import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleCourse from "pages/dashboard/user/pages/my-courses/components/single-course";
 import MyCourses from "pages/dashboard/user/pages/my-courses/my-courses";
+import PaymentClick from "pages/dashboard/user/pages/payment/click";
+import PaymentPayme from "pages/dashboard/user/pages/payment/payme";
 import ProfileUser from "pages/dashboard/user/pages/profile/profile";
-// import { ProfileUser } from "pages/dashboard/user/pages/profile";
 import { getSessionReset, getSessionVerification } from "services/store";
 
 import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
-
 
 const Routes = () => {
    const { user } = useAuth();
@@ -60,6 +60,9 @@ const Routes = () => {
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
             <Route path="profile" element={<ProfileUser />} />
+            <Route path="payme" element={<PaymentPayme />} />
+            <Route path="click" element={<PaymentClick />} />
+
 
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 

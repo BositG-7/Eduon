@@ -22,4 +22,5 @@ export const CourseNew = () => http.get("/course_new");
 export const VideoUpload = (formData: IApi.Course.VideoUpload.Request) =>
    http.post<IApi.Course.VideoUpload.Response>("/speaker_video_upload", objectToFormData(formData));
 
+
 export const TopSpeaker = () => http.get("/speaker_top");
