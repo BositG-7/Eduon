@@ -15,6 +15,8 @@ function Demo() {
     }
 
     const handleRadioChange = (value:any)=>{
+        console.log(value);
+        
         setSelectedRadio(value)
     }
     const btnStyle1 = {
@@ -69,7 +71,6 @@ function Demo() {
                             value="Click"
                             labelPosition='left'
                             style={radio}
-                            checked={selectedRadio === "Click"}
                             onClick={() => handleRadioChange("Click")}
                         />
                         <Radio
@@ -77,8 +78,7 @@ function Demo() {
                             value="Payme"
                             labelPosition='left'
                             style={radio}
-                            checked={selectedRadio === "Payme"}
-                            onChange={() => handleRadioChange("Payme")}
+                            onClick={() => handleRadioChange("Payme")}
                         />
 
                     </Flex>
