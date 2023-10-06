@@ -18,10 +18,13 @@ function Boxes() {
             <article
                className="box"
                onClick={() => {
-                  if (user) {
-                     navigete("/dashboard/user");
-                  } else if (!user) {
+                  if (!user) {
                      navigete("/auth/login");
+                  }
+                  if (user?.isSpiker) {
+                     navigete("/dashboard/teacher");
+                  } else if (!user?.isSpiker) {
+                     navigete("/dashboard/user");
                   }
                }}
             >

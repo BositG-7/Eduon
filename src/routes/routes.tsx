@@ -6,20 +6,17 @@ import SinglePageSpeaker from "pages/application/courses/single-page-speaker/sin
 import { MyCoursesList } from "pages/dashboard/teacher/pages";
 import Finance from "pages/dashboard/teacher/pages/finance";
 import Informations from "pages/dashboard/teacher/pages/informations";
-import { Profile } from "pages/dashboard/teacher/pages/profile";
 import ProfileTeacher from "pages/dashboard/teacher/pages/profile/profile";
 import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleCourse from "pages/dashboard/user/pages/my-courses/components/single-course";
 import MyCourses from "pages/dashboard/user/pages/my-courses/my-courses";
-// import { ProfileUser } from "pages/dashboard/user/pages/profile";
+import ProfileUser from "pages/dashboard/user/pages/profile/profile";
 import { getSessionReset, getSessionVerification } from "services/store";
 
 import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
-
-const { user } = useAuth();
 
 const Routes = () => {
    const { user } = useAuth();
@@ -60,7 +57,7 @@ const Routes = () => {
             <Route path="my-courses" element={<MyCourses />} />
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<ProfileUser />} />
 
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 

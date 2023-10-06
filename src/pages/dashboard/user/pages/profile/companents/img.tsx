@@ -10,7 +10,6 @@ interface ImgProps {}
 const Img: FunctionComponent<ImgProps> = () => {
    const { user } = useAuth();
    const [selectedImage, setSelectedImage] = useState<File | null>(null);
-   const [isModalOpen, setIsModalOpen] = useState(false);
 
    return (
       <Box>
@@ -19,7 +18,7 @@ const Img: FunctionComponent<ImgProps> = () => {
             maw="177px"
             mx="0"
             radius="md"
-            src={selectedImage ? URL.createObjectURL(selectedImage) : userImage}
+            src={user?.img ? user.img : userImage}
             alt="User Image"
             // cursor="pointer"  onClick={handleImageClick}
          />

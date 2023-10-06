@@ -1,9 +1,8 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
-import { SpikkerCart } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface MainProps {}
@@ -20,15 +19,6 @@ const schema = yup.object({
 
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
-
-   useEffect(() => {
-      try {
-         const { data }: any = SpikkerCart();
-
-      } catch (error: any) {
-         console.log(error.messege);
-      }
-   });
 
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",
@@ -54,7 +44,6 @@ const Main: FunctionComponent<MainProps> = () => {
 
    const handleSumbit = (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
-    
    };
 
    const { getInputProps } = useForm<Types.IForm.UserProfil>({
