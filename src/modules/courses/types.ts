@@ -69,18 +69,14 @@ export namespace IApi {
             description: string;
             price?: string;
             image: any[];
-            key_word: string;
             whos_course: string;
-            view?: number;
-            discount?: number;
             language?: string;
             type?: string;
             degree?: string;
-            speaker?: number;
             category?: number;
          }
          export interface Response {
-            id:number
+            id: number;
             name: string;
             description: string;
             price?: string;
@@ -102,7 +98,7 @@ export namespace IApi {
             description: string;
             duration?: string;
             video?: any;
-            author: number;
+
             course: number;
             module?: number;
             file?: number;
@@ -142,8 +138,8 @@ export namespace IApi {
          }
       }
       export namespace Category {
-         export interface Request { }
-         export interface Response extends IEntity.Category { }
+         export interface Request {}
+         export interface Response extends IEntity.Category {}
       }
    }
 }

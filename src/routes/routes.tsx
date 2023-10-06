@@ -6,12 +6,14 @@ import SinglePageSpeaker from "pages/application/courses/single-page-speaker/sin
 import { MyCoursesList } from "pages/dashboard/teacher/pages";
 import Finance from "pages/dashboard/teacher/pages/finance";
 import Informations from "pages/dashboard/teacher/pages/informations";
-import { Profile } from "pages/dashboard/teacher/pages/profile";
+import ProfileTeacher from "pages/dashboard/teacher/pages/profile/profile";
 import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleCourse from "pages/dashboard/user/pages/my-courses/components/single-course";
 import MyCourses from "pages/dashboard/user/pages/my-courses/my-courses";
-import { ProfileUser } from "pages/dashboard/user/pages/profile";
+import PaymentClick from "pages/dashboard/user/pages/payment/click";
+import PaymentPayme from "pages/dashboard/user/pages/payment/payme";
+import ProfileUser from "pages/dashboard/user/pages/profile/profile";
 import { getSessionReset, getSessionVerification } from "services/store";
 
 import AdminRoute from "./admin-route";
@@ -20,6 +22,8 @@ import UserRoute from "./user-route";
 
 const Routes = () => {
    const { user } = useAuth();
+
+   console.log(user);
 
    const verification = getSessionVerification().email;
    const reset = getSessionReset().email;
@@ -31,11 +35,13 @@ const Routes = () => {
          <Route path="courses" element={<Application.Courses />} />
          <Route path="courses/course/:courseID" element={<SinglePageCourse />} />
          <Route path="courses/speaker/:speakerID" element={<SinglePageSpeaker />} />
+         <Route path="courses/speaker/:speakerID" element={<SinglePageSpeaker />} />
          <Route path="question" element={<Application.Question />} />
          <Route path="about" element={<Application.About />} />
          <Route path="top-courses" element={<Application.TopCourses />} />
          <Route path="new-courses" element={<Application.NewCourses />} />
          <Route path="speakers" element={<Application.Speakers />} />
+         <Route path="shartlar" element={<Application.Shartlar />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>
@@ -54,17 +60,20 @@ const Routes = () => {
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
             <Route path="profile" element={<ProfileUser />} />
+            <Route path="payme" element={<PaymentPayme />} />
+            <Route path="click" element={<PaymentClick />} />
+
 
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/user" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="my-courses" element={<MyCoursesList />} />
             <Route path="informations" element={<Informations />} />
             <Route path="finance" element={<Finance />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<ProfileTeacher />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/my-courses" />} />
          </Route>

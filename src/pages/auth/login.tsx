@@ -12,7 +12,7 @@ import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
 
 import "../../assets/styles/login.scss";
-
+   
 interface LoginProps {}
 
 const schema = yup.object({

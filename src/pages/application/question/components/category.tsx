@@ -6,16 +6,11 @@ import Main from "./main";
 interface CategoryProps {}
 
 const Category: FunctionComponent<CategoryProps> = () => {
-   const [selectedValue, setSelectedValue] = useState("Barchasi"); // Initial selected value
+   const [selectedValue, setSelectedValue] = useState("Barchasi");
 
    return (
       <>
-         <Box
-            mt="150px"
-            w="100%"
-            display="flex"
-            sx={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}
-         >
+         <Box mt="150px" w="100%" display="flex" sx={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
             <hr style={{ width: "100%" }} />
             <SegmentedControl
                sx={{
