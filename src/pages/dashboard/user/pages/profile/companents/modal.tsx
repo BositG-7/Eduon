@@ -16,6 +16,10 @@ function Demo() {
       e.preventDefault();
 
       try {
+         console.log(images);
+
+         setImages(images[0]);
+
          // @ts-ignore
          const res = await UpdateImage({ images });
 

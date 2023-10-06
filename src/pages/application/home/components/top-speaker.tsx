@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@mantine/core";
 import { TopSpeaker } from "modules/courses/api";
 
 import "../style/top-speaker.scss";
@@ -56,7 +57,14 @@ function TopSpeakers() {
                   key={item.id}
                >
                   {/* @ts-ignore */}
-                  <img src={item.image} alt="avatar" />
+                  <Avatar
+                     sx={{ cursor: "pointer" }}
+                     radius="xl"
+                     alt="it's me"
+                     size="lg"
+                     // @ts-ignore
+                     {...(item?.img ? { src: item.img } : { children: item?.username[0]?.toUpperCase() })}
+                  />
                   <div className="text">
                      {/* @ts-ignore */}
                      <h3>{item.job}</h3>
