@@ -63,7 +63,6 @@ const Routes = () => {
             <Route path="payme" element={<PaymentPayme />} />
             <Route path="click" element={<PaymentClick />} />
 
-
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />

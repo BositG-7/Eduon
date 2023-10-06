@@ -21,7 +21,6 @@ const schema = yup.object({
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
 
-
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",
       last_name: user?.lastName || "",
@@ -50,7 +49,6 @@ const Main: FunctionComponent<MainProps> = () => {
 
       try {
          await EditProfil(formValues);
-         window.location.reload();
       } catch (error: any) {
          console.log(error);
       }

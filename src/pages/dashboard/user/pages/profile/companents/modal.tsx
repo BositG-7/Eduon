@@ -49,7 +49,7 @@ function Demo() {
    };
 
    const btnStyle2 = {
-      color: "#006AFF",
+      color: "white",
       fontFamily: "Gilroy-Medium",
       fontSize: "24px",
       fontStyle: "normal",
@@ -57,21 +57,22 @@ function Demo() {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      padding: "14px 45px",
+      // padding: "14px 45px",
       marginTop: "24px"
    };
 
    return (
       <>
-         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
+         <Modal 
+          opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
             <Flex justify="space-around">
                <form onSubmit={handleSubmit}>
                   <FileInput
                      name="image"
-                     label="Bir Resim Seçin"
-                     placeholder="Resim seçmek için tıklayın"
+                     label="Rasmni tanlang"
+                     placeholder="Rasmni tanlash uchun bosing"
                      required
-                     w="30%"
+                     w="60%"
                      onChange={handleImageUpload}
                   />
                   <Button style={btnStyle2} type="submit">
