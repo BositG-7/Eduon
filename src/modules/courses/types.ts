@@ -69,14 +69,10 @@ export namespace IApi {
             description: string;
             price?: string;
             image: any[];
-            key_word: string;
             whos_course: string;
-            view?: number;
-            discount?: number;
             language?: string;
             type?: string;
             degree?: string;
-            speaker?: number;
             category?: number;
          }
          export interface Response {

@@ -16,13 +16,10 @@ const CourseCreate: React.FC = () => {
       name: "",
       description: "",
       price: "",
-      key_word: "",
       whos_course: "",
-      view: 0,
-      discount: 0,
       category: 0,
       language: "",
-      speaker: 1,
+   
       type: "",
       degree: "",
       image: []
@@ -157,15 +154,7 @@ const CourseCreate: React.FC = () => {
                      w="30%"
                   />
                </Flex>
-               <TextInput
-                  label="Keyword"
-                  name="key_word"
-                  value={courseData.key_word}
-                  placeholder="Write keywords ex: #python"
-                  onChange={handleInputChange}
-                  pb="md"
-                  required
-               />
+             
                <Flex justify="space-between" pb="md">
                   <Select
                      label="Category"
@@ -175,15 +164,7 @@ const CourseCreate: React.FC = () => {
                      placeholder="Write course category"
                      onChange={value => handleSelectChange("category", value)}
                   />
-                  <TextInput
-                     label="Discount"
-                     name="discount"
-                     value={courseData.discount}
-                     type="number"
-                     w="30%"
-                     placeholder="Enter a discount"
-                     onChange={handleInputChange}
-                  />
+                
                </Flex>
                <Flex justify="space-between" pb="md">
                   <Select

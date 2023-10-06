@@ -7,11 +7,11 @@ import { MyCoursesList } from "pages/dashboard/teacher/pages";
 import Finance from "pages/dashboard/teacher/pages/finance";
 import Informations from "pages/dashboard/teacher/pages/informations";
 import { Profile } from "pages/dashboard/teacher/pages/profile";
+import ProfileTeacher from "pages/dashboard/teacher/pages/profile/profile";
 import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleCourse from "pages/dashboard/user/pages/my-courses/components/single-course";
 import MyCourses from "pages/dashboard/user/pages/my-courses/my-courses";
-import { ProfileUser } from "pages/dashboard/user/pages/profil";
 // import { ProfileUser } from "pages/dashboard/user/pages/profile";
 import { getSessionReset, getSessionVerification } from "services/store";
 
@@ -58,18 +58,18 @@ const Routes = () => {
             <Route path="my-courses" element={<MyCourses />} />
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
-            <Route path="profile" element={<ProfileUser />} />
+            <Route path="profile" element={<Profile />} />
 
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/user" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="my-courses" element={<MyCoursesList />} />
             <Route path="informations" element={<Informations />} />
             <Route path="finance" element={<Finance />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<ProfileTeacher />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/my-courses" />} />
          </Route>
