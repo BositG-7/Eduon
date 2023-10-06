@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Col, Container, Grid, Paper, TextInput } from '@mantine/core';
+import { Col, Container, Grid, InputBase, Paper } from '@mantine/core';
+import { IMaskInput} from "react-imask"
 
 const PaymentPayme: React.FC = () => {
     const [cardNumber, setCardNumber] = useState('');
@@ -32,11 +33,13 @@ const PaymentPayme: React.FC = () => {
             // Handle payment submission here
             console.log('Payment submitted');
             alert('Payment submitted')
-            
+
         } else {
             console.log('Invalid card number or expiry date');
             alert('Invalid card number or expiry date')
         }
+        console.log("Card number", cardNumber);
+        console.log("Expiry date", expiryDate);
     };
 
     return (
@@ -46,22 +49,26 @@ const PaymentPayme: React.FC = () => {
                 <form onSubmit={handleSubmit}>
                     <Grid>
                         <Col>
-                            <TextInput
+                            <InputBase
                                 label="Card Number"
                                 placeholder="Enter card number"
                                 required
                                 type="text"
                                 value={cardNumber}
+                                component={IMaskInput}
+                                mask="0000 0000 0000 0000"
                                 onChange={handleCardNumberChange}
                                 style={{ marginBottom: '1rem' }}
                             />
                         </Col>
                         <Col>
-                            <TextInput
+                            <InputBase
                                 label="Expiry Date"
                                 placeholder="MM/YY"
                                 required
                                 type="text"
+                                component={IMaskInput}
+                                mask="00/00"
                                 value={expiryDate}
                                 onChange={handleExpiryDateChange}
                                 style={{ marginBottom: '1rem' }}
