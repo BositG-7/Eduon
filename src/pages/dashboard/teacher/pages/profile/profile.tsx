@@ -6,9 +6,9 @@ import Data from "./companents/data";
 import Parol from "./companents/password";
 import { CardPage } from "./companents";
 
-interface ProfileProps {}
+interface ProfileTeacherProps {}
 
-const Profile: FunctionComponent<ProfileProps> = () => {
+const ProfileTeacher: FunctionComponent<ProfileTeacherProps> = () => {
    const { user } = useAuth();
    const [segmentValue, setSegmentValue] = useState("ma’lumotlar"); // Default value
 
@@ -40,4 +40,4 @@ const Profile: FunctionComponent<ProfileProps> = () => {
    );
 };
 
-export default Profile;
+export default ProfileTeacher;

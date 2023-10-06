@@ -56,6 +56,67 @@ const MyCourses: FunctionComponent<MyCoursesProps> = () => {
          </>
       );
    }
+   if (selectedValue === "Progresdagi") {
+      return (
+         <>
+            <div className={style.kurslarim}>
+               <SegmentedControl
+                  sx={{
+                     color: "rgba(17, 17, 17, 0.54)",
+                     fontFamily: "Gilroy-Medium",
+                     fontSize: 16,
+                     fontStyle: "normal",
+                     fontWeight: 400,
+                     lineHeight: "normal",
+                     width: "60%"
+                  }}
+                  data={[
+                     { label: "Barchasi", value: "Barchasi" },
+                     { label: "Progresdagi", value: "Progresdagi" },
+                     { label: "Saqlangan", value: "Saqlangan" },
+                     { label: "Tugatilgan", value: "Tugatilgan" }
+                  ]}
+                  value={selectedValue} // Set the selected value
+                  onChange={value => setSelectedValue(value)} // Update the selected value
+               />
+            </div>
+            <div className={style.kurslarimList}>
+               <h1>Progresdagi</h1>
+            </div>
+         </>
+      );
+   }
+
+   if (selectedValue === "Tugatilgan") {
+      return (
+         <>
+            <div className={style.kurslarim}>
+               <SegmentedControl
+                  sx={{
+                     color: "rgba(17, 17, 17, 0.54)",
+                     fontFamily: "Gilroy-Medium",
+                     fontSize: 16,
+                     fontStyle: "normal",
+                     fontWeight: 400,
+                     lineHeight: "normal",
+                     width: "60%"
+                  }}
+                  data={[
+                     { label: "Barchasi", value: "Barchasi" },
+                     { label: "Progresdagi", value: "Progresdagi" },
+                     { label: "Saqlangan", value: "Saqlangan" },
+                     { label: "Tugatilgan", value: "Tugatilgan" }
+                  ]}
+                  value={selectedValue} // Set the selected value
+                  onChange={value => setSelectedValue(value)} // Update the selected value
+               />
+            </div>
+            <div className={style.kurslarimList}>
+               <h1>Tugatilgan</h1>
+            </div>
+         </>
+      );
+   }
 
    return (
       <>

@@ -29,6 +29,7 @@
 		"lodash": "^4.17.21",
 		"mantine-datatable": "^2.9.6",
 		"polished": "^4.2.2",
+		"query-string": "^8.1.0",
 		"react": "^18.2.0",
 		"react-currency-input-field": "^3.6.11",
 		"react-dom": "^18.2.0",
