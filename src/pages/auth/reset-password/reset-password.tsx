@@ -3,7 +3,7 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, PasswordInput } from "@mantine/core";
+import { Box, Button, Flex, PasswordInput, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
@@ -38,7 +38,6 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
    const onSubmit = async (data: Types.IForm.ResetPassword) => {
       const { email } = getSessionReset();
 
-
       try {
          await Api.ResetPassword({
             email,
@@ -48,23 +47,20 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          });
          navigate("/auth/login");
 
-
          clearSessionReset();
       } catch (error: any) {
+         console.log(error);
 
          notifications.show({
-            message: error.data.activation_code
+            message: error.data.password[0],
+            color: "red"
          });
       }
    };
 
    return (
       <Box h="100vh" w="100%">
-         <Box
-            h="90vh"
-            w="100%"
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-         >
+         <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>
@@ -134,6 +130,24 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
                <img src={threeD} alt="threeD" />
             </div>
          </Box>
+         <Text
+            size="15px"
+            color="rgba(17, 17, 17, 0.36)"
+            sx={{
+               display: "flex",
+               alignItems: "center",
+               justifyContent: "center",
+               gap: "10px",
+               "&:hover": {
+                  color: "white"
+               }
+            }}
+            onClick={() => {
+               navigate("/auth/login");
+            }}
+         >
+            Qaytish
+         </Text>
       </Box>
    );
 };
