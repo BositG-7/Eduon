@@ -3,9 +3,9 @@ import { Flex } from "@mantine/core";
 
 import { Main, Title } from "./components";
 
-interface ShartlarProps {}
+interface RulesProps {}
 
-const Shartlar: FunctionComponent<ShartlarProps> = () => {
+const Rules: FunctionComponent<RulesProps> = () => {
    const i = 0;
 
    return (
@@ -18,4 +18,4 @@ const Shartlar: FunctionComponent<ShartlarProps> = () => {
    );
 };
 
-export default Shartlar;
+export default Rules;

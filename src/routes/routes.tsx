@@ -20,6 +20,8 @@ import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
 
+
+
 const Routes = () => {
    const { user } = useAuth();
 
@@ -41,7 +43,7 @@ const Routes = () => {
          <Route path="top-courses" element={<Application.TopCourses />} />
          <Route path="new-courses" element={<Application.NewCourses />} />
          <Route path="speakers" element={<Application.Speakers />} />
-         <Route path="shartlar" element={<Application.Shartlar />} />
+         <Route path="rules" element={<Application.Rules />} />
 
          {/* AUTH */}
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>

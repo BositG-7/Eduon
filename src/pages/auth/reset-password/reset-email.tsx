@@ -45,7 +45,7 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    };
 
    return (
-      <Box h="40vh" w="100%" sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+      <Box h="100vh" w="100%" sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
          <Box h="100%" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
             <div className="right">
                <img src={cursor} alt="cursor" />

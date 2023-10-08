@@ -15,15 +15,12 @@ export const ResetPassword = ({ ...params }: IApi.ResetPassword.Request) => http
 
 export const Checkpassword = ({ email, activation_code }: IApi.Checkpassword.Request) =>
    http.post("/user/check-activate-code", objectToFormData({ email, activation_code }));
-   
-   export const EditProfil = ({  ...params }: IApi.EditProfil.Request) =>
-   http.put("/user/me", objectToFormData({ ...params }));
-   
-   export const UpdateImage = ({  image }: IApi.EditProfil.Request) =>
-   http.patch("/user/me", ({ image }));
-   
-   export const SpikkerCart = () =>
-   http.get("/speaker_card");
+
+export const EditProfil = ({ ...params }: IApi.EditProfil.Request) => http.put("/user/me", objectToFormData({ ...params }));
+
+export const UpdateImage = ({ image }: IApi.EditProfil.Request) => http.patch("/user/me", { image });
+
+export const SpikkerCart = () => http.get("/speaker_card");
 export const ResetEmaill = ({ ...params }: IApi.ResetEmail.Request) => http.post("/user/reset-passwd", objectToFormData({ ...params }));
 
 export const RefleshToken = ({ refresh }: any) => {
