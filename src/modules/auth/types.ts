@@ -118,8 +118,8 @@ export namespace IApi {
          phone?: string;
          image?: string;
          balance?: string;
-         email: string;
-         username: string;
+         email?: string;
+         username?: string;
          gender?: string;
          job?: string;
          birthday?: string;

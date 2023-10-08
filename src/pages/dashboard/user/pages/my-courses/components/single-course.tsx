@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Flex, Slider, Title } from "@mantine/core";
@@ -16,12 +17,14 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const navigete = useNavigate();
    const course = useSingle(adminCourseSingle!);
 
-   const { speaker = 2 } = course;
+   const { speaker } = course;
 
    // @ts-expect-error
    console.log(course.video[0]?.video);
 
    const teacher = useSpeaker(speaker);
+
+   console.log(teacher);
 
    console.log(course);
 
@@ -54,20 +57,30 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   {course.description}
                </Title>
                <Flex w={580} pt={35} align="center" justify="space-between" gap={35}>
-                  <Title size={24}>
+                  <Title sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px" }} size={24}>
                      Avtor:
-                     <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
-                        {/* @ts-ignore */}
-                        {teacher.first_name}
-                     </span>
+                     <img
+                        width={100}
+                        height={100}
+                        style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5, borderRadius: "20px" }}
+                        src={teacher.image}
+                     />
                   </Title>
-
-                  <Flex align="center" gap={2}>
+               </Flex>
+               <Flex justify="space-between" align="center" gap={2}>
+                  <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
+                     {/* @ts-ignore */}
+                     {teacher.username}
+                  </span>
+                  <Title
+                     sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px" }}
+                     color="rgba(0,106,255,1)"
+                     fw={500}
+                     size={20}
+                  >
                      <BiSolidShareAlt style={{ marginTop: 5 }} color="rgba(0,106,255,1)" size={20} />
-                     <Title color="rgba(0,106,255,1)" fw={500} size={20}>
-                        Ulashish
-                     </Title>
-                  </Flex>
+                     Ulashish
+                  </Title>
                </Flex>
 
                <Box pt={50}>
@@ -93,9 +106,9 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                <Title color="gray" fw={500} size={18}>
                   Progress
                </Title>
-                  <Title color="gray" fw={500} size={18}>
+               <Title color="gray" fw={500} size={18}>
                   8/30 (28%)
-                  </Title>
+               </Title>
             </Flex>
 
             <Slider defaultValue={20} max={100} thumbChildren="" />

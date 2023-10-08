@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { UpdateImage } from "modules/auth/api";
+import { useAuth } from "modules/auth/context";
 
 // Import Img component if it exists
 import Img from "./img";
@@ -11,6 +12,7 @@ import style from "../assets/styles/profile.module.scss";
 function Demo() {
    const [opened, { open, close }] = useDisclosure(false);
    const [images, setImages] = useState([]);
+   const { user } = useAuth();
 
    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -18,10 +20,17 @@ function Demo() {
       try {
          console.log(images);
 
-         setImages(images[0]);
+         const formData = new FormData();
+
+         formData.append("image", images[0]); // Assuming images[0] is the selected file
+         // @ts-expect-error
+         formData.append("username", user?.username);
+         // @ts-expect-error
+
+         formData.append("email", user?.email);
 
          // @ts-ignore
-         const res = await UpdateImage({ images });
+         const res = await UpdateImage(formData);
 
          console.log(res); // UpdateImage işleminin cevabını işleyin
       } catch (error: any) {
@@ -63,8 +72,7 @@ function Demo() {
 
    return (
       <>
-         <Modal 
-          opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
+         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
             <Flex justify="space-around">
                <form onSubmit={handleSubmit}>
                   <FileInput

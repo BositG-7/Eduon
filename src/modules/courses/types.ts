@@ -28,9 +28,7 @@ export namespace IEntity {
       parent: number;
    }
 
-   export interface SpeakerInfo{
-
-   }
+   export interface SpeakerInfo {}
 
    export interface Comment {
       text: string;
@@ -54,6 +52,7 @@ export namespace IEntity {
       last_name: string;
       email: string;
       speaker: string;
+      image: string;
    }
    export interface Category {
       id: any;
