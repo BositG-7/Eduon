@@ -1,18 +1,16 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, FunctionComponent, useState } from "react";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { UpdateImage } from "modules/auth/api";
-import { useAuth } from "modules/auth/context";
 
-// Import Img component if it exists
 import Img from "./img";
 
-import style from "../assets/styles/profile.module.scss";
+import style from "../assets/styles/teacherProfile.module.scss";
 
-function Demo() {
+interface TeacherModalProps {}
+
+const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
    const [opened, { open, close }] = useDisclosure(false);
    const [images, setImages] = useState([]);
-   const { user } = useAuth();
 
    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -20,17 +18,11 @@ function Demo() {
       try {
          console.log(images);
 
-         const formData = new FormData();
-
-         formData.append("image", images[0]); // Assuming images[0] is the selected file
-         // @ts-expect-error
-         formData.append("username", user?.username);
-         // @ts-expect-error
-
-         formData.append("email", user?.email);
+         setImages(images[0]);
 
          // @ts-ignore
-         const res = await UpdateImage(formData);
+
+         const res = await UpdateImage({ images });
 
          console.log(res); // UpdateImage işleminin cevabını işleyin
       } catch (error: any) {
@@ -97,6 +89,6 @@ function Demo() {
          </Group>
       </>
    );
-}
+};
 
-export default Demo;
+export default TeacherModal;

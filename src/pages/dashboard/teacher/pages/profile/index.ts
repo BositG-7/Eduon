@@ -1,2 +1,1 @@
-
-export { default as Profile } from "./profile";
+export { default as ProfileTe } from "./profile";

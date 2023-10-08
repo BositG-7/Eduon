@@ -9,7 +9,9 @@ import { CardPage } from "./companents";
 interface ProfileTeacherProps {}
 
 const ProfileTeacher: FunctionComponent<ProfileTeacherProps> = () => {
+   
    const { user } = useAuth();
+   
    const [segmentValue, setSegmentValue] = useState("ma’lumotlar"); // Default value
 
    const handleSegmentChange = (value: string) => {

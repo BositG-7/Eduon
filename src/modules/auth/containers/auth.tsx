@@ -12,7 +12,7 @@ interface AuthProps {
 }
 
 const Auth = ({ children }: AuthProps) => {
-   const [{ user, isLoading, verification: verfication, isResetPassword }, setState] = useProfile();
+   const [{ user, isLoading }, setState] = useProfile();
    const navigete = useNavigate();
 
    if (isLoading) return <LoadingOverlay visible overlayBlur={2} />;
@@ -23,16 +23,10 @@ const Auth = ({ children }: AuthProps) => {
          clearSession();
          setState(prev => ({ ...prev, user: null, verification: false }));
          navigete("/");
-      },
-      getEmail: () => {
-         setState(prev => ({ ...prev, verification: true }));
-      },
-      getPassword: () => {
-         setState(prev => ({ ...prev, isResetPassword: true }));
       }
    };
 
-   return <AuthContext.Provider value={{ user, isLoading, methods, verfication, isResetPassword }}>{children}</AuthContext.Provider>;
+   return <AuthContext.Provider value={{ user, isLoading, methods }}>{children}</AuthContext.Provider>;
 };
 
 export default Auth;

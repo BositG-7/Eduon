@@ -28,6 +28,8 @@ export namespace IEntity {
       parent: number;
    }
 
+   export interface SpeakerInfo {}
+
    export interface Comment {
       text: string;
       course: number;
@@ -50,6 +52,7 @@ export namespace IEntity {
       last_name: string;
       email: string;
       speaker: string;
+      image: string;
    }
    export interface Category {
       id: any;
@@ -141,6 +144,10 @@ export namespace IApi {
          export interface Request {}
          export interface Response extends IEntity.Category {}
       }
+      export namespace SpeakerInfo {
+         export interface Request {}
+         export interface Response extends IEntity.SpeakerInfo {}
+      }
    }
 }
 
@@ -166,6 +173,10 @@ export namespace IQuery {
       export interface Category {
          isLoading?: boolean;
          category: IEntity.Category[];
+      }
+      export interface SpeakerInfo {
+         isLoading?: boolean;
+         info: IEntity.SpeakerInfo[];
       }
    }
 }
