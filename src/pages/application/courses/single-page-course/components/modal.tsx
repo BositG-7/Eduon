@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Flex, Group, Modal, Radio } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useAuth } from 'modules/auth/context';
 
 function Demo() {
     const [opened, { open, close }] = useDisclosure(false);
     const [selectedRadio, setSelectedRadio] = useState('');
-    const {user} = useAuth()
 
     const handleRadioChange = (value:any) => {
         setSelectedRadio(value);
@@ -16,21 +14,11 @@ function Demo() {
 
     const navigate = useNavigate();
 
-    const handleSubmit = () => { 
-        if(user?.isSpiker){
-            if (selectedRadio === 'Click') {
-                navigate('/dashboard/teacher/click');
-            } else if (selectedRadio === 'Payme') {
-                navigate('/dashboard/teacher/payme');
-            }
-        }
-        else if (!user?.isSpiker) {
-
-            if (selectedRadio === 'Click') {
-                navigate('/dashboard/user/click');
-            } else if (selectedRadio === 'Payme') {
-                navigate('/dashboard/user/payme');
-            }
+    const handleSubmit = () => {
+        if (selectedRadio === 'Click') {
+            navigate('/dashboard/user/click');
+        } else if (selectedRadio === 'Payme') {
+            navigate('/dashboard/user/payme');
         }
         console.log(selectedRadio);
 
@@ -107,7 +95,7 @@ function Demo() {
             </Modal>
 
             <Group position="center">
-                <Button onClick={open} variant="light">Xarid qilish</Button>
+                <Button onClick={open} variant="light" sx={{width:'100%'}}>Xarid qilish</Button>
             </Group>
         </>
     );
