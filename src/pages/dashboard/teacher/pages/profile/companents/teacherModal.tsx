@@ -1,6 +1,8 @@
 import { FormEvent, FunctionComponent, useState } from "react";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
+import { useAuth } from "modules/auth/context";
 
 import Img from "./img";
 
@@ -10,23 +12,34 @@ interface TeacherModalProps {}
 
 const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
    const [opened, { open, close }] = useDisclosure(false);
-   const [images, setImages] = useState([]);
-
+   const [images, setImages] = useState<File[]>([]);
+   const { user } = useAuth();
    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       try {
          console.log(images);
 
-         setImages(images[0]);
+         const formData = new FormData();
+
+         formData.append("image", images[0]); // Assuming images[0] is the selected file
 
          // @ts-ignore
+         formData.append("email", user?.email);
+         // @ts-expect-error
+         formData.append("username", user?.username);
 
-         const res = await UpdateImage({ images });
+         // @ts-ignore
+         const res = await UpdateImage(formData);
 
-         console.log(res); // UpdateImage işleminin cevabını işleyin
+         console.log(res); // Handle the response from UpdateImage
       } catch (error: any) {
-         console.log(error.message);
+         console.log(error);
+
+         notifications.show({
+            message: error.messege,
+            color: "red"
+         });
       }
    };
 
@@ -38,14 +51,12 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
       close();
    };
 
-   const handleImageUpload = (files: any) => {
-      if (files) {
-         // @ts-expect-error
-         setImages([files]);
+   const handleImageUpload = (files: File[]) => {
+      if (files && files.length > 0) {
+         setImages(files);
       } else {
-         // Dosya seçilmediğinde bir hata mesajı gösterme işlemini burada yapabilirsiniz.
-         // Örnek olarak React-Toastify kullanarak:
-         // toast.error("Dosya seçilmedi");
+         // Handle the case where no files are selected, e.g., show an error message
+         // toast.error("No file selected");
       }
    };
 
@@ -58,7 +69,6 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      // padding: "14px 45px",
       marginTop: "24px"
    };
 
@@ -73,6 +83,7 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
                      placeholder="Rasmni tanlash uchun bosing"
                      required
                      w="60%"
+                     // @ts-expect-error
                      onChange={handleImageUpload}
                   />
                   <Button style={btnStyle2} type="submit">

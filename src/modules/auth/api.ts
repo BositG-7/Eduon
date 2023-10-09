@@ -16,7 +16,7 @@ export const ResetPassword = ({ ...params }: IApi.ResetPassword.Request) => http
 export const Checkpassword = ({ email, activation_code }: IApi.Checkpassword.Request) =>
    http.post("/user/check-activate-code", objectToFormData({ email, activation_code }));
 
-export const EditProfil = ({ ...params }: IApi.EditProfil.Request) => http.put("/user/me", objectToFormData({ ...params }));
+export const EditProfil = (formData: any) => http.patch("/user/me", formData);
 
 export const UpdateImage = (formData: any) => http.patch("/user/me", formData);
 

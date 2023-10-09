@@ -47,8 +47,24 @@ const Main: FunctionComponent<MainProps> = () => {
    const handleSumbit = async (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
 
+      console.log("dqwdqwwqd");
+
       try {
-         await EditProfil(formValues);
+         const formData = new FormData();
+
+         formData.append("first_name", formValues.first_name);
+         formData.append("last_name", formValues.last_name);
+         formData.append("phone", formValues.phone);
+         formData.append("email", formValues.email);
+         formData.append("birthday", formValues.birthday);
+         formData.append("job", formValues.job);
+         formData.append("gender", formValues.gender);
+
+         // You can add more fields as needed
+
+         await EditProfil(formData);
+
+         console.log("Dsadas");
       } catch (error: any) {
          console.log(error);
       }

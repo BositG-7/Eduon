@@ -53,6 +53,8 @@ export namespace IEntity {
       email: string;
       speaker: string;
       image: string;
+      courses: [];
+      username: string;
    }
    export interface Category {
       id: any;

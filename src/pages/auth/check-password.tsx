@@ -2,7 +2,7 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, PasswordInput, Text } from "@mantine/core";
+import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
@@ -50,7 +50,7 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                <img src={cursor} alt="cursor" />
             </div>
             <form onSubmit={form.onSubmit(onSubmit)}>
-               <Flex w="355px" direction="column" justify="center" gap={50} align="center" p={20}>
+               <Flex w="400px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Check Activate Code</h1>
 
                   <PasswordInput
@@ -77,25 +77,6 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
             <div className="left">
                <img src={threeD} alt="threeD" />
             </div>
-
-            <Text
-               size="15px"
-               color="rgba(17, 17, 17, 0.36)"
-               sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "10px",
-                  "&:hover": {
-                     color: "white"
-                  }
-               }}
-               onClick={() => {
-                  navigate("/auth/login");
-               }}
-            >
-               Qaytish
-            </Text>
          </Box>
       </Box>
    );

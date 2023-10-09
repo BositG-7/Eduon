@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Flex, Slider, Title } from "@mantine/core";
@@ -23,8 +22,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    console.log(course.video[0]?.video);
 
    const teacher = useSpeaker(speaker);
-
-   console.log(teacher);
 
    console.log(course);
 
@@ -57,30 +54,20 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   {course.description}
                </Title>
                <Flex w={580} pt={35} align="center" justify="space-between" gap={35}>
-                  <Title sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px" }} size={24}>
+                  <Title size={24}>
                      Avtor:
-                     <img
-                        width={100}
-                        height={100}
-                        style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5, borderRadius: "20px" }}
-                        src={teacher.image}
-                     />
+                     <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
+                        {/* @ts-ignore */}
+                        {teacher.username}
+                     </span>
                   </Title>
-               </Flex>
-               <Flex justify="space-between" align="center" gap={2}>
-                  <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
-                     {/* @ts-ignore */}
-                     {teacher.username}
-                  </span>
-                  <Title
-                     sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px" }}
-                     color="rgba(0,106,255,1)"
-                     fw={500}
-                     size={20}
-                  >
+
+                  <Flex align="center" gap={2}>
                      <BiSolidShareAlt style={{ marginTop: 5 }} color="rgba(0,106,255,1)" size={20} />
-                     Ulashish
-                  </Title>
+                     <Title color="rgba(0,106,255,1)" fw={500} size={20}>
+                        Ulashish
+                     </Title>
+                  </Flex>
                </Flex>
 
                <Box pt={50}>
