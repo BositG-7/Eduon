@@ -1,8 +1,10 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Divider, Flex, Title } from "@mantine/core";
+import { Box, Divider, Flex, Title } from "@mantine/core";
 import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 import { BsBookmarkDash } from "react-icons/bs";
+
+import Demo from "./modal";
 
 interface CourseProps {
    price?: number;
@@ -56,7 +58,7 @@ const SpeakersCourse: FunctionComponent<CourseProps> = ({ price, name, image }: 
                      120.000
                   </Title>
 
-                  <Button variant="light">Xarid qilish</Button>
+                  <Demo />
                </Flex>
                {/* {!price ? <h1>{price}</h1> : <Button>Bepul</Button>} */}
             </Box>

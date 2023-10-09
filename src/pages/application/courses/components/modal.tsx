@@ -17,10 +17,18 @@ function Demo() {
    const navigate = useNavigate();
 
    const handleSubmit = () => {
-      if (selectedRadio === "Click") {
-         navigate("/dashboard/user/click");
-      } else if (selectedRadio === "Payme") {
-         navigate("/dashboard/user/payme");
+      if (user?.isSpiker) {
+         if (selectedRadio === "Click") {
+            navigate("/dashboard/teacher/click");
+         } else if (selectedRadio === "Payme") {
+            navigate("/dashboard/teacher/payme");
+         }
+      } else if (!user?.isSpiker) {
+         if (selectedRadio === "Click") {
+            navigate("/dashboard/user/click");
+         } else if (selectedRadio === "Payme") {
+            navigate("/dashboard/user/payme");
+         }
       }
       console.log(selectedRadio);
 

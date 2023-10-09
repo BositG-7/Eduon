@@ -8,12 +8,12 @@ import { Paginated } from "utils/paginate";
 // import Paginate from "components/pagination";
 import Course from "../components/course";
 
-interface SinglePageSpeakerProps {}
+interface SinglePageSpeakerProps { }
 
 const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
    const { speakerID = "" } = useParams<{ speakerID: string }>();
-   const  teacher  = useSpeaker(speakerID);
-   const  {speakerCourse}  = useSpeakerCourse(speakerID);
+   const teacher = useSpeaker(speakerID);
+   const { speakerCourse } = useSpeakerCourse(speakerID);
 
 
 

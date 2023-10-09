@@ -6,6 +6,8 @@ import SinglePageSpeaker from "pages/application/courses/single-page-speaker/sin
 import { MyCoursesList } from "pages/dashboard/teacher/pages";
 import Finance from "pages/dashboard/teacher/pages/finance";
 import Informations from "pages/dashboard/teacher/pages/informations";
+import TeacherPaymentClick from "pages/dashboard/teacher/pages/payment/click";
+import TeacherPaymentPayme from "pages/dashboard/teacher/pages/payment/payme";
 import ProfileTeacher from "pages/dashboard/teacher/pages/profile/profile";
 import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
@@ -71,6 +73,8 @@ const Routes = () => {
             <Route path="informations" element={<Informations />} />
             <Route path="finance" element={<Finance />} />
             <Route path="profile" element={<ProfileTeacher />} />
+            <Route path="payme" element={<TeacherPaymentPayme />} />
+            <Route path="click" element={<TeacherPaymentClick />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/my-courses" />} />
          </Route>
