@@ -7,11 +7,10 @@ import { useAuth } from 'modules/auth/context';
 function Demo() {
     const [opened, { open, close }] = useDisclosure(false);
     const [selectedRadio, setSelectedRadio] = useState('');
-    const {user} = useAuth()
+    const { user } = useAuth()
 
     const handleRadioChange = (value:any) => {
         setSelectedRadio(value);
-        console.log(value);
     }
 
     const navigate = useNavigate();
@@ -32,7 +31,6 @@ function Demo() {
                 navigate('/dashboard/user/payme');
             }
         }
-        console.log(selectedRadio);
 
         close()
    
@@ -74,7 +72,6 @@ function Demo() {
         lineHeight: "normal",
     }
     
-    console.log("efwefwef")
     return (
         <>
             <Modal opened={opened} onClose={close} centered withCloseButton={false}>
