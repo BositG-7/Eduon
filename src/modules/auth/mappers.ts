@@ -15,5 +15,6 @@ export const User = (item: any): IEntity.User => ({
    birthday: get(item, "birthday") || "",
    about: get(item, "about") || "",
    isActive: get(item, "is_active") || false,
-   isSpiker: get(item, "is_spiker") || false
+   isSpiker: get(item, "is_spiker") || false,
+   course: get(item, "course") || []
 });

@@ -20,11 +20,8 @@ function Boxes() {
                onClick={() => {
                   if (!user) {
                      navigete("/auth/login");
-                  }
-                  if (user?.isSpiker) {
-                     navigete("/dashboard/teacher");
-                  } else if (!user?.isSpiker) {
-                     navigete("/dashboard/user");
+                  } else {
+                     navigete("/dashboard");
                   }
                }}
             >

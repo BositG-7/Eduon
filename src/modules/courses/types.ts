@@ -81,7 +81,7 @@ export namespace IApi {
             category?: number;
          }
          export interface Response {
-            id: number;
+            course_id: number;
             name: string;
             description: string;
             price?: string;

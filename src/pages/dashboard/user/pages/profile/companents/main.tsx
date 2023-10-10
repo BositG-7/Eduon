@@ -2,6 +2,7 @@ import { FunctionComponent, useState } from "react";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, Radio } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
@@ -47,8 +48,6 @@ const Main: FunctionComponent<MainProps> = () => {
    const handleSumbit = async (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
 
-      console.log("dqwdqwwqd");
-
       try {
          const formData = new FormData();
 
@@ -62,11 +61,11 @@ const Main: FunctionComponent<MainProps> = () => {
 
          // You can add more fields as needed
 
-         await EditProfil(formData);
+         const res = await EditProfil(formData);
 
-         console.log("Dsadas");
+         notifications.show({ message: res.statusText, color: "green" });
       } catch (error: any) {
-         console.log(error);
+         notifications.show({ message: error.statusText, color: "red" });
       }
    };
 
@@ -115,19 +114,9 @@ const Main: FunctionComponent<MainProps> = () => {
                            autoFocus
                            placeholder="Familyangiz.."
                            radius="sm"
+                           w="100%"
                            value={formValues.last_name}
                            onChange={e => handleInputChange("last_name", e.target.value)}
-                        />
-
-                        <InputBase
-                           type="email"
-                           placeholder="email"
-                           radius="sm"
-                           sx={{
-                              border: "none"
-                           }}
-                           value={formValues.email}
-                           onChange={e => handleInputChange("email", e.target.value)}
                         />
                      </Flex>
                   </Flex>

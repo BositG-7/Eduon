@@ -2,22 +2,27 @@ import React from "react";
 
 import bag from "../../../../assets/images/Bag.svg";
 import chat from "../../../../assets/images/Chat.svg";
-import img from "../../../../assets/images/my-courses.png";
 import check from "../../../../assets/images/my-courses-check.svg";
 import star from "../../../../assets/images/my-courses-rate-star.svg";
 
 // import unCheck from "../../../../assets/images/kurslarim-uncheck.svg";
 import style from "../styles/my-courses.module.scss";
 
-export default function MyCourses() {
+interface MyCoursesProps {
+   image: string;
+   name: string;
+   price: number;
+}
+
+export default function MyCourses({ image, price, name }: MyCoursesProps) {
    return (
       <div className={style.card}>
-         <div className={style.img} style={{ backgroundImage: `url(${img})` }}>
+         <div className={style.img} style={{ backgroundImage: `url(${image})` }}>
             <span className={style.check}>
                <img src={check} alt="check" />
             </span>
          </div>
-         <p className={style.title}>Blog yuritishni 0 dan o'rganamiz. Amaliy</p>
+         <p className={style.title}>{name}</p>
          <div className={style.info}>
             <div className={style.wrap}>
                <img src={star} alt="star" />
@@ -38,7 +43,7 @@ export default function MyCourses() {
          <div className={style.hr} />
          <div className={style.btn}>
             <div className={style.price}>
-               <p>1,000,000</p>
+               <p>{price}</p>
                <p>so'm</p>
             </div>
             <button>Tahrirlash</button>

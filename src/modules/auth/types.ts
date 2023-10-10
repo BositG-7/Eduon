@@ -15,6 +15,7 @@ export namespace IEntity {
       about: string;
       isActive: boolean;
       isSpiker: boolean;
+      course: [];
    }
    export interface Tokens {
       email: any;

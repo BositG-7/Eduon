@@ -18,8 +18,6 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
          try {
             const { data } = await Api.Profile();
 
-            console.log(data);
-
             const user = Mappers.User(data);
 
             setState({ user, isLoading: false });

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Container, FileInput, Paper, Textarea, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { Api } from "modules/courses";
@@ -18,6 +19,8 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       // module:1,
       // file:0,
    });
+
+   const navigete = useNavigate();
 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -42,6 +45,8 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
 
       try {
          const response = await Api.VideoUpload(videoData);
+
+         navigete("/dashboard");
 
          notifications.show({ message: response.statusText, color: "green" });
       } catch (error: any) {
