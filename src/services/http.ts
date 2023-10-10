@@ -1,38 +1,36 @@
-import { notifications } from '@mantine/notifications'
-import axios, { AxiosResponse } from 'axios'
-import config from 'config'
+import { notifications } from "@mantine/notifications";
+import axios, { AxiosResponse } from "axios";
+import config from "config";
 
-import { getSession } from './store'
+import { getSession } from "./store";
 
-export { AxiosError } from 'axios'
+export { AxiosError } from "axios";
 
-const http = axios.create({ baseURL: config.api.baseURL })
+const http = axios.create({ baseURL: config.api.baseURL });
 
 http.interceptors.request.use(
-  request => {
-    const { access = '' } = getSession()
-    
-    // @ts-ignore
-    request.headers = {
-      ...request.headers,
-      ...(access ? { Authorization: `Bearer ${access}` } : {})
-    }
+   request => {
+      const { access = "" } = getSession();
 
-    return request
-  },
-  error => Promise.reject(error)
-)
+      // @ts-ignore
+      request.headers = {
+         ...request.headers,
+         ...(access ? { Authorization: `Bearer ${access}` } : {})
+      };
+
+      return request;
+   },
+   error => Promise.reject(error)
+);
 
 http.interceptors.response.use(null, err => {
-  const response = err?.response || ({} as AxiosResponse)
+   const response = err?.response || ({} as AxiosResponse);
 
-  const { data } = response || {}
+   const { data } = response || {};
 
-  if (data?.detail) notifications.show({ message: data?.detail, color: 'red' })
+   if (data?.detail) notifications.show({ message: data?.detail, color: "red" });
 
-  return Promise.reject(response)
-})
+   return Promise.reject(response);
+});
 
-function handleError(response: AxiosResponse<{ error: true; data: { message: string } }>) {}
-
-export default http
+export default http;
