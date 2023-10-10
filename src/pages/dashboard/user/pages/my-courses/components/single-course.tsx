@@ -18,8 +18,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    const { speaker = 2 } = course;
 
-   // @ts-expect-error
-   console.log(course.video[0]?.video);
 
    const teacher = useSpeaker(speaker);
 
@@ -57,7 +55,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   <Title size={24}>
                      Avtor:
                      <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
-                        {/* @ts-ignore */}
                         {teacher.first_name}
                      </span>
                   </Title>
