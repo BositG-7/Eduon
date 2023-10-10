@@ -43,13 +43,9 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       try {
          const response = await Api.VideoUpload(videoData);
 
-         console.log(response);
-
-         notifications.show({ message: "Video uploaded successfully", color: "green" });
+         notifications.show({ message: response.statusText, color: "green" });
       } catch (error: any) {
-         console.log(videoData);
-
-         notifications.show({ message: error.message, color: "red" });
+         notifications.show({ message: error.statusText, color: "red" });
       }
    };
 
