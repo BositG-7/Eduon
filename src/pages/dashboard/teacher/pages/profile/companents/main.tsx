@@ -101,7 +101,7 @@ const Main: FunctionComponent<MainProps> = () => {
                      </Flex>
                   </Flex>
                </Paper>
-               <Paper bg="var(--paper-bg)" w="100%">
+               <Paper bg="var(--paper-bg)" w="123%">
                   <Flex gap={20} align="center" p={20}>
                      <Flex gap={22} w="100%">
                         <InputBase
@@ -148,12 +148,14 @@ const Main: FunctionComponent<MainProps> = () => {
                   <Flex w="100%">
                      <Textarea
                         label="Ozingiz haqingizda"
-                        placeholder="..."
+                        placeholder="O'zingiz haqqingizda qisqacha ma'lumot..."
                         radius="sm"
                         ml="30px"
                         mb="30px"
                         sx={{
-                           border: "none"
+                           border: "none",
+                           width:"426px"
+                           
                         }}
                         value={formValues.about}
                         onChange={e => handleInputChange("about", e.target.value)}

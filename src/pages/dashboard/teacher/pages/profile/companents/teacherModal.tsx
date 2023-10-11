@@ -75,20 +75,21 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      marginTop: "24px"
+      margin:"50px 100px 50px 100px",
+   
    };
 
    return (
-      <>
-         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
+      <div>
+         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}  padding="xm" >
             <Flex justify="space-around">
                <form onSubmit={handleSubmit}>
                   <FileInput
+                  style={{ marginTop:"30px" }}
                      name="image"
                      label="Rasmni tanlang"
                      placeholder="Rasmni tanlash uchun bosing"
                      required
-                     w="60%"
                      // @ts-expect-error
                      onChange={handleImageUpload}
                   />
@@ -104,7 +105,7 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
                <Img />
             </Box>
          </Group>
-      </>
+      </div>
    );
 };
 
