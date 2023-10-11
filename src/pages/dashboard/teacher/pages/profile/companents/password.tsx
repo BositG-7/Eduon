@@ -10,7 +10,8 @@ const Password: FunctionComponent<PasswordProps> = () => {
    function handleInputChange(arg0: string, value: string): void {
       throw new Error("Function not implemented.");
    }
-
+      
+      
    function handleSumbit(event: FormEvent<HTMLFormElement>): void {
       throw new Error("Function not implemented.");
    }

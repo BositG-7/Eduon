@@ -25,7 +25,8 @@ const ProfileTeacher: FunctionComponent<ProfileTeacherProps> = () => {
                data={[
                   { label: "Ma’lumotlar", value: "ma’lumotlar" },
                   { label: "Karta", value: "karta" },
-                  { label: "Parol", value: "parol" }
+                  { label: "Parol", value: "parol" },
+                  { label:"ResetPassword", value: "resetPassword"},
                ]}
                value={segmentValue}
                onChange={handleSegmentChange}
