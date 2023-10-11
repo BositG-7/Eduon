@@ -7,8 +7,8 @@ const Main: FunctionComponent<MainProps> = () => {
    const i = 0;
 
    return (
-      <Box h="150px" maw="100%">
-         <h1>Main</h1>
+      <Box maw="100%">
+         <h1>eqqdwqwdqw</h1>
       </Box>
    );
 };
