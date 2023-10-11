@@ -50,6 +50,8 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
 
          notifications.show({ message: response.statusText, color: "green" });
       } catch (error: any) {
+         console.log(error);
+
          notifications.show({ message: error.statusText, color: "red" });
       }
    };

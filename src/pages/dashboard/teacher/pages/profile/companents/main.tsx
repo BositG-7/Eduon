@@ -106,21 +106,11 @@ const Main: FunctionComponent<MainProps> = () => {
                      <Flex gap={22} w="100%">
                         <InputBase
                            autoFocus
+                           w="80%"
                            placeholder="Familyangiz.."
                            radius="sm"
                            value={formValues.last_name}
                            onChange={e => handleInputChange("last_name", e.target.value)}
-                        />
-
-                        <InputBase
-                           type="email"
-                           placeholder="email"
-                           radius="sm"
-                           sx={{
-                              border: "none"
-                           }}
-                           value={formValues.email}
-                           onChange={e => handleInputChange("email", e.target.value)}
                         />
                      </Flex>
                   </Flex>
@@ -154,18 +144,20 @@ const Main: FunctionComponent<MainProps> = () => {
                            onChange={e => handleInputChange("job", e.target.value)}
                         />
                      </Flex>
-                     <Flex gap={22} w="100%">
-                        <Textarea
-                           label="Ozingiz haqingizda"
-                           placeholder="..."
-                           radius="sm"
-                           sx={{
-                              border: "none"
-                           }}
-                           value={formValues.about}
-                           onChange={e => handleInputChange("about", e.target.value)}
-                        />
-                     </Flex>
+                  </Flex>
+                  <Flex w="100%">
+                     <Textarea
+                        label="Ozingiz haqingizda"
+                        placeholder="..."
+                        radius="sm"
+                        ml="30px"
+                        mb="30px"
+                        sx={{
+                           border: "none"
+                        }}
+                        value={formValues.about}
+                        onChange={e => handleInputChange("about", e.target.value)}
+                     />
                   </Flex>
                </Paper>
 

@@ -14,7 +14,7 @@ export default function MyCoursesList() {
             <div className={style.courseList}>
                {user?.course.map((item: any) => (
                   // eslint-disable-next-line react/jsx-key
-                  <MyCourses image={item.image} name={item.name} price={item.price} />
+                  <MyCourses id={item.id} image={item.image} name={item.name} price={item.price} />
                ))}
             </div>
          </div>

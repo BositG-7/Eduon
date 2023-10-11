@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mantine/core";
 
 import bag from "../../../../assets/images/Bag.svg";
 import chat from "../../../../assets/images/Chat.svg";
@@ -12,11 +14,19 @@ interface MyCoursesProps {
    image: string;
    name: string;
    price: number;
+   id: number;
 }
 
-export default function MyCourses({ image, price, name }: MyCoursesProps) {
+export default function MyCourses({ image, price, name, id }: MyCoursesProps) {
+   const navigete = useNavigate();
+
    return (
-      <div className={style.card}>
+      <div
+         onClick={() => {
+            navigete(`/dashboard/teacher/course/${id}`);
+         }}
+         className={style.card}
+      >
          <div className={style.img} style={{ backgroundImage: `url(${image})` }}>
             <span className={style.check}>
                <img src={check} alt="check" />
@@ -43,8 +53,8 @@ export default function MyCourses({ image, price, name }: MyCoursesProps) {
          <div className={style.hr} />
          <div className={style.btn}>
             <div className={style.price}>
-               <p>{price}</p>
-               <p>so'm</p>
+               <p>{!price ? <Button children="Bepul" /> : price}</p>
+               <p>{!price ? "" : "so'm"}</p>
             </div>
             <button>Tahrirlash</button>
          </div>

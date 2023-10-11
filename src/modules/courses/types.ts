@@ -82,19 +82,7 @@ export namespace IApi {
          }
          export interface Response {
             course_id: number;
-            name: string;
-            description: string;
-            price?: string;
-            image: any[];
-            key_word: string;
-            whos_course: string;
-            view?: number;
-            discount?: number;
-            language?: string;
-            type?: string;
-            degree?: string;
-            speaker?: number;
-            category?: number;
+            message: string;
          }
       }
       export namespace VideoUpload {

@@ -88,8 +88,10 @@ const CourseCreate: React.FC = () => {
       try {
          const data = await CreateCourse(courseData);
 
-         notifications.show({ message: data.statusText, color: "green" });
+         notifications.show({ message: data.data.message, color: "green" });
          setCourseDetailUpload(data.data.course_id);
+
+         console.log(data);
       } catch (error: any) {
          console.log(error);
 
