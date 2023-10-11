@@ -3,7 +3,7 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, PasswordInput, Text } from "@mantine/core";
+import { Box, Button, Flex, PasswordInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
@@ -130,24 +130,6 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
                <img src={threeD} alt="threeD" />
             </div>
          </Box>
-         <Text
-            size="15px"
-            color="rgba(17, 17, 17, 0.36)"
-            sx={{
-               display: "flex",
-               alignItems: "center",
-               justifyContent: "center",
-               gap: "10px",
-               "&:hover": {
-                  color: "white"
-               }
-            }}
-            onClick={() => {
-               navigate("/auth/login");
-            }}
-         >
-            Qaytish
-         </Text>
       </Box>
    );
 };

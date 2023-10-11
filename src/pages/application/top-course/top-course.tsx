@@ -4,6 +4,7 @@ import { CourseTop } from "modules/courses/api";
 
 import Footer from "components/footer";
 
+import Demo from "../courses/components/modal";
 import Statistic from "../home/components/statistic";
 import Steps from "../home/components/steps";
 
@@ -88,7 +89,7 @@ function TopCourses() {
                               {item.price}
                               <span>/so'm</span>
                            </h3>
-                           <h2>Xarid qilish</h2>
+                           <Demo/>
                         </div>
                      </div>
                   </div>

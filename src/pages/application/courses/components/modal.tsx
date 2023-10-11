@@ -13,7 +13,7 @@ function Demo() {
         setSelectedRadio(value);
     }
 
-    const navigate = useNavigate();
+   const navigate = useNavigate();
 
     const handleSubmit = () => { 
         if(user?.isSpiker){
@@ -32,9 +32,8 @@ function Demo() {
             }
         }
 
-        close()
-   
-    }
+      close();
+   };
 
     const btnStyle1 = {
         color: "#006AFF",
@@ -103,11 +102,22 @@ function Demo() {
                 </Box>
             </Modal>
 
-            <Group position="center">
-                <Button onClick={open} variant="light">Xarid qilish</Button>
-            </Group>
-        </>
-    );
+         <Group position="center">
+            <Button
+               onClick={() => {
+                  if (!user) {
+                     navigate("/auth");
+                  } else {
+                     open();
+                  }
+               }}
+               variant="light"
+            >
+               Xarid qilish
+            </Button>
+         </Group>
+      </>
+   );
 }
 
 export default Demo;

@@ -22,12 +22,8 @@ import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
 
-
-
 const Routes = () => {
    const { user } = useAuth();
-
-   console.log(user);
 
    const verification = getSessionVerification().email;
    const reset = getSessionReset().email;
