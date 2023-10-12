@@ -1,5 +1,6 @@
 import { FormEvent, FunctionComponent, useState } from "react";
-import { Box, Button, Flex, Title } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, Flex, PasswordInput, Title } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
@@ -12,6 +13,8 @@ const Password: FunctionComponent<PasswordProps> = () => {
 
    const [isResetPassword, setIsResetPassword] = useState<boolean>(false);
 
+   const navigete = useNavigate();
+
    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
@@ -19,9 +22,9 @@ const Password: FunctionComponent<PasswordProps> = () => {
 
          console.log(res);
          notifications.show({ message: res.statusText, color: "green" });
-         setIsResetPassword(true);
+         navigete("/dashboard/teacher/reset-password");
       } catch (error: any) {
-         console.log(error);
+         notifications.show({ message: error.statusText, color: "red" });
       }
    };
 
@@ -31,7 +34,59 @@ const Password: FunctionComponent<PasswordProps> = () => {
             <Box h="100vh" w="100%" mt="100px" sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
                <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSubmit}>
                   <Flex gap={20} justify="space-around" align="center">
-                     <Box>qdw</Box>
+                     <Box>
+                        <PasswordInput
+                           placeholder="Activation Code"
+                           sx={{
+                              border: "none",
+                              input: {
+                                 height: "45px",
+                                 borderRadius: "16px",
+                                 outline: "none",
+                                 border: "none",
+                                 padding: "20px 15px",
+                                 fontSize: "18px",
+                                 color: "rgba(17, 17, 17, 0.36)",
+                                 backgroundColor: "rgba(17, 17, 17, 0.02)"
+                              }
+                           }}
+                           w="100%"
+                        />
+                        <PasswordInput
+                           placeholder="New Password"
+                           sx={{
+                              border: "none",
+                              input: {
+                                 height: "45px",
+                                 borderRadius: "16px",
+                                 outline: "none",
+                                 border: "none",
+                                 padding: "20px 15px",
+                                 fontSize: "18px",
+                                 color: "rgba(17, 17, 17, 0.36)",
+                                 backgroundColor: "rgba(17, 17, 17, 0.02)"
+                              }
+                           }}
+                           w="100%"
+                        />
+                        <PasswordInput
+                           placeholder="Confirm Password"
+                           sx={{
+                              border: "none",
+                              input: {
+                                 height: "45px",
+                                 borderRadius: "16px",
+                                 outline: "none",
+                                 border: "none",
+                                 padding: "20px 15px",
+                                 fontSize: "18px",
+                                 color: "rgba(17, 17, 17, 0.36)",
+                                 backgroundColor: "rgba(17, 17, 17, 0.02)"
+                              }
+                           }}
+                           w="100%"
+                        />
+                     </Box>
                      <Button
                         type="submit"
                         sx={{
