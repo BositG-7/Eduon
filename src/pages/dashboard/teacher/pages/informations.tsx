@@ -14,7 +14,7 @@ export default function informations() {
          <Box pl={50}>
             <Box>
                <Title color="rgba(0, 106, 255, 1)">Umumiy ma’lumot</Title>
-               <Title pt={20} size={18} w={450} sx={{ fontWeight: 500 }}>
+               <Title pt={20} maw="500px" size={18} w={450} sx={{ fontWeight: 500 }}>
                   {user?.about}
                </Title>
             </Box>

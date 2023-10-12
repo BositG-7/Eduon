@@ -36,7 +36,7 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
 
          const res = await UpdateImage(formData);
 
-         console.log(res); // Handle the response from UpdateImage
+         notifications.show({ message: res.statusText, color: "green" });
       } catch (error: any) {
          console.log(error);
 
@@ -75,17 +75,16 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      margin:"50px 100px 50px 100px",
-   
+      margin: "50px 100px 50px 100px"
    };
 
    return (
       <div>
-         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}  padding="xm" >
+         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false} padding="xm">
             <Flex justify="space-around">
                <form onSubmit={handleSubmit}>
                   <FileInput
-                  style={{ marginTop:"30px" }}
+                     style={{ marginTop: "30px" }}
                      name="image"
                      label="Rasmni tanlang"
                      placeholder="Rasmni tanlash uchun bosing"

@@ -1,62 +1,64 @@
-import { FormEvent, FunctionComponent } from "react";
-import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
+import { FormEvent, FunctionComponent, useState } from "react";
+import { Box, Button, Flex, Title } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { ResetEmaill } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface PasswordProps {}
 
 const Password: FunctionComponent<PasswordProps> = () => {
    const { user } = useAuth();
+   const [email, setEmail] = useState<string>(user?.email!);
 
-   function handleInputChange(arg0: string, value: string): void {
-      throw new Error("Function not implemented.");
-   }
-      
-      
-   function handleSumbit(event: FormEvent<HTMLFormElement>): void {
-      throw new Error("Function not implemented.");
+   const [isResetPassword, setIsResetPassword] = useState<boolean>(false);
+
+   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+         const res = await ResetEmaill({ email });
+
+         console.log(res);
+         notifications.show({ message: res.statusText, color: "green" });
+         setIsResetPassword(true);
+      } catch (error: any) {
+         console.log(error);
+      }
+   };
+
+   if (isResetPassword) {
+      return (
+         <>
+            <Box h="100vh" w="100%" mt="100px" sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+               <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSubmit}>
+                  <Flex gap={20} justify="space-around" align="center">
+                     <Box>qdw</Box>
+                     <Button
+                        type="submit"
+                        sx={{
+                           color: "rgba(0, 106, 255, 1)",
+                           height: "50px",
+                           backgroundColor: "rgba(231, 240, 255, 1)",
+                           fontSize: "20px",
+                           marginTop: "10px",
+                           "&:hover": {
+                              color: "white"
+                           }
+                        }}
+                     >
+                        Saqlash
+                     </Button>
+                  </Flex>
+               </form>
+            </Box>
+         </>
+      );
    }
 
    return (
       <div>
-         <Box h="100vh" w="100%" sx={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
-            <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSumbit}>
-               <Paper bg="var(--paper-bg)" w="100%">
-                  <Flex gap={20} align="center" p={20}>
-                     <Flex gap={22} w="100%">
-                        <InputBase
-                           label="Eski parol "
-                           placeholder="Eski parol kiriting..."
-                           radius="sm"
-                           onChange={e => handleInputChange("first_name", e.target.value)}
-                        />
-
-                        <InputBase
-                           label="Yangi parol"
-                           placeholder="Yangi parolni kiriting..."
-                           radius="sm"
-                           sx={{
-                              border: "none"
-                           }}
-                           onChange={e => handleInputChange("phone", e.target.value)}
-                        />
-                     </Flex>
-                  </Flex>
-               </Paper>
-               <Paper bg="var(--paper-bg)" w="100%">
-                  <Flex gap={20} align="center" p={20}>
-                     <Flex gap={22} w="100%">
-                        <InputBase
-                           type="number"
-                           label="Yangi parolni tasdiqlash..."
-                           autoFocus
-                           placeholder="Parolni tasdiqlang..."
-                           radius="sm"
-                           onChange={e => handleInputChange("last_name", e.target.value)}
-                        />
-                     </Flex>
-                  </Flex>
-               </Paper>
-
+         <Box h="100vh" w="100%" mt="100px" sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+            <Title maw="500px">Parol almashtirishni istasangiz roziman tugmasini bosing oshanda sizga kod yuboriladi</Title>
+            <form style={{ display: "flex", flexDirection: "column" }} onSubmit={handleSubmit}>
                <Flex gap={20} justify="space-around" align="center">
                   <Button
                      type="submit"
@@ -71,7 +73,7 @@ const Password: FunctionComponent<PasswordProps> = () => {
                         }
                      }}
                   >
-                     Saqlash
+                     Roziman
                   </Button>
                </Flex>
             </form>
