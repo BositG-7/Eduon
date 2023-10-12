@@ -166,11 +166,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                            <Menu.Item
                               icon={<IconUser size={14} />}
                               onClick={() => {
-                                 if (user.isSpiker) {
-                                    navigate("/dashboard/teacher");
-                                 } else {
-                                    navigate("/dashboard/user");
-                                 }
+                                 navigate("/dashboard");
                               }}
                            >
                               Profile
@@ -210,11 +206,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                            <Menu.Item
                               icon={<IconUser size={14} />}
                               onClick={() => {
-                                 if (!user.isSpiker) {
-                                    navigate("/dashboard/user");
-                                 } else {
-                                    navigate("/dashboard/teacher");
-                                 }
+                                 navigate("/dashboard");
                               }}
                            >
                               Profile

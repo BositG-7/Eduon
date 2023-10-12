@@ -22,7 +22,11 @@ const Password: FunctionComponent<PasswordProps> = () => {
 
          console.log(res);
          notifications.show({ message: res.statusText, color: "green" });
-         navigete("/dashboard/teacher/reset-password");
+         if (user?.isSpiker) {
+            navigete("/dashboard/teacher/reset-password");
+         } else if (!user?.isSpiker) {
+            navigete("/dashboard/user/reset-password");
+         }
       } catch (error: any) {
          notifications.show({ message: error.statusText, color: "red" });
       }
