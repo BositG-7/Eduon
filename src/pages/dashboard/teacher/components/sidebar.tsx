@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, createStyles, Flex, getStylesRef, Navbar, rem } from "@mantine/core";
 // eslint-disable-next-line import/order
-import { BiFolderMinus } from "react-icons/bi";
+import { BiFolderMinus, BiSolidAddToQueue } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { RiWallet3Fill } from "react-icons/ri";
@@ -57,7 +57,8 @@ const data = [
    { link: "/dashboard/teacher/my-courses", label: "Kurslarim", icon: RiWallet3Fill },
    { link: "/dashboard/teacher/finance", label: "Moliya", icon: BiFolderMinus },
    { link: "/dashboard/teacher/profile", label: "Profile", icon: BsPerson },
-   { link: "/dashboard/teacher/informations", label: "Ma’lumotlar", icon: HiOutlineDocumentText }
+   { link: "/dashboard/teacher/informations", label: "Ma’lumotlar", icon: HiOutlineDocumentText },
+   { link: "/dashboard/teacher/create-course", label: "Kurs-qoshish", icon: BiSolidAddToQueue }
 ];
 
 function Sidebar() {

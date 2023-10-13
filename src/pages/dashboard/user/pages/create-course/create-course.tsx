@@ -19,7 +19,7 @@ const CourseCreate: React.FC = () => {
       whos_course: "",
       category: 0,
       language: "",
-   
+
       type: "",
       degree: "",
       image: []
@@ -86,14 +86,16 @@ const CourseCreate: React.FC = () => {
       courseData.image = courseData.image[0];
 
       try {
-         const { data } = await CreateCourse(courseData);
+         const data = await CreateCourse(courseData);
+
+         notifications.show({ message: data.data.message, color: "green" });
+         setCourseDetailUpload(data.data.course_id);
 
          console.log(data);
-
-         notifications.show({ message: "Course created successfully", color: "green" });
-         setCourseDetailUpload(data.id);
       } catch (error: any) {
-         notifications.show({ message: error.message, color: "red" });
+         console.log(error);
+
+         notifications.show({ message: error.statusText, color: "red" });
       }
    };
 
@@ -154,7 +156,7 @@ const CourseCreate: React.FC = () => {
                      w="30%"
                   />
                </Flex>
-             
+
                <Flex justify="space-between" pb="md">
                   <Select
                      label="Category"
@@ -164,7 +166,6 @@ const CourseCreate: React.FC = () => {
                      placeholder="Write course category"
                      onChange={value => handleSelectChange("category", value)}
                   />
-                
                </Flex>
                <Flex justify="space-between" pb="md">
                   <Select

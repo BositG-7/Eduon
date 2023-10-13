@@ -68,6 +68,56 @@ export namespace IEntity {
 
 export namespace IApi {
    export namespace Course {
+
+      export namespace PaymentStep1{
+         export namespace Click{
+            export interface Request{
+               card_number:string;
+               expire_date:string;
+            }
+            export interface Response{
+               card_number:string;
+               expire_date:string;
+            }
+         }
+         export namespace Payme{
+            export interface Request{
+               card_number:string;
+               expire_date:string;
+            }
+            export interface Response{
+               card_number:string;
+               expire_date:string;
+            }
+         }
+      }
+
+      export namespace PaymentStep2{
+         export namespace Click{
+            export interface Request{
+               card_token:string;
+               code:string;
+               course_id?:number;
+            }
+            export interface Response{
+               card_token:string;
+               code:string;
+               course_id?:number;
+            }
+         }
+         export namespace Payme{
+            export interface Request{
+               token:string;
+               code:string;
+               course_id?:number;
+            }
+            export interface Response{
+               token:string;
+               code:string;
+               course_id?:number;
+            }
+         }
+      }
       export namespace Create {
          export interface Request {
             name: string;
@@ -81,20 +131,8 @@ export namespace IApi {
             category?: number;
          }
          export interface Response {
-            id: number;
-            name: string;
-            description: string;
-            price?: string;
-            image: any[];
-            key_word: string;
-            whos_course: string;
-            view?: number;
-            discount?: number;
-            language?: string;
-            type?: string;
-            degree?: string;
-            speaker?: number;
-            category?: number;
+            course_id: number;
+            message: string;
          }
       }
       export namespace VideoUpload {

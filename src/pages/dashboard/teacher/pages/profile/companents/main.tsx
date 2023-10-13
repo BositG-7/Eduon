@@ -1,7 +1,8 @@
 import { FunctionComponent, useState } from "react";
 import * as yup from "yup";
-import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
+import { Box, Button, Flex, InputBase, Paper, Textarea } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
@@ -15,7 +16,8 @@ const schema = yup.object({
    gender: yup.string().min(5).label("Gender"),
    phone: yup.string().min(17).label("Phone"),
    email: yup.string().label("Email").required(),
-   job: yup.string().label("Job")
+   job: yup.string().label("Job"),
+   about: yup.string().label("About")
 });
 
 const Main: FunctionComponent<MainProps> = () => {
@@ -44,7 +46,7 @@ const Main: FunctionComponent<MainProps> = () => {
    };
 
    const handleSumbit = async (e: React.FormEvent) => {
-      e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
+      e.preventDefault();
 
       try {
          const formData = new FormData();
@@ -55,14 +57,16 @@ const Main: FunctionComponent<MainProps> = () => {
          formData.append("email", formValues.email);
          formData.append("birthday", formValues.birthday);
          formData.append("job", formValues.job);
+         formData.append("about", formValues.about);
+         formData.append("username", formValues.username);
 
-         // You can add more fields as needed
+         // Boshqa maydonlar qo'shishingiz mumkin
 
-         await EditProfil(formData);
+         const res = await EditProfil(formData); // O'zgartirildi
 
-         console.log("Dsadas");
+         notifications.show({ message: res.statusText, color: "green" });
       } catch (error: any) {
-         console.log(error);
+         notifications.show({ message: error.statusText, color: "red" });
       }
    };
 
@@ -70,12 +74,6 @@ const Main: FunctionComponent<MainProps> = () => {
       initialValues: formValues,
       validate: yupResolver(schema)
    });
-
-   const radio = {
-      border: "1px solid blue",
-      padding: "9px",
-      borderRadius: "5px"
-   };
 
    return (
       <div>
@@ -108,21 +106,11 @@ const Main: FunctionComponent<MainProps> = () => {
                      <Flex gap={22} w="100%">
                         <InputBase
                            autoFocus
+                           w="80%"
                            placeholder="Familyangiz.."
                            radius="sm"
                            value={formValues.last_name}
                            onChange={e => handleInputChange("last_name", e.target.value)}
-                        />
-
-                        <InputBase
-                           type="email"
-                           placeholder="email"
-                           radius="sm"
-                           sx={{
-                              border: "none"
-                           }}
-                           value={formValues.email}
-                           onChange={e => handleInputChange("email", e.target.value)}
                         />
                      </Flex>
                   </Flex>
@@ -156,6 +144,20 @@ const Main: FunctionComponent<MainProps> = () => {
                            onChange={e => handleInputChange("job", e.target.value)}
                         />
                      </Flex>
+                  </Flex>
+                  <Flex w="100%">
+                     <Textarea
+                        label="Ozingiz haqingizda"
+                        placeholder="..."
+                        radius="sm"
+                        ml="30px"
+                        mb="30px"
+                        sx={{
+                           border: "none"
+                        }}
+                        value={formValues.about}
+                        onChange={e => handleInputChange("about", e.target.value)}
+                     />
                   </Flex>
                </Paper>
 

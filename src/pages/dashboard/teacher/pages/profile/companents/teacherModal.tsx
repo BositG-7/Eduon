@@ -2,6 +2,7 @@ import { FormEvent, FunctionComponent, useState } from "react";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
+import { UpdateImage } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 import Img from "./img";
@@ -29,7 +30,10 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
          // @ts-expect-error
          formData.append("username", user?.username);
 
-         // @ts-ignore
+         console.log(images[0]);
+         console.log(user?.username);
+         console.log(user?.email);
+
          const res = await UpdateImage(formData);
 
          console.log(res); // Handle the response from UpdateImage
@@ -52,8 +56,10 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
    };
 
    const handleImageUpload = (files: File[]) => {
-      if (files && files.length > 0) {
-         setImages(files);
+      if (files) {
+         // @ts-expect-error
+
+         setImages([files]);
       } else {
          // Handle the case where no files are selected, e.g., show an error message
          // toast.error("No file selected");

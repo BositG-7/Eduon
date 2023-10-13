@@ -23,5 +23,17 @@ export const CourseNew = () => http.get("/course_new");
 export const VideoUpload = (formData: IApi.Course.VideoUpload.Request) =>
    http.post<IApi.Course.VideoUpload.Response>("/speaker_video_upload", objectToFormData(formData));
 
+export const MakePayment1Click = ({card_number,expire_date}: IApi.Course.PaymentStep1.Click.Request) =>
+http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-token", objectToFormData({card_number, expire_date}));
+
+export const MakePayment2Click = (formData: IApi.Course.PaymentStep2.Click.Request) =>
+http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-tokenverify", objectToFormData(formData));
+
+export const MakePayment1Payme = (formData: IApi.Course.PaymentStep1.Payme.Request) =>
+http.post<IApi.Course.PaymentStep1.Click.Response>("/payme/makepayment", objectToFormData(formData));
+
+export const MakePayment2Payme = (formData: IApi.Course.PaymentStep1.Payme.Request) =>
+http.post<IApi.Course.PaymentStep1.Click.Response>("/payme/codecheck", objectToFormData(formData));
+
 
 export const TopSpeaker = () => http.get("/speaker_top");

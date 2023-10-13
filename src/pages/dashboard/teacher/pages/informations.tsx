@@ -1,20 +1,21 @@
 import { Box, Flex, Title } from "@mantine/core";
+// eslint-disable-next-line import/order
+import { useAuth } from "modules/auth/context";
 import { BiSolidPhoneCall } from "react-icons/bi";
-import { BsFillCircleFill, BsFillInfoSquareFill } from "react-icons/bs";
-import { PiNumberCircleOneFill } from "react-icons/pi";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 
 import video from "../../../../assets/images/video.png";
 
 export default function informations() {
+   const { user } = useAuth();
+
    return (
       <Flex w="100%" gap={30} sx={{ overflow: "hidden" }} p={20}>
          <Box pl={50}>
             <Box>
                <Title color="rgba(0, 106, 255, 1)">Umumiy ma’lumot</Title>
                <Title pt={20} size={18} w={450} sx={{ fontWeight: 500 }}>
-                  Talabalaringiz ularga yaxshi tuzilgan, amaliyotda qo'llangan va foydali kurs taqdim etayotganingizga ishonch hosil qilishi eng muhim
-                  omildir. Bizning muvaffaqiyatli-spikerlarimiz.asosiy vaqtlarini kurslarni to'g'ri rejalashtirish uchun sarflaydi. Chunki to'g'ri
-                  rejalashtirilgan kurs talabalarni qo'ygan maqsadlariga tezroq yetishishlariga yordam beradi.
+                  {user?.about}
                </Title>
             </Box>
             <Box pt={20}>
@@ -78,31 +79,6 @@ export default function informations() {
                   </Title>
                </Flex>
             </Flex>
-            <Flex justify="space-between" pt={20}>
-               <Title size={0}>.</Title>
-               <PiNumberCircleOneFill size={52} color="rgba(0, 106, 255, 1)" />
-            </Flex>
-
-            <Flex align="center" gap={10}>
-               <BsFillCircleFill size={24} color="rgba(0, 106, 255, 1)" />
-               <Title size={14}>
-                  {" "}
-                  <span style={{ fontSize: 24, color: "rgba(0, 106, 255, 1)" }}>InfoNex </span> 22.05 20:00
-               </Title>
-            </Flex>
-            <Title pt={10} pl={30} w={470} size={24}>
-               Sizning **** **** **** 4566 kartangizga pul o’tkazildi
-            </Title>
-            <Flex pt={50} align="center" gap={10}>
-               <BsFillCircleFill size={24} color="rgba(118, 118, 118, 1)" />
-               <Title color="rgba(118, 118, 118, 1)" size={14}>
-                  {" "}
-                  <span style={{ fontSize: 24, color: "rgba(118, 118, 118, 1)" }}>InfoNex </span> 22.05 20:00
-               </Title>
-            </Flex>
-            <Title pt={10} pl={30} w={470} size={24}>
-               Sizning **** **** **** 4566 kartangizga pul o’tkazildi
-            </Title>
          </Box>
       </Flex>
    );
