@@ -18,7 +18,11 @@ interface ResetPasswordProps {}
 const schema = yup.object({
    activation_code: yup.string().min(6).label("Activation Code").required(),
    new_password: yup.string().min(6).label("New Password").required(),
-   confirm_password: yup.string().min(6).label("Confirm Password").required()
+   confirm_password: yup
+      .string()
+      .oneOf([yup.ref("new_password")], "Passwords must match")
+      .label("Confirm password")
+      .required()
 });
 
 const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
