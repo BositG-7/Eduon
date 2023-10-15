@@ -62,6 +62,7 @@ const Routes = () => {
             <Route path="profile" element={<ProfileUser />} />
             <Route path="payme" element={<PaymentPayme />} />
             <Route path="click" element={<PaymentClick />} />
+            <Route path="reset-password" element={<Auth.Reset.ResetPassword />} />
 
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 
@@ -77,6 +78,7 @@ const Routes = () => {
             <Route path="click" element={<TeacherPaymentClick />} />
             <Route path="create-course" element={<CourseCreate />} />
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
+            <Route path="reset-password" element={<Auth.Reset.ResetPassword />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/my-courses" />} />
          </Route>

@@ -18,6 +18,8 @@ interface MyCoursesProps {
 }
 
 export default function MyCourses({ image, price, name, id }: MyCoursesProps) {
+   console.log(image);
+
    const navigete = useNavigate();
 
    return (

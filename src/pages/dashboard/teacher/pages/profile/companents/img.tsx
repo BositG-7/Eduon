@@ -16,6 +16,8 @@ const Img: FunctionComponent<ImgProps> = () => {
          {/* Display selected image */}
          <Image
             maw="177px"
+            w={300}
+            h={300}
             mx="0"
             radius="md"
             src={user?.img ? user.img : userImage}

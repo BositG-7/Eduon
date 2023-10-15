@@ -1,24 +1,10 @@
 import { FunctionComponent, useState } from "react";
-import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, Textarea } from "@mantine/core";
-import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
-import { Types } from "modules/auth";
 import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface MainProps {}
-
-const schema = yup.object({
-   firstName: yup.string().min(3).label("FirstName").required(),
-   lastName: yup.string().min(3).label("LastName").required(),
-   birthday: yup.number().min(10).label("Birthday"),
-   gender: yup.string().min(5).label("Gender"),
-   phone: yup.string().min(17).label("Phone"),
-   email: yup.string().label("Email").required(),
-   job: yup.string().label("Job"),
-   about: yup.string().label("About")
-});
 
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
@@ -69,11 +55,6 @@ const Main: FunctionComponent<MainProps> = () => {
          notifications.show({ message: error.statusText, color: "red" });
       }
    };
-
-   const { getInputProps } = useForm<Types.IForm.UserProfil>({
-      initialValues: formValues,
-      validate: yupResolver(schema)
-   });
 
    return (
       <div>
@@ -150,12 +131,11 @@ const Main: FunctionComponent<MainProps> = () => {
                         label="Ozingiz haqingizda"
                         placeholder="O'zingiz haqqingizda qisqacha ma'lumot..."
                         radius="sm"
-                        ml="30px"
+                        ml="20px"
                         mb="30px"
                         sx={{
                            border: "none",
-                           width:"426px"
-                           
+                           width: "426px"
                         }}
                         value={formValues.about}
                         onChange={e => handleInputChange("about", e.target.value)}

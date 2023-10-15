@@ -35,7 +35,7 @@ function TopCourse({ deviceType }: any) {
       fetch();
    }, []);
 
-   // if (!pricing) return null;
+   if (!pricing) return null;
    return (
       <section className="top-course" data-aos="fade-right" data-aos-duration="2000">
          <div className="title">
@@ -75,14 +75,14 @@ function TopCourse({ deviceType }: any) {
                            <h2>{item.view}</h2>
                         </div>
                      </div>
-                     <div className="price">
-                        <h3>
-                           {/* @ts-ignore */}
-                           {item.price}
-                           <span>/so'm</span>
-                        </h3>
-                        <h2>Xarid qilish</h2>
-                     </div>
+                  </div>
+                  <div style={{ display: "flex" }} className="price">
+                     <h3>
+                        {/* @ts-ignore */}
+                        {item.price}
+                        <span>/so'm</span>
+                     </h3>
+                     <h2>Xarid qilish</h2>
                   </div>
                </div>
             ))}
