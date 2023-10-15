@@ -12,8 +12,8 @@ const Rules: FunctionComponent<RulesProps> = () => {
       <>
          <Flex justify="center" align="center" direction="column" gap="40px" h="auto">
             <Title />
-            <Main />
          </Flex>
+            <Main />
       </>
    );
 };
