@@ -11,7 +11,6 @@ function Demo() {
 
    const handleRadioChange = (value: any) => {
       setSelectedRadio(value);
-      console.log(value);
    };
 
    const navigate = useNavigate();
@@ -30,7 +29,6 @@ function Demo() {
             navigate("/dashboard/user/payme");
          }
       }
-      console.log(selectedRadio);
 
       close();
    };
@@ -44,9 +42,9 @@ function Demo() {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      padding: "14px 25px",
+      padding: '14px 25px',
       marginTop: "24px"
-   };
+   }
    const btnStyle2 = {
       color: "#006AFF",
       fontFamily: "Gilroy-Medium",
@@ -56,22 +54,21 @@ function Demo() {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      padding: "14px 45px",
+      padding: '14px 45px',
       marginTop: "24px"
-   };
+   }
    const radio = {
-      padding: "24px 55px",
+      padding: '24px 55px',
       background: "rgba(17, 17, 17, 0.03)",
-      borderRadius: "18px",
+      borderRadius: '18px',
       color: "rgba(17, 17, 17, 0.54)",
       fontFamily: "Gilroy",
       fontSize: "44px",
       fontStyle: "normal",
       fontWeight: "500",
-      lineHeight: "normal"
-   };
+      lineHeight: "normal",
+   }
 
-   console.log("efwefwef");
    return (
       <>
          <Modal opened={opened} onClose={close} centered withCloseButton={false}>
@@ -79,17 +76,17 @@ function Demo() {
                <Radio.Group label="To'lov turini tanlang">
                   <Flex justify="space-around">
                      <Radio
-                        label="Click"
+                        label='Click'
                         value="Click"
-                        labelPosition="left"
+                        labelPosition='left'
                         style={radio}
                         // checked={selectedRadio === "Click"}
                         onClick={() => handleRadioChange("Click")}
                      />
                      <Radio
-                        label="Payme"
+                        label='Payme'
                         value="Payme"
-                        labelPosition="left"
+                        labelPosition='left'
                         style={radio}
                         // checked={selectedRadio === "Payme"}
                         onClick={() => handleRadioChange("Payme")}
@@ -97,12 +94,8 @@ function Demo() {
                   </Flex>
                </Radio.Group>
                <Flex justify="space-around">
-                  <button style={btnStyle1} onClick={close}>
-                     Bekor qilish
-                  </button>
-                  <button style={btnStyle2} onClick={handleSubmit}>
-                     Tasdiqlash
-                  </button>
+                  <button style={btnStyle1} onClick={close}>Bekor qilish</button>
+                  <button style={btnStyle2} onClick={handleSubmit}>Tasdiqlash</button>
                </Flex>
             </Box>
          </Modal>

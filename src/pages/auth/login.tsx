@@ -6,7 +6,7 @@ import { useForm, yupResolver } from "@mantine/form";
 // import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
 import { useAuth } from "modules/auth/context";
-import { clearSessionVerification, setSession } from "services/store";
+import { clearSession, clearSessionVerification, setSession } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
@@ -32,6 +32,7 @@ function Login(props: LoginProps) {
 
    useEffect(() => {
       clearSessionVerification();
+      clearSession();
    }, []);
    const [loading, setLoading] = useState(false);
 

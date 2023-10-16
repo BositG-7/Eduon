@@ -1,19 +1,38 @@
-import { FunctionComponent } from "react";
-import { Box, Flex } from "@mantine/core";
+import { FunctionComponent, useState } from "react";
+import { Box, Flex, SegmentedControl } from "@mantine/core";
+import Password from "pages/dashboard/teacher/pages/profile/companents/password";
 
-import { Demo, Main } from "./companents";
+import Data from "./companents/data";
 
 interface ProfileProps {}
 
-const ProfileUser: FunctionComponent<ProfileProps> = () => (
-   <Flex w="100%" justify="space-around">
-      <Box>
-         <Demo />
-      </Box>
-      <Box w="60%">
-         <Main />
-      </Box>
-   </Flex>
-);
+const ProfileUser: FunctionComponent<ProfileProps> = () => {
+   const [segmentValue, setSegmentValue] = useState("ma’lumotlar"); // Default value
+
+   const handleSegmentChange = (value: string) => {
+      setSegmentValue(value);
+   };
+
+   return (
+      <>
+         <Flex w="100%" justify="start">
+            <SegmentedControl
+               data={[
+                  { label: "Ma’lumotlar", value: "ma’lumotlar" },
+                  { label: "Parol", value: "parol" }
+               ]}
+               value={segmentValue}
+               onChange={handleSegmentChange}
+               style={{ background: "white" }}
+            />
+         </Flex>
+         <hr />
+         <Box>
+            {segmentValue === "ma’lumotlar" && <Data />}
+            {segmentValue === "parol" && <Password />}
+         </Box>
+      </>
+   );
+};
 
 export default ProfileUser;

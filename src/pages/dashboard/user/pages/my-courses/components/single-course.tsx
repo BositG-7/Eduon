@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Flex, Slider, Title } from "@mantine/core";
+import DOMPurify from "dompurify";
 import { useSingle } from "modules/courses/hooks/use-single";
 import { useSpeaker } from "modules/courses/hooks/use-speaker";
 import SpeakersCourse from "pages/application/courses/single-page-course/components/speakers-course";
@@ -48,9 +49,13 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   {course.name}
                </Title>
 
-               <Title pt={18} size={18} color="rgba(17, 17, 17, 0.54)" sx={{ fontWeight: 400 }}>
-                  {course.description}
-               </Title>
+               <Title
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(course.description) }}
+                  pt={18}
+                  size={18}
+                  color="rgba(17, 17, 17, 0.54)"
+                  sx={{ fontWeight: 400 }}
+               />
                <Flex w={580} pt={35} align="center" justify="space-between" gap={35}>
                   <Title size={24}>
                      Avtor:

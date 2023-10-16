@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Col, Container, Grid, InputBase, Paper } from '@mantine/core';
+import { MakePayment1Payme } from 'modules/courses/api';
+// eslint-disable-next-line import/order
 import { IMaskInput} from "react-imask"
 
+import CodeVerify from './components/code-verify';
+
 const PaymentPayme: React.FC = () => {
-    const [cardNumber, setCardNumber] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
+    const [card_number, setCardNumber] = useState('');
+    const [expire_date, setExpiryDate] = useState('');
 
     const handleCardNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -26,20 +30,17 @@ const PaymentPayme: React.FC = () => {
         }
     };
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        // Check if cardNumber has 16 digits and expiryDate has 4 digits
-        if (cardNumber.length === 16 && expiryDate.length === 4) {
-            // Handle payment submission here
-            console.log('Payment submitted');
-            alert('Payment submitted')
+        try{
+            const data = await MakePayment1Payme({ card_number, expire_date })
 
-        } else {
-            console.log('Invalid card number or expiry date');
-            alert('Invalid card number or expiry date')
+            console.log(data);
         }
-        console.log("Card number", cardNumber);
-        console.log("Expiry date", expiryDate);
+        catch(error:any){
+            <CodeVerify/>
+            console.log(error);
+        }        
     };
 
     return (
@@ -54,7 +55,7 @@ const PaymentPayme: React.FC = () => {
                                 placeholder="Enter card number"
                                 required
                                 type="text"
-                                value={cardNumber}
+                                value={card_number}
                                 component={IMaskInput}
                                 mask="0000 0000 0000 0000"
                                 onChange={handleCardNumberChange}
@@ -69,7 +70,7 @@ const PaymentPayme: React.FC = () => {
                                 type="text"
                                 component={IMaskInput}
                                 mask="00/00"
-                                value={expiryDate}
+                                value={expire_date}
                                 onChange={handleExpiryDateChange}
                                 style={{ marginBottom: '1rem' }}
                             />

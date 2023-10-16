@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 import logo from "./Logo.svg";
 
 import "../assets/styles/footer.scss";
 
 function Footer() {
+   const navigete = useNavigate();
+
    return (
       <section className="footer">
          <div className="boxes">
@@ -18,16 +22,46 @@ function Footer() {
             <div className="box">
                <h3>Veb sayt</h3>
                <ul>
-                  <li>Bosh sahifa</li>
-                  <li>Kurslar</li>
-                  <li>FAQ</li>
+                  <li
+                     onClick={() => {
+                        navigete("/");
+                     }}
+                  >
+                     Bosh sahifa
+                  </li>
+                  <li
+                     onClick={() => {
+                        navigete("/courses");
+                     }}
+                  >
+                     Kurslar
+                  </li>
+                  <li
+                     onClick={() => {
+                        navigete("/question");
+                     }}
+                  >
+                     FAQ
+                  </li>
                </ul>
             </div>
             <div className="box">
                <h3>Ma’lumotlar</h3>
                <ul>
-                  <li>Biz haqimizda</li>
-                  <li>Foydalanish shartlari</li>
+                  <li
+                     onClick={() => {
+                        navigete("/about");
+                     }}
+                  >
+                     Biz haqimizda
+                  </li>
+                  <li
+                     onClick={() => {
+                        navigete("/rules");
+                     }}
+                  >
+                     Foydalanish shartlari
+                  </li>
                   <li>Privacy and Policy</li>
                </ul>
             </div>

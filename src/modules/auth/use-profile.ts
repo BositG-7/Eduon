@@ -18,12 +18,11 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
          try {
             const { data } = await Api.Profile();
 
-            console.log(data);
-
             const user = Mappers.User(data);
 
             setState({ user, isLoading: false });
          } catch (err: any) {
+            window.location.href = "/";
             setState({ user: null, isLoading: false });
          }
       };
