@@ -226,7 +226,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                            <Menu.Divider />
                            <Menu.Item
                               onClick={() => {
-                                 navigate("/auth/login");
+                                 navigate("/auth");
                               }}
                               icon={<IconSettings size={10} />}
                            >
