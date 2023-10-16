@@ -16,7 +16,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const navigete = useNavigate();
    const course = useSingle(adminCourseSingle!);
 
-   const { speaker = 2 } = course;
+   const { speaker } = course;
 
 
    const teacher = useSpeaker(speaker);
@@ -55,7 +55,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   <Title size={24}>
                      Avtor:
                      <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
-                        {teacher.first_name}
+                        {/* @ts-ignore */}
+                        {teacher.username}
                      </span>
                   </Title>
 
@@ -90,9 +91,9 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                <Title color="gray" fw={500} size={18}>
                   Progress
                </Title>
-                  <Title color="gray" fw={500} size={18}>
+               <Title color="gray" fw={500} size={18}>
                   8/30 (28%)
-                  </Title>
+               </Title>
             </Flex>
 
             <Slider defaultValue={20} max={100} thumbChildren="" />

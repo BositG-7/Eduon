@@ -38,7 +38,6 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
    const onSubmit = async (data: Types.IForm.ResetPassword) => {
       const { email } = getSessionReset();
 
-
       try {
          await Api.ResetPassword({
             email,
@@ -48,23 +47,20 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          });
          navigate("/auth/login");
 
-
          clearSessionReset();
       } catch (error: any) {
+         console.log(error);
 
          notifications.show({
-            message: error.data.activation_code
+            message: error.data.password[0],
+            color: "red"
          });
       }
    };
 
    return (
       <Box h="100vh" w="100%">
-         <Box
-            h="90vh"
-            w="100%"
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-         >
+         <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>

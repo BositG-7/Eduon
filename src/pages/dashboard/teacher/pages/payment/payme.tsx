@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Col, Container, Grid, InputBase, Paper } from '@mantine/core';
 import { IMaskInput} from "react-imask"
 
-const PaymentPayme: React.FC = () => {
+const TeacherPaymentPayme: React.FC = () => {
     const [cardNumber, setCardNumber] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
 
@@ -97,4 +97,4 @@ const PaymentPayme: React.FC = () => {
     );
 }
 
-export default PaymentPayme;
+export default TeacherPaymentPayme;

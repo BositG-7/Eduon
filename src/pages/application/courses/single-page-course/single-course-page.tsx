@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Button, Divider, Flex, Title } from "@mantine/core";
+import { Box, Divider, Flex, Title } from "@mantine/core";
 // eslint-disable-next-line import/order
 import { useSingle } from "modules/courses/hooks/use-single";
 import { useSpeaker } from "modules/courses/hooks/use-speaker";
@@ -11,6 +11,7 @@ import { HiVideoCamera } from "react-icons/hi";
 
 import Footer from "components/footer";
 
+import Demo from "./components/modal";
 import SpeakersCourse from "./components/speakers-course";
 
 interface SinglePageCourseProps {}
@@ -119,10 +120,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                <Title fw={500} size={24}>
                   12,400,000 <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>so'm</span>{" "}
                </Title>
-
-               <Button variant="light" h={50} w={380} sx={{ borderRadius: 10 }}>
-                  Xarid qilish
-               </Button>
+               <Demo />
             </Flex>
          </Flex>
 

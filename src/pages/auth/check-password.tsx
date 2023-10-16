@@ -36,7 +36,6 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
 
          await Api.Checkpassword({ email, activation_code: data.password });
          navigate("/auth/register");
-
       } catch (error: any) {
          notifications.show({
             message: error.data.invalid_code
@@ -46,16 +45,12 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
 
    return (
       <Box h="100vh" w="100%">
-         <Box
-            h="90vh"
-            w="100%"
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-         >
+         <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>
             <form onSubmit={form.onSubmit(onSubmit)}>
-               <Flex w="355px" direction="column" justify="center" gap={50} align="center" p={20}>
+               <Flex w="400px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Check Activate Code</h1>
 
                   <PasswordInput

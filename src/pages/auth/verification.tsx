@@ -35,7 +35,6 @@ const Verification: FunctionComponent<VerificationProps> = () => {
 
    const onSubmit = async (data: Types.IForm.Verification) => {
       try {
-         methods.getEmail();
          await SendEmail(data);
          setSessionVerification(data);
 

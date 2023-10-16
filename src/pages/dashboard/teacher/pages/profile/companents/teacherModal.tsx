@@ -1,19 +1,20 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, FunctionComponent, useState } from "react";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
 import { UpdateImage } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
-// Import Img component if it exists
 import Img from "./img";
 
-import style from "../assets/styles/profile.module.scss";
+import style from "../assets/styles/teacherProfile.module.scss";
 
-function Demo() {
+interface TeacherModalProps {}
+
+const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
    const [opened, { open, close }] = useDisclosure(false);
-   const [images, setImages] = useState([]);
+   const [images, setImages] = useState<File[]>([]);
    const { user } = useAuth();
-
    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
@@ -23,18 +24,26 @@ function Demo() {
          const formData = new FormData();
 
          formData.append("image", images[0]); // Assuming images[0] is the selected file
-         // @ts-expect-error
-         formData.append("username", user?.username);
-         // @ts-expect-error
-
-         formData.append("email", user?.email);
 
          // @ts-ignore
+         formData.append("email", user?.email);
+         // @ts-expect-error
+         formData.append("username", user?.username);
+
+         console.log(images[0]);
+         console.log(user?.username);
+         console.log(user?.email);
+
          const res = await UpdateImage(formData);
 
-         console.log(res); // UpdateImage işleminin cevabını işleyin
+         console.log(res); // Handle the response from UpdateImage
       } catch (error: any) {
-         console.log(error.message);
+         console.log(error);
+
+         notifications.show({
+            message: error.messege,
+            color: "red"
+         });
       }
    };
 
@@ -46,14 +55,14 @@ function Demo() {
       close();
    };
 
-   const handleImageUpload = (files: any) => {
+   const handleImageUpload = (files: File[]) => {
       if (files) {
          // @ts-expect-error
+
          setImages([files]);
       } else {
-         // Dosya seçilmediğinde bir hata mesajı gösterme işlemini burada yapabilirsiniz.
-         // Örnek olarak React-Toastify kullanarak:
-         // toast.error("Dosya seçilmedi");
+         // Handle the case where no files are selected, e.g., show an error message
+         // toast.error("No file selected");
       }
    };
 
@@ -66,7 +75,6 @@ function Demo() {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      // padding: "14px 45px",
       marginTop: "24px"
    };
 
@@ -81,6 +89,7 @@ function Demo() {
                      placeholder="Rasmni tanlash uchun bosing"
                      required
                      w="60%"
+                     // @ts-expect-error
                      onChange={handleImageUpload}
                   />
                   <Button style={btnStyle2} type="submit">
@@ -97,6 +106,6 @@ function Demo() {
          </Group>
       </>
    );
-}
+};
 
-export default Demo;
+export default TeacherModal;

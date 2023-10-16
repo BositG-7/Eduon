@@ -12,7 +12,7 @@ import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
 
 import "../../assets/styles/login.scss";
-   
+
 interface LoginProps {}
 
 const schema = yup.object({
@@ -73,7 +73,7 @@ function Login(props: LoginProps) {
                         {...form.getInputProps("password")}
                      />
                      <Title size="12" mt="0">
-                        <Link to="/auth/resetemail">Parolingizni unutdingizmi?</Link>
+                        <Link to="/auth/reset-email">Parolingizni unutdingizmi?</Link>
                      </Title>
 
                      <Button

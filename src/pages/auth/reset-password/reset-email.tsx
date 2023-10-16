@@ -1,12 +1,11 @@
 import { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, Input } from "@mantine/core";
+import { Box, Button, Flex, Input, Text } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { ResetEmaill } from "modules/auth/api";
-import { useAuth } from "modules/auth/context";
 import { clearSessionReset, setSessionReset } from "services/store";
 
 import cursor from "../../../assets/images/cursor.png";
@@ -20,7 +19,6 @@ const schema = yup.object({
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
-   const { methods } = useAuth();
    const form = useForm<Types.IForm.ResetEmail>({
       initialValues: {
          email: ""
@@ -33,15 +31,12 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
       clearSessionReset();
    }, []);
    const onSubmit = async (data: Types.IForm.ResetEmail) => {
-
-
       try {
          await ResetEmaill(data);
 
-         methods.getEmail();
          setSessionReset(data);
 
-         navigete("/auth/resetpassword");
+         navigete("/auth/reset-password");
       } catch (error: any) {
          notifications.show({
             message: error.data.email
@@ -50,12 +45,8 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    };
 
    return (
-      <Box h="100vh" w="100%">
-         <Box
-            h="90vh"
-            w="100%"
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}
-         >
+      <Box h="100vh" w="100%" sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+         <Box h="100%" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>
@@ -97,6 +88,26 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
                <img src={threeD} alt="threeD" />
             </div>
          </Box>
+
+         <Text
+            size="15px"
+            color="rgba(17, 17, 17, 0.36)"
+            sx={{
+               display: "flex",
+               alignItems: "center",
+               justifyContent: "center",
+               gap: "10px",
+               color: "blue",
+               "&:hover": {
+                  color: "white"
+               }
+            }}
+            onClick={() => {
+               navigete("/auth/login");
+            }}
+         >
+            Loginga qaytish
+         </Text>
       </Box>
    );
 };

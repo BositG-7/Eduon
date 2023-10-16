@@ -21,7 +21,6 @@ const schema = yup.object({
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
 
-
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",
       last_name: user?.lastName || "",
@@ -48,9 +47,24 @@ const Main: FunctionComponent<MainProps> = () => {
    const handleSumbit = async (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
 
+      console.log("dqwdqwwqd");
+
       try {
-         await EditProfil(formValues);
-         window.location.reload();
+         const formData = new FormData();
+
+         formData.append("first_name", formValues.first_name);
+         formData.append("last_name", formValues.last_name);
+         formData.append("phone", formValues.phone);
+         formData.append("email", formValues.email);
+         formData.append("birthday", formValues.birthday);
+         formData.append("job", formValues.job);
+         formData.append("gender", formValues.gender);
+
+         // You can add more fields as needed
+
+         await EditProfil(formData);
+
+         console.log("Dsadas");
       } catch (error: any) {
          console.log(error);
       }

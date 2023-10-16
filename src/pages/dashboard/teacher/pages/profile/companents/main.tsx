@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { Types } from "modules/auth";
+import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
 interface MainProps {}
@@ -42,8 +43,27 @@ const Main: FunctionComponent<MainProps> = () => {
       });
    };
 
-   const handleSumbit = (e: React.FormEvent) => {
+   const handleSumbit = async (e: React.FormEvent) => {
       e.preventDefault(); // Formani normallikda yuborishni oldini olish uchun
+
+      try {
+         const formData = new FormData();
+
+         formData.append("first_name", formValues.first_name);
+         formData.append("last_name", formValues.last_name);
+         formData.append("phone", formValues.phone);
+         formData.append("email", formValues.email);
+         formData.append("birthday", formValues.birthday);
+         formData.append("job", formValues.job);
+
+         // You can add more fields as needed
+
+         await EditProfil(formData);
+
+         console.log("Dsadas");
+      } catch (error: any) {
+         console.log(error);
+      }
    };
 
    const { getInputProps } = useForm<Types.IForm.UserProfil>({

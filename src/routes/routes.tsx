@@ -6,6 +6,8 @@ import SinglePageSpeaker from "pages/application/courses/single-page-speaker/sin
 import { MyCoursesList } from "pages/dashboard/teacher/pages";
 import Finance from "pages/dashboard/teacher/pages/finance";
 import Informations from "pages/dashboard/teacher/pages/informations";
+import TeacherPaymentClick from "pages/dashboard/teacher/pages/payment/click";
+import TeacherPaymentPayme from "pages/dashboard/teacher/pages/payment/payme";
 import ProfileTeacher from "pages/dashboard/teacher/pages/profile/profile";
 import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
@@ -20,12 +22,8 @@ import AdminRoute from "./admin-route";
 import AuthProtected from "./auth-protected";
 import UserRoute from "./user-route";
 
-
-
 const Routes = () => {
    const { user } = useAuth();
-
-   console.log(user);
 
    const verification = getSessionVerification().email;
    const reset = getSessionReset().email;
@@ -65,17 +63,18 @@ const Routes = () => {
             <Route path="payme" element={<PaymentPayme />} />
             <Route path="click" element={<PaymentClick />} />
 
-
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />
          </Route>
 
-         <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
+         <Route path="dashboard/teacher" element={<AdminRoute allowed={!user?.isSpiker} redirectURL="/dashboard/user" />}>
             <Route path="my-courses" element={<MyCoursesList />} />
             <Route path="informations" element={<Informations />} />
             <Route path="finance" element={<Finance />} />
             <Route path="profile" element={<ProfileTeacher />} />
+            <Route path="payme" element={<TeacherPaymentPayme />} />
+            <Route path="click" element={<TeacherPaymentClick />} />
 
             <Route path="*" index element={<Navigate to="/dashboard/teacher/my-courses" />} />
          </Route>
