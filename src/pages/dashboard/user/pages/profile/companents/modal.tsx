@@ -66,21 +66,21 @@ function Demo() {
       lineHeight: "normal",
       borderRadius: "18px",
       border: "3px solid rgba(17, 17, 17, 0.04)",
-      // padding: "14px 45px",
-      marginTop: "24px"
-   };
+      margin: "50px 100px 50px 100px",
+      
+         };
 
    return (
       <>
-         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
+         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false} padding="xm">
             <Flex justify="space-around">
                <form onSubmit={handleSubmit}>
                   <FileInput
+                     style={{ marginTop: "30px", fontWeight:"bold" }}
                      name="image"
                      label="Rasmni tanlang"
                      placeholder="Rasmni tanlash uchun bosing"
                      required
-                     w="60%"
                      onChange={handleImageUpload}
                   />
                   <Button style={btnStyle2} type="submit">
