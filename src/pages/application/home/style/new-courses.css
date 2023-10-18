@@ -1,0 +1,165 @@
+.top-course {
+  padding: 50px 110px;
+}
+.top-course .title {
+  text-align: center;
+}
+.top-course .title h1 {
+  font-size: 46px;
+  color: var(--black);
+  font-family: Gidroy-Bold;
+}
+.top-course .title h1 span {
+  color: var(--blue);
+}
+.top-course .boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 50px;
+  padding-top: 50px;
+}
+.top-course .boxes .box:hover {
+  cursor: pointer;
+}
+.top-course .boxes .box img {
+  width: 100%;
+  border-radius: 20px;
+  height: 180px;
+}
+.top-course .boxes .box .text {
+  padding-top: 10px;
+}
+.top-course .boxes .box .text .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-course .boxes .box .text .flex h3 {
+  color: var(--grey-072);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.top-course .boxes .box .text .flex .fa-bookmark {
+  color: var(--blue);
+  font-size: 18px;
+}
+.top-course .boxes .box .text .statistic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.top-course .boxes .box .text .statistic .star {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.top-course .boxes .box .text .statistic .star .fa-star {
+  color: var(--blue);
+  font-size: 17px;
+}
+.top-course .boxes .box .text .statistic .star h2 {
+  font-size: 16px;
+  color: var(--blue);
+  font-family: Gidroy-Medium;
+}
+.top-course .boxes .box .text .statistic .view {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.top-course .boxes .box .text .statistic .view .fa-eye {
+  color: var(--blue);
+  font-size: 17px;
+}
+.top-course .boxes .box .text .statistic .view h2 {
+  font-size: 16px;
+  color: var(--blue);
+  font-family: Gidroy-Medium;
+}
+.top-course .boxes .box .text .price {
+  border-top: 2px solid rgba(17, 17, 17, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin-top: 5px;
+  gap: 25px;
+}
+.top-course .boxes .box .text .price h3 {
+  color: var(--grey-072);
+  font-size: 17px;
+}
+@media screen and (max-width: 568px) {
+  .top-course .boxes .box .text .price h3 {
+    font-size: 14px;
+  }
+}
+.top-course .boxes .box .text .price h3 span {
+  color: var(--grey-036);
+  font-size: 15px;
+}
+.top-course .boxes .box .text .price h2 {
+  background-color: rgba(17, 17, 17, 0.06);
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 7px 15px;
+}
+@media screen and (max-width: 568px) {
+  .top-course .boxes .box .text .price h2 {
+    padding: 10px 7px;
+  }
+}
+.top-course .boxes .box .text .price h2:active {
+  cursor: pointer;
+  transform: scale(0.9);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.top-course .link {
+  text-align: center;
+  padding-top: 50px;
+}
+.top-course .link button {
+  color: var(--white);
+  background: var(--blue);
+  border: none;
+  border-radius: 14px;
+  padding: 15px 50px;
+  font-size: 18px;
+  cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  .top-course {
+    padding: 50px 70px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .top-course {
+    padding: 50px 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .top-course {
+    padding: 50px 30px;
+  }
+  .top-course .title h1 {
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 568px) {
+  .top-course {
+    padding: 30px 16px;
+  }
+  .top-course .title h1 {
+    font-size: 30px;
+  }
+  .top-course .boxes {
+    padding: 50px 40px;
+  }
+  .top-course .boxes .box img {
+    height: auto;
+  }
+}/*# sourceMappingURL=new-courses.css.map */

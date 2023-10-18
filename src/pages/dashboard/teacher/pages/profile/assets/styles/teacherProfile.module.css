@@ -1,0 +1,199 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container .cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.container .cards .card-information {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.container .cards .card-information .balans {
+  display: flex;
+  flex-direction: column;
+  background: #FFF;
+  border-radius: 24px;
+  border: 2px solid rgba(17, 17, 17, 0.03);
+  padding: 24px 35px 35px 24px;
+}
+.container .cards .card-information .balans .name {
+  color: #111;
+  font-family: Gilroy;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  opacity: 0.54;
+  margin-bottom: 18px;
+}
+.container .cards .card-information .balans .number {
+  color: #111 !important;
+  font-family: Gilroy;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.container .cards .card-information .balans .number .sum {
+  color: rgba(17, 17, 17, 0.36);
+  font-family: Gilroy;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.container .cards .card-information .fillup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFF;
+  border-radius: 24px;
+  border: 2px solid rgba(17, 17, 17, 0.03);
+  padding: 24px 35px 35px 24px;
+  color: #006AFF;
+  font-family: Gilroy-Medium;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.container .cards .card-information .fillup .icon {
+  font-size: 54px;
+  color: rgb(0, 106, 255);
+  background: rgb(231, 240, 255);
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.hisobim-down {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.hisobim-down span {
+  color: rgba(17, 17, 17, 0.36);
+  font-family: Gilroy;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 36px;
+  margin-bottom: 18px;
+}
+.hisobim-down .hisobim-body {
+  width: 100%;
+}
+.hisobim-down .hisobim-body .incomes {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: rgba(17, 17, 17, 0.06);
+  padding: 24px 36px;
+  margin-bottom: 12px;
+}
+.hisobim-down .hisobim-body .incomes .name,
+.hisobim-down .hisobim-body .incomes .date,
+.hisobim-down .hisobim-body .incomes .sabab,
+.hisobim-down .hisobim-body .incomes .cost {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-family: Gilroy;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  opacity: 0.72;
+}
+.hisobim-down .hisobim-body .incomes .icon {
+  color: blue;
+  font-weight: bold;
+}
+.hisobim-down .hisobim-body .expenses {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: rgba(17, 17, 17, 0.03);
+  padding: 24px 36px;
+}
+.hisobim-down .hisobim-body .expenses .name,
+.hisobim-down .hisobim-body .expenses .date,
+.hisobim-down .hisobim-body .expenses .sabab,
+.hisobim-down .hisobim-body .expenses .cost {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-family: Gilroy;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  opacity: 0.72;
+}
+.hisobim-down .hisobim-body .expenses .icon {
+  color: red;
+  font-weight: bold;
+}
+
+@media (max-width: 1080px) {
+  .container .cards {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .container .cards .card-details {
+    width: 50%;
+    padding: 24px;
+    border-radius: 24px;
+    background: #E7F0FF;
+    margin-bottom: 15px;
+  }
+  .container .cards .cards-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .container .cards .cards-right .kirim-chiqim {
+    width: 100%;
+    display: flex;
+  }
+  .container .cards .cards-right .kirim-chiqim .first {
+    margin-right: 18px;
+  }
+  .container .cards .moliya-down {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .container .cards .moliya-down span {
+    color: rgba(17, 17, 17, 0.36);
+    font-family: Gilroy;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 36px;
+    margin-bottom: 18px;
+  }
+  .container .cards .moliya-down .moliya-body {
+    width: 700px;
+    overflow: scroll;
+    overflow-x: auto;
+  }
+}/*# sourceMappingURL=teacherProfile.module.css.map */

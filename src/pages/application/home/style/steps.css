@@ -1,0 +1,114 @@
+.qadamlar {
+  padding: 50px 110px;
+  overflow-x: hidden;
+}
+.qadamlar .title {
+  text-align: center;
+}
+.qadamlar .title h3 {
+  color: var(--blue);
+  font-family: Gidroy-Bold;
+}
+.qadamlar .title h1 {
+  color: var(--black);
+  font-size: 46px;
+  width: 512px;
+  margin: 10px auto;
+}
+.qadamlar .title h1 span {
+  color: var(--blue);
+}
+.qadamlar .boxes {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+.qadamlar .boxes .text .box {
+  margin-top: 30px;
+}
+.qadamlar .boxes .text .box h3 {
+  color: var(--blue);
+  font-size: 22px;
+}
+.qadamlar .boxes .text .box p {
+  color: var(--black);
+  padding-top: 5px;
+  font-size: 18px;
+  width: 280px;
+}
+.qadamlar .boxes .text .box p span {
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.qadamlar .boxes .image img {
+  width: 100%;
+}
+@media screen and (max-width: 1200px) {
+  .qadamlar {
+    padding: 50px 70px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .qadamlar {
+    padding: 50px 50px;
+  }
+  .qadamlar .boxes {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+  }
+  .qadamlar .boxes .text .box {
+    margin-top: 20px;
+  }
+  .qadamlar .boxes .text .box h3 {
+    font-size: 20px;
+  }
+  .qadamlar .boxes .text .box p {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .qadamlar {
+    padding: 50px 30px;
+  }
+  .qadamlar .title h3 {
+    font-size: 20px;
+  }
+  .qadamlar .title h1 {
+    font-size: 35px;
+    width: 100%;
+  }
+  .qadamlar .boxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 0px;
+  }
+  .qadamlar .boxes .text .box {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .qadamlar .boxes .text .box h3 {
+    font-size: 18px;
+  }
+  .qadamlar .boxes .text .box p {
+    width: 100%;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 568px) {
+  .qadamlar {
+    padding: 50px 16px;
+  }
+  .qadamlar .title h3 {
+    font-size: 16px;
+  }
+  .qadamlar .title h1 {
+    font-size: 25px;
+    width: 100%;
+  }
+}/*# sourceMappingURL=steps.css.map */

@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react";
 import { Box } from "@mantine/core";
 
+import Footer from "components/footer";
+
 interface MainProps {}
 
 const Main: FunctionComponent<MainProps> = () => {
@@ -127,7 +129,46 @@ const Main: FunctionComponent<MainProps> = () => {
          <p style={{ margin: "30px 140px", fontSize: "18px" }}>
             Quyida keltirilgan talablarga rioya qilgan holda, biz sizga vakolat bergan joyda bizning savdo belgilarimizdan foydalanishingiz mumkin.
          </p>
-         <span style={{ fontWeight: "bolder" }}>Siz foydalanishingiz mumkin</span>
+         <span style={{ margin: "30px 140px", fontSize: "26px", fontWeight: "bold" }}>Siz foydalanishingiz mumkin</span>
+         <br />
+         <p style={{ margin: "30px 140px", fontSize: "18px" }}>
+            • biz e'lon qilishimiz mumkin bo'lgan har qanday ko'rsatmalarda biz sizga taqdim etadigan savdo belgilarimiz rasmlaridan foydalaning;
+            <br /> <br /> • bizning savdo belgilarimizdan faqat EduOn kurslarini reklama qilish va sotish yoki EduOn’da ishtirok etish bilan bog'liq
+            holda foydalaning; <br /> <br /> • Sizdan foydalanishni to'xtatishni so'rasak, darhol bajaring; <br />
+         </p>
+         <h1 style={{ color: "blue", margin: "40px 0 0 140px", fontSize: "30px" }}>9. Akkauntingizni o'chirish</h1> <br />
+         <h2 style={{ color: "black", margin: "10px 0 0 140px" }}>
+            <span style={{ color: "blue" }}>10.1. </span> Ushbu shartlarni yangilash <br />
+         </h2>
+         <p style={{ margin: "30px 140px", fontSize: "18px" }}>
+            Vaqti-vaqti bilan biz ushbu shartlarni amaliyotimizni aniqlashtirish yoki yangi yoki turli xil amaliyotlarni aks ettirish uchun
+            yangilashimiz mumkin (masalan, yangi xususiyatlarni qo'shganda) va EduOn ushbu shartlarni o'zgartirish va / yoki o'zgartirish kiritish
+            huquqini o'zida saqlab qoladi. Har qanday holatda. Agar biz biron bir muhim o'zgarishlarni amalga oshirsak, biz sizning akkauntingizda
+            ko'rsatilgan elektron pochta manziliga xabar beramiz. O'zgartirishlar, agar boshqacha ko'rsatilmagan bo'lsa, e'lon qilingan kundan boshlab
+            kuchga kiradi. <br /> <br /> O'zgarishlar kuchga kirgandan keyin bizning xizmatlarimizdan doimiy ravishda foydalanishingiz ushbu
+            o'zgarishlarni qabul qilishingizni anglatadi. Har qanday qayta ko'rib chiqilgan shartlar avvalgi shartlarning o'rnini bosadi.
+         </p>
+         <h2 style={{ color: "black", margin: "10px 0 0 140px" }}>
+            <span style={{ color: "blue" }}>10.2. </span> Tarjimalr <br />
+         </h2>
+         <p style={{ margin: "30px 140px", fontSize: "18px" }}>
+            Ushbu shartlarning o’zbek tilidan boshqa har qanday versiyasi qulaylik uchun taqdim etiladi.
+         </p>
+         <h2 style={{ color: "black", margin: "10px 0 0 140px" }}>
+            <span style={{ color: "blue" }}>10.3. </span> Oramizdagi munosabatlar <br />
+         </h2>
+         <p style={{ margin: "30px 140px", fontSize: "18px" }}>
+            Siz va biz hech qanday qo'shma korxona, sheriklik, ish bilan ta'minlash, pudratchi yoki agentlik munosabatlari oramizda mavjud emasligiga
+            qo'shilamiz.
+         </p>
+      
+         <h1 style={{ color: "blue", margin: "40px 0 0 140px", fontSize: "30px" }}>11. Biz bilan qanday bog'lanish mumkin</h1> 
+         <p style={{ margin: "30px 140px 140px 140px", fontSize: "18px" }}>
+            Biz bilan bog'lanishning eng yaxshi usuli - qo'llab-quvvatlash guruhimizga murojaat qilishdir. Sizning savollaringiz, tashvishlaringiz va
+            bizning xizmatlarimiz haqidagi fikr-mulohazalaringizni eshitishga tayyormiz.
+         </p>
+         
+         <Footer />
       </Box>
    );
 };

@@ -1,0 +1,58 @@
+.container {
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+}
+.container .boxes {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+@media screen and (max-width: 568px) {
+  .container .boxes {
+    gap: 10px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.container .boxes .box {
+  text-align: center;
+  border: 2px solid rgba(17, 17, 17, 0.04);
+  border-radius: 24px;
+  padding: 20px 45px;
+  cursor: pointer;
+}
+.container .boxes .box:hover {
+  box-shadow: 0px 7px 22px -6px rgba(17, 17, 17, 0.03);
+  transform: scale(1.05);
+}
+.container .boxes .box img {
+  background: rgb(231, 240, 255);
+  padding: 7px 15px;
+  border-radius: 14px;
+}
+.container .boxes .box h3 {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+@media screen and (max-width: 568px) {
+  .container {
+    padding: 0 16px;
+  }
+  .container .boxes {
+    gap: 10px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
+  .container .boxes .box {
+    padding: 10px 35px;
+  }
+  .container .boxes .center {
+    display: grid;
+    place-items: center;
+  }
+}/*# sourceMappingURL=boxes.css.map */
