@@ -2,8 +2,6 @@ import React, { FunctionComponent } from "react";
 import { Box, Button, Checkbox, Divider, Flex, InputBase, Slider, Title } from "@mantine/core";
 import { useListState } from "@mantine/hooks";
 import { useList } from "modules/courses/hooks/course-use-list";
-// import { useCourse } from "modules/courses/context"
-// import { useFilter } from "modules/courses/hooks/use-filter";
 // eslint-disable-next-line import/order
 import { AiOutlineSend } from "react-icons/ai";
 import { Paginated } from "utils/paginate";
