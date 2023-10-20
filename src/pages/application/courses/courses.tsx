@@ -16,7 +16,6 @@ interface CoursesProps {}
 
 const Courses: FunctionComponent<CoursesProps> = () => {
    const [value, setValue] = React.useState(50);
-   // const { course } = useCourse();
    const { course } = useList();
 
    console.log("input value  => ", value);
