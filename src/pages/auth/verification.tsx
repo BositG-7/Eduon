@@ -33,13 +33,19 @@ const Verification: FunctionComponent<VerificationProps> = () => {
 
    const onSubmit = async (data: Types.IForm.Verification) => {
       try {
-         await SendEmail(data);
+         const res = await SendEmail(data);
+
          setSessionVerification(data);
+
+         console.log(res);
+
+         notifications.show({ message: res.statusText, color: "green" });
 
          navigete("/auth/check-password");
       } catch (error: any) {
          notifications.show({
-            message: error.data.email
+            message: error.data.email,
+            color: "red"
          });
       }
    };
