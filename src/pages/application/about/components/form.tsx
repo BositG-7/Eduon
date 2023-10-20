@@ -1,182 +1,140 @@
-import { FunctionComponent, useState } from "react";
-import { Button, Flex, InputBase, Textarea, Title } from "@mantine/core";
+import { FunctionComponent } from "react";
+import * as yup from "yup";
+import { Button, createStyles, Flex, Input, Textarea, Title } from "@mantine/core";
+import { useForm, yupResolver } from "@mantine/form";
+import { IMaskInput } from "react-imask";
 
 interface FormProps {}
 
+const useStyles = createStyles(theme => ({
+   title: {
+      color: "#FAFAFA",
+      fontSize: "24px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      marginBottom: "11px",
+      marginLeft: "24px"
+   }
+}));
+
+const inputStyles = {
+   input: {
+      width: "100%",
+      backgroundColor: "rgba(250, 250, 250, 0.24)",
+      color: "rgba(250, 250, 250, 0.72)",
+      border: "none",
+      height: "80px",
+      fontSize: "24px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      paddingLeft: "24px"
+   }
+};
+const textAreaStyles = {
+   input: {
+      width: "100%",
+      backgroundColor: "rgba(250, 250, 250, 0.24)",
+      color: "rgba(250, 250, 250, 0.72)",
+      border: "none",
+      height: "390px",
+      fontSize: "24px",
+      fontStyle: "normal",
+      fontWeight: 400,
+      lineHeight: "normal",
+      paddingLeft: "24px"
+   }
+};
+
+const schema = yup.object({
+   name: yup.string().min(1).label("Name").required(),
+   email: yup.string().email().label("Email").required(),
+   phone: yup.string().min(5).label("Phone").required(),
+   message: yup.string().min(1).label("Message").required()
+});
+
 const Form: FunctionComponent<FormProps> = () => {
-   const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      phone: "",
-      message: ""
+   const { getInputProps, onSubmit } = useForm({
+      initialValues: { name: "", email: "", phone: "", message: "" },
+      validate: yupResolver(schema)
    });
+   const { cx, classes } = useStyles();
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target;
-
-      setFormData(prevData => ({
-         ...prevData,
-         [name]: value
-      }));
-   };
-
-   const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      console.log(formData);
+   const handleSubmit = (values: any) => {
+      console.log(values);
    };
 
    return (
-      <form onSubmit={handleSubmit}>
-         <Flex direction="column" h="670px" justify="center" align="center" gap="20px" w="1300px" bg="#006AFF">
-            <Flex sx={{ borderRadius: "36px" }} justify="center" gap="20px" align="center" w="100%" h="80%">
-               <Flex gap="30px" w="50%" direction="column" h="100%" justify="center" align="center">
+      <form onSubmit={onSubmit(handleSubmit)}>
+         <Flex
+            direction="column"
+            p={54}
+            h="670px"
+            mb={94}
+            mt={42}
+            justify="center"
+            align="center"
+            gap="54px"
+            w="1040px"
+            bg="#006AFF"
+            sx={{ borderRadius: "36px" }}
+         >
+            <Flex justify="center" gap="32px" align="start" w="100%">
+               <Flex gap="30px" w="100%" direction="column" h="100%" justify="center" align="center">
                   {/* Ismingiz inputi */}
-                  <Flex w="100%" direction="column" align="center" justify="center" gap="20px">
-                     <Title
-                        sx={{
-                           color: "#FAFAFA",
-                           fontFamily: "Gilroy-Medium",
-                           fontSize: "24px",
-                           fontStyle: "normal",
-                           fontWeight: 400,
-                           lineHeight: "normal"
-                        }}
-                     >
-                        Ismingiz
-                     </Title>
-                     <InputBase
-                        name="name"
-                        radius="24px"
-                        required
-                        w="100%"
-                        p="30px 24px"
-                        bg="rgba(250, 250, 250, 0.24)"
-                        sx={{
-                           color: "rgba(250, 250, 250, 0.72)",
-                           fontFamily: "Gilroy-Medium",
-                           fontSize: "18px",
-                           fontStyle: "normal",
-                           fontWeight: 400,
-                           lineHeight: "normal"
-                        }}
+                  {/* <Title className={classes.title}>Ismingiz</Title> */}
+                  <Input.Wrapper w="100%" label={<Title className={classes.title}>Ismingiz</Title>}>
+                     <Input
+                        h={82}
+                        radius={24}
+                        sx={{ color: "red" }}
+                        styles={inputStyles}
                         placeholder="Misol: Husan Mamasaidov"
-                        value={formData.name}
-                        onChange={handleChange}
+                        {...getInputProps("name")}
                      />
-                  </Flex>
+                  </Input.Wrapper>
                   {/* Elektron pochta inputi */}
-                  <Flex w="100%" direction="column" align="center" justify="center" gap="20px">
-                     <Title
-                        sx={{
-                           color: "#FAFAFA",
-                           fontFamily: "Gilroy-Medium",
-                           fontSize: "24px",
-                           fontStyle: "normal",
-                           fontWeight: 400,
-                           lineHeight: "normal"
-                        }}
-                     >
-                        Elektron pochtangiz
-                     </Title>
-                     <InputBase
-                        name="email"
-                        w="100%"
-                        type="email"
-                        required
-                        placeholder="Misol: infonexplatform@gmail.com"
-                        radius="24px"
-                        p="30px 24px"
-                        bg="rgba(250, 250, 250, 0.24)"
-                        sx={{
-                           color: "rgba(250, 250, 250, 0.72)",
-                           fontFamily: "Gilroy-Medium",
-                           fontSize: "18px",
-                           fontStyle: "normal",
-                           fontWeight: 400,
-                           lineHeight: "normal"
-                        }}
-                        value={formData.email}
-                        onChange={handleChange}
+                  <Input.Wrapper w="100%" label={<Title className={classes.title}>Elektron pochtangiz</Title>}>
+                     <Input
+                        h={82}
+                        radius={24}
+                        sx={{ color: "red" }}
+                        styles={inputStyles}
+                        placeholder="Misol: eduonplatform@gmail.com"
+                        {...getInputProps("email")}
                      />
-                  </Flex>
+                  </Input.Wrapper>
                   {/* Telefon raqam inputi */}
-                  <Flex w="100%" direction="column" align="center" justify="center" gap="20px">
-                     <Title
-                        sx={{
-                           color: "#FAFAFA",
-                           fontFamily: "Gilroy-Medium",
-                           fontSize: "24px",
-                           fontStyle: "normal",
-                           fontWeight: 400,
-                           lineHeight: "normal"
-                        }}
-                     >
-                        Telefon raqamingiz
-                     </Title>
-                     <InputBase
-                        name="phone"
-                        placeholder="+998 (xx) xxx-xx-xx"
-                        radius="24px"
-                        required
+                  <Input.Wrapper w="100%" label={<Title className={classes.title}>Telefon raqamingiz</Title>}>
+                     <Input<any>
+                        component={IMaskInput}
+                        mask="+000 (00) 000-00-00"
                         w="100%"
-                        p="30px 24px"
-                        bg="rgba(250, 250, 250, 0.24)"
-                        sx={{
-                           color: "rgba(250, 250, 250, 0.72)",
-                           fontFamily: "Gilroy-Medium",
-                           fontSize: "18px",
-                           fontStyle: "normal",
-                           fontWeight: 400,
-                           lineHeight: "normal"
-                        }}
-                        value={formData.phone}
-                        onChange={handleChange}
+                        h={82}
+                        radius={24}
+                        sx={{ color: "red" }}
+                        styles={inputStyles}
+                        placeholder="+998 (xx) xxx-xx-xx"
+                        {...getInputProps("phone")}
                      />
-                  </Flex>
+                  </Input.Wrapper>
                </Flex>
                {/* Xabar inputi */}
-               <Flex
-                  mt="100px"
-                  align="center"
-                  gap="20px"
-                  direction="column"
-                  w="450px"
-                  h="500px"
-                  sx={{
-                     color: "#FAFAFA",
-                     fontFamily: "Gilroy-Medium",
-                     fontSize: "24px",
-                     fontStyle: "normal",
-                     fontWeight: 400,
-                     lineHeight: "normal"
-                  }}
-               >
-                  <Title
-                     sx={{
-                        color: "#FAFAFA",
-                        fontFamily: "Gilroy-Medium",
-                        fontSize: "24px",
-                        fontStyle: "normal",
-                        fontWeight: 400,
-                        lineHeight: "normal"
-                     }}
-                  >
-                     Xabaringiz
-                  </Title>
-                  <Textarea
-                     required
-                     name="message"
-                     radius="24px"
-                     w="100%"
-                     p="30px 24px"
-                     h="100%"
-                     placeholder="Shu yerga yozing..."
-                     value={formData.message}
-                     onChange={handleChange}
-                  />
+               <Flex align="center" direction="column" w="100%">
+                  <Input.Wrapper w="100%" label={<Title className={classes.title}>Xabaringiz</Title>}>
+                     <Textarea
+                        styles={textAreaStyles}
+                        radius="24px"
+                        w="100%"
+                        placeholder="Shu yerga yozing..."
+                        style={{ height: "386px !important", width: "450px" }}
+                        {...getInputProps("message")}
+                     />
+                  </Input.Wrapper>
                </Flex>
             </Flex>
-            <Button variant="white" type="submit">
+            <Button sx={{ fontSize: "18px" }} w={216} h={82} radius={24} variant="white" type='submit'>
                Yuborish
             </Button>
          </Flex>
