@@ -16,7 +16,7 @@ const AdminRoute = ({ allowed = false, redirectURL = "/" }: AdminRouteProps) => 
       return (
          <>
             <div className={style.userPanel}>
-               <Box sx={{ borderRight: "0.5px solid rgba(118, 118, 118, 1)" }}>
+               <Box sx={{ borderRight: "0.5px solid rgba(118, 118, 118, 1)", zIndex: "revert" }}>
                   <Sidebar />
                </Box>
                <div className={style.main}>

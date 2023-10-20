@@ -191,17 +191,11 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                      <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
                         Zo‘rlari
                      </Button>
-                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
-                        Marketing
-                     </Button>
-                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
-                        Dasturlash
-                     </Button>
                   </Flex>
                   <Flex align="center" sx={{ flexDirection: "column" }}>
                      <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr ", gap: "20px" }}>
                         {
-                           // @ts-ignore
+                           // @ts-expect-error
                            course?.map(item => (
                               <Course
                                  key={item.id}

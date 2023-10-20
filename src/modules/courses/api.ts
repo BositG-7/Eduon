@@ -16,6 +16,9 @@ export const Course = {
 
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>
    http.post<IApi.Course.Create.Response>("/course_create", objectToFormData(formData));
+
+export const EditCourse = (formData: IApi.Course.Create.Request) =>
+   http.post<IApi.Course.Create.Response>("/course_create", objectToFormData(formData));
 export const CourseTop = () => http.get("/course_top");
 
 export const CourseNew = () => http.get("/course_new");
@@ -23,17 +26,16 @@ export const CourseNew = () => http.get("/course_new");
 export const VideoUpload = (formData: IApi.Course.VideoUpload.Request) =>
    http.post<IApi.Course.VideoUpload.Response>("/speaker_video_upload", objectToFormData(formData));
 
-export const MakePayment1Click = ({card_number,expire_date}: IApi.Course.PaymentStep1.Click.Request) =>
-http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-token", objectToFormData({card_number, expire_date}));
+export const MakePayment1Click = ({ card_number, expire_date }: IApi.Course.PaymentStep1.Click.Request) =>
+   http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-token", objectToFormData({ card_number, expire_date }));
 
 export const MakePayment2Click = (formData: IApi.Course.PaymentStep2.Click.Request) =>
-http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-tokenverify", objectToFormData(formData));
+   http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-tokenverify", objectToFormData(formData));
 
 export const MakePayment1Payme = (formData: IApi.Course.PaymentStep1.Payme.Request) =>
-http.post<IApi.Course.PaymentStep1.Click.Response>("/payme/makepayment", objectToFormData(formData));
+   http.post<IApi.Course.PaymentStep1.Click.Response>("/payme/makepayment", objectToFormData(formData));
 
 export const MakePayment2Payme = (formData: IApi.Course.PaymentStep1.Payme.Request) =>
-http.post<IApi.Course.PaymentStep1.Click.Response>("/payme/codecheck", objectToFormData(formData));
-
+   http.post<IApi.Course.PaymentStep1.Click.Response>("/payme/codecheck", objectToFormData(formData));
 
 export const TopSpeaker = () => http.get("/speaker_top");

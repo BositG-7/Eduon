@@ -6,7 +6,6 @@ import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Types } from "modules/auth";
 import { SendEmail } from "modules/auth/api";
-import { useAuth } from "modules/auth/context";
 import { clearSessionReset, clearSessionVerification, setSessionVerification } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
@@ -19,7 +18,6 @@ const schema = yup.object({
 });
 
 const Verification: FunctionComponent<VerificationProps> = () => {
-   const { methods } = useAuth();
    const form = useForm<Types.IForm.Verification>({
       initialValues: {
          email: ""
@@ -39,8 +37,6 @@ const Verification: FunctionComponent<VerificationProps> = () => {
          setSessionVerification(data);
 
          navigete("/auth/check-password");
-
-         // Yuborish muvaffaqiyatli yakunlandi
       } catch (error: any) {
          notifications.show({
             message: error.data.email

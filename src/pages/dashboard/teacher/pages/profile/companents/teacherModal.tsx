@@ -1,4 +1,5 @@
 import { FormEvent, FunctionComponent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Button, FileInput, Flex, Group, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
@@ -15,6 +16,7 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
    const [opened, { open, close }] = useDisclosure(false);
    const [images, setImages] = useState<File[]>([]);
    const { user } = useAuth();
+   const navigete = useNavigate();
    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
@@ -37,6 +39,7 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
          const res = await UpdateImage(formData);
 
          notifications.show({ message: res.statusText, color: "green" });
+         navigete("/dashboard");
       } catch (error: any) {
          console.log(error);
 
