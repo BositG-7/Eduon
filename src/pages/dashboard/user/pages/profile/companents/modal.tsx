@@ -72,7 +72,7 @@ function Demo() {
 
    return (
       <>
-         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}>
+         <Modal opened={opened} onClose={handleModalClose} centered withCloseButton={false}style={{ zIndex:'1' }}>
             <Flex justify="space-around">
                <form onSubmit={handleSubmit}>
                   <FileInput
