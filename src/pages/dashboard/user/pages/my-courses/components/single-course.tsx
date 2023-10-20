@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Flex, Slider, Title } from "@mantine/core";
+import { Box, Flex, Progress, Title } from "@mantine/core";
 import DOMPurify from "dompurify";
 import { useSingle } from "modules/courses/hooks/use-single";
 import { useSpeaker } from "modules/courses/hooks/use-speaker";
@@ -101,7 +101,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                </Title>
             </Flex>
 
-            <Slider defaultValue={20} max={100} thumbChildren="" />
+            <Progress value={28}/>
             <Flex gap={10} p={15} sx={{ borderRadius: 10 }} align="center" bg="rgba(17, 17, 17, 0.02)">
                <HiVideoCamera size={20} color="rgba(0, 106, 255, 1)" />
                <Title size={18} color="rgba(17, 17, 17, 0.72)">

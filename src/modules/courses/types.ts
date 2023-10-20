@@ -1,23 +1,24 @@
+import { DEGREE, LANGUAGE, TYPE } from "./constants";
+
 export namespace IEntity {
    export interface Course {
-      count: number;
-      next: string;
-      previous: string;
-      results: Results[];
+      id: number;
+      name: string;
+      description: string;
+      price: number;
+      image: string;
+      whos_course: string;
+      language: LANGUAGE;
+      type: TYPE;
+      degree: DEGREE;
+      category: number;
    }
    export interface SpeakerCourse {
       id: number;
       name: string;
       image: string;
    }
-   export interface Results {
-      id: number;
-      name: string;
-      price: number;
-      view: number;
-      image: string;
-      review_count: number;
-   }
+
    export interface CategoryResults {
       id: number;
       name: string;
@@ -68,53 +69,52 @@ export namespace IEntity {
 
 export namespace IApi {
    export namespace Course {
-
-      export namespace PaymentStep1{
-         export namespace Click{
-            export interface Request{
-               card_number:string;
-               expire_date:string;
+      export namespace PaymentStep1 {
+         export namespace Click {
+            export interface Request {
+               card_number: string;
+               expire_date: string;
             }
-            export interface Response{
-               card_number:string;
-               expire_date:string;
+            export interface Response {
+               card_number: string;
+               expire_date: string;
             }
          }
-         export namespace Payme{
-            export interface Request{
-               card_number:string;
-               expire_date:string;
+         export namespace Payme {
+            export interface Request {
+               card_number: string;
+               expire_date: string;
             }
-            export interface Response{
-               card_number:string;
-               expire_date:string;
+            export interface Response {
+               card_number: string;
+               expire_date: string;
             }
          }
       }
 
-      export namespace PaymentStep2{
-         export namespace Click{
-            export interface Request{
-               card_token:string;
-               code:string;
-               course_id?:number;
+      export namespace PaymentStep2 {
+         export namespace Click {
+            export interface Request {
+               card_token: string;
+               code: string;
+               course_id?: number;
             }
-            export interface Response{
-               card_token:string;
-               code:string;
-               course_id?:number;
+            export interface Response {
+               card_token: string;
+               code: string;
+               course_id?: number;
             }
          }
-         export namespace Payme{
-            export interface Request{
-               token:string;
-               code:string;
-               course_id?:number;
+         export namespace Payme {
+            export interface Request {
+               token: string;
+               code: string;
+               course_id?: number;
             }
-            export interface Response{
-               token:string;
-               code:string;
-               course_id?:number;
+            export interface Response {
+               token: string;
+               code: string;
+               course_id?: number;
             }
          }
       }
@@ -166,6 +166,15 @@ export namespace IApi {
          export interface Response extends IEntity.SingleCourse {}
       }
 
+      export namespace Filter {
+         export interface Request {
+            category__name?: string;
+            max_price?: number;
+            language?: string;
+            degree?: string;
+         }
+         export interface Response extends IEntity.Course {}
+      }
       export namespace Speaker {
          export interface Request {
             id: string;
@@ -197,6 +206,10 @@ export namespace IQuery {
          isLoading: boolean;
          course: IEntity.Course | null;
       }
+      export interface Filter {
+         isLoading: boolean;
+         course: IEntity.Course | null;
+      }
       export interface Single {
          isLoading: boolean;
          course: IEntity.SingleCourse[];
@@ -218,6 +231,16 @@ export namespace IQuery {
          isLoading?: boolean;
          info: IEntity.SpeakerInfo[];
       }
+   }
+}
+
+export namespace IContext {
+   export interface Courses {
+      course: IEntity.Course | null;
+      isLoading: boolean;
+      methods: {
+         filter: (course: IEntity.Course | null) => void;
+      };
    }
 }
 

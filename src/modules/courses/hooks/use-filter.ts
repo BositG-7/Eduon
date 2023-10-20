@@ -3,13 +3,13 @@ import { notifications } from "@mantine/notifications";
 
 import { Api, Types } from "..";
 
-export const useList = () => {
-   const [state, setState] = useState<Types.IQuery.Course.List>({ isLoading: true, course: null });
+export const useFilter = (price:any) => {
+   const [state, setState] = useState<Types.IQuery.Course.Filter>({ isLoading: true, course: null });
 
    useEffect(() => {
       const request = async () => {
          try {
-            const { data } = await Api.Course.List();
+            const { data } = await Api.Course.Filter({max_price: price});
             const course = data;
 
             setState({ course, isLoading: false });
@@ -21,6 +21,5 @@ export const useList = () => {
 
       request();
    }, []);
-   
    return state;
 };
