@@ -4,6 +4,8 @@ import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 // eslint-disable-next-line import/order
 import { Containers } from "modules/auth";
+// eslint-disable-next-line import/order
+// import { CourseContainers } from "modules/courses";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 // eslint-disable-next-line import/order
@@ -29,16 +31,16 @@ root.render(
             <MantineProvider>
                {/* Auth bileşeni içindeki alt bileşenleri oluşturun */}
                <Containers.Auth>
-                  <>
-                     {/* Sağ üst köşede bildirimleri göstermek için bir bildirim bileşeni ekleyin */}
-                     <Notifications position="top-right" />
+                     <>
+                        {/* Sağ üst köşede bildirimleri göstermek için bir bildirim bileşeni ekleyin */}
+                        <Notifications position="top-right" />
 
-                     {/* Sayfa üstündeki gezinme çubuğunu oluşturun */}
-                     <Navbar />
+                        {/* Sayfa üstündeki gezinme çubuğunu oluşturun */}
+                        <Navbar />
 
-                     {/* Sayfa içeriğini ve rotaları oluşturun */}
-                     <Routes />
-                  </>
+                        {/* Sayfa içeriğini ve rotaları oluşturun */}
+                        <Routes />
+                     </>
                </Containers.Auth>
             </MantineProvider>
          </QueryClientProvider>

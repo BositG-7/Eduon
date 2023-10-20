@@ -25,7 +25,6 @@ const Register = () => {
       initialValues: {
          first_name: "",
          last_name: "",
-
          username: "",
          password: "",
          re_password: ""
