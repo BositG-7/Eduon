@@ -15,7 +15,7 @@ function Steps() {
          <div className="boxes">
             <div className="text">
                <div className="box">
-                  <h3>Ro'Ayxatdan o'tish</h3>
+                  <h3>Ro’yxatdan o’tish</h3>
                   <p>
                      Bilim ulashuvchi sifatida ro'yxatdan o'tish uchun <span>bu yerga</span> bosing
                   </p>

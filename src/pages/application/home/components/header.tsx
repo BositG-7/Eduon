@@ -13,7 +13,7 @@ function Header() {
          <div className="title">
             <h1>Onlayn o’qitish</h1>
             <span>platformasi</span>
-            <p>Kelajak yoshlariga sifatli ta'lim berishda o'z hissangizni qo'shing</p>
+            <p style={{ fontSize: "24px" }}>Ta'lim kelajagi InfoNex bilan</p>
          </div>
          <div className="buttons">
             <button

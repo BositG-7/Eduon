@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Box, Button,  Divider, Flex, InputBase,  Title } from "@mantine/core";
+import { Box, Button, Divider, Flex, InputBase, Title } from "@mantine/core";
 import { useList } from "modules/courses/hooks/course-use-list";
 // eslint-disable-next-line import/order
 import { AiOutlineSend } from "react-icons/ai";
@@ -21,8 +21,6 @@ const Courses: FunctionComponent<CoursesProps> = () => {
    };
 
    const paginated = Paginated({ currentPage, pageSize });
-
-  
 
    return (
       <Box mb={50}>
@@ -52,21 +50,14 @@ const Courses: FunctionComponent<CoursesProps> = () => {
             </Flex>
 
             <Divider my="lg" />
-            <Flex align='center' justify='center' gap={150} ml="20px">
-
-               <Flex align="center" justify='center' sx={{ flexDirection: "column",textAlign:'center' }}>
+            <Flex align="center" justify="center" gap={150} ml="20px">
+               <Flex align="center" justify="center" sx={{ flexDirection: "column", textAlign: "center" }}>
                   <Flex gap={25} mt="30px">
                      <Button size="md" variant="light" color="#E7F0FF" sx={{ fontWeight: "normal" }}>
                         Barchasi
                      </Button>
                      <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
                         Zo‘rlari
-                     </Button>
-                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
-                        Marketing
-                     </Button>
-                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
-                        Dasturlash
                      </Button>
                   </Flex>
                   <Flex align="center" sx={{ flexDirection: "column" }}>
