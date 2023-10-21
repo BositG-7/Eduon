@@ -84,7 +84,7 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   </Button>
                   <Box w="100%">
                      <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        Akkauntingiz bormi? unda{" "}
+                        Akkauntingiz bormi? unda {" "}
                         <span
                            onClick={() => {
                               navigete("/auth/login");
