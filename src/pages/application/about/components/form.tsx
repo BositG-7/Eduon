@@ -1,10 +1,11 @@
-import { FunctionComponent } from "react";
 import * as yup from "yup";
 import { Button, createStyles, Flex, Input, Textarea, Title } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
+import { Api } from "modules/courses";
+// eslint-disable-next-line import/order
 import { IMaskInput } from "react-imask";
 
-interface FormProps {}
 
 const useStyles = createStyles(theme => ({
    title: {
@@ -54,15 +55,28 @@ const schema = yup.object({
    message: yup.string().min(1).label("Message").required()
 });
 
-const Form: FunctionComponent<FormProps> = () => {
-   const { getInputProps, onSubmit } = useForm({
+interface formValues {
+   name: "";
+   email: "";
+   phone: "";
+   message: "";
+}
+
+const Form = () => {
+   const { cx, classes } = useStyles();
+   const { getInputProps, onSubmit } = useForm<formValues>({
       initialValues: { name: "", email: "", phone: "", message: "" },
       validate: yupResolver(schema)
    });
-   const { cx, classes } = useStyles();
 
-   const handleSubmit = (values: any) => {
-      console.log(values);
+   const handleSubmit = async (values: formValues) => {
+      try {
+         const { data } = await Api.sendMailUser({ ...values });
+
+         console.log(data);
+      } catch (err: any) {
+       notifications.show(err?.message)
+      }
    };
 
    return (
@@ -83,7 +97,6 @@ const Form: FunctionComponent<FormProps> = () => {
             <Flex justify="center" gap="32px" align="start" w="100%">
                <Flex gap="30px" w="100%" direction="column" h="100%" justify="center" align="center">
                   {/* Ismingiz inputi */}
-                  {/* <Title className={classes.title}>Ismingiz</Title> */}
                   <Input.Wrapper w="100%" label={<Title className={classes.title}>Ismingiz</Title>}>
                      <Input
                         h={82}
@@ -134,7 +147,7 @@ const Form: FunctionComponent<FormProps> = () => {
                   </Input.Wrapper>
                </Flex>
             </Flex>
-            <Button sx={{ fontSize: "18px" }} w={216} h={82} radius={24} variant="white" type='submit'>
+            <Button sx={{ fontSize: "18px" }} w={216} h={82} radius={24} variant="white" type="submit">
                Yuborish
             </Button>
          </Flex>

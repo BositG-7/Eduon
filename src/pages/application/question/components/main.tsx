@@ -35,7 +35,7 @@ const Main: FunctionComponent<MainProps> = ({ value }) => {
                sx={{ borderRadius: "14px" }}
                bg="rgba(17, 17, 17, 0.02)"
             >
-               <Text>Kurs pulini bo‘lib to‘lash imkoniyati mavjudmi?</Text>
+               <Text>Kurs pulini bo'lib to'lash imkoniyati mavjudmi?</Text>
             </Flex>
             <Flex
                justify="space-between"
@@ -48,7 +48,7 @@ const Main: FunctionComponent<MainProps> = ({ value }) => {
                sx={{ borderRadius: "14px" }}
                bg="rgba(17, 17, 17, 0.02)"
             >
-               <Text>Agar kurs yoqmasa to‘lagan pulimni qaytarib olsam bo’ladimi? Agar mumkin bo‘lsa u jarayon qanday bo‘ladi?</Text>
+               <Text>Agar kurs yoqmasa to'lagan pulimni qaytarib olsam bo'ladimi? Agar mumkin bo'lsa u jarayon qanday bo'ladi?</Text>
             </Flex>
             <Flex
                justify="space-between"
@@ -81,7 +81,7 @@ const Main: FunctionComponent<MainProps> = ({ value }) => {
       );
    };
 
-   if (value === "To’lovlar") {
+   if (value === "To'lovlar") {
       return (
          <>
             <Box>{Tolovlar()}</Box>
