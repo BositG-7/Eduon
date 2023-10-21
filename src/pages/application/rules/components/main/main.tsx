@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
-import { Box } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, Flex } from "@mantine/core";
 
 import Footer from "components/footer";
 
@@ -7,6 +8,8 @@ interface MainProps {}
 
 const Main: FunctionComponent<MainProps> = () => {
    const i = 0;
+
+   const navigete = useNavigate();
 
    return (
       <Box h="150px" maw="100%">
@@ -161,13 +164,21 @@ const Main: FunctionComponent<MainProps> = () => {
             Siz va biz hech qanday qo'shma korxona, sheriklik, ish bilan ta'minlash, pudratchi yoki agentlik munosabatlari oramizda mavjud emasligiga
             qo'shilamiz.
          </p>
-      
-         <h1 style={{ color: "blue", margin: "40px 0 0 140px", fontSize: "30px" }}>11. Biz bilan qanday bog'lanish mumkin</h1> 
-         <p style={{ margin: "30px 140px 140px 140px", fontSize: "18px" }}>
+         <h1 style={{ color: "blue", margin: "40px 0 0 140px", fontSize: "30px" }}>11. Biz bilan qanday bog'lanish mumkin</h1>
+         <p style={{ margin: "30px 140px 30px 140px", fontSize: "18px" }}>
             Biz bilan bog'lanishning eng yaxshi usuli - qo'llab-quvvatlash guruhimizga murojaat qilishdir. Sizning savollaringiz, tashvishlaringiz va
             bizning xizmatlarimiz haqidagi fikr-mulohazalaringizni eshitishga tayyormiz.
          </p>
-         
+         <Flex w="100%" justify="center" align="center">
+            <Button
+               onClick={() => {
+                  navigete("/auth/login");
+               }}
+            >
+               Roziman
+            </Button>
+         </Flex>
+         <Box mt={30}>{}</Box>
          <Footer />
       </Box>
    );

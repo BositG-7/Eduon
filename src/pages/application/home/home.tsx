@@ -1,7 +1,6 @@
 import Footer from "components/footer";
 
 import Advantage from "./components/advantage";
-import Boxes from "./components/boxes";
 import Courses from "./components/courses";
 import Header from "./components/header";
 import NewCourse from "./components/new-courses";
@@ -13,7 +12,6 @@ function Home() {
    return (
       <div style={{ overflow: "hidden" }}>
          <Header />
-         <Boxes />
          <TopCourses />
          <NewCourse />
          <TopSpeakers />

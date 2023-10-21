@@ -19,7 +19,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    const { speaker } = course;
 
-
    const teacher = useSpeaker(speaker);
 
    console.log(course);
@@ -101,7 +100,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                </Title>
             </Flex>
 
-            <Progress value={28}/>
+            <Progress value={28} />
             <Flex gap={10} p={15} sx={{ borderRadius: 10 }} align="center" bg="rgba(17, 17, 17, 0.02)">
                <HiVideoCamera size={20} color="rgba(0, 106, 255, 1)" />
                <Title size={18} color="rgba(17, 17, 17, 0.72)">

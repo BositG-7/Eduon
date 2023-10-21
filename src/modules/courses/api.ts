@@ -8,7 +8,7 @@ export const Course = {
    Filter: (formData: IApi.Course.Filter.Request) => http.get<IApi.Course.Filter.Response>("/filter", { params: { max_price: formData.max_price } }),
    Single: (id: string) => http.get<IApi.Course.Single.Response>(`/course_detail/${id}`),
    SpeakerInfo: () => http.get<IApi.Course.SpeakerInfo.Response>(`/speaker_info`),
-   Speaker: (id: any) => http.get<IApi.Course.Speaker.Response>(`/speaker_profile/${id}`),
+   Speaker: (id: any) => http.get<IApi.Course.Speaker.Response>(`/speaker-profile/${id}/`),
    SpeakerCourse: (id: any) => http.get<IApi.Course.SpeakerCourse.Response>(`/speaker_course_list/${id}`),
    Category: () => http.get<IApi.Course.Category.Response>(`/category`)
 };
@@ -39,4 +39,5 @@ export const MakePayment2Payme = (formData: IApi.Course.PaymentStep1.Payme.Reque
 
 export const TopSpeaker = () => http.get("/speaker_top");
 
-export const sendMailUser = (formData: IApi.sendMailUser.Request) => http.post<IApi.sendMailUser.Response>("send_mail_user", objectToFormData(formData));
+export const sendMailUser = (formData: IApi.sendMailUser.Request) =>
+   http.post<IApi.sendMailUser.Response>("send_mail_user", objectToFormData(formData));

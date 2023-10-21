@@ -51,7 +51,7 @@ const Register = () => {
 
          await Api.Register(requestData);
 
-         navigate("auth/register");
+         navigate("/rules");
          setLoading(false);
          clearSessionVerification();
       } catch (err: any) {
