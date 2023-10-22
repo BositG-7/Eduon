@@ -13,6 +13,8 @@ const Category: FunctionComponent<CategoryProps> = () => {
          <Box mt="150px" w="100%" display="flex" sx={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
             <hr style={{ width: "100%" }} />
             <SegmentedControl
+               mt={36}
+               mb={36}
                sx={{
                   color: "rgba(17, 17, 17, 0.54)",
                   fontFamily: "Gilroy-Medium",
