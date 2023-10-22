@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useCategory } from "modules/courses/hooks/use-category";
 
 import business from "../../../../assets/images/business.png";
 import design from "../../../../assets/images/design.png";
@@ -13,6 +14,7 @@ import "../style/courses.scss";
 
 function Courses() {
    const navigete = useNavigate();
+   const { category } = useCategory();
 
    return (
       <section className="courses">

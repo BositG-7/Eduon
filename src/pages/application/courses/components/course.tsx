@@ -44,7 +44,7 @@ const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, ra
                <Flex align="center" justify="space-between">
                   {price ? (
                      <Title color="gray" size={16}>
-                        {price.toFixed(2)} so'm
+                        {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} uzs
                      </Title>
                   ) : (
                      <Button>Bepul</Button>

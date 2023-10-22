@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Flex, Title } from "@mantine/core";
+import { Box, Flex, Text, Title } from "@mantine/core";
 // eslint-disable-next-line import/order
 import DOMPurify from "dompurify";
 // eslint-disable-next-line import/order
@@ -23,10 +23,12 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    const teacher = useSpeaker(speaker);
 
+   console.log(teacher);
+
    return (
       <Box pl={100} pt={20}>
          <Flex justify="space-between" pr={100}>
-            <Box w="50vw">
+            <Flex direction="column" h={300} justify="space-between" w="50vw">
                <Title size={54} sx={{ lineHeight: "normal" }}>
                   {course.name}
                </Title>
@@ -46,16 +48,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                      </span>
                   </Title>
                </Flex>
-
-               <Box pt={50}>
-                  <Title>Spiker va o’xshash kurslar</Title>
-
-                  <Flex pt={50} pb={100} gap={50}>
-                     <SpeakersCourse />
-                     <SpeakersCourse />
-                  </Flex>
-               </Box>
-            </Box>
+            </Flex>
 
             <Flex direction="column" gap={20}>
                <video
@@ -72,12 +65,31 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   // @ts-expect-error
                   src={course.video[0]?.video}
                />
+
                <Title fw={500} size={24}>
-                  12,400,000 <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>so'm</span>{" "}
+                  {/* @ts-expect-error */}
+                  <Title>{course.video[0]?.title}</Title>
+                  {/* @ts-ignore */}
+                  {course?.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <span style={{ color: "rgba(17, 17, 17, 0.36)" }}>uzs</span>{" "}
+                  {/* @ts-expect-error */}
+                  <Text color="#9B9B9B">{course.video[0]?.description} </Text>
                </Title>
                <Demo />
             </Flex>
          </Flex>
+         <Box pt={50}>
+            <Title mb={20} sx={{ textAlign: "center" }}>
+               Spiker va o’xshash kurslar
+            </Title>
+
+            <Flex sx={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr" }} gap={20} mb={30}>
+               {teacher.courses.map((item, id) => (
+                  // @ts-expect-error
+                  // eslint-disable-next-line react/no-array-index-key
+                  <SpeakersCourse key={id} id={item.id} name={item.name} price={item.price} image={item.image} />
+               ))}
+            </Flex>
+         </Box>
 
          <Footer />
       </Box>
