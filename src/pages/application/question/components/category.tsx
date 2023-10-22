@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { Box } from "@mantine/core";
+import { Box, SegmentedControl } from "@mantine/core";
 
 import Main from "./main";
 
@@ -10,8 +10,24 @@ const Category: FunctionComponent<CategoryProps> = () => {
 
    return (
       <>
-         <Box w="100%" display="flex" sx={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-            <Main value={selectedValue} />
+         <Box mt="150px" w="100%" display="flex" sx={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+            <hr style={{ width: "100%" }} />
+            <SegmentedControl
+               mt={36}
+               mb={36}
+               sx={{
+                  color: "rgba(17, 17, 17, 0.54)",
+                  fontFamily: "Gilroy-Medium",
+                  fontSize: 16,
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "normal"
+               }}
+               data={[{ label: "Barchasi", value: "Barchasi" }]}
+               value={selectedValue} // Set the selected value
+               onChange={value => setSelectedValue(value)} // Update the selected value
+            />
+            <Main value={selectedValue} /> {/* Pass the selected value to the Main component */}
          </Box>
       </>
    );
