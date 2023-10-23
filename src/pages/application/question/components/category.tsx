@@ -13,6 +13,8 @@ const Category: FunctionComponent<CategoryProps> = () => {
          <Box mt="150px" w="100%" display="flex" sx={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
             <hr style={{ width: "100%" }} />
             <SegmentedControl
+               mt={36}
+               mb={36}
                sx={{
                   color: "rgba(17, 17, 17, 0.54)",
                   fontFamily: "Gilroy-Medium",
@@ -21,13 +23,7 @@ const Category: FunctionComponent<CategoryProps> = () => {
                   fontWeight: 400,
                   lineHeight: "normal"
                }}
-               data={[
-                  { label: "Barchasi", value: "Barchasi" },
-                  { label: "To’lovlar", value: "To’lovlar" },
-                  { label: "Kurslar", value: "Kurslar" },
-                  { label: "Xarid qilish", value: "Xarid qilish" },
-                  { label: "Profil", value: "Profil" }
-               ]}
+               data={[{ label: "Barchasi", value: "Barchasi" }]}
                value={selectedValue} // Set the selected value
                onChange={value => setSelectedValue(value)} // Update the selected value
             />

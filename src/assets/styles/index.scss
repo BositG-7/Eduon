@@ -1,7 +1,10 @@
-@import 'font.scss';
-@import 'local.scss';
+@import "font.scss";
+@import "local.scss";
 
 #root {
    max-width: 1440px;
    margin: auto;
+}
+* {
+   cursor: pointer;
 }

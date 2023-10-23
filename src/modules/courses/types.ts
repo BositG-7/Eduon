@@ -91,7 +91,6 @@ export namespace IApi {
             }
          }
       }
-
       export namespace PaymentStep2 {
          export namespace Click {
             export interface Request {
@@ -196,6 +195,20 @@ export namespace IApi {
       export namespace SpeakerInfo {
          export interface Request {}
          export interface Response extends IEntity.SpeakerInfo {}
+      }
+   }
+   export namespace sendMailUser {
+      export interface Request {
+         name: string;
+         email: string;
+         phone: string;
+         message: string;
+      }
+      export interface Response {
+         name: string;
+         email: string;
+         phone: string;
+         message: string;
       }
    }
 }

@@ -8,14 +8,12 @@ import { Paginated } from "utils/paginate";
 // import Paginate from "components/pagination";
 import Course from "../components/course";
 
-interface SinglePageSpeakerProps { }
+interface SinglePageSpeakerProps {}
 
 const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
    const { speakerID = "" } = useParams<{ speakerID: string }>();
    const teacher = useSpeaker(speakerID);
    const { speakerCourse } = useSpeakerCourse(speakerID);
-
-
 
    const [pageSize, setPageSize] = React.useState<number>(8);
    const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -24,6 +22,8 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
    };
 
    const paginated = Paginated({ currentPage, pageSize });
+
+   console.log(speakerCourse);
 
    return (
       <Box mb={50} pt={50}>
@@ -44,38 +44,30 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
                         alt=""
                      />
                      {/* <Title sx={{ textAlign: "center" }}> {teacher.first_name} </Title> */}
-                     <Title sx={{ textAlign: "center" }}> Husan </Title>
+                     <Title sx={{ textAlign: "center" }}>
+                        {" "}
+                        {teacher.first_name} {teacher.last_name}{" "}
+                     </Title>
                   </Box>
                   <Flex direction="column" gap={15}>
                      <Title color="rgba(17, 17, 17, 0.54)" w={425} size={18} sx={{ fontWeight: 500 }}>
                         <span style={{ color: "rgba(0, 106, 255, 1)" }}>Ma’lumot: </span>
-                        Tadbirkor, spiker, ustoz va 9 ga yaqin biznes, loyihalar asoschisi. Bu yerda yana davomiy bir qancha ma’lumotlar bo’lishi
-                        mumkin.
-                     </Title>
-                     <Title color="rgba(17, 17, 17, 0.54)" w={425} size={18} sx={{ fontWeight: 500 }}>
-                        <span style={{ color: "rgba(0, 106, 255, 1)" }}>Kompaniya: </span>
                         {/* @ts-ignore */}
-                        {teacher?.speaker && teacher.speaker[0] && teacher.speaker[0].job ? teacher.speaker[0].job : ""}
+                        {teacher?.about}
                      </Title>
+
                      <Title color="rgba(17, 17, 17, 0.54)" w={425} size={18} sx={{ fontWeight: 500 }}>
                         <span style={{ color: "rgba(0, 106, 255, 1)" }}>Status: </span>
-                        Tadbirkor
+                        {/* @ts-ignore */}
+                        {teacher?.job}
                      </Title>
                      <Flex gap={50} pt={20}>
                         <Box>
                            <Title size={30} color="rgba(0, 106, 255, 1)" sx={{ fontWeight: 700 }}>
-                              12 ta
+                              {speakerCourse.length} ta
                            </Title>
                            <Title size={18} color="rgba(17, 17, 17, 0.72)" sx={{ fontWeight: 500, textAlign: "center" }}>
                               Kurslar
-                           </Title>
-                        </Box>
-                        <Box>
-                           <Title size={30} color="rgba(0, 106, 255, 1)" sx={{ fontWeight: 700 }}>
-                              9,812 ta
-                           </Title>
-                           <Title size={18} color="rgba(17, 17, 17, 0.72)" sx={{ fontWeight: 500, textAlign: "center" }}>
-                              O’quvchi
                            </Title>
                         </Box>
                      </Flex>
@@ -85,15 +77,13 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
                <Flex align="center" sx={{ flexDirection: "column" }}>
                   <Flex gap={25} mt="30px">
                      <Button size="md" variant="light" color="#E7F0FF" sx={{ fontWeight: "normal" }}>
-                        Barchasi
-                     </Button>
-                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
-                        Zo‘rlari
+                        Barchasi kursla
                      </Button>
                   </Flex>
                   <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr", gap: "20px" }}>
                      {speakerCourse.map(item => (
-                        <Course key={item.id} id={String(item.id)} img={item.image} name={item.name} />
+                        // @ts-expect-error
+                        <Course key={item.id} price={item.price} id={String(item.id)} img={item.image} name={item.name} />
                      ))}
                   </Box>
 
