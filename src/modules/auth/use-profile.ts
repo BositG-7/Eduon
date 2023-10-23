@@ -22,6 +22,7 @@ const useProfile = (): [State, Dispatch<SetStateAction<State>>] => {
 
             setState({ user, isLoading: false });
          } catch (err: any) {
+            window.location.href = "/";
             setState({ user: null, isLoading: false });
          }
       };

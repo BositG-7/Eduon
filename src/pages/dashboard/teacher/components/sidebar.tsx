@@ -105,7 +105,7 @@ function Sidebar() {
    };
 
    return (
-      <Flex direction="column" align="center" h="auto">
+      <Flex direction="column" sx={{ zIndex: "unset" }} align="center" h="auto">
          {sidebarVisible && (
             <>
                <div className="blur-overlay" onClick={hideSidebar} />

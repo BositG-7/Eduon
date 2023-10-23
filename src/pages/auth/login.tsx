@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text, Title } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-// import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
-import { useAuth } from "modules/auth/context";
 import { clearSession, clearSessionVerification, setSession } from "services/store";
 
 import cursor from "../../assets/images/cursor.png";
@@ -21,7 +19,6 @@ const schema = yup.object({
 });
 
 function Login(props: LoginProps) {
-   const { methods } = useAuth();
    const form = useForm<Types.IForm.Login>({
       initialValues: {
          username: "",

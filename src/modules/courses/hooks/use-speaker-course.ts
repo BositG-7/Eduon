@@ -3,13 +3,13 @@ import { notifications } from "@mantine/notifications";
 
 import { Api, Types } from "..";
 
-export const useSpeakerCourse = (id: number | string) => {
+export const useSpeakerCourse = (idx: number | string) => {
    const [state, setState] = useState<Types.IQuery.Course.SpeakerCourse>({ isLoading: true, speakerCourse: [] });
 
    useEffect(() => {
       const request = async () => {
          try {
-            const { data } = await Api.Course.SpeakerCourse(id);
+            const { data } = await Api.Course.SpeakerCourse(idx);
             const speakerCourse = data;
 
             // @ts-ignore
@@ -21,6 +21,6 @@ export const useSpeakerCourse = (id: number | string) => {
       };
 
       request();
-   }, [id]);
+   }, [idx]);
    return state;
 };

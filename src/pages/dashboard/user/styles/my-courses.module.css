@@ -1,0 +1,82 @@
+.wrapper {
+  width: 252px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+}
+.wrapper .img {
+  width: 252px;
+  height: 158px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 16px;
+}
+.wrapper .title {
+  width: 196px;
+  color: rgba(17, 17, 17, 0.72);
+  font-family: Gidroy-Medium;
+  font-size: 16px;
+  font-weight: 500;
+}
+.wrapper .progress {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.wrapper .progress .progresInNumber {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .progress .progresInNumber > p {
+  color: #111;
+  font-family: Gidroy-Medium;
+  font-size: 14px;
+  font-weight: 500;
+}
+.wrapper .progress .progresInNumber .persent {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.wrapper .progress .progresInNumber .persent p {
+  font-family: Gidroy-Medium;
+  font-size: 14px;
+  font-weight: 500;
+}
+.wrapper .progress .progresInNumber .persent > p:first-child {
+  color: #111;
+  opacity: 0.72;
+}
+.wrapper .progress .progresInNumber .persent > p:last-child {
+  color: rgba(17, 17, 17, 0.36);
+}
+.wrapper .progress .diagramma {
+  width: 252px;
+  height: 8px;
+  border-radius: 12px;
+  background: #f1f1f1;
+}
+.wrapper .progress .diagramma .diagrammaItem {
+  width: 50%;
+  height: 8px;
+  border-radius: 12px;
+  background: var(--Blue, #006aff);
+}
+.wrapper .btn {
+  width: 252px;
+  padding: 12px 0;
+  border-radius: 12px;
+  background: rgba(17, 17, 17, 0.06);
+  color: rgba(17, 17, 17, 0.54);
+  font-family: Gidroy-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  transition: all 0.02s ease;
+}
+.wrapper .btn:active {
+  transform: scale(0.99);
+}/*# sourceMappingURL=my-courses.module.css.map */

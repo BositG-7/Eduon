@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Divider, Flex, Title } from "@mantine/core";
+// eslint-disable-next-line import/order
 import DOMPurify from "dompurify";
 // eslint-disable-next-line import/order
 import { useSingle } from "modules/courses/hooks/use-single";
@@ -24,12 +25,9 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    const { speaker = 2 } = course;
 
-   // @ts-expect-error
-   console.log(course.video[0]?.video);
 
    const teacher = useSpeaker(speaker);
 
-   console.log(course);
 
    return (
       <Box pl={100} pt={20}>
@@ -50,7 +48,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   <Title size={24}>
                      Avtor:
                      <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
-                        {/* @ts-ignore */}
                         {teacher.first_name}
                      </span>
                   </Title>

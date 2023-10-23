@@ -5,7 +5,6 @@ import Boxes from "./components/boxes";
 import Courses from "./components/courses";
 import Header from "./components/header";
 import NewCourse from "./components/new-courses";
-import Statistic from "./components/statistic";
 import Steps from "./components/steps";
 import TopCourses from "./components/top-course";
 import TopSpeakers from "./components/top-speaker";
@@ -20,7 +19,6 @@ function Home() {
          <TopSpeakers />
          <Courses />
          <Advantage />
-         <Statistic />
          <Steps />
 
          <Footer />

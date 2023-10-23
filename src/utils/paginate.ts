@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { useList } from "modules/courses/hooks/course-use-list";
 
 interface PaginateProps {
@@ -10,8 +9,7 @@ export const Paginated = ({ currentPage, pageSize }: PaginateProps) => {
    const { course } = useList();
 
    const startIndex: number = (currentPage - 1) * pageSize;
-   let list = _.slice(course?.results, startIndex);
+   const list = course
 
-   list = _.take(list, pageSize);
    return list;
 };

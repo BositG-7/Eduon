@@ -1,0 +1,39 @@
+/* custom-pagination.scss */
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+.pagination .page-item {
+  padding: 10px;
+}
+.pagination .page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.pagination .page-item:not(.active) .page-link {
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+.pagination .page-item:hover .page-link {
+  z-index: 2;
+  color: #0056b3;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+.pagination .page-item .page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  text-decoration: none;
+}
+.pagination .page-item .page-link:hover {
+  text-decoration: none;
+}/*# sourceMappingURL=pagenation.module.css.map */

@@ -17,7 +17,6 @@ const schema = yup.object({
    email: yup.string().min(5).email().label("Email").required()
 });
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    const form = useForm<Types.IForm.ResetEmail>({
       initialValues: {
