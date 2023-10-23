@@ -70,13 +70,51 @@ const accordionDates = [
    },
    {
       value: "Agar kurs yoqmasa to'lagan pulimni qaytarib olsam bo'ladimi? Agar mumkin bo'lsa u jarayon qanday bo'ladi?",
-      description:
-         "Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits. They come in a variety of flavors and are great for snacking, baking, or adding to salads."
+      description: (
+         <ol>
+            <li>
+               Kursning qaytarilish shartlari, InfoNex to'lov politikasi va kurslar xususiyatlariga qarab o'zgarishi mumkin. Qaytarish shartlari,
+               o'quvchilarni kursni to'lashdan oldin yoki kursni olishdan keyin o'qib chiqarishlari uchun berilgan va uni bajarishdan qanday qilib
+               bo'lishini ta'riflaydi.
+            </li>
+            <li>
+               Bu sababli, kursni sotib olishingiz va kursni olishingizdan oldin InfoNexning to'lov va qaytarish shartlarini o'rganishingiz juda
+               muhim. Ko'p onlayn ta'lim platformalari, kurslarni sotib olishdan so'ng bir hafta yoki bir necha kun ichida qaytarishga ruxsat
+               berishadi, lekin bunga qarab kursni sotib olish paytida yoki to'lab olish paytida muddat belgilanadi.
+            </li>
+            <li>
+               To'lov va qaytarish shartlari o'qituvchining va platformaning siyosati va shartnomasi asosida o'zgarishi mumkin. Buning uchun
+               InfoNexning rasmiy veb-saytini yoki ularning xizmat ko'rsatuvchilariga murojaat qilishingiz kerak. Shunday qilib, to'lov shartlari va
+               qaytarishni amalga oshirishni to'liq tushunishingiz mumkin bo'ladi. Bu sizning o'quv va ta'limning muhim qismlaridan biri bo'ladi.
+            </li>
+         </ol>
+      )
    },
    {
       value: "Kurs uchun to'lovni online amalga oshirsam bo'ladimi?",
-      description:
-         "Ha albatta bo'ladi. Online to'lovni Click, Payme, Apelsin va bank online to'lov sistemalari orqali amalga oshirish mumkin. Profilga o'tib, to'lov tizimlaridan o'zingiz xohlagan tizimni qo'shish orqali amalga oshirasiz.Karta raqamlaringiz va to'lov haqidagi ma'lumotlar 3-shaxslardan sir saqlanadi va himoya qilinadi. Istalgan vaqt karta ma'lumotlarini o'chirish imkoniyatiga ega bo'lasiz."
+      description: (
+         <ol>
+            <li>
+               Payme Integratsiyasi: Agar Payme to'lov tizimi platformangizni qo'llab-quvvatlayotgan bo'lsa, o'quvchilar Payme orqali to'lovni amalga
+               oshirishlari mumkin. Bu o'quvchilarning o'quv kurslariga yo'naltirilgan to'lovni sodda va ishonchli usullar bilan bajarishlari uchun
+               samarali bo'ladi.
+            </li>
+            <li>
+               Click Integratsiyasi: Agar Click to'lov tizimi platformangizni qo'llab-quvvatlayotgan bo'lsa, o'quvchilar Click orqali to'lovni amalga
+               oshirishlari mumkin. Bu uni platformangizga o'rnating va to'lov jarayonini amalga oshirishlari uchun yordamchi bo'lsa, o'quvchilarni
+               qo'llab-quvvatlash uchun qulaydir.
+            </li>
+            <li>
+               Boshqa to'lov integratsiyalari: Boshqa onlayn to'lov tizimlariga ham tayyor integratsiyalar mavjud bo'lishi mumkin. Misol uchun,
+               PayPal, Stripe, Yandex Money yoki boshqa to'lov xizmatlarini qo'llab-quvvatlashni o'rganishingiz mumkin.
+            </li>
+            <li>
+               Shuningdek, unutmang ki, o'quvchilarning shaxsiy to'lov ma'lumotlari yaxshi himoya qilinishi kerak. To'lov integratsiyasi
+               ishlatilayotganda, ma'lumotlarni maxfiyatiylikni saqlash, xavfsizlik va amaliyoti ta'minlash uchun keng qamrovli xavfsizlik
+               chora-tadbirlarini olib borish juda muhimdir.
+            </li>
+         </ol>
+      )
    }
 ];
 
