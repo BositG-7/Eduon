@@ -4,21 +4,7 @@ import Course from "pages/application/courses/components/course";
 
 import "../style/new-courses.scss";
 
-export interface Results {
-   id: number;
-   name: string;
-   price: number;
-   view: number;
-   image: string;
-   review_count: number;
-}
 
-export interface NewCourses {
-   count: number;
-   next: null;
-   previous: null;
-   results: Results[];
-}
 
 function NewCourse() {
    const { course } = useList();
