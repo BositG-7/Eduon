@@ -4,7 +4,7 @@ import Password from "pages/dashboard/teacher/pages/profile/companents/password"
 
 import Data from "./companents/data";
 
-interface ProfileProps {}
+interface ProfileProps { }
 
 const ProfileUser: FunctionComponent<ProfileProps> = () => {
    const [segmentValue, setSegmentValue] = useState("ma’lumotlar"); // Default value
@@ -14,25 +14,25 @@ const ProfileUser: FunctionComponent<ProfileProps> = () => {
    };
 
    return (
-      <>
-         <Flex w="100%" justify="start">
-            <SegmentedControl
-               data={[
-                  { label: "Ma’lumotlar", value: "ma’lumotlar" },
-                  { label: "Parol", value: "parol" }
-               ]}
-               value={segmentValue}
-               onChange={handleSegmentChange}
-               style={{ background: "white" }}
-            />
-         </Flex>
-         <hr />
-         <Box>
-            {segmentValue === "ma’lumotlar" && <Data />}
-            {segmentValue === "parol" && <Password />}
-         </Box>
-      </>
-   );
+         < >
+            <Flex w="100%" justify="start">
+               <SegmentedControl
+                  data={[
+                     { label: "Ma’lumotlar", value: "ma’lumotlar" },
+                     { label: "Parol", value: "parol" }
+                  ]}
+                  value={segmentValue}
+                  onChange={handleSegmentChange}
+                  style={{ background: "white" }}
+               />
+            </Flex>
+            <hr />
+            <Box>
+               {segmentValue === "ma’lumotlar" && <Data />}
+               {segmentValue === "parol" && <Password />}
+            </Box>
+         </>
+  );
 };
 
 export default ProfileUser;

@@ -12,7 +12,7 @@ const Data: FunctionComponent<DataProps> = () => (
    <Box>
       <Flex w="100%" justify="space-around" mt="30px">
          <Box>
-            <Demo />
+            <Demo/>
          </Box>
          <Box w="60%">
             <Main />
