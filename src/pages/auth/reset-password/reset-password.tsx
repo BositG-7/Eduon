@@ -62,7 +62,7 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          console.log(error);
 
          notifications.show({
-            message: error.data.password[0],
+            message: error?.data?.password[0],
             color: "red"
          });
       }

@@ -5,10 +5,6 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import cls from "../../../../assets/styles/question.module.scss";
 
-interface MainProps {
-   value: string;
-}
-
 const useStyles = createStyles(theme => ({
    accordionItem: {
       borderRadius: "14px",
@@ -42,13 +38,36 @@ const useStyles = createStyles(theme => ({
 const accordionDates = [
    {
       value: "Kurs uchun to'lo'vni qanday amalga oshirsam bo'ladi?",
-      description:
-         "Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits. They come in a variety of flavors and are great for snacking, baking, or adding to salads."
+      description: (
+         <ol>
+            <li>
+               Ro'yxatdan o'ting: InfoNex platformasiga kirish uchun tizimga ro'yxatdan o'ting. Sizning foydalanuvchi hisobingizni yaratish uchun
+               shaxsiy ma'lumotlaringizni kiritish va foydalanuvchi nomi va parol tanlash zarur.
+            </li>
+            <li>
+               Kursni tanlang: InfoNex platformasidagi mavjud kurslarni ko'ring va o'zingiz uchun kerakli kursni tanlang. Har bir kursning haqiqiy
+               holati, kurs davomiyligi va narxi ko'rsatiladi.
+            </li>
+            <li>
+               To'lovni amalga oshiring: Kursni tanladiktan so'ng, to'lovni amalga oshirish uchun platformaning to'lov tizimi orqali to'lovingizni
+               amalga oshiring. To'lovni qanday amalga oshirish kerakligi kurs narxi va platforma to'lov shartlari bo'yicha kurs muqovasi bilan
+               ko'rsatiladi.
+            </li>
+            <li>
+               Kursga kirish: To'lovni amalga oshirganingizdan so'ng, kursga kirish huquqini olishingiz mumkin bo'ladi. Bu kurs materiallariga va
+               darslarga kirish huquqini olishingizni ta'minlaydi.
+            </li>
+            <li>
+               O'qishni boshlang: Kursga kirilgach, kurs materiallarini o'qishni boshlang. Bu video darslar, darsliklar, mashqlar, interaktiv testlar
+               yoki boshqa ta'lim vazifalari bo'lishi mumkin.
+            </li>
+         </ol>
+      )
    },
    {
       value: "Kurs pulini bo'lib to'lash imkoniyati mavjudmi?",
       description:
-         "Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits. They come in a variety of flavors and are great for snacking, baking, or adding to salads."
+         "Kurs pulini to'lashning mumkinligi platformangizning pullik shartnomasi va foydalanuvchilar uchun taqdim etilgan to'lov variantlariga bog'liqdir. Bu haqda to'liq ma'lumotni berish uchun, InfoNex platformasining rasmiy veb-saytini yoki ta'lim kurslarining haqida ma'lumot beruvchi maqolalarni o'rganing. Bu erda kurs narxlari, to'lov usullari va qo'shimcha ma'lumotlar mavjud bo'ladi. Platformangizning to'lov shartnomasini ham o'qing, chunki to'lov va qabul qilish shartlari platformadan platformaga farqli olaqchon o'zgartirishi mumkin."
    },
    {
       value: "Agar kurs yoqmasa to'lagan pulimni qaytarib olsam bo'ladimi? Agar mumkin bo'lsa u jarayon qanday bo'ladi?",
@@ -62,7 +81,7 @@ const accordionDates = [
    }
 ];
 
-const Main: FunctionComponent<MainProps> = ({ value }) => {
+const Main: FunctionComponent = () => {
    const { cx, classes } = useStyles();
    const Tolovlar = () => {
       const items = accordionDates.map((item, idx) => (
@@ -86,25 +105,10 @@ const Main: FunctionComponent<MainProps> = ({ value }) => {
       );
    };
 
-   if (value === "To'lovlar") {
-      return (
-         <>
-            <Box>{Tolovlar()}</Box>
-         </>
-      );
-   }
-   if (value === "Barchasi") {
-      return (
-         <>
-            <Box mb={100}>{Tolovlar()}</Box>
-         </>
-      );
-   }
-
    return (
       <>
          <Box>
-            <h1>{value}</h1>
+            <h1>{Tolovlar()}</h1>
          </Box>
       </>
    );

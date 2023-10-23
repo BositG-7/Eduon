@@ -13,6 +13,13 @@ export namespace IEntity {
       degree: DEGREE;
       category: number;
    }
+   export interface ICourseTop {
+      id: number;
+      name: string;
+      price: number;
+      view: string;
+      image: string;
+   }
    export interface SpeakerCourse {
       id: number;
       name: string;
@@ -41,6 +48,13 @@ export namespace IEntity {
       module: number;
    }
    export interface SingleCourse {
+      name: string;
+      description: string;
+      speaker: number;
+      comment: Comment;
+      video: Video;
+   }
+   export interface CourseTop {
       name: string;
       description: string;
       speaker: number;
@@ -160,6 +174,9 @@ export namespace IApi {
       export namespace List {
          export type Response = IEntity.Course;
       }
+      export namespace CourseTop {
+         export type Response = IEntity.ICourseTop;
+      }
       export namespace Single {
          export interface Request {}
          export interface Response extends IEntity.SingleCourse {}
@@ -243,6 +260,10 @@ export namespace IQuery {
       export interface SpeakerInfo {
          isLoading?: boolean;
          info: IEntity.SpeakerInfo[];
+      }
+      export interface CourseTop {
+         isLoading?: boolean;
+         courseTop: IEntity.ICourseTop [] | null;
       }
    }
 }
