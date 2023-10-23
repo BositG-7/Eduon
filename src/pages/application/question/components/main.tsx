@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { Accordion, Box, createStyles } from "@mantine/core";
-// import { IconPlus } from "@tabler/icons-react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import cls from "../../../../assets/styles/question.module.scss";
