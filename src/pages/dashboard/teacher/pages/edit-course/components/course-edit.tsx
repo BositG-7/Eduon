@@ -2,16 +2,19 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, FileInput, Flex, Paper, Select, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import { EditCourse } from "modules/courses/api";
+import { Course, EditCourse } from "modules/courses/api";
 import { useCategory } from "modules/courses/hooks/use-category";
 // eslint-disable-next-line import/order
 import ReactQuill from "react-quill";
 
-import VideoUpload from "./components/video-upload";
-
+// import VideoUpload from "./components/video-upload";
 import "react-quill/dist/quill.snow.css";
 
-const CourseEdit: React.FC = () => {
+interface CourseEditProps {
+   id: number;
+}
+
+const CourseEdit = ({ id }: CourseEditProps) => {
    const [courseData, setCourseData] = useState({
       name: "",
       description: "",
@@ -39,7 +42,15 @@ const CourseEdit: React.FC = () => {
       } else {
          notifications.show({ message: "Category is not an array", color: "red" });
       }
-   }, [category]);
+
+      const fetch = async () => {
+         const { data } = await Course.Single(+id);
+
+         console.log(data);
+      };
+
+      fetch();
+   }, [category, id]);
 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -88,6 +99,7 @@ const CourseEdit: React.FC = () => {
       try {
          const data = await EditCourse(courseData);
 
+         console.log(courseData);
          notifications.show({ message: data.data.message, color: "green" });
          setCourseDetailUpload(data.data.course_id);
 
@@ -98,10 +110,6 @@ const CourseEdit: React.FC = () => {
          notifications.show({ message: error.statusText, color: "red" });
       }
    };
-
-   if (courseDetailUpload) {
-      return <VideoUpload courseDetailUpload={courseDetailUpload} />;
-   }
 
    return (
       <Container w="100%">

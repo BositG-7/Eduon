@@ -78,6 +78,7 @@ export namespace IEntity {
       next: string | number;
       previous: number;
       results: CategoryResults[];
+      course_count: number;
    }
 }
 
@@ -216,6 +217,15 @@ export namespace IApi {
       export namespace Category {
          export interface Request {}
          export interface Response extends IEntity.Category {}
+      }
+      export namespace CouseVideo {
+         export interface Request {
+            id: number;
+         }
+         export interface Response {
+            course_id: number;
+            video_ids: number[];
+         }
       }
       export namespace SpeakerInfo {
          export interface Request {}

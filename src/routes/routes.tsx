@@ -4,6 +4,7 @@ import { Application, Auth } from "pages";
 import SinglePageCourse from "pages/application/courses/single-page-course/single-course-page";
 import SinglePageSpeaker from "pages/application/courses/single-page-speaker/single-page-speaker";
 import { MyCoursesList } from "pages/dashboard/teacher/pages";
+import CourseEdit from "pages/dashboard/teacher/pages/edit-course/edit-course-main";
 import Finance from "pages/dashboard/teacher/pages/finance";
 import Informations from "pages/dashboard/teacher/pages/informations";
 import TeacherPaymentClick from "pages/dashboard/teacher/pages/payment/click";
@@ -54,7 +55,7 @@ const Routes = () => {
          </Route>
 
          {/* Dashboard */}
-         <Route path="dashboard/user" element={<UserRoute allowed={!!(user && !user?.isSpiker)} redirectURL="/dashboard/teacher" />}>
+         <Route path="dashboard/user" element={<UserRoute allowed={!(user && user?.isSpiker)} redirectURL="/dashboard/teacher" />}>
             <Route path="my-courses" element={<MyCourses />} />
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
@@ -76,6 +77,7 @@ const Routes = () => {
             <Route path="payme" element={<TeacherPaymentPayme />} />
             <Route path="click" element={<TeacherPaymentClick />} />
             <Route path="create-course" element={<CourseCreate />} />
+            <Route path="edit-course/:couseEditId" element={<CourseEdit />} />
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
             <Route path="reset-password" element={<Auth.Reset.ResetPassword />} />
 
