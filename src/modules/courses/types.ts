@@ -172,9 +172,17 @@ export namespace IApi {
          }
       }
       export namespace List {
+         export interface Request {
+            search: string;
+         }
+
          export type Response = IEntity.Course;
       }
       export namespace CourseTop {
+         export interface Request {
+            search: string;
+         }
+
          export type Response = IEntity.ICourseTop;
       }
       export namespace Single {
@@ -263,7 +271,7 @@ export namespace IQuery {
       }
       export interface CourseTop {
          isLoading?: boolean;
-         courseTop: IEntity.ICourseTop [] | null;
+         courseTop: IEntity.ICourseTop[] | null;
       }
    }
 }

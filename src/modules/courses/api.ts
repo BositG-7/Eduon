@@ -4,7 +4,7 @@ import { objectToFormData } from "utils";
 import { IApi } from "./types";
 
 export const Course = {
-   List: () => http.get<IApi.Course.List.Response>("/course_new"),
+   List: ({ search }: IApi.Course.List.Request) => http.get<IApi.Course.List.Response>(`/course_search?search=${search}`),
    Filter: (formData: IApi.Course.Filter.Request) => http.get<IApi.Course.Filter.Response>("/filter", { params: { max_price: formData.max_price } }),
    Single: (id: string) => http.get<IApi.Course.Single.Response>(`/course_detail/${id}`),
    SpeakerInfo: () => http.get<IApi.Course.SpeakerInfo.Response>(`/speaker_info`),

@@ -4,12 +4,10 @@ import Course from "pages/application/courses/components/course";
 
 import "../style/top-course.scss";
 
-
 function TopCourse() {
-   const { course } = useList();
+   const { course } = useList({});
 
    const navigete = useNavigate();
-
 
    return (
       <section className="top-course" data-aos="fade-right" data-aos-duration="2000">
@@ -22,14 +20,7 @@ function TopCourse() {
             {/* @ts-ignore */}
             {course?.slice(0, 4).map(item => (
                // @ts-ignore
-               <Course
-               key={item.id}
-               id={String(item.id)}
-               img={item.image}
-               price={item.price}
-               name={item.name}
-               view={String(item.view)}
-            />
+               <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
             ))}
          </div>
          <div className="link">

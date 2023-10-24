@@ -22,6 +22,6 @@ export const useCourseTop = () => {
 
       request();
    }, []);
-   
+
    return state;
 };

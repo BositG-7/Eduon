@@ -13,7 +13,8 @@ import Course from "./components/course";
 interface CoursesProps {}
 
 const Courses: FunctionComponent<CoursesProps> = () => {
-   const { course } = useList();
+   const [search, setSearchTerm] = useState("");
+   const { course } = useList({ search });
    const { courseTop } = useCourseTop();
 
    const [segmentValue, setSegmentValue] = useState("barchasi");
@@ -50,7 +51,19 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                   Xo‘sh bugun qanday bilimlar o‘rganamiz?
                </Title>
                <Flex>
-                  <InputBase mb={20} autoFocus placeholder="kursni yozing..." radius="5px" w="400px" bg="#E7F0FF" p="8px" />
+                  <InputBase
+                     onChange={e => {
+                        setSearchTerm(e.target.value);
+                     }}
+                     mb={20}
+                     value={search}
+                     autoFocus
+                     placeholder="kursni yozing..."
+                     radius="5px"
+                     w="400px"
+                     bg="#E7F0FF"
+                     p="8px"
+                  />
                   <Box sx={{ position: "relative", top: "17px", right: "30px" }}>
                      <AiOutlineSend />
                   </Box>
