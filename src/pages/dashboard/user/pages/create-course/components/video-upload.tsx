@@ -14,8 +14,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       course: courseDetailUpload,
       video: null as File | null,
 
-      description: "",
-      duration: ""
+      description: ""
       // module:1,
       // file:0,
    });
@@ -50,8 +49,6 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
 
          notifications.show({ message: response.statusText, color: "green" });
       } catch (error: any) {
-         console.log(error);
-
          notifications.show({ message: error.statusText, color: "red" });
       }
    };
@@ -81,14 +78,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
                   pb="md"
                   required
                />
-               <TextInput
-                  label="Duration"
-                  name="duration"
-                  value={videoData.duration}
-                  onChange={handleInputChange}
-                  placeholder="Enter video duration"
-                  pb="md"
-               />
+
                <Button type="submit">Upload Video</Button>
             </form>
          </Paper>

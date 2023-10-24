@@ -104,99 +104,101 @@ const CourseCreate: React.FC = () => {
    }
 
    return (
-      <Container w="100%">
-         <Paper p="lg" w="80%">
-            <h1>Create a New Course</h1>
-            <form onSubmit={handleSubmit}>
-               <TextInput
-                  label="Course Name"
-                  name="name"
-                  value={courseData.name}
-                  onChange={handleInputChange}
-                  placeholder="Write course name"
-                  pb="md"
-                  pt="xl"
-                  required
-               />
-               <div className="description-editor">
-                  <label>Description</label>
-                  <ReactQuill
-                     value={courseData.description}
-                     onChange={handleDescriptionChange}
-                     placeholder="Write course description"
-                     style={{ borderRadius: "10px" }}
-                  />
-               </div>
-               <TextInput
-                  label="Price"
-                  name="price"
-                  type="number"
-                  value={courseData.price}
-                  onChange={handleInputChange}
-                  placeholder="Enter a price"
-                  pb="md"
-               />
-               <Flex justify="space-between" pb="md">
+         <Container w="100%">
+            <Paper p="lg" w="80%">
+               <h1>Create a New Course</h1>
+               <form onSubmit={handleSubmit}>
                   <TextInput
-                     label="Whos Course"
-                     name="whos_course"
-                     value={courseData.whos_course}
-                     w="60%"
-                     placeholder="Write course mentor"
+                     label="Course Name"
+                     name="name"
+                     value={courseData.name}
                      onChange={handleInputChange}
+                     placeholder="Write course name"
+                     pb="md"
+                     pt="xl"
                      required
                   />
-                  <FileInput
-                     name="image"
-                     label="Select an Image"
-                     placeholder="Click to choose picture"
-                     onChange={handleImageUpload}
-                     accept="image/*"
-                     required
-                     w="30%"
-                  />
-               </Flex>
+                  <div className="description-editor">
+                     <label>Description</label>
+                     <ReactQuill
+                        value={courseData.description}
+                        onChange={handleDescriptionChange}
+                        placeholder="Write course description"
+                        style={{ borderRadius: "10px" }}
+                     />
+                  </div>
+                  <Flex justify="space-between" >
+                     <TextInput
+                        label="Price"
+                        name="price"
+                        type="number"
+                        value={courseData.price}
+                        w="60%"
+                        onChange={handleInputChange}
+                        placeholder="Enter a price"
+                        pb="md"
+                     />
+                     <Select
+                        label="Category"
+                        name="category"
+                        data={categoryOptions}
+                        w="30%"
+                        placeholder="Write course category"
+                        onChange={value => handleSelectChange("category", value)}
+                     />
+                  </Flex>
+                  <Flex justify="space-between" pb="md">
+                     <TextInput
+                        label="Whos Course"
+                        name="whos_course"
+                        value={courseData.whos_course}
+                        w="60%"
+                        placeholder="Write course mentor"
+                        onChange={handleInputChange}
+                        required
+                     />
+                     <FileInput
+                        name="image"
+                        label="Select an Image"
+                        placeholder="Click to choose picture"
+                        onChange={handleImageUpload}
+                        accept="image/*"
+                        required
+                        w="30%"
+                     />
+                  </Flex>
 
-               <Flex justify="space-between" pb="md">
-                  <Select
-                     label="Category"
-                     name="category"
-                     data={categoryOptions}
-                     w="60%"
-                     placeholder="Write course category"
-                     onChange={value => handleSelectChange("category", value)}
-                  />
-               </Flex>
-               <Flex justify="space-between" pb="md">
-                  <Select
-                     label="Language"
-                     name="language"
-                     data={["ru", "en", "uz"]}
-                     value={courseData.language}
-                     placeholder="Select a language"
-                     onChange={value => handleSelectChange("language", value)}
-                  />
-                  <Select
-                     label="Type"
-                     name="type"
-                     data={["paid", "free"]}
-                     value={courseData.type}
-                     placeholder="Select a type"
-                     onChange={value => handleSelectChange("type", value)}
-                  />
-                  <Select
-                     label="Degree"
-                     name="degree"
-                     data={["primary", "medium", "high"]}
-                     value={courseData.degree}
-                     placeholder="Select a degree"
-                     onChange={value => handleSelectChange("degree", value)}
-                  />
-               </Flex>
-               <Button type="submit">Create Course</Button>
-            </form>
-         </Paper>
-      </Container>
+
+                  <Flex justify="space-between" pb="md">
+                     <Select
+                        label="Language"
+                        name="language"
+                        data={["ru", "en", "uz"]}
+                        value={courseData.language}
+                        placeholder="Select a language"
+                        onChange={value => handleSelectChange("language", value)}
+                     />
+                     <Select
+                        label="Type"
+                        name="type"
+                        data={["paid", "free"]}
+                        value={courseData.type}
+                        placeholder="Select a type"
+                        onChange={value => handleSelectChange("type", value)}
+                     />
+                     <Select
+                        label="Degree"
+                        name="degree"
+                        data={["primary", "medium", "high"]}
+                        value={courseData.degree}
+                        placeholder="Select a degree"
+                        onChange={value => handleSelectChange("degree", value)}
+                     />
+                  </Flex>
+                  <Button type="submit">Create Course</Button>
+               </form>
+            </Paper>
+         </Container>
    );
 };
 

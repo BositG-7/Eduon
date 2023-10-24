@@ -36,7 +36,6 @@ const Routes = () => {
          <Route path="courses" element={<Application.Courses />} />
          <Route path="courses/course/:courseID" element={<SinglePageCourse />} />
          <Route path="courses/speaker/:speakerID" element={<SinglePageSpeaker />} />
-         <Route path="courses/speaker/:speakerID" element={<SinglePageSpeaker />} />
          <Route path="question" element={<Application.Question />} />
          <Route path="about" element={<Application.About />} />
          <Route path="top-courses" element={<Application.TopCourses />} />

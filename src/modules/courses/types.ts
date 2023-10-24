@@ -105,7 +105,6 @@ export namespace IApi {
             }
          }
       }
-
       export namespace PaymentStep2 {
          export namespace Click {
             export interface Request {
@@ -173,9 +172,17 @@ export namespace IApi {
          }
       }
       export namespace List {
+         export interface Request {
+            search: string;
+         }
+
          export type Response = IEntity.Course;
       }
       export namespace CourseTop {
+         export interface Request {
+            search: string;
+         }
+
          export type Response = IEntity.ICourseTop;
       }
       export namespace Single {
@@ -215,6 +222,20 @@ export namespace IApi {
          export interface Response extends IEntity.SpeakerInfo {}
       }
    }
+   export namespace sendMailUser {
+      export interface Request {
+         name: string;
+         email: string;
+         phone: string;
+         message: string;
+      }
+      export interface Response {
+         name: string;
+         email: string;
+         phone: string;
+         message: string;
+      }
+   }
 }
 
 export namespace IQuery {
@@ -250,7 +271,7 @@ export namespace IQuery {
       }
       export interface CourseTop {
          isLoading?: boolean;
-         courseTop: IEntity.ICourseTop [] | null;
+         courseTop: IEntity.ICourseTop[] | null;
       }
    }
 }

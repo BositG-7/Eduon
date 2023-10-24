@@ -12,6 +12,7 @@ const MyAccount: FunctionComponent<MyAccountProps> = () => {
     const s = ''
 
     return (
+        <>
         <div className={style.container}>
             <div className={style.cards}>
                 
@@ -57,6 +58,7 @@ const MyAccount: FunctionComponent<MyAccountProps> = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

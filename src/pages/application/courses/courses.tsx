@@ -13,8 +13,9 @@ import Course from "./components/course";
 interface CoursesProps {}
 
 const Courses: FunctionComponent<CoursesProps> = () => {
-   const { course } = useList();
-   const { courseTop } = useCourseTop()
+   const [search, setSearchTerm] = useState("");
+   const { course } = useList({ search });
+   const { courseTop } = useCourseTop();
 
    const [segmentValue, setSegmentValue] = useState("barchasi");
 
@@ -50,7 +51,19 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                   Xo‘sh bugun qanday bilimlar o‘rganamiz?
                </Title>
                <Flex>
-                  <InputBase mb={20} autoFocus placeholder="kursni yozing..." radius="5px" w="400px" bg="#E7F0FF" p="8px" />
+                  <InputBase
+                     onChange={e => {
+                        setSearchTerm(e.target.value);
+                     }}
+                     mb={20}
+                     value={search}
+                     autoFocus
+                     placeholder="kursni yozing..."
+                     radius="5px"
+                     w="400px"
+                     bg="#E7F0FF"
+                     p="8px"
+                  />
                   <Box sx={{ position: "relative", top: "17px", right: "30px" }}>
                      <AiOutlineSend />
                   </Box>
@@ -64,7 +77,7 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                      <SegmentedControl
                         w={400}
                         color="blue"
-                        size='md'
+                        size="md"
                         data={[
                            { label: "Barchasi", value: "barchasi" },
                            { label: "Zo'rlari", value: "zo'rlari" }
@@ -76,8 +89,7 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                   </Flex>
                   <Flex align="center" sx={{ flexDirection: "column" }}>
                      <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
-                        {
-                           segmentValue === "barchasi" && 
+                        {segmentValue === "barchasi" &&
                            // @ts-expect-error
                            course?.map(item => (
                               <Course
@@ -88,10 +100,8 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                                  name={item.name}
                                  view={String(item.view)}
                               />
-                           ))
-                        }
-                        {
-                           segmentValue === "zo'rlari" && 
+                           ))}
+                        {segmentValue === "zo'rlari" &&
                            courseTop?.map(item => (
                               <Course
                                  key={item.id}
@@ -101,8 +111,7 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                                  name={item.name}
                                  view={String(item.view)}
                               />
-                           ))
-                        }
+                           ))}
                      </Box>
 
                      {/* @ts-ignore */}

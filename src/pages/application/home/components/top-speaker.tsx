@@ -29,6 +29,8 @@ function TopSpeakers() {
       const fetch = async () => {
          const { data }: any = await TopSpeaker();
 
+         console.log(data);
+
          setSpeaker(data);
       };
 
@@ -51,7 +53,7 @@ function TopSpeakers() {
                   className="box"
                   onClick={() => {
                      // @ts-expect-error
-                     navigete(`courses/speaker/${item.speaker}`);
+                     navigete(`courses/speaker/${item.id}`);
                   }}
                   // @ts-expect-error
                   key={item.id}

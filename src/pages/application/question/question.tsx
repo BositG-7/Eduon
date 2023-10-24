@@ -1,7 +1,8 @@
 import { FunctionComponent } from "react";
 import { Flex } from "@mantine/core";
 
-import { Category, Titlee } from "./components";
+import Main from "./components/main";
+import { Titlee } from "./components";
 
 interface FaqProps {}
 
@@ -12,7 +13,7 @@ const Faq: FunctionComponent<FaqProps> = () => {
       <>
          <Flex justify="center" align="center" direction="column" gap="40px" h="auto">
             <Titlee />
-            <Category />
+            <Main />
          </Flex>
       </>
    );
