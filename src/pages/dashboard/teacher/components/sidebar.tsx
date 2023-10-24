@@ -58,7 +58,8 @@ const data = [
    { link: "/dashboard/teacher/finance", label: "Moliya", icon: BiFolderMinus },
    { link: "/dashboard/teacher/profile", label: "Profile", icon: BsPerson },
    { link: "/dashboard/teacher/informations", label: "Ma’lumotlar", icon: HiOutlineDocumentText },
-   { link: "/dashboard/teacher/create-course", label: "Kurs-qoshish", icon: BiSolidAddToQueue }
+   { link: "/dashboard/teacher/create-course", label: "Kurs-qoshish", icon: BiSolidAddToQueue },
+   { link: "/dashboard/teacher/edit-course", label: "Kurs-edit-qilish", icon: BiSolidAddToQueue }
 ];
 
 function Sidebar() {

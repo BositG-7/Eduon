@@ -7,8 +7,7 @@ import { useCategory } from "modules/courses/hooks/use-category";
 // eslint-disable-next-line import/order
 import ReactQuill from "react-quill";
 
-import VideoUpload from "./components/video-upload";
-
+// import VideoUpload from "./components/video-upload";
 import "react-quill/dist/quill.snow.css";
 
 const CourseEdit: React.FC = () => {
@@ -43,6 +42,7 @@ const CourseEdit: React.FC = () => {
 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
+
 
       setCourseData({
          ...courseData,
@@ -88,6 +88,7 @@ const CourseEdit: React.FC = () => {
       try {
          const data = await EditCourse(courseData);
 
+         console.log(courseData)
          notifications.show({ message: data.data.message, color: "green" });
          setCourseDetailUpload(data.data.course_id);
 
@@ -99,9 +100,7 @@ const CourseEdit: React.FC = () => {
       }
    };
 
-   if (courseDetailUpload) {
-      return <VideoUpload courseDetailUpload={courseDetailUpload} />;
-   }
+   
 
    return (
       <Container w="100%">
