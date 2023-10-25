@@ -6,11 +6,12 @@ import { IApi } from "./types";
 export const Course = {
    List: ({ search }: IApi.Course.List.Request) => http.get<IApi.Course.List.Response>(`/course_search?search=${search}`),
    Filter: (formData: IApi.Course.Filter.Request) => http.get<IApi.Course.Filter.Response>("/filter", { params: { max_price: formData.max_price } }),
-   Single: (id: string) => http.get<IApi.Course.Single.Response>(`/course_detail/${id}`),
+   Single: (id: string | number) => http.get<IApi.Course.Single.Response>(`/course_detail/${id}`),
    SpeakerInfo: () => http.get<IApi.Course.SpeakerInfo.Response>(`/speaker_info`),
    Speaker: (id: any) => http.get<IApi.Course.Speaker.Response>(`/speaker-profile/${id}/`),
    SpeakerCourse: (id: any) => http.get<IApi.Course.SpeakerCourse.Response>(`/speaker_course_list/${id}`),
-   Category: () => http.get<IApi.Course.Category.Response>(`/category`)
+   Category: () => http.get<IApi.Course.Category.Response>(`/category`),
+   CouseVideo: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideo.Response>(`/course/${id}/`)
 };
 
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>

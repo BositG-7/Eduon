@@ -55,7 +55,7 @@ const Routes = () => {
          </Route>
 
          {/* Dashboard */}
-         <Route path="dashboard/user" element={<UserRoute allowed={!!(user && user?.isSpiker)} redirectURL="/dashboard/teacher" />}>
+         <Route path="dashboard/user" element={<UserRoute allowed={!(user && user?.isSpiker)} redirectURL="/dashboard/teacher" />}>
             <Route path="my-courses" element={<MyCourses />} />
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
@@ -77,7 +77,7 @@ const Routes = () => {
             <Route path="payme" element={<TeacherPaymentPayme />} />
             <Route path="click" element={<TeacherPaymentClick />} />
             <Route path="create-course" element={<CourseCreate />} />
-            <Route path="edit-course" element={<CourseEdit />} />
+            <Route path="edit-course/:couseEditId" element={<CourseEdit />} />
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
             <Route path="reset-password" element={<Auth.Reset.ResetPassword />} />
 

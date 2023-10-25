@@ -18,13 +18,14 @@ export default function MyCourses({ image, price, name, id }: MyCoursesProps) {
    const navigete = useNavigate();
 
    return (
-      <div
-         onClick={() => {
-            navigete(`/dashboard/teacher/course/${id}`);
-         }}
-         className={style.card}
-      >
-         <div className={style.img} style={{ backgroundImage: `url(${image})` }}>
+      <div className={style.card}>
+         <div
+            onClick={() => {
+               navigete(`/dashboard/teacher/course/${id}`);
+            }}
+            className={style.img}
+            style={{ backgroundImage: `url(${image})` }}
+         >
             <span className={style.check}>
                <img src={check} alt="check" />
             </span>
@@ -36,7 +37,13 @@ export default function MyCourses({ image, price, name, id }: MyCoursesProps) {
                <p>{!price ? <Button children="Bepul" /> : price}</p>
                <p>{!price ? "" : "so'm"}</p>
             </div>
-            <button>Tahrirlash</button>
+            <button
+               onClick={() => {
+                  navigete(`/dashboard/teacher/edit-course/${id}`);
+               }}
+            >
+               Tahrirlash
+            </button>
          </div>
       </div>
    );

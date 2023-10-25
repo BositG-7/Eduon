@@ -10,7 +10,7 @@ import { useCategory } from "modules/courses/hooks/use-category";
 import programming from "../../../../assets/images/programming.png";
 
 // import sale from "../../../../assets/images/sale.png";
-import "../style/courses.scss"; 
+import "../style/courses.scss";
 
 function Courses() {
    const navigete = useNavigate();
@@ -25,14 +25,14 @@ function Courses() {
             </h1>
          </div>
          <div className="boxes">
-           {category.map((category) => (
-             <article key={category.id} className="box">
-             <img src={programming} alt="marketing" />
-             <h3>{category.name}</h3>
-             <h2>72 ta kurs</h2>
-          </article>
-           ))}
-{/*
+            {category.map(category => (
+               <article key={category.id} className="box">
+                  <img src={programming} alt="marketing" />
+                  <h3>{category.name}</h3>
+                  <h2>{category.course_count}</h2>
+               </article>
+            ))}
+            {/*
             <article className="box">
                <img src={programming} alt="dasturlash" />
                <h3>Dasturlash</h3>
