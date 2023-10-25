@@ -2,8 +2,7 @@ import { FunctionComponent, useState } from "react";
 import { SegmentedControl } from "@mantine/core";
 import { useList } from "modules/courses/hooks/course-use-list";
 
-import { Paginated } from "../../components";
-
+// import { paginate } from "../../components";
 import Kurs from "./components/course";
 
 import style from "../../styles/panel.module.scss";
@@ -21,7 +20,7 @@ const MyCourses: FunctionComponent<MyCoursesProps> = () => {
       setCurrentPage(page);
    };
 
-   const paginated = Paginated({ currentPage, pageSize });
+   // const paginated = paginate(course, currentPage, pageSize);
 
    if (!course) {
       return null;

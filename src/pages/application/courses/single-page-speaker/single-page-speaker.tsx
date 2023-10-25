@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { Box, Button, Flex, Title } from "@mantine/core";
 import { useSpeaker } from "modules/courses/hooks/use-speaker";
 import { useSpeakerCourse } from "modules/courses/hooks/use-speaker-course";
-import { Paginated } from "utils/paginate";
 
+// import { paginate } from "utils/paginate";
 // import Paginate from "components/pagination";
 import Course from "../components/course";
 
@@ -21,7 +21,7 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
       setCurrentPage(page);
    };
 
-   const paginated = Paginated({ currentPage, pageSize });
+   // const paginated = paginate(speakerCourse, currentPage, pageSize );
 
    console.log(speakerCourse);
 

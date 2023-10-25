@@ -14,8 +14,7 @@ export const useList = ({ search = "" }: UseList) => {
          try {
             console.log(search);
 
-            const { data } = await Api.Course.List({ search });
-            const course = data;
+            const { data: course } = await Api.Course.List({ search });
 
             setState({ course, isLoading: false });
          } catch (err: any) {

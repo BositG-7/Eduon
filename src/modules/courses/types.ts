@@ -177,7 +177,7 @@ export namespace IApi {
             search: string;
          }
 
-         export type Response = IEntity.Course;
+         export type Response = IEntity.Course[];
       }
       export namespace CourseTop {
          export interface Request {
@@ -252,7 +252,7 @@ export namespace IQuery {
    export namespace Course {
       export interface List {
          isLoading: boolean;
-         course: IEntity.Course | null;
+         course: IEntity.Course[] | null;
       }
       export interface Filter {
          isLoading: boolean;

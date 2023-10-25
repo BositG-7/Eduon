@@ -1,35 +1,33 @@
-import React, { FunctionComponent, useState } from "react";
-import { Box, Divider, Flex, InputBase, SegmentedControl, Title } from "@mantine/core";
+import { useState } from "react";
+import { Box, Divider, Flex, InputBase, Loader, SegmentedControl, Title } from "@mantine/core";
+import { Types } from "modules/courses";
 import { useList } from "modules/courses/hooks/course-use-list";
 import { useCourseTop } from "modules/courses/hooks/use-course-top";
 // eslint-disable-next-line import/order
 import { AiOutlineSend } from "react-icons/ai";
-import { Paginated } from "utils/paginate";
+import { paginate } from "utils/paginate";
 
 import Paginate from "components/pagination";
 
 import Course from "./components/course";
 
-interface CoursesProps {}
-
-const Courses: FunctionComponent<CoursesProps> = () => {
-   const [search, setSearchTerm] = useState("");
-   const { course } = useList({ search });
+const Courses = () => {
+   const [search, setSearch] = useState("");
+   const { course, isLoading } = useList({ search });
    const { courseTop } = useCourseTop();
-
    const [segmentValue, setSegmentValue] = useState("barchasi");
+   const [currentPage, setCurrentPage] = useState<number>(1);
+   const pageSize = 8;
 
    const handleSegmentChange = (value: string) => {
       setSegmentValue(value);
    };
-
-   const [pageSize, setPageSize] = React.useState<number>(9);
-   const [currentPage, setCurrentPage] = React.useState<number>(1);
    const handlePageChange = (page: number) => {
       setCurrentPage(page);
    };
 
-   const paginated = Paginated({ currentPage, pageSize });
+   const paginatedCourse: Types.IEntity.Course[] = paginate(course, currentPage, pageSize);
+   const paginatedCourseTop: Types.IEntity.ICourseTop[] = paginate(courseTop, currentPage, pageSize);
 
    return (
       <Box mb={50}>
@@ -53,7 +51,7 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                <Flex>
                   <InputBase
                      onChange={e => {
-                        setSearchTerm(e.target.value);
+                        setSearch(e.target.value);
                      }}
                      mb={20}
                      value={search}
@@ -87,35 +85,23 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                         style={{ background: "white" }}
                      />
                   </Flex>
-                  <Flex align="center" sx={{ flexDirection: "column" }}>
-                     <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
-                        {segmentValue === "barchasi" &&
-                           // @ts-expect-error
-                           course?.map(item => (
-                              <Course
-                                 key={item.id}
-                                 id={String(item.id)}
-                                 img={item.image}
-                                 price={item.price}
-                                 name={item.name}
-                                 view={String(item.view)}
-                              />
-                           ))}
-                        {segmentValue === "zo'rlari" &&
-                           courseTop?.map(item => (
-                              <Course
-                                 key={item.id}
-                                 id={String(item.id)}
-                                 img={item.image}
-                                 price={item.price}
-                                 name={item.name}
-                                 view={String(item.view)}
-                              />
-                           ))}
-                     </Box>
+                  <Flex align="center" justify='center' sx={{ flexDirection: "column" }}>
+                     {isLoading ? (
+                        <Loader mt={20} color="blue" />
+                     ) : (
+                        <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
+                           {segmentValue === "barchasi" &&
+                              paginatedCourse.map(item => (
+                                 <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} />
+                              ))}
+                           {segmentValue === "zo'rlari" &&
+                              paginatedCourseTop.map(item => (
+                                 <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} />
+                              ))}
+                        </Box>
+                     )}
 
-                     {/* @ts-ignore */}
-                     <Paginate total={course?.length} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                     <Paginate total={course?.length ? course.length : 1} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage}/>
                   </Flex>
                </Flex>
             </Flex>

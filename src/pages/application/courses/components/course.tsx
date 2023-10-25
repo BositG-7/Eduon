@@ -8,12 +8,11 @@ interface CourseProps {
    img?: string;
    name?: string;
    price?: number;
-   view?: string;
    id?: string;
    rating?: number;
 }
 
-const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, view, rating }) => {
+const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, rating }) => {
    const navigete = useNavigate();
 
    return (
