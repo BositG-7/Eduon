@@ -46,7 +46,7 @@ const Routes = () => {
          <Route path="auth" element={<AuthProtected allowed={!user} redirectURL="/" />}>
             <Route path="login" element={<Auth.Login />} />
             <Route path="register" element={verification ? <Auth.Register /> : <Navigate to="/auth/verification" />} />
-            <Route path="check-password" element={verification ? <Auth.CheckPassword /> : <Navigate to="/auth/verification" />} />
+            <Route path="check-password" element={!verification ? <Auth.CheckPassword /> : <Navigate to="/auth/verification" />} />
             <Route path="reset-email" element={<Auth.Reset.ResetEmail />} />
             <Route path="reset-password" element={reset ? <Auth.Reset.ResetPassword /> : <Navigate to="/auth/reset-email" />} />
             <Route path="verification" element={<Auth.Verification />} />

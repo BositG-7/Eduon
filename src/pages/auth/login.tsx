@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Box, Button, Flex, InputBase, Paper, PasswordInput, Text, Title } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
@@ -49,9 +49,17 @@ function Login(props: LoginProps) {
          setLoading(false);
       }
    };
+   const navigate = useNavigate()
 
    return (
       <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
+         <Button
+               onClick={() => navigate("/")}
+               sx={{
+                  position: 'absolute',
+                  top: 24,
+                  left: 36,
+               }}>Back</Button>
          <div className="right">
             <img src={cursor} alt="cursor" />
          </div>
