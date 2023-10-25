@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import logo from "./photo_2023-10-20_04-52-54.jpg";
+import logo from "./infonex.svg";
 
 import "../assets/styles/footer.scss";
 
@@ -11,7 +11,7 @@ function Footer() {
       <section className="footer">
          <div className="boxes">
             <div className="box">
-               <img width={100} height={100} src={logo} alt="logo" />
+               <img width={200} height={200} src={logo} alt="logo" />
                <div className="social">
                   <i className="fa-brands fa-instagram" />
                   <i className="fa-brands fa-telegram" />
