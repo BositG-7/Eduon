@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from "react";
-import { Box, Button, Divider, Flex, InputBase, Title } from "@mantine/core";
+import React, { FunctionComponent, useState } from "react";
+import { Box, Divider, Flex, InputBase, SegmentedControl, Title } from "@mantine/core";
 import { useList } from "modules/courses/hooks/course-use-list";
+import { useCourseTop } from "modules/courses/hooks/use-course-top";
 // eslint-disable-next-line import/order
 import { AiOutlineSend } from "react-icons/ai";
 import { Paginated } from "utils/paginate";
@@ -12,7 +13,15 @@ import Course from "./components/course";
 interface CoursesProps {}
 
 const Courses: FunctionComponent<CoursesProps> = () => {
-   const { course } = useList();
+   const [search, setSearchTerm] = useState("");
+   const { course } = useList({ search });
+   const { courseTop } = useCourseTop();
+
+   const [segmentValue, setSegmentValue] = useState("barchasi");
+
+   const handleSegmentChange = (value: string) => {
+      setSegmentValue(value);
+   };
 
    const [pageSize, setPageSize] = React.useState<number>(9);
    const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -42,7 +51,19 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                   Xo‘sh bugun qanday bilimlar o‘rganamiz?
                </Title>
                <Flex>
-                  <InputBase mb={20} autoFocus placeholder="kursni yozing..." radius="5px" w="400px" bg="#E7F0FF" p="8px" />
+                  <InputBase
+                     onChange={e => {
+                        setSearchTerm(e.target.value);
+                     }}
+                     mb={20}
+                     value={search}
+                     autoFocus
+                     placeholder="kursni yozing..."
+                     radius="5px"
+                     w="400px"
+                     bg="#E7F0FF"
+                     p="8px"
+                  />
                   <Box sx={{ position: "relative", top: "17px", right: "30px" }}>
                      <AiOutlineSend />
                   </Box>
@@ -53,16 +74,22 @@ const Courses: FunctionComponent<CoursesProps> = () => {
             <Flex align="center" justify="center" gap={150} ml="20px">
                <Flex align="center" justify="center" sx={{ flexDirection: "column", textAlign: "center" }}>
                   <Flex gap={25} mt="30px">
-                     <Button size="md" variant="light" color="#E7F0FF" sx={{ fontWeight: "normal" }}>
-                        Barchasi
-                     </Button>
-                     <Button size="md" variant="light" sx={{ backgroundColor: "white", color: "gray", fontWeight: "normal" }}>
-                        Zo‘rlari
-                     </Button>
+                     <SegmentedControl
+                        w={400}
+                        color="blue"
+                        size="md"
+                        data={[
+                           { label: "Barchasi", value: "barchasi" },
+                           { label: "Zo'rlari", value: "zo'rlari" }
+                        ]}
+                        value={segmentValue}
+                        onChange={handleSegmentChange}
+                        style={{ background: "white" }}
+                     />
                   </Flex>
                   <Flex align="center" sx={{ flexDirection: "column" }}>
                      <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
-                        {
+                        {segmentValue === "barchasi" &&
                            // @ts-expect-error
                            course?.map(item => (
                               <Course
@@ -73,8 +100,18 @@ const Courses: FunctionComponent<CoursesProps> = () => {
                                  name={item.name}
                                  view={String(item.view)}
                               />
-                           ))
-                        }
+                           ))}
+                        {segmentValue === "zo'rlari" &&
+                           courseTop?.map(item => (
+                              <Course
+                                 key={item.id}
+                                 id={String(item.id)}
+                                 img={item.image}
+                                 price={item.price}
+                                 name={item.name}
+                                 view={String(item.view)}
+                              />
+                           ))}
                      </Box>
 
                      {/* @ts-ignore */}

@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useCategory } from "modules/courses/hooks/use-category";
 
-import business from "../../../../assets/images/business.png";
-import design from "../../../../assets/images/design.png";
-import din from "../../../../assets/images/din.png";
-import languages from "../../../../assets/images/languages.png";
-import marketing from "../../../../assets/images/marketing.png";
-import menejment from "../../../../assets/images/menejment.png";
+// import business from "../../../../assets/images/business.png";
+// import design from "../../../../assets/images/design.png";
+// import din from "../../../../assets/images/din.png";
+// import languages from "../../../../assets/images/languages.png";
+// import marketing from "../../../../assets/images/marketing.png";
+// import menejment from "../../../../assets/images/menejment.png";
 import programming from "../../../../assets/images/programming.png";
-import sale from "../../../../assets/images/sale.png";
 
+// import sale from "../../../../assets/images/sale.png";
 import "../style/courses.scss";
 
 function Courses() {
@@ -25,12 +25,14 @@ function Courses() {
             </h1>
          </div>
          <div className="boxes">
-            <article className="box">
-               <img src={marketing} alt="marketing" />
-               <h3>Marketing</h3>
-               <h2>72 ta kurs</h2>
-            </article>
-
+            {category.map(category => (
+               <article key={category.id} className="box">
+                  <img src={programming} alt="marketing" />
+                  <h3>{category.name}</h3>
+                  <h2>{category.course_count}</h2>
+               </article>
+            ))}
+            {/*
             <article className="box">
                <img src={programming} alt="dasturlash" />
                <h3>Dasturlash</h3>
@@ -71,7 +73,7 @@ function Courses() {
                <img src={design} alt="design" />
                <h3>Dizayn</h3>
                <h2>62 ta kurs</h2>
-            </article>
+            </article> */}
          </div>
          <div className="link">
             <button

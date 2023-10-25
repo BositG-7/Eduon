@@ -24,8 +24,6 @@ export const useSpeaker = (id: number | string) => {
 
                setState(teacher);
             }
-
-            console.log(teacher);
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
             setState({ first_name: "", last_name: "", email: "", speaker: "", image: "", courses: [], username: "" });

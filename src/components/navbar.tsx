@@ -4,7 +4,7 @@ import { Avatar, Box, Button, Menu } from "@mantine/core";
 import { IconLogout, IconMenu, IconSettings, IconUser } from "@tabler/icons-react";
 import { useAuth } from "modules/auth/context";
 
-import Logo from "./photo_2023-10-20_04-52-54.jpg";
+import Logo from "./infonex.svg";
 
 import "./navbar.css";
 
@@ -43,7 +43,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                      navigate("/");
                   }}
                >
-                  <img width={100} height={100} src={Logo} alt="" />
+                  <img width={200} height={200} src={Logo} alt="" />
                </Button>
                <Box
                   className="nav"

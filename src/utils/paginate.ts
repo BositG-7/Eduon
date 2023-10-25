@@ -6,10 +6,10 @@ interface PaginateProps {
 }
 
 export const Paginated = ({ currentPage, pageSize }: PaginateProps) => {
-   const { course } = useList();
+   const { course } = useList({});
 
    const startIndex: number = (currentPage - 1) * pageSize;
-   const list = course
+   const list = course;
 
    return list;
 };

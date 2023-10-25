@@ -85,16 +85,6 @@ function TopSpeakers() {
                </div>
             ))}
          </div>
-         <div className="link">
-            <button
-               className="share-subject"
-               onClick={() => {
-                  navigete("/speakers");
-               }}
-            >
-               Barchasi
-            </button>
-         </div>
       </section>
    );
 }

@@ -5,7 +5,7 @@ import { notifications } from "@mantine/notifications";
 import { Api } from "modules/courses";
 
 interface VideoUploadProps {
-   courseDetailUpload: number;
+   courseDetailUpload: number ;
 }
 
 const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUploadProps) => {
@@ -80,14 +80,6 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
                   placeholder="Enter video description"
                   pb="md"
                   required
-               />
-               <TextInput
-                  label="Duration"
-                  name="duration"
-                  value={videoData.duration}
-                  onChange={handleInputChange}
-                  placeholder="Enter video duration"
-                  pb="md"
                />
                <Button type="submit">Upload Video</Button>
             </form>
