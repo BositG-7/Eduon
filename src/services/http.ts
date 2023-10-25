@@ -12,7 +12,7 @@ http.interceptors.request.use(
    request => {
       const { access = "" } = getSession();
 
-      // @ts-ignore
+      // @ts-expect-error
       request.headers = {
          ...request.headers,
          ...(access ? { Authorization: `Bearer ${access}` } : {})
