@@ -2,7 +2,7 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { Box, Button, Flex, PasswordInput } from "@mantine/core";
+import { Box, Button, Flex, Input } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api, Types } from "modules/auth";
@@ -11,7 +11,7 @@ import { clearSessionReset, getSessionVerification } from "services/store";
 import cursor from "../../assets/images/cursor.png";
 import threeD from "../../assets/images/threeD.png";
 
-interface CheckpasswordProps {}
+interface CheckpasswordProps { }
 
 const schema = yup.object({
    password: yup.string().min(5).label("Password").required()
@@ -43,9 +43,17 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
       }
    };
 
+
    return (
       <Box h="100vh" w="100%">
          <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
+            <Button
+               onClick={() => navigate(-1)}
+               sx={{
+                  position: 'absolute',
+                  top: 24,
+                  left: 36,
+               }}>Back</Button>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>
@@ -53,19 +61,19 @@ const Checkpassword: FunctionComponent<CheckpasswordProps> = () => {
                <Flex w="400px" direction="column" justify="center" gap={50} align="center" p={20}>
                   <h1>Check Activate Code</h1>
 
-                  <PasswordInput
-                     placeholder="Password"
+                  <Input
+                     placeholder="Enter an activation code"
+                     type="number"
                      sx={{
-                        border: "none",
+                        size:'xl',
                         input: {
-                           height: "45px",
-                           borderRadius: "16px",
-                           outline: "none",
                            border: "none",
-                           padding: "20px 15px",
+                           outline: "none",
                            fontSize: "18px",
+                           borderRadius:'15px',
+                           padding:'30px',
                            color: "rgba(17, 17, 17, 0.36)",
-                           backgroundColor: "rgba(17, 17, 17, 0.02)"
+                           background: "rgba(17, 17, 17, 0.02)"
                         }
                      }}
                      {...form.getInputProps("password")}
