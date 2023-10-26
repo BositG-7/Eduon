@@ -1,29 +1,15 @@
-import { FunctionComponent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FunctionComponent } from "react";
 import { Box, Divider, Flex, Title } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
 
 interface AdvantageProps {}
 
 const Advantage: FunctionComponent<AdvantageProps> = () => {
-   const navigate = useNavigate();
-   const [dates, setDates] = useState([
-      { id: 1, isActive: false },
-      { id: 2, isActive: false },
-      { id: 3, isActive: true },
-      { id: 4, isActive: false },
-      { id: 5, isActive: false }
-   ])
-
-   const setIsActive = (id: number) => {
-      const newDates = dates.map(date => ({ id: date.id, isActive: false }));
-
-      newDates.forEach((date) => {
-         if(date.id === id){
-            date.isActive = true;
-         }
-      })
-     setDates(newDates);
-   };
+   const { hovered, ref } = useHover();
+   const { hovered: hovered2, ref: ref2 } = useHover();
+   const { hovered: hovered3, ref: ref3 } = useHover();
+   const { hovered: hovered4, ref: ref4 } = useHover();
+   const { hovered: hovered5, ref: ref5 } = useHover();
 
    return (
       <Box mt={10} mb={150}>
@@ -37,19 +23,20 @@ const Advantage: FunctionComponent<AdvantageProps> = () => {
          <Box mt={50}>
             <Flex justify="center">
                <Flex gap={200}>
-                  <Box h={100} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px" }} onClick={() => setIsActive(1)}>
-                     <Title size={22} color={dates[0].isActive ? 'blue' : "rgba(17, 17, 17, 0.36)"}>
+                  <Box ref={ref} h={100} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px" }}>
+                     <Title size={22} color={hovered ? "blue" : "rgba(17, 17, 17, 0.36)"}>
                         Istalgan joy
                      </Title>
-                     <Title mt={5} size={16} color={dates[0].isActive ? 'black' : "rgba(17, 17, 17, 0.36)"}>
+                     <Title ref={ref} mt={5} size={16} color={hovered ? "black" : "rgba(17, 17, 17, 0.36)"}>
                         Internet bo’lsa bas, <br /> InfoNex har yerda ishlaydi.
                      </Title>
                   </Box>
-                  <Box h={100} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px" }} onClick={() => setIsActive(2)}>
-                     <Title size={22} color={dates[1].isActive ? 'blue' : "rgba(17, 17, 17, 0.36)"}>
+
+                  <Box ref={ref2} h={100} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px" }}>
+                     <Title size={22} color={hovered2 ? "blue" : "rgba(17, 17, 17, 0.36)"}>
                         Aktual
                      </Title>
-                     <Title mt={5} size={16} color={dates[1].isActive ? 'black' : "rgba(17, 17, 17, 0.36)"}>
+                     <Title mt={5} size={16} color={hovered2 ? "black" : "rgba(17, 17, 17, 0.36)"}>
                         Barcha aktual sohalar <br /> bo’yicha darslar mavjud.
                      </Title>
                   </Box>
@@ -58,39 +45,29 @@ const Advantage: FunctionComponent<AdvantageProps> = () => {
             <Divider sx={{ width: 940, marginLeft: "250px" }} />
             <Flex justify="center">
                <Flex gap={200}>
-                  <Box
-                     h={50}
-                     sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px", paddingTop: "10px" }}
-                     onClick={() => setIsActive(3)}
-                  >
-                     <Title size={22} color={dates[2].isActive ? 'blue' : "rgba(17, 17, 17, 0.36)"}>
+                  <Box ref={ref3} h={50} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px", paddingTop: "10px" }}>
+                     <Title size={22} color={hovered3 ? "blue" : "rgba(17, 17, 17, 0.36)"}>
                         Qulay vaqt
                      </Title>
-                     <Title mt={5} size={16} color={dates[2].isActive ? 'black' : "rgba(17, 17, 17, 0.36)"}>
+                     <Title mt={5} size={16} color={hovered3 ? "black" : "rgba(17, 17, 17, 0.36)"}>
                         Platformada 24/7 soat <br /> rejimida ishlaydi.
                      </Title>
                   </Box>
-                  <Box
-                     h={50}
-                     sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px", paddingTop: "10px" }}
-                     onClick={() => setIsActive(4)}
-                  >
-                     <Title size={22} color={dates[3].isActive ? 'blue' : "rgba(17, 17, 17, 0.36)"}>
+
+                  <Box ref={ref4} h={50} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px", paddingTop: "10px" }}>
+                     <Title size={22} color={hovered4 ? "blue" : "rgba(17, 17, 17, 0.36)"}>
                         Mutaxasislar
                      </Title>
-                     <Title mt={5} size={16} color={dates[3].isActive ? 'black' : "rgba(17, 17, 17, 0.36)"}>
+                     <Title mt={5} size={16} color={hovered4 ? "black" : "rgba(17, 17, 17, 0.36)"}>
                         Darslar mutaxasislar <br /> tomonidan o’tiladi.
                      </Title>
                   </Box>
-                  <Box
-                     h={50}
-                     sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px", paddingTop: "10px" }}
-                     onClick={() => setIsActive(5)}
-                  >
-                     <Title size={22} color={dates[4].isActive ? 'blue' : "rgba(17, 17, 17, 0.36)"}>
+
+                  <Box ref={ref5} h={50} sx={{ borderLeft: "1px solid rgba(17, 17, 17, 0.36)", paddingLeft: "10px", paddingTop: "10px" }}>
+                     <Title size={22} color={hovered5 ? "blue" : "rgba(17, 17, 17, 0.36)"}>
                         Oson
                      </Title>
-                     <Title mt={5} size={16} color={dates[4].isActive ? 'black' : "rgba(17, 17, 17, 0.36)"}>
+                     <Title mt={5} size={16} color={hovered5 ? "black" : "rgba(17, 17, 17, 0.36)"}>
                         Samarali ilm olish uchun <br /> barcha imkoniyatlar.
                      </Title>
                   </Box>
