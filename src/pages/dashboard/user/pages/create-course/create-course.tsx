@@ -38,7 +38,6 @@ const CourseCreate: React.FC = () => {
          notifications.show({ message: "Category is not an array", color: "red" });
       }
    }, [category]);
-
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
 
@@ -122,20 +121,10 @@ const CourseCreate: React.FC = () => {
                      value={courseData.description}
                      onChange={handleDescriptionChange}
                      placeholder="Write course description"
-                     style={{ borderRadius: "10px" }}
                   />
                </div>
-               <Flex justify="space-between">
-                  <Select
-                     label="Category"
-                     name="category"
-                     data={categoryOptions}
-                     w="30%"
-                     placeholder="Write course category"
-                     onChange={value => handleSelectChange("category", value)}
-                  />
-               </Flex>
-               <Flex justify="space-between" pb="md">
+               
+               <Flex justify="space-between" pb="md" pt='md'>
                   <TextInput
                      label="Whos Course"
                      name="whos_course"
@@ -165,7 +154,13 @@ const CourseCreate: React.FC = () => {
                      placeholder="Select a language"
                      onChange={value => handleSelectChange("language", value)}
                   />
-
+                  <Select
+                     label="Category"
+                     name="category"
+                     data={categoryOptions}
+                     placeholder="Write course category"
+                     onChange={value => handleSelectChange("category", value)}
+                  />
                   <Select
                      label="Degree"
                      name="degree"
