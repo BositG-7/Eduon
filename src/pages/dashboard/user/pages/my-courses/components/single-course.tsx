@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Box, Flex, Progress, Title } from "@mantine/core";
 import DOMPurify from "dompurify";
 import { useSingle } from "modules/courses/hooks/use-single";
@@ -14,12 +14,11 @@ interface SinglePageCourseProps {}
 
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { adminCourseSingle } = useParams<{ adminCourseSingle: string }>();
-   const navigete = useNavigate();
    const course = useSingle(adminCourseSingle!);
 
    const { speaker } = course;
 
-   const teacher = useSpeaker(speaker);
+   const teacher = useSpeaker(`${speaker}`);
 
    console.log(course);
 
@@ -38,8 +37,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   loop
                   muted
                   controls
-                  // @ts-expect-error
-                  src={course.video[0]?.video}
+                  src={course.video[0].video}
                />
             </Flex>
 

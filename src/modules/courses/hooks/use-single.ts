@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 import { notifications } from "@mantine/notifications";
 
-import { IApi } from "../types";
-import { Api } from "..";
+import { Api, Types } from "..";
 
 export const useSingle = (id: string) => {
-   const [course, setState] = useState<IApi.Course.Single.Response>({
+   const [course, setState] = useState<Types.IEntity.SingleCourse>({
       name: "",
       description: "",
+      image: "",
       speaker: 0,
-      comment: { text: "", course: 0, author: 0 },
-      video: { video: "", module: 0 }
+      comment: [],
+      video: []
    });
 
    useEffect(() => {
       const request = async () => {
          try {
-            const { data } = await Api.Course.Single(id);
-            const course = data;
+            const { data: course } = await Api.Course.Single(id);
 
             setState(course);
          } catch (err: any) {
@@ -25,9 +24,10 @@ export const useSingle = (id: string) => {
             setState({
                name: "",
                description: "",
+               image: "",
                speaker: 0,
-               comment: { text: "", course: 0, author: 0 },
-               video: { video: "", module: 0 }
+               comment: [],
+               video: []
             });
          }
       };
