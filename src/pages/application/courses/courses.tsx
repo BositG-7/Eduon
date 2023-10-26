@@ -74,6 +74,7 @@ const Courses = () => {
                   <Flex gap={25} mt="30px">
                      <SegmentedControl
                         w={400}
+                        radius="lg"
                         color="blue"
                         size="md"
                         data={[
@@ -85,23 +86,24 @@ const Courses = () => {
                         style={{ background: "white" }}
                      />
                   </Flex>
-                  <Flex align="center" justify='center' sx={{ flexDirection: "column" }}>
+                  <Flex align="center" justify="center" sx={{ flexDirection: "column" }}>
                      {isLoading ? (
                         <Loader mt={20} color="blue" />
                      ) : (
                         <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
                            {segmentValue === "barchasi" &&
-                              paginatedCourse.map(item => (
-                                 <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} />
-                              ))}
+                              paginatedCourse.map(item => <Course key={item.id} id={item.id} img={item.image} name={item.name} />)}
                            {segmentValue === "zo'rlari" &&
-                              paginatedCourseTop.map(item => (
-                                 <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} />
-                              ))}
+                              paginatedCourseTop.map(item => <Course key={item.id} id={item.id} img={item.image} name={item.name} />)}
                         </Box>
                      )}
 
-                     <Paginate total={course?.length ? course.length : 1} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage}/>
+                     <Paginate
+                        total={course?.length ? course.length : 1}
+                        onPageChange={handlePageChange}
+                        pageSize={pageSize}
+                        currentPage={currentPage}
+                     />
                   </Flex>
                </Flex>
             </Flex>

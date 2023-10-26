@@ -16,7 +16,6 @@ export namespace IEntity {
    export interface ICourseTop {
       id: number;
       name: string;
-      price: number;
       view: string;
       image: string;
    }
@@ -44,15 +43,17 @@ export namespace IEntity {
       author: number;
    }
    export interface Video {
+      title: string;
       video: string;
-      module: number;
+      description: number;
    }
    export interface SingleCourse {
       name: string;
       description: string;
       speaker: number;
-      comment: Comment;
-      video: Video;
+      image: string;
+      comment: Comment[];
+      video: Video[];
    }
    export interface CourseTop {
       name: string;
@@ -65,11 +66,11 @@ export namespace IEntity {
    export interface Speaker {
       first_name: string;
       last_name: string;
-      email: string;
-      speaker: string;
+      about: string;
       image: string;
-      courses: [];
+      courses: ICourseTop[];
       username: string;
+      job: string
    }
    export interface Category {
       id: any;

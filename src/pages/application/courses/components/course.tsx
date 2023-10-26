@@ -1,59 +1,28 @@
-import { FunctionComponent } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Box, Button, Divider, Flex, Title } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+import { Card, Image, Text } from "@mantine/core";
 
-import Demo from "./modal";
+import classes from "../../../../assets/styles/course.module.scss";
 
 interface CourseProps {
    img?: string;
    name?: string;
-   price?: number;
-   id?: string;
-   rating?: number;
+   id?: number;
 }
 
-const Course: FunctionComponent<CourseProps> = ({ id, img, name, price, rating }) => {
-   const navigete = useNavigate();
+export default function Course({ id, img, name }: CourseProps) {
+   const navigate = useNavigate();
 
    return (
-      <Box>
-         <Flex>
-            <Box>
-               <Link to={`/courses/course/${id}`}>
-                  <img
-                     style={{
-                        width: "300px",
-                        height: "250px",
-                        backgroundSize: "cover",
-                        borderRadius: "25px",
-                        border: "1px solid #000"
-                     }}
-                     src={img}
-                     alt=""
-                  />
-               </Link>
-
-               <Flex mt={10} justify="space-between">
-                  <Title color="gray" size={16}>
-                     {name}
-                  </Title>
-               </Flex>
-
-               <Divider my="sm" />
-               <Flex align="center" justify="space-between">
-                  {price ? (
-                     <Title color="gray" size={16}>
-                        {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} uzs
-                     </Title>
-                  ) : (
-                     <Button>Bepul</Button>
-                  )}
-                  <Demo />
-               </Flex>
-            </Box>
-         </Flex>
-      </Box>
+      <Card withBorder radius="md" className={classes.card}>
+         <Card.Section className={classes.imageSection}>
+            <Image src={img} alt="kurs-image" />
+         </Card.Section>
+         <Text mb="md" mt="sm" className={classes.text}>
+            {name}
+         </Text>
+         <button className={classes.button} onClick={() => navigate(`/courses/course/${id}`)}>
+            kursni korish
+         </button>
+      </Card>
    );
-};
-
-export default Course;
+}
