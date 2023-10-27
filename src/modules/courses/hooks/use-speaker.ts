@@ -1,32 +1,30 @@
 import { useEffect, useState } from "react";
 import { notifications } from "@mantine/notifications";
 
-import { IApi } from "../types";
-import { Api } from "..";
+import { Api, Types } from "..";
 
-export const useSpeaker = (id: number | string) => {
-   const [teacher, setState] = useState<IApi.Course.Speaker.Response>({
+export const useSpeaker = (id: string) => {
+   const [teacher, setState] = useState<Types.IEntity.Speaker>({
       first_name: "",
       last_name: "",
-      email: "",
-      speaker: "",
       image: "",
       courses: [],
-      username: ""
+      username: "",
+      about: "",
+      job: ""
    });
 
    useEffect(() => {
       const request = async () => {
          try {
-            if (id !== 0) {
-               const { data } = await Api.Course.Speaker(id);
-               const teacher = data;
+            if (id !== "0") {
+               const { data: teacher } = await Api.Course.Speaker(id);
 
                setState(teacher);
             }
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
-            setState({ first_name: "", last_name: "", email: "", speaker: "", image: "", courses: [], username: "" });
+            setState({ first_name: "", last_name: "", job: "", about: "", image: "", courses: [], username: "" });
          }
       };
 

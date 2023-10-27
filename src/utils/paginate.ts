@@ -1,15 +1,12 @@
-import { useList } from "modules/courses/hooks/course-use-list";
-
 interface PaginateProps {
+   items: any;
    currentPage: number;
    pageSize: number;
 }
 
-export const Paginated = ({ currentPage, pageSize }: PaginateProps) => {
-   const { course } = useList({});
+export function paginate(items: any, currentPage: number, pageSize: number) {
+   const startIdx = pageSize * (currentPage - 1);
+   const finishIdx = startIdx + pageSize;
 
-   const startIndex: number = (currentPage - 1) * pageSize;
-   const list = course;
-
-   return list;
-};
+   return items?.slice(startIdx, finishIdx);
+}
