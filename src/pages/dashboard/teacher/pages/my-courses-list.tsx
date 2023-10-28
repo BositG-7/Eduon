@@ -1,27 +1,46 @@
+import { useState } from "react";
 import { useAuth } from "modules/auth/context";
+import { Types } from "modules/courses";
+import Course from "pages/application/courses/components/course";
+import { paginate } from "utils/paginate";
 
-import { MyCourses, NewCourses } from "../components";
+import Paginate from "components/pagination";
 
-import style from "../styles/my-courses-list.module.scss";
+import { NewCourses } from "../components";
+
+import cls from "../styles/my-courses-list.module.scss";
 
 export default function MyCoursesList() {
    const { user } = useAuth();
+   const [currentPage, setCurrentPage] = useState<number>(1);
+   const pageSize = 4;
+
+   const paginatedCourse: Types.IEntity.ICourseTop[] = paginate(user?.course, currentPage, pageSize);
+
+   const handlePageChange = (page: number) => {
+      setCurrentPage(page);
+   };
 
    return (
-      <div className={style.wrapper}>
+      <div className={cls.wrapper}>
          <div>
-            <p className={style.title}>Yuklangan kurslar</p>
-            <div className={style.courseList}>
-               {user?.course.map((item: any) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <MyCourses id={item.id} image={item.image} name={item.name} price={item.price} />
+            <p className={cls.title}>Yuklangan kurslar</p>
+            <div className={cls.courseList}>
+               {paginatedCourse.map(item => (
+                  <Course key={item.id} id={item.id} img={item.image} name={item.name} />
                ))}
             </div>
+            <Paginate
+               total={user?.course.length ? user.course.length : 1}
+               onPageChange={handlePageChange}
+               currentPage={currentPage}
+               pageSize={pageSize}
+            />
          </div>
-         <div className={style.hr} />
+         <div className={cls.hr} />
          <div>
-            <p className={style.title}>Yangi kurs</p>
-            <div className={style.courseList}>
+            <p className={cls.title}>Yangi kurs</p>
+            <div className={cls.courseList}>
                <NewCourses />
             </div>
          </div>

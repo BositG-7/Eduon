@@ -10,10 +10,9 @@
       row-gap: 18px;
    }
    .courseList {
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
    }
    .title {
       color: #111;
