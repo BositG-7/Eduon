@@ -7,10 +7,7 @@ import img3 from "../assets/img/icons/Message.svg";
 
 interface CategoryProps {}
 
-const Category: FunctionComponent<CategoryProps> = () => {
-   const i = 0;
-
-   return (
+const Category: FunctionComponent<CategoryProps> = () => (
       <>
          <Flex justify="center" mt="30px" gap="30px" align="center" h="auto" w="1300px">
             <Flex
@@ -33,7 +30,6 @@ const Category: FunctionComponent<CategoryProps> = () => {
                <Text
                   sx={{
                      color: "#111",
-                     fontFamily: "Gilroy-Medium",
                      fontSize: "16px",
                      fontStyle: "normal",
                      fontWeight: 400,
@@ -64,7 +60,6 @@ const Category: FunctionComponent<CategoryProps> = () => {
                <Text
                   sx={{
                      color: "#111",
-                     fontFamily: "Gilroy-Medium",
                      fontSize: "16px",
                      fontStyle: "normal",
                      fontWeight: 400,
@@ -95,7 +90,6 @@ const Category: FunctionComponent<CategoryProps> = () => {
                <Text
                   sx={{
                      color: "#111",
-                     fontFamily: "Gilroy-Medium",
                      fontSize: "16px",
                      fontStyle: "normal",
                      fontWeight: 400,
@@ -108,6 +102,5 @@ const Category: FunctionComponent<CategoryProps> = () => {
          </Flex>
       </>
    );
-};
 
 export default Category;

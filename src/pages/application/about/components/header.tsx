@@ -10,19 +10,17 @@ const Header: FunctionComponent<HeaderProps> = () => {
       <>
          <Flex mt="30" justify="center" align="center" direction="column" h="auto" maw="674px">
             <Title
+               color="#111"
+               weight={700}
                sx={{
-                  color: "#111", // Text color
-                  fontFamily: "Samsung Sharp Sans", // Font family
                   fontSize: 36, // Font size in pixels
-                  fontStyle: "normal", // Font style (normal in this case)
-                  fontWeight: 700 // Font weight (700 for bold),
+                  fontStyle: "normal" // Font style (normal in this case)
                }}
             >
                {" "}
                <span
                   style={{
                      color: "#006AFF", // Text color
-                     fontFamily: "Samsung Sharp Sans", // Font family
                      fontSize: 72,
                      fontStyle: "normal", // Font style (normal in this case)
                      fontWeight: 700
@@ -30,18 +28,17 @@ const Header: FunctionComponent<HeaderProps> = () => {
                >
                   O’zbekistondagi ilk
                </span>{" "}
-               <span style={{ marginLeft: "100px" }}> onlayn o’quv platformasi</span>
+               <p style={{ textAlign: "center" }}>onlayn o’quv platformasi</p>
             </Title>
             <Text
                color="rgba(17, 17, 17, 0.72)" // Text color in RGBA format
                sx={{
-                  fontFamily: "Gilroy-Medium", // Font family
                   fontSize: 18, // Font size in pixels
                   fontStyle: "normal", // Font style (normal in this case)
-                  fontWeight: 400, // Font weight (400 for normal)
+                  fontWeight: 500, // Font weight (400 for normal)
                   lineHeight: "normal" // Line height (normal)
                }}
-               ml="50px" // Left margin in pixels
+               align="center"
                mt="20px" // Top margin in pixels
                mb="20px" // Bottom margin in pixels
                maw="573px"

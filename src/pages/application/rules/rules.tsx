@@ -5,10 +5,7 @@ import { Main, Title } from "./components";
 
 interface RulesProps {}
 
-const Rules: FunctionComponent<RulesProps> = () => {
-   const i = 0;
-
-   return (
+const Rules: FunctionComponent<RulesProps> = () => (
       <>
          <Flex justify="center" align="center" direction="column" gap="40px" h="auto">
             <Title />
@@ -16,6 +13,5 @@ const Rules: FunctionComponent<RulesProps> = () => {
             <Main />
       </>
    );
-};
 
 export default Rules;

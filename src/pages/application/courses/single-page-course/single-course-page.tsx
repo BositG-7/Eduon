@@ -22,11 +22,10 @@ interface SinglePageCourseProps {}
 
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { courseID = "" } = useParams<{ courseID: string }>();
-   const course = useSingle(courseID);
    const [currentPage, setCurrentPage] = useState<number>(1);
-   const pageSize = 8;
+   const course = useSingle(courseID);
    const { speaker = 1 } = course;
-
+   const pageSize = 8;
    const teacher = useSpeaker(`${speaker}`);
 
    const paginatedCourses: Types.IEntity.Course[] = paginate(teacher.courses, currentPage, pageSize);
@@ -37,8 +36,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    return (
       <Box pt={20}>
-         <Flex justify="space-between" pr={100}>
-            <Flex direction="column" h={300} justify="space-between" w="50vw">
+         <Flex justify='space-between'>
+            <Flex direction="column" justify="space-between">
                <Title size={54} sx={{ lineHeight: "normal" }}>
                   {course.name}
                </Title>
@@ -82,6 +81,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                <Demo />
             </Flex>
          </Flex>
+
          <Box pt={50}>
             <Title mb={20} sx={{ textAlign: "center" }}>
                Spiker va o’xshash kurslar
@@ -99,7 +99,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                currentPage={currentPage}
             />
          </Box>
-
          <Footer />
       </Box>
    );
