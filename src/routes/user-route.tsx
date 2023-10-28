@@ -17,7 +17,7 @@ const UserRoute = ({ allowed = false, redirectURL = "/" }: UserRouteProps) => {
             <div className={style.userPanel}>
                <Sidebar />
                <div className={style.main}>
-                  <Outlet />
+                  <Outlet/>
                </div>
             </div>
          </>
