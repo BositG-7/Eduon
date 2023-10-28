@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Text, Title } from "@mantine/core";
+import { Box, Flex, Title } from "@mantine/core";
 // eslint-disable-next-line import/order
 import DOMPurify from "dompurify";
 import { Types } from "modules/courses";
@@ -14,11 +14,7 @@ import Paginate from "components/pagination";
 
 import Course from "../components/course";
 
-import Demo from "./components/modal";
-
-// import SpeakersCourse from "./components/speakers-course";
-
-interface SinglePageCourseProps {}
+interface SinglePageCourseProps { }
 
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { courseID = "" } = useParams<{ courseID: string }>();
@@ -37,50 +33,59 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    return (
       <Box pt={20}>
-         <Flex justify="space-between" pr={100}>
-            <Flex direction="column" h={300} justify="space-between" w="50vw">
+         <Flex direction='column'>
+            <Flex justify='space-around' mb='30px'>
                <Title size={54} sx={{ lineHeight: "normal" }}>
                   {course.name}
                </Title>
 
-               <Title
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(course.description) }}
-                  pt={15}
-                  size={18}
-                  color="rgba(17, 17, 17, 0.54)"
-                  sx={{ fontWeight: 400 }}
-               />
-               <Flex pt={20} align="center" gap={35}>
-                  <Title size={24}>
-                     Avtor:
-                     <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
-                        {teacher.first_name} {teacher.last_name}
-                     </span>
-                  </Title>
+            </Flex>
+
+            <Flex justify="space-around" w='100%'>
+               <Flex direction='column' w='50%'>
+                  <video
+                     style={{
+                        height: "auto",
+                        borderRadius: "5px",
+                        border: "1px solid transparent"
+                     }}
+                     autoPlay
+                     loop
+                     muted
+                     controls
+                     src={course.video[0]?.video}
+                  />
+                  <Flex mt='30px' align='center'>
+                     <Title size={20}>Kurs haqida: </Title>
+                     <Title
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(course.description) }}
+                        size={15}
+                        color="rgba(17, 17, 17, 0.54)"
+                        sx={{ fontWeight: 400 }}
+                        mt='5px'
+                     />
+                  </Flex>
                </Flex>
+               <div style={{ border: '1px solid #9B9B9B', width: '35%', borderRadius: '30px' }}>
+                  <Flex direction="column" p='30px'>
+                     <Title mb='20px'>{course.video[0]?.title}</Title>
+                     <Title size={24} mb='20px'>
+                        Avtor:
+                        <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
+                           {teacher.first_name} {teacher.last_name}
+                        </span>
+                     </Title>
+                     <Title size={24} color="black">
+                        Video haqida:
+                        <span style={{ color: "#9B9B9B", fontSize: '20px', marginLeft: '10px' }}>
+                           {course.video[0]?.description}
+                        </span>
+                     </Title>
+                  </Flex>
+               </div>
             </Flex>
 
-            <Flex direction="column" gap={20}>
-               <video
-                  style={{
-                     width: 380,
-                     height: "auto",
-                     borderRadius: "25px",
-                     border: "1px solid #000"
-                  }}
-                  autoPlay
-                  loop
-                  muted
-                  controls
-                  src={course.video[0]?.video}
-               />
 
-               <Title fw={500} size={24}>
-                  <Title>{course.video[0]?.title}</Title>
-                  <Text color="#9B9B9B">{course.video[0]?.description}</Text>
-               </Title>
-               <Demo />
-            </Flex>
          </Flex>
          <Box pt={50}>
             <Title mb={20} sx={{ textAlign: "center" }}>
@@ -99,7 +104,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                currentPage={currentPage}
             />
          </Box>
-
          <Footer />
       </Box>
    );
