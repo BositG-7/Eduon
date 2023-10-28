@@ -17,8 +17,8 @@ export const Course = {
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>
    http.post<IApi.Course.Create.Response>("/course_create", objectToFormData(formData));
 
-export const EditCourse = (formData: IApi.Course.Create.Request) =>
-   http.post<IApi.Course.Create.Response>("/course_create", objectToFormData(formData));
+export const EditCourse = ({ id, ...par }: IApi.Course.EditCouse.Request) =>
+   http.patch<IApi.Course.EditCouse.Response>(`/course/${id}/`, objectToFormData(par));
 export const CourseTop = () => http.get<IApi.Course.CourseTop.Response>("/course_top");
 
 export const CourseNew = () => http.get("/course_new");

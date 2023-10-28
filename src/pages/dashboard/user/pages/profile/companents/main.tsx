@@ -7,6 +7,9 @@ import { Types } from "modules/auth";
 import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
+import Delete from "./modal-delete";
+
+
 interface MainProps {}
 
 const schema = yup.object({
@@ -174,16 +177,16 @@ const Main: FunctionComponent<MainProps> = () => {
                      </Flex>
                   </Radio.Group>
                </Paper>
-               <Flex>
+               <Flex justify='space-around' align="center" w="100%">
                   <Button
                      type="submit"
                      sx={{
-                        color: "rgba(0, 106, 255, 1)",
-                        height: "50px",
-                        backgroundColor: "rgba(231, 240, 255, 1)",
-                        fontSize: "20px",
+                        color: "white",
+                        height:"50px",
+                        width:"174px",
+                        backgroundColor: "#228be6",
+                        fontSize: "19px",
                         marginTop: "40px",
-                        marginLeft: "170px",
                         "&:hover": {
                            color: "white"
                         }
@@ -191,6 +194,7 @@ const Main: FunctionComponent<MainProps> = () => {
                   >
                      Saqlash
                   </Button>
+                  <Delete/>
                </Flex>
             </form>
          </Box>

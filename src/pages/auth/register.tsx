@@ -64,6 +64,13 @@ const Register = () => {
 
    return (
       <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
+         <Button
+            onClick={() => navigate(-1)}
+            sx={{
+               position: 'absolute',
+               top: 24,
+               left: 36,
+            }}>Back</Button>
          <div className="right">
             <img src={cursor} alt="cursor" />
          </div>

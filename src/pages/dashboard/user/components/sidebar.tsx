@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, createStyles, Flex, getStylesRef, Navbar, rem } from "@mantine/core";
 // eslint-disable-next-line import/order
-import { BiFolderMinus,BiSolidAddToQueue } from "react-icons/bi";
+import { BiFolderMinus, BiSolidAddToQueue } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { PiWalletBold } from "react-icons/pi";
 import { TbSquareChevronsLeft, TbSquareChevronsRight } from "react-icons/tb";
@@ -108,12 +108,9 @@ function Sidebar() {
          {sidebarVisible && (
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
-               <Navbar sx={{ height: "auto", border: "none" }} width={{ sm: 260 }} p="md">
+               <Navbar sx={{ height: "auto", border: "none",zIndex:0 }} width={{ sm: 260 }} p="md">
                   <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
-               {/* <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
-               {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight size={24} />}
-            </Button> */}
             </>
          )}
          <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>

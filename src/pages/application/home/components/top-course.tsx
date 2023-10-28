@@ -23,16 +23,6 @@ function TopCourse() {
                <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
             ))}
          </div>
-         <div className="link">
-            <button
-               className="share-subject"
-               onClick={() => {
-                  navigete("/top-courses");
-               }}
-            >
-               Barchasi
-            </button>
-         </div>
       </section>
    );
 }

@@ -46,6 +46,13 @@ const ResetEmail: FunctionComponent<ResetEmailProps> = () => {
    return (
       <Box h="100vh" w="100%" sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
          <Box h="100%" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "200px" }}>
+         <Button
+               onClick={() => navigete(-1)}
+               sx={{
+                  position: 'absolute',
+                  top: 24,
+                  left: 36,
+               }}>Back</Button>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>

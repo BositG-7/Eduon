@@ -37,7 +37,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                   loop
                   muted
                   controls
-                  src={course.video[0].video}
+                  src={course?.video[0]?.video}
                />
             </Flex>
 

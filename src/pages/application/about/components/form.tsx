@@ -6,7 +6,6 @@ import { Api } from "modules/courses";
 // eslint-disable-next-line import/order
 import { IMaskInput } from "react-imask";
 
-
 const useStyles = createStyles(theme => ({
    title: {
       color: "#FAFAFA",
@@ -75,7 +74,7 @@ const Form = () => {
 
          console.log(data);
       } catch (err: any) {
-       notifications.show(err?.message)
+         notifications.show(err?.message);
       }
    };
 
@@ -114,7 +113,7 @@ const Form = () => {
                         radius={24}
                         sx={{ color: "red" }}
                         styles={inputStyles}
-                        placeholder="Misol: eduonplatform@gmail.com"
+                        placeholder="Misol: infonexplatform@gmail.com"
                         {...getInputProps("email")}
                      />
                   </Input.Wrapper>

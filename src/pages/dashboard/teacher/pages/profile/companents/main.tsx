@@ -4,6 +4,8 @@ import { notifications } from "@mantine/notifications";
 import { EditProfil } from "modules/auth/api";
 import { useAuth } from "modules/auth/context";
 
+import DeleteTeacher from "./modal-delete";
+
 interface MainProps {}
 
 const Main: FunctionComponent<MainProps> = () => {
@@ -143,15 +145,16 @@ const Main: FunctionComponent<MainProps> = () => {
                   </Flex>
                </Paper>
 
-               <Flex gap={20} justify="center" align="center">
+               <Flex justify='space-around' align="center" w="100%">
                   <Button
                      type="submit"
                      sx={{
-                        color: "rgba(0, 106, 255, 1)",
-                        height: "50px",
-                        backgroundColor: "rgba(231, 240, 255, 1)",
-                        fontSize: "20px",
-                        marginTop: "10px",
+                        color: "white",
+                        height:"50px",
+                        width:"174px",
+                        backgroundColor: "#228be6",
+                        fontSize: "19px",
+                        marginTop: "40px",
                         "&:hover": {
                            color: "white"
                         }
@@ -159,6 +162,7 @@ const Main: FunctionComponent<MainProps> = () => {
                   >
                      Saqlash
                   </Button>
+                  <DeleteTeacher/>
                </Flex>
             </form>
          </Box>

@@ -23,7 +23,7 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
       setCurrentPage(page);
    };
 
-   const paginatedCourses: Types.IEntity.SpeakerCourse[] = paginate(speakerCourse, currentPage, pageSize );
+   const paginatedCourses: Types.IEntity.SpeakerCourse[] = paginate(speakerCourse, currentPage, pageSize);
 
    console.log(speakerCourse);
 
@@ -89,7 +89,12 @@ const SinglePageSpeaker: FunctionComponent<SinglePageSpeakerProps> = () => {
                      ))}
                   </Box>
 
-                  <Paginate total={speakerCourse.length ? speakerCourse.length : 1} onPageChange={handlePageChange} pageSize={pageSize} currentPage={currentPage} />
+                  <Paginate
+                     total={speakerCourse.length ? speakerCourse.length : 1}
+                     onPageChange={handlePageChange}
+                     pageSize={pageSize}
+                     currentPage={currentPage}
+                  />
                </Flex>
             </Box>
          </Flex>
