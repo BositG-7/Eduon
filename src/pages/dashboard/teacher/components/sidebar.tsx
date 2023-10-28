@@ -105,16 +105,13 @@ function Sidebar() {
    };
 
    return (
-      <Flex direction="column" sx={{ zIndex: "unset" }} align="center" h="auto">
+      <Flex direction="column" align="center" h="auto">
          {sidebarVisible && (
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
-               <Navbar sx={{ height: "auto", border: "none" }} width={{ sm: 260 }} p="md">
+               <Navbar sx={{ height: "auto", border: "none", zIndex:0 }} width={{ sm: 260 }} p="md">
                   <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
-               {/* <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>
-                  {sidebarVisible ? <TbSquareChevronsLeft size={24} /> : <TbSquareChevronsRight size={24} />}
-               </Button> */}
             </>
          )}
          <Button w="80%" m="0 26px " className="hide-show-btn" onClick={sidebarVisible ? hideSidebar : showSidebar}>

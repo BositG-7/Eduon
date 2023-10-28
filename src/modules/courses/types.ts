@@ -70,7 +70,7 @@ export namespace IEntity {
       image: string;
       courses: ICourseTop[];
       username: string;
-      job: string
+      job: string;
    }
    export interface Category {
       id: any;
@@ -150,6 +150,7 @@ export namespace IApi {
             message: string;
          }
       }
+
       export namespace VideoUpload {
          export interface Request {
             title: string;
@@ -226,6 +227,31 @@ export namespace IApi {
          export interface Response {
             course_id: number;
             video_ids: number[];
+         }
+      }
+      export namespace EditCouse {
+         export interface Request {
+            name: string;
+            description: string;
+            image: any;
+            whos_course: string;
+            language?: string;
+            type?: string;
+            degree?: string;
+            category?: number;
+            id: number;
+         }
+         export interface Response {
+            course_id(course_id: any): unknown;
+            name: string;
+            description: string;
+            image: any;
+            whos_course: string;
+            language?: string;
+            type?: string;
+            degree?: string;
+            category?: number;
+            id: number;
          }
       }
       export namespace SpeakerInfo {

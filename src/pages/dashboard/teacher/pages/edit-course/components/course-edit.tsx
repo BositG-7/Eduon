@@ -18,10 +18,10 @@ const CourseEdit = ({ id }: CourseEditProps) => {
    const [courseData, setCourseData] = useState({
       name: "",
       description: "",
-      price: "",
       whos_course: "",
-      category: 0,
+      category: 1,
       language: "",
+      id,
 
       type: "",
       degree: "",
@@ -94,14 +94,12 @@ const CourseEdit = ({ id }: CourseEditProps) => {
       e.preventDefault();
 
       // eslint-disable-next-line prefer-destructuring
-      courseData.image = courseData.image[0];
+      courseData.image = courseData?.image[0];
 
       try {
          const data = await EditCourse(courseData);
 
          console.log(courseData);
-         notifications.show({ message: data.data.message, color: "green" });
-         setCourseDetailUpload(data.data.course_id);
 
          console.log(data);
       } catch (error: any) {
@@ -135,15 +133,7 @@ const CourseEdit = ({ id }: CourseEditProps) => {
                      style={{ borderRadius: "10px" }}
                   />
                </div>
-               <TextInput
-                  label="Price"
-                  name="price"
-                  type="number"
-                  value={courseData.price}
-                  onChange={handleInputChange}
-                  placeholder="Enter a price"
-                  pb="md"
-               />
+
                <Flex justify="space-between" pb="md">
                   <TextInput
                      label="Whos Course"

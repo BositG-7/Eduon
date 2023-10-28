@@ -27,3 +27,4 @@ export const ResetEmaill = ({ ...params }: IApi.ResetEmail.Request) => http.post
 export const RefleshToken = ({ refresh }: any) => {
    http.post("/user/token/refresh", { refresh });
 };
+export const DeleteUser = () => http.delete('/user/me')
