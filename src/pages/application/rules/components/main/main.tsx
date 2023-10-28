@@ -7,9 +7,7 @@ import Footer from "components/footer";
 interface MainProps {}
 
 const Main: FunctionComponent<MainProps> = () => {
-   const i = 0;
-
-   const navigete = useNavigate();
+   const navigate = useNavigate();
 
    return (
       <Box h="150px" maw="100%">
@@ -171,8 +169,10 @@ const Main: FunctionComponent<MainProps> = () => {
          </p>
          <Flex w="100%" justify="center" align="center">
             <Button
+               size="lg"
+               radius="lg"
                onClick={() => {
-                  navigete("/auth/login");
+                  navigate("/auth/login");
                }}
             >
                Roziman
