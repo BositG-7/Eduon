@@ -1,6 +1,7 @@
 .card {
    background-color: var(--mantine-color-body);
    border-radius: 18px;
+   padding-top: 0;
 }
 
 .imageSection {
@@ -38,10 +39,10 @@
    font-style: normal;
    font-weight: 500;
    line-height: normal;
-   color: #FFFFFF;
+   color: #ffffff;
    border: none;
    &:hover {
-      background: #E7F0FF;
+      background: #e7f0ff;
       color: #006aff;
    }
 }
