@@ -25,11 +25,11 @@ function Courses() {
             </h1>
          </div>
          <div className="boxes">
-            {category.map(category => (
-               <article key={category.id} className="box">
+            {category?.map(category => (
+               <article key={category?.id} className="box">
                   <img src={programming} alt="marketing" />
-                  <h3>{category.name}</h3>
-                  <h2>{category.course_count}</h2>
+                  <h3>{category?.name}</h3>
+                  <h2>{category?.course_count}</h2>
                </article>
             ))}
             {/*

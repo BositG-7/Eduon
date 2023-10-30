@@ -15,9 +15,9 @@ function NewCourse() {
          </div>
          <div className="boxes">
             {/* @ts-ignore */}
-            {course?.slice(1, 5).map(item => (
+            {course?.slice(1, 5)?.map(item => (
                // @ts-ignore
-               <Course key={item.id} id={String(item.id)} img={item.image} price={item.price} name={item.name} view={String(item.view)} />
+               <Course key={item?.id} id={String(item?.id)} img={item?.image} name={item?.name} view={String(item?.view)} />
             ))}
          </div>
       </section>

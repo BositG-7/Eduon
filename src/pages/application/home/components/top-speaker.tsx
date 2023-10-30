@@ -27,11 +27,15 @@ function TopSpeakers() {
 
    useEffect(() => {
       const fetch = async () => {
-         const { data }: any = await TopSpeaker();
+         try {
+            const { data }: any = await TopSpeaker();
 
-         console.log(data);
+            console.log(data);
 
-         setSpeaker(data);
+            setSpeaker(data);
+         } catch (error: any) {
+            console.log(error);
+         }
       };
 
       fetch();
@@ -47,16 +51,16 @@ function TopSpeakers() {
          </div>
          <div className="boxes">
             {/* @ts-ignore */}
-            {speaker?.slice(0, 4).map(item => (
+            {speaker?.slice(0, 4)?.map(item => (
                // @ts-ignore
                <div
                   className="box"
                   onClick={() => {
                      // @ts-expect-error
-                     navigete(`courses/speaker/${item.id}`);
+                     navigete(`courses/speaker/${item?.id}`);
                   }}
                   // @ts-expect-error
-                  key={item.id}
+                  key={item?.id}
                >
                   {/* @ts-ignore */}
                   <Avatar
@@ -65,19 +69,19 @@ function TopSpeakers() {
                      alt="it's me"
                      size="lg"
                      // @ts-ignore
-                     {...(item?.img ? { src: item.img } : { children: item?.username[0]?.toUpperCase() })}
+                     {...(item?.img ? { src: item?.img } : { children: item?.username[0]?.toUpperCase() })}
                   />
                   <div className="text">
                      {/* @ts-ignore */}
-                     <h3>{item.job}</h3>
+                     <h3>{item?.job}</h3>
                      {/* @ts-ignore */}
-                     <h2>{item.company}</h2>
+                     <h2>{item?.company}</h2>
                      <div className="view">
                         <i className="fa-solid fa-star" />
 
                         <h2>
                            4,6{/* @ts-ignore */}
-                           <span> ({item.view})</span>
+                           <span> ({item?.view})</span>
                         </h2>
                      </div>
                      <button>Profil</button>

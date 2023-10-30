@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, FileInput, Paper, Textarea, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { Api } from "modules/courses";
+import { Course } from "modules/courses/api";
 
 interface VideoUploadProps {
-   courseDetailUpload: number ;
+   courseDetailUpload: number;
 }
 
 const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUploadProps) => {
    const [videoData, setVideoData] = useState({
       title: "",
       course: courseDetailUpload,
-      video: null as File | null,
+      video: [],
 
       description: "",
       duration: ""
@@ -35,6 +36,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       if (file) {
          setVideoData({
             ...videoData,
+            // @ts-expect-error
             video: file
          });
       }
@@ -55,6 +57,24 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
          notifications.show({ message: error.statusText, color: "red" });
       }
    };
+
+   useEffect(() => {
+      const fetch = async () => {
+         try {
+            const { data } = await Course.CouseVideo({ id: +courseDetailUpload });
+
+            console.log(data);
+            // @ts-ignore
+            setCourseData({ description: data.description, name: data.name, image: data.image });
+         } catch (error: any) {
+            console.log();
+
+            console.log(error);
+         }
+      };
+
+      fetch();
+   }, [courseDetailUpload]);
 
    return (
       <Container w="100%">
