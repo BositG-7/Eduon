@@ -37,15 +37,7 @@ const Courses = () => {
                   Xush kelibsiz
                </Title>
                <Title sx={{ textAlign: "center" }}>ilm izlanuvchi</Title>
-               <Title
-                  size="20px"
-                  sx={{
-                     fontWeight: "normal",
-                     textAlign: "center",
-                     marginTop: "15px",
-                     marginBottom: "50px"
-                  }}
-               >
+               <Title size="20px" weight="normal" align="center" mt={15} mb={50}>
                   Xo‘sh bugun qanday bilimlar o‘rganamiz?
                </Title>
                <Flex>
