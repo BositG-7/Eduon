@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useList } from "modules/courses/hooks/course-use-list";
 import Course from "pages/application/courses/components/course";
 
@@ -6,8 +5,6 @@ import "../style/new-courses.scss";
 
 function NewCourse() {
    const { course } = useList({});
-
-   const navigete = useNavigate();
 
    return (
       <section className="top-course" data-aos="zoom-out-left" data-aos-duration="2000">

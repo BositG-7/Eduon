@@ -46,7 +46,7 @@ const CourseEdit = ({ id }: CourseEditProps) => {
       const fetch = async () => {
          const { data } = await Course.Single(+id);
 
-         console.log(data);
+         console.log(data.name);
          // @ts-ignore
          setCourseData({ description: data.description, name: data.name, image: data.image });
       };

@@ -25,7 +25,7 @@ export default function MyCoursesList() {
             <p className={cls.title}>Yuklangan kurslar</p>
             <div className={cls.courseList}>
                {paginatedCourse.map(item => (
-                  <Course key={item.id} id={item.id} img={item.image} name={item.name} />
+                  <Course key={item.id} id={item.id} img={item.image} name={item.name} typeTask='editCourse'/>
                ))}
             </div>
             <Paginate
