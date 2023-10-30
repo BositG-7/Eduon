@@ -11,6 +11,8 @@ interface MainProps {}
 const Main: FunctionComponent<MainProps> = () => {
    const { user } = useAuth();
 
+   console.log(user);
+
    const [formValues, setFormValues] = useState({
       first_name: user?.firstName || "",
       last_name: user?.lastName || "",
@@ -145,13 +147,13 @@ const Main: FunctionComponent<MainProps> = () => {
                   </Flex>
                </Paper>
 
-               <Flex justify='space-around' align="center" w="100%">
+               <Flex justify="space-around" align="center" w="100%">
                   <Button
                      type="submit"
                      sx={{
                         color: "white",
-                        height:"50px",
-                        width:"174px",
+                        height: "50px",
+                        width: "174px",
                         backgroundColor: "#228be6",
                         fontSize: "19px",
                         marginTop: "40px",
@@ -162,7 +164,7 @@ const Main: FunctionComponent<MainProps> = () => {
                   >
                      Saqlash
                   </Button>
-                  <DeleteTeacher/>
+                  <DeleteTeacher />
                </Flex>
             </form>
          </Box>
