@@ -6,7 +6,6 @@ import Header from "./components/header";
 import NewCourse from "./components/new-courses";
 import Steps from "./components/steps";
 import TopCourses from "./components/top-course";
-import TopSpeakers from "./components/top-speaker";
 
 function Home() {
    return (
@@ -14,7 +13,6 @@ function Home() {
          <Header />
          <TopCourses />
          <NewCourse />
-         <TopSpeakers />
          <Courses />
          <Advantage />
          <Steps />
