@@ -2,21 +2,15 @@ import { FunctionComponent } from "react";
 import { Flex } from "@mantine/core";
 
 import Main from "./components/main";
-import { Titlee } from "./components";
+import { Title } from "./components";
 
 interface FaqProps {}
 
-const Faq: FunctionComponent<FaqProps> = () => {
-   const i = 0;
-
-   return (
-      <>
-         <Flex justify="center" align="center" direction="column" gap="40px" h="auto">
-            <Titlee />
-            <Main />
-         </Flex>
-      </>
-   );
-};
+const Faq: FunctionComponent<FaqProps> = () => (
+   <Flex justify="center" align="center" direction="column" gap="40px" h="auto">
+      <Title />
+      <Main />
+   </Flex>
+);
 
 export default Faq;

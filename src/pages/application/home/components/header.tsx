@@ -6,7 +6,7 @@ import threeD from "../../../../assets/images/threeD.png";
 import "../style/header.scss";
 
 function Header() {
-   const navigete = useNavigate();
+   const navigate = useNavigate();
 
    return (
       <section className="header" data-aos="zoom-in" data-aos-duration="1500">
@@ -19,7 +19,7 @@ function Header() {
             <button
                className="share-subject"
                onClick={() => {
-                  navigete("/courses");
+                  navigate("/courses");
                }}
             >
                Kurslar

@@ -119,7 +119,7 @@ const accordionDates = [
 ];
 
 const Main: FunctionComponent = () => {
-   const { cx, classes } = useStyles();
+   const { classes } = useStyles();
    const Tolovlar = () => {
       const items = accordionDates.map((item, idx) => (
          <Accordion.Item className={classes.accordionItem} w="100%" key={item.value} value={item.value}>

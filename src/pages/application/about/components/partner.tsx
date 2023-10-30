@@ -5,10 +5,7 @@ import Logos from "../assets/img/Logos.png";
 
 interface PartnerProps {}
 
-const Partner: FunctionComponent<PartnerProps> = () => {
-   const i = 0;
-
-   return (
+const Partner: FunctionComponent<PartnerProps> = () => (
       <>
          <Flex mt="30" justify="center" align="center" direction="column" h="auto" maw="700px">
             <Title
@@ -55,6 +52,5 @@ const Partner: FunctionComponent<PartnerProps> = () => {
          </Flex>
       </>
    );
-};
 
 export default Partner;

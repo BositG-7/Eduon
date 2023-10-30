@@ -6,10 +6,7 @@ import img1 from "../assets/img/Rectangle 89.svg";
 
 interface MainProps {}
 
-const Main: FunctionComponent<MainProps> = () => {
-   const i = 0;
-
-   return (
+const Main: FunctionComponent<MainProps> = () => (
       <>
          <Flex justify="center" mt="30px" align="center" direction="column" h="auto" w="1300px">
             <Flex p="24px" w="100%" justify="space-between" align="center">
@@ -32,7 +29,6 @@ const Main: FunctionComponent<MainProps> = () => {
                      sx={{
                         maxWidth: "484px",
                         color: "#111",
-                        fontFamily: "Gilroy",
                         fontSize: "18px",
                         fontStyle: "normal",
                         fontWeight: 500
@@ -45,7 +41,6 @@ const Main: FunctionComponent<MainProps> = () => {
                      sx={{
                         maxWidth: "484px",
                         color: "#111",
-                        fontFamily: "Gilroy",
                         fontSize: "18px",
                         fontStyle: "normal",
                         fontWeight: 500
@@ -57,7 +52,6 @@ const Main: FunctionComponent<MainProps> = () => {
                      sx={{
                         maxWidth: "484px",
                         color: "#111",
-                        fontFamily: "Gilroy",
                         fontSize: "18px",
                         fontStyle: "normal",
                         fontWeight: 500
@@ -86,7 +80,6 @@ const Main: FunctionComponent<MainProps> = () => {
                      sx={{
                         maxWidth: "484px",
                         color: "#111",
-                        fontFamily: "Gilroy",
                         fontSize: "18px",
                         fontStyle: "normal",
                         fontWeight: 500
@@ -99,7 +92,6 @@ const Main: FunctionComponent<MainProps> = () => {
                      sx={{
                         maxWidth: "484px",
                         color: "#111",
-                        fontFamily: "Gilroy",
                         fontSize: "18px",
                         fontStyle: "normal",
                         fontWeight: 500
@@ -116,6 +108,5 @@ const Main: FunctionComponent<MainProps> = () => {
          </Flex>
       </>
    );
-};
 
 export default Main;

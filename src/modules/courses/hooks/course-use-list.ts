@@ -7,7 +7,7 @@ interface UseList {
    search?: string;
 }
 export const useList = ({ search = "" }: UseList) => {
-   const [state, setState] = useState<Types.IQuery.Course.List>({ isLoading: true, course: null });
+   const [state, setState] = useState<Types.IQuery.Course.List>({ isLoading: true, course: [] });
 
    useEffect(() => {
       const request = async () => {
@@ -19,7 +19,7 @@ export const useList = ({ search = "" }: UseList) => {
             setState({ course, isLoading: false });
          } catch (err: any) {
             notifications.show({ message: err?.message, color: "red" });
-            setState({ course: null, isLoading: false });
+            setState({ course: [], isLoading: false });
          }
       };
 
