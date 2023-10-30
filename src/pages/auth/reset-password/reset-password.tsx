@@ -13,7 +13,7 @@ import { clearSessionReset, clearSessionVerification, getSessionReset } from "se
 import cursor from "../../../assets/images/cursor.png";
 import threeD from "../../../assets/images/threeD.png";
 
-interface ResetPasswordProps { }
+interface ResetPasswordProps {}
 
 const schema = yup.object({
    activation_code: yup.string().min(6).label("Activation Code").required(),
@@ -62,7 +62,7 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
          console.log(error);
 
          notifications.show({
-            message: error?.data?.password[0],
+            message: error?.data?.password,
             color: "red"
          });
       }
@@ -76,10 +76,13 @@ const ResetPassword: FunctionComponent<ResetPasswordProps> = () => {
                   <Button
                      onClick={() => navigate(-1)}
                      sx={{
-                        position: 'absolute',
+                        position: "absolute",
                         top: 24,
-                        left: 36,
-                     }}>Back</Button>
+                        left: 36
+                     }}
+                  >
+                     Back
+                  </Button>
                   <form onSubmit={form.onSubmit(onSubmit)}>
                      <Flex w="600px" direction="column" justify="center" gap={50} align="center" p={20}>
                         <h1>Check Code</h1>

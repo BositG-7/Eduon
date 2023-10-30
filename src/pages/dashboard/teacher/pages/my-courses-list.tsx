@@ -6,8 +6,6 @@ import { paginate } from "utils/paginate";
 
 import Paginate from "components/pagination";
 
-import { NewCourses } from "../components";
-
 import cls from "../styles/my-courses-list.module.scss";
 
 export default function MyCoursesList() {
@@ -38,12 +36,6 @@ export default function MyCoursesList() {
             />
          </div>
          <div className={cls.hr} />
-         <div>
-            <p className={cls.title}>Yangi kurs</p>
-            <div className={cls.courseList}>
-               <NewCourses />
-            </div>
-         </div>
       </div>
    );
 }
