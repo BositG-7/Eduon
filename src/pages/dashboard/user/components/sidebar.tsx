@@ -5,7 +5,6 @@ import { Button, createStyles, Flex, getStylesRef, Navbar, rem } from "@mantine/
 // eslint-disable-next-line import/order
 import { BiSolidAddToQueue } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
-import { PiWalletBold } from "react-icons/pi";
 import { TbSquareChevronsLeft, TbSquareChevronsRight } from "react-icons/tb";
 
 const useStyles = createStyles(theme => ({
@@ -55,7 +54,6 @@ const useStyles = createStyles(theme => ({
 
 const data = [
    { link: "/dashboard/user/profile", label: "Profil", icon: BsPerson },
-   { link: "/dashboard/user/my-account", label: "Hisobim", icon: PiWalletBold },
    { link: "/dashboard/user/create-course", label: "Kurs-qoshish", icon: BiSolidAddToQueue }
 ];
 

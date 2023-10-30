@@ -13,7 +13,6 @@ import ProfileTeacher from "pages/dashboard/teacher/pages/profile/profile";
 import { MyAccount } from "pages/dashboard/user/pages";
 import CourseCreate from "pages/dashboard/user/pages/create-course/create-course";
 import SingleCourse from "pages/dashboard/user/pages/my-courses/components/single-course";
-import MyCourses from "pages/dashboard/user/pages/my-courses/my-courses";
 import PaymentClick from "pages/dashboard/user/pages/payment/click";
 import PaymentPayme from "pages/dashboard/user/pages/payment/payme";
 import ProfileUser from "pages/dashboard/user/pages/profile/profile";
@@ -56,7 +55,6 @@ const Routes = () => {
 
          {/* Dashboard */}
          <Route path="dashboard/user" element={<UserRoute allowed={!(user && user?.isSpiker)} redirectURL="/dashboard/teacher" />}>
-            <Route path="my-courses" element={<MyCourses />} />
             <Route path="my-account" element={<MyAccount />} />
             <Route path="create-course" element={<CourseCreate />} />
             <Route path="profile" element={<ProfileUser />} />
@@ -66,7 +64,7 @@ const Routes = () => {
 
             <Route path="course/:adminCourseSingle" element={<SingleCourse />} />
 
-            <Route path="*" index element={<Navigate to="/dashboard/user/my-courses" />} />
+            <Route path="*" index element={<Navigate to="/dashboard/user/profile" />} />
          </Route>
 
          <Route path="dashboard/teacher" element={<AdminRoute allowed={!!user?.isSpiker} redirectURL="/dashboard/user" />}>
