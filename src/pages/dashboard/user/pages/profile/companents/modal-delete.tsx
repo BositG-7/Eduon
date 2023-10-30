@@ -75,7 +75,7 @@ function Delete() {
                     <form>
                         <p>Rostan ham profilingizni o'chirmoqchimisiz?</p>
                         <Flex justify="space-around" mt='20px'>
-                            <Button style={btnStyle2} type="submit">
+                            <Button style={btnStyle2} onClick={close}>
                                 Yo'q
                             </Button>
                             <Button style={yesBtn} onClick={handleDelete}>Ha</Button>
