@@ -17,26 +17,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
    return (
       <>
          {window.location.pathname.split("/")[1] === "auth" ? (
-            <>
-               <Box
-                  p="0px 100px"
-                  sx={{
-                     display: "flex",
-                     justifyContent: "space-between",
-                     alignItems: "center",
-                     height: "100px"
-                  }}
-                  className="navbar"
-               >
-                  <Button
-                     onClick={() => {
-                        navigate("/");
-                     }}
-                  >
-                     Bosh sahifaga otish
-                  </Button>
-               </Box>
-            </>
+            <></>
          ) : (
             <Box
                p="0px 100px"

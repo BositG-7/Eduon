@@ -18,10 +18,11 @@ interface SinglePageCourseProps {}
 
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { courseID = "" } = useParams<{ courseID: string }>();
-   const [currentPage, setCurrentPage] = useState<number>(1);
    const course = useSingle(courseID);
-   const { speaker = 1 } = course;
+   const [currentPage, setCurrentPage] = useState<number>(1);
    const pageSize = 8;
+   const { speaker = 1 } = course;
+
    const teacher = useSpeaker(`${speaker}`);
 
    const paginatedCourses: Types.IEntity.Course[] = paginate(teacher.courses, currentPage, pageSize);
@@ -32,8 +33,8 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    return (
       <Box pt={20}>
-         <Flex justify="space-between">
-            <Flex direction="column" justify="space-between">
+         <Flex direction="column">
+            <Flex justify="space-around" mb="30px">
                <Title size={54} sx={{ lineHeight: "normal" }}>
                   {course.name}
                </Title>
@@ -81,7 +82,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                </div>
             </Flex>
          </Flex>
-
          <Box pt={50}>
             <Title mb={20} sx={{ textAlign: "center" }}>
                Spiker va o’xshash kurslar
