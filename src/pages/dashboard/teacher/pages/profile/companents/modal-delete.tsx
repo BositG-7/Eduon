@@ -76,7 +76,7 @@ function DeleteTeacher() {
                         <p>Rostan ham profilingizni o'chirmoqchimisiz? <br />
                         <span style={{ color:'red' }}>Eslatma: ushbu amal orqali siz o'zingizga tegishli barcha kurslarni ham o'chirasiz !</span></p>
                         <Flex justify="space-around" mt='20px'>
-                            <Button style={btnStyle2} type="submit">
+                            <Button style={btnStyle2} onClick={close}>
                                 Yo'q
                             </Button>
                             <Button style={yesBtn} onClick={handleDelete}>Ha</Button>

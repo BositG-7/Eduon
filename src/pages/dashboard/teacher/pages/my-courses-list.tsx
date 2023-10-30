@@ -11,7 +11,7 @@ import cls from "../styles/my-courses-list.module.scss";
 export default function MyCoursesList() {
    const { user } = useAuth();
    const [currentPage, setCurrentPage] = useState<number>(1);
-   const pageSize = 4;
+   const pageSize = 8;
 
    const paginatedCourse: Types.IEntity.ICourseTop[] = paginate(user?.course, currentPage, pageSize);
 
