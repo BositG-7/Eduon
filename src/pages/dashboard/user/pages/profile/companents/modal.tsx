@@ -19,8 +19,6 @@ function Demo() {
       e.preventDefault();
 
       try {
-         console.log(images);
-
          const formData = new FormData();
 
          formData.append("image", images[0]);
@@ -34,7 +32,7 @@ function Demo() {
 
          navigete("/dashboard");
       } catch (error: any) {
-         console.log(error.message);
+         console.error(error.message);
       }
    };
 

@@ -88,9 +88,8 @@ const CourseCreate: React.FC = () => {
          notifications.show({ message: data.data.message, color: "green" });
          setCourseDetailUpload(data.data.course_id);
 
-         console.log(data);
       } catch (error: any) {
-         console.log(error);
+         console.error(error);
 
          notifications.show({ message: error.statusText, color: "red" });
       }
