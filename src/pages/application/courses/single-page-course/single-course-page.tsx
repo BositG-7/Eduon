@@ -14,7 +14,7 @@ import Paginate from "components/pagination";
 
 import Course from "../components/course";
 
-interface SinglePageCourseProps { }
+interface SinglePageCourseProps {}
 
 const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { courseID = "" } = useParams<{ courseID: string }>();
@@ -33,16 +33,15 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
 
    return (
       <Box pt={20}>
-         <Flex direction='column'>
-            <Flex justify='space-around' mb='30px'>
+         <Flex direction="column">
+            <Flex justify="space-around" mb="30px">
                <Title size={54} sx={{ lineHeight: "normal" }}>
                   {course.name}
                </Title>
-
             </Flex>
 
-            <Flex justify="space-around" w='100%'>
-               <Flex direction='column' w='50%'>
+            <Flex justify="space-around" w="100%">
+               <Flex direction="column" w="50%">
                   <video
                      style={{
                         height: "auto",
@@ -55,21 +54,21 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                      controls
                      src={course.video[0]?.video}
                   />
-                  <Flex mt='30px' align='center'>
+                  <Flex mt="30px" align="center">
                      <Title size={20}>Kurs haqida: </Title>
                      <Title
                         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(course.description) }}
                         size={15}
                         color="rgba(17, 17, 17, 0.54)"
                         sx={{ fontWeight: 400 }}
-                        mt='5px'
+                        mt="5px"
                      />
                   </Flex>
                </Flex>
-               <div style={{ border: '1px solid #9B9B9B', width: '35%', borderRadius: '30px' }}>
-                  <Flex direction="column" p='30px'>
-                     <Title mb='20px'>{course.video[0]?.title}</Title>
-                     <Title size={24} mb='20px'>
+               <div style={{ border: "1px solid #9B9B9B", width: "35%", borderRadius: "30px" }}>
+                  <Flex direction="column" p="30px">
+                     <Title mb="20px">{course.video[0]?.title}</Title>
+                     <Title size={24} mb="20px">
                         Avtor:
                         <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>
                            {teacher.first_name} {teacher.last_name}
@@ -77,15 +76,11 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                      </Title>
                      <Title size={24} color="black">
                         Video haqida:
-                        <span style={{ color: "#9B9B9B", fontSize: '20px', marginLeft: '10px' }}>
-                           {course.video[0]?.description}
-                        </span>
+                        <span style={{ color: "#9B9B9B", fontSize: "20px", marginLeft: "10px" }}>{course.video[0]?.description}</span>
                      </Title>
                   </Flex>
                </div>
             </Flex>
-
-
          </Flex>
          <Box pt={50}>
             <Title mb={20} sx={{ textAlign: "center" }}>

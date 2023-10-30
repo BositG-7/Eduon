@@ -1,3 +1,5 @@
+import { Types } from "modules/courses";
+
 import { GENDER, JOB } from "./constants";
 
 export namespace IEntity {
@@ -15,7 +17,7 @@ export namespace IEntity {
       about: string;
       isActive: boolean;
       isSpiker: boolean;
-      course: [];
+      course: Types.IEntity.ICourseTop[];
    }
    export interface Tokens {
       email: any;
@@ -32,7 +34,6 @@ export namespace IForm {
    export interface Register {
       first_name: string;
       last_name: string;
-
       username: string;
       password: string;
       re_password: string;

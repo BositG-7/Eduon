@@ -18,7 +18,7 @@ const CourseEdit = ({ id }: CourseEditProps) => {
    const [courseData, setCourseData] = useState({
       name: "",
       description: "",
-      whos_course: "",
+      whos_course: "Students",
       category: 1,
       language: "",
       id,
@@ -47,6 +47,8 @@ const CourseEdit = ({ id }: CourseEditProps) => {
          const { data } = await Course.Single(+id);
 
          console.log(data);
+         // @ts-ignore
+         setCourseData({ description: data.description, name: data.name, image: data.image });
       };
 
       fetch();

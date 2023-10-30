@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, createStyles, Flex, getStylesRef, Navbar, rem } from "@mantine/core";
 // eslint-disable-next-line import/order
-import { BiFolderMinus, BiSolidAddToQueue } from "react-icons/bi";
+import { BiSolidAddToQueue } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { PiWalletBold } from "react-icons/pi";
 import { TbSquareChevronsLeft, TbSquareChevronsRight } from "react-icons/tb";
@@ -54,7 +54,6 @@ const useStyles = createStyles(theme => ({
 }));
 
 const data = [
-   { link: "/dashboard/user/my-courses", label: "Kurslarim", icon: BiFolderMinus },
    { link: "/dashboard/user/profile", label: "Profil", icon: BsPerson },
    { link: "/dashboard/user/my-account", label: "Hisobim", icon: PiWalletBold },
    { link: "/dashboard/user/create-course", label: "Kurs-qoshish", icon: BiSolidAddToQueue }
@@ -108,7 +107,7 @@ function Sidebar() {
          {sidebarVisible && (
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
-               <Navbar sx={{ height: "auto", border: "none",zIndex:0 }} width={{ sm: 260 }} p="md">
+               <Navbar sx={{ height: "auto", border: "none", zIndex: 0 }} width={{ sm: 260 }} p="md">
                   <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
             </>

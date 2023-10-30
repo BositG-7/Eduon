@@ -17,7 +17,7 @@ export default function Paginate({ total, onPageChange, pageSize, currentPage }:
    };
 
    return (
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "56px", marginTop: "36px" }}>
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px", marginTop: "36px" }}>
          <Pagination value={currentPage} onChange={handlePageChange} total={pageCount} radius='md' />
       </div>
    );
