@@ -11,7 +11,8 @@ export const Course = {
    Speaker: (id: string) => http.get<IApi.Course.Speaker.Response>(`/speaker-profile/${id}/`),
    SpeakerCourse: (id: any) => http.get<IApi.Course.SpeakerCourse.Response>(`/speaker_course_list/${id}`),
    Category: () => http.get<IApi.Course.Category.Response>(`/category`),
-   CouseVideo: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideo.Response>(`/course/${id}/`)
+   CouseVideo: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideo.Response>(`/course/${id}/`),
+   CouseVideoGet: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideoGet.Response>(`/speaker_video/${id}/`)
 };
 
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>
@@ -25,6 +26,8 @@ export const CourseNew = () => http.get("/course_new");
 
 export const VideoUpload = (formData: IApi.Course.VideoUpload.Request) =>
    http.post<IApi.Course.VideoUpload.Response>("/speaker_video_upload", objectToFormData(formData));
+export const VideoEdit = ({ id, ...formData }: IApi.Course.VideoEdit.Request) =>
+   http.patch<IApi.Course.VideoUpload.Response>(`/speaker_video/${id}/`, objectToFormData(formData));
 
 export const MakePayment1Click = ({ card_number, expire_date }: IApi.Course.PaymentStep1.Click.Request) =>
    http.post<IApi.Course.PaymentStep1.Click.Response>("/click/card-token", objectToFormData({ card_number, expire_date }));

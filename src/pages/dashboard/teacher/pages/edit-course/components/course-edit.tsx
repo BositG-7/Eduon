@@ -1,11 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Button, Container, FileInput, Flex, Paper, Select, TextInput } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { Course, EditCourse } from "modules/courses/api";
 import { useCategory } from "modules/courses/hooks/use-category";
 // eslint-disable-next-line import/order
 import ReactQuill from "react-quill";
+
+// @ts-expect-error
+import video from "../video_2023-10-31_05-14-24.mp4";
 
 // import VideoUpload from "./components/video-upload";
 import "react-quill/dist/quill.snow.css";
@@ -15,13 +19,14 @@ interface CourseEditProps {
 }
 
 const CourseEdit = ({ id }: CourseEditProps) => {
+   const { couseEditId = 0 } = useParams();
+
    const [courseData, setCourseData] = useState({
       name: "",
       description: "",
       whos_course: "Students",
       category: 1,
       language: "",
-      id,
 
       type: "",
       degree: "",
@@ -44,15 +49,17 @@ const CourseEdit = ({ id }: CourseEditProps) => {
       }
 
       const fetch = async () => {
-         const { data } = await Course.Single(+id);
+         console.log(video);
 
-         console.log(data.name);
+         const { data } = await Course.Single(+couseEditId);
+
+         console.log(data);
          // @ts-ignore
          setCourseData({ description: data.description, name: data.name, image: data.image });
       };
 
       fetch();
-   }, [category, id]);
+   }, [category, id, couseEditId]);
 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -99,11 +106,7 @@ const CourseEdit = ({ id }: CourseEditProps) => {
       courseData.image = courseData?.image[0];
 
       try {
-         const data = await EditCourse(courseData);
-
-         console.log(courseData);
-
-         console.log(data);
+         const data = await EditCourse({ id: +couseEditId, ...courseData });
       } catch (error: any) {
          console.log(error);
 

@@ -21,8 +21,6 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
       e.preventDefault();
 
       try {
-         console.log(images);
-
          const formData = new FormData();
 
          formData.append("image", images[0]); // Assuming images[0] is the selected file
@@ -32,16 +30,11 @@ const TeacherModal: FunctionComponent<TeacherModalProps> = () => {
          // @ts-expect-error
          formData.append("username", user?.username);
 
-         console.log(images[0]);
-         console.log(user?.username);
-         console.log(user?.email);
-
          const res = await UpdateImage(formData);
 
          notifications.show({ message: res.statusText, color: "green" });
          navigete("/dashboard");
       } catch (error: any) {
-         console.log(error);
 
          notifications.show({
             message: error.messege,

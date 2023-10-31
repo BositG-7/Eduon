@@ -174,6 +174,29 @@ export namespace IApi {
             file?: number;
          }
       }
+
+      export namespace VideoEdit {
+         export interface Request {
+            title?: string;
+            description?: string;
+            video?: any;
+            id: number;
+
+            course: number;
+         }
+         export interface Response {
+            id?: number;
+            title: string;
+            description: string;
+            duration?: string;
+            video?: string;
+            author: number;
+            course: number;
+            module?: number;
+            file?: number;
+         }
+      }
+
       export namespace List {
          export interface Request {
             search: string;
@@ -225,8 +248,20 @@ export namespace IApi {
             id: number;
          }
          export interface Response {
-            course_id: number;
+            video: string;
             video_ids: number[];
+         }
+      }
+
+      export namespace CouseVideoGet {
+         export interface Request {
+            id: number;
+         }
+         export interface Response {
+            video: string;
+            title: string;
+            description: string;
+            course: number;
          }
       }
       export namespace EditCouse {

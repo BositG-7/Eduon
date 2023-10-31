@@ -7,18 +7,16 @@ import { Course } from "modules/courses/api";
 
 interface VideoUploadProps {
    courseDetailUpload: number;
+   id: number;
 }
 
-const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUploadProps) => {
+const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload, id }: VideoUploadProps) => {
    const [videoData, setVideoData] = useState({
       title: "",
-      course: courseDetailUpload,
+      course: id,
       video: [],
 
-      description: "",
-      duration: ""
-      // module:1,
-      // file:0,
+      description: ""
    });
 
    const navigete = useNavigate();
@@ -46,7 +44,9 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       e.preventDefault();
 
       try {
-         const response = await Api.VideoUpload(videoData);
+         console.log(videoData);
+
+         const response = await Api.VideoEdit({ id: courseDetailUpload, ...videoData });
 
          navigete("/dashboard");
 
@@ -61,20 +61,17 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
    useEffect(() => {
       const fetch = async () => {
          try {
-            const { data } = await Course.CouseVideo({ id: +courseDetailUpload });
+            const { data } = await Course.CouseVideoGet({ id: courseDetailUpload });
 
-            console.log(data);
-            // @ts-ignore
-            setCourseData({ description: data.description, name: data.name, image: data.image });
+            // @ts-expect-error
+            setVideoData({ description: data.description, title: data.title });
          } catch (error: any) {
-            console.log();
-
             console.log(error);
          }
       };
 
       fetch();
-   }, [courseDetailUpload]);
+   }, [courseDetailUpload, id]);
 
    return (
       <Container w="100%">

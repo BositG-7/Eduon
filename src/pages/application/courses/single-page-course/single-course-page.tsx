@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Title } from "@mantine/core";
+import { Box, Flex, Text, Title } from "@mantine/core";
 // eslint-disable-next-line import/order
 import DOMPurify from "dompurify";
 import { Types } from "modules/courses";
@@ -20,6 +20,7 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
    const { courseID = "" } = useParams<{ courseID: string }>();
    const course = useSingle(courseID);
    const [currentPage, setCurrentPage] = useState<number>(1);
+   const [showMore, setShowMore] = useState(false);
    const pageSize = 8;
    const { speaker = 1 } = course;
 
@@ -35,8 +36,15 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
       <Box pt={20}>
          <Flex direction="column">
             <Flex justify="space-around" mb="30px">
-               <Title size={54} sx={{ lineHeight: "normal" }}>
-                  {course.name}
+               <Title size={34} sx={{ lineHeight: "normal", fontFamily: "sans-serif" }}>
+                  {showMore ? course.name : `${course.name.substring(0, 50)} `}
+                  <button
+                     style={{ border: "none", background: "transparent", fontSize: "30px" }}
+                     className="btn"
+                     onClick={() => setShowMore(!showMore)}
+                  >
+                     ...
+                  </button>
                </Title>
             </Flex>
 
@@ -54,20 +62,25 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                      controls
                      src={course.video[0]?.video}
                   />
-                  <Flex mt="30px" align="center">
-                     <Title size={20}>Kurs haqida: </Title>
-                     <Title
+                  <Flex mt="30px" w="100%" justify="space-between" align="start">
+                     <Title size={20} w="20%">
+                        Kurs haqida:{" "}
+                     </Title>
+                     <Text
                         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(course.description) }}
                         size={15}
+                        w="80%"
+                        mt="3px"
                         color="rgba(17, 17, 17, 0.54)"
                         sx={{ fontWeight: 400 }}
-                        mt="5px"
                      />
                   </Flex>
                </Flex>
                <div style={{ border: "1px solid #9B9B9B", width: "35%", borderRadius: "30px" }}>
                   <Flex direction="column" p="30px">
-                     <Title mb="20px">{course.video[0]?.title}</Title>
+                     <Title mb="20px" size={25}>
+                        {course.video[0]?.title}
+                     </Title>
                      <Title size={24} mb="20px">
                         Avtor:
                         <span style={{ color: "rgba(0, 106, 255, 1)", marginLeft: 5 }}>

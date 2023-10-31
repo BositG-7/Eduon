@@ -14,7 +14,7 @@ const CourseEditMain: React.FC = () => {
    const handleSegmentChange = (value: string) => {
       setSegmentValue(value);
    };
-   const { couseEditId = 0 } = useParams()
+   const { couseEditId = 0 } = useParams();
 
    useEffect(() => {
       const fetch = async () => {
@@ -46,7 +46,7 @@ const CourseEditMain: React.FC = () => {
          />
 
          {segmentValue === "course" && <CourseEdit id={+couseEditId} />}
-         {segmentValue === "video" && <VideoUpload courseDetailUpload={courseDetailUpload} />}
+         {segmentValue === "video" && <VideoUpload id={+couseEditId} courseDetailUpload={courseDetailUpload} />}
       </>
    );
 };
