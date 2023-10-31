@@ -1,0 +1,29 @@
+.react-tel-input .selected-flag,
+.react-tel-input .selected-flag {
+   &:hover {
+      background-color: initial !important;
+   }
+   &:focus {
+      background-color: initial !important;
+   }
+}
+.react-tel-input .country-list {
+   border-top-left-radius: 24px !important;
+   border-bottom-left-radius: 24px !important;
+}
+.react-tel-input .flag-dropdown.open .selected-flag {
+   background-color: initial !important;
+   border-radius: initial !important;
+}
+.react-tel-input .flag-dropdown {
+   border-top-left-radius: 24px !important;
+   border-bottom-left-radius: 24px !important;
+   width: 50px;
+}
+.react-tel-input .flag-dropdown .selected-flag {
+   padding-left: 14px;
+}
+.react-tel-input .form-control {
+   padding-left: 60px !important;
+   color: #868e96 !important;
+}

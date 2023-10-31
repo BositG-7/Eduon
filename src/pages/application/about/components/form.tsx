@@ -4,7 +4,9 @@ import { useForm, yupResolver } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { Api } from "modules/courses";
 // eslint-disable-next-line import/order
-import { IMaskInput } from "react-imask";
+import PhoneInput from "react-phone-input-2";
+
+import "../assets/styles/form.scss";
 
 const useStyles = createStyles(theme => ({
    title: {
@@ -13,33 +15,33 @@ const useStyles = createStyles(theme => ({
       fontStyle: "normal",
       fontWeight: 400,
       lineHeight: "normal",
-      marginBottom: "11px",
-      marginLeft: "24px"
+      marginBottom: "11px"
    }
 }));
 
 const inputStyles = {
    input: {
       width: "100%",
-      backgroundColor: "rgba(250, 250, 250, 0.24)",
-      color: "rgba(250, 250, 250, 0.72)",
+      backgroundColor: "#ffffff",
+      color: "#868e96",
       border: "none",
       height: "80px",
-      fontSize: "24px",
+      fontSize: "18px",
       fontStyle: "normal",
       fontWeight: 400,
       lineHeight: "normal",
       paddingLeft: "24px"
    }
 };
+
 const textAreaStyles = {
    input: {
       width: "100%",
-      backgroundColor: "rgba(250, 250, 250, 0.24)",
-      color: "rgba(250, 250, 250, 0.72)",
+      backgroundColor: "#ffffff",
+      color: "#868e96",
       border: "none",
       height: "390px",
-      fontSize: "24px",
+      fontSize: "18px",
       fontStyle: "normal",
       fontWeight: 400,
       lineHeight: "normal",
@@ -97,38 +99,41 @@ const Form = () => {
                <Flex gap="30px" w="100%" direction="column" h="100%" justify="center" align="center">
                   {/* Ismingiz inputi */}
                   <Input.Wrapper w="100%" label={<Title className={classes.title}>Ismingiz</Title>}>
-                     <Input
-                        h={82}
-                        radius={24}
-                        sx={{ color: "red" }}
-                        styles={inputStyles}
-                        placeholder="Misol: Husan Mamasaidov"
-                        {...getInputProps("name")}
-                     />
+                     <Input h={82} radius={24} styles={inputStyles} placeholder="Misol: Husan Mamasaidov" {...getInputProps("name")} />
                   </Input.Wrapper>
                   {/* Elektron pochta inputi */}
                   <Input.Wrapper w="100%" label={<Title className={classes.title}>Elektron pochtangiz</Title>}>
-                     <Input
-                        h={82}
-                        radius={24}
-                        sx={{ color: "red" }}
-                        styles={inputStyles}
-                        placeholder="Misol: infonexplatform@gmail.com"
-                        {...getInputProps("email")}
-                     />
+                     <Input h={82} radius={24} styles={inputStyles} placeholder="Misol: infonexplatform@gmail.com" {...getInputProps("email")} />
                   </Input.Wrapper>
                   {/* Telefon raqam inputi */}
                   <Input.Wrapper w="100%" label={<Title className={classes.title}>Telefon raqamingiz</Title>}>
-                     <Input<any>
+                     {/* <Input<any>
                         component={IMaskInput}
                         mask="+000 (00) 000-00-00"
                         w="100%"
                         h={82}
                         radius={24}
-                        sx={{ color: "red" }}
                         styles={inputStyles}
                         placeholder="+998 (xx) xxx-xx-xx"
                         {...getInputProps("phone")}
+                     /> */}
+                     <PhoneInput
+                        placeholder="+998 (xx) xxx-xx-xx"
+                        containerStyle={{ width: "100%", borderRadius: "24px" }}
+                        inputStyle={{
+                           width: "100%",
+                           backgroundColor: "#ffffff",
+                           border: "none",
+                           height: "80px",
+                           fontSize: "18px",
+                           fontStyle: "normal",
+                           fontWeight: 400,
+                           lineHeight: "normal",
+                           borderRadius: "24px"
+                        }}
+                        // buttonStyle={{ borderTopLeftRadius: "24px", borderBottomLeftRadius: "24px" }}
+                        country="uz"
+                        {...getInputProps('phone')}
                      />
                   </Input.Wrapper>
                </Flex>
