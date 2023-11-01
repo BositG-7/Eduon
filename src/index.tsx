@@ -16,6 +16,7 @@ import { ReactRouter6Adapter } from "use-query-params/adapters/react-router-6";
 import Navbar from "components/navbar";
 
 import "./assets/styles/index.scss";
+import 'react-phone-input-2/lib/style.css'
 
 // React uygulamasını oluşturmak için bir kök (root) oluşturun
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);

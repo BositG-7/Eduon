@@ -23,7 +23,6 @@ const ProfileTeacher: FunctionComponent<ProfileTeacherProps> = () => {
             <SegmentedControl
                data={[
                   { label: "Ma’lumotlar", value: "ma’lumotlar" },
-                  { label: "Karta", value: "karta" },
                   { label: "Parol", value: "parol" }
                ]}
                value={segmentValue}

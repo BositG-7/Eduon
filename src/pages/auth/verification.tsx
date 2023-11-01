@@ -53,13 +53,16 @@ const Verification: FunctionComponent<VerificationProps> = () => {
    return (
       <Box h="100vh" w="100%" data-aos="fade-up" data-aos-anchor-placement="bottom-up">
          <Box h="90vh" w="100%" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "220px" }}>
-         <Button
-               onClick={() => navigete(-1)}
+            <Button
+               onClick={() => navigete("/auth/login")}
                sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 24,
-                  left: 36,
-               }}>Back</Button>
+                  left: 36
+               }}
+            >
+               Back
+            </Button>
             <div className="right">
                <img src={cursor} alt="cursor" />
             </div>
@@ -97,7 +100,7 @@ const Verification: FunctionComponent<VerificationProps> = () => {
                   </Button>
                   <Box w="100%">
                      <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        Akkauntingiz bormi? unda  {" "}
+                        Akkauntingiz bormi? unda{" "}
                         <span
                            onClick={() => {
                               navigete("/auth/login");

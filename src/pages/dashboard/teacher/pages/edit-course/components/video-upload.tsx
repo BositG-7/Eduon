@@ -44,13 +44,24 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload, id }: Vid
       e.preventDefault();
 
       try {
-         console.log(videoData);
+         if (!courseDetailUpload) {
+            const response = await Api.VideoUpload({
+               course: id,
+               video: videoData.video,
+               title: videoData.title,
+               description: videoData.description
+            });
 
-         const response = await Api.VideoEdit({ id: courseDetailUpload, ...videoData });
+            console.log(response);
+         } else {
+            console.log(videoData);
 
-         navigete("/dashboard");
+            const response = await Api.VideoEdit({ id: courseDetailUpload, ...videoData });
 
-         notifications.show({ message: response.statusText, color: "green" });
+            navigete("/dashboard");
+
+            notifications.show({ message: response.statusText, color: "green" });
+         }
       } catch (error: any) {
          console.log(error);
 
@@ -98,7 +109,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload, id }: Vid
                   pb="md"
                   required
                />
-               <Button type="submit">Upload Video</Button>
+               <Button type="submit">{!courseDetailUpload ? "Create Video" : "Upload Video"} </Button>
             </form>
          </Paper>
       </Container>
