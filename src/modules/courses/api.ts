@@ -12,7 +12,8 @@ export const Course = {
    SpeakerCourse: (id: any) => http.get<IApi.Course.SpeakerCourse.Response>(`/speaker_course_list/${id}`),
    Category: () => http.get<IApi.Course.Category.Response>(`/category`),
    CouseVideo: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideo.Response>(`/course/${id}/`),
-   CouseVideoGet: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideoGet.Response>(`/speaker_video/${id}/`)
+   CouseVideoGet: ({ id }: IApi.Course.CouseVideo.Request) => http.get<IApi.Course.CouseVideoGet.Response>(`/speaker_video/${id}/`),
+   CouseDelete: ({ id }: IApi.Course.CouseVideo.Request) => http.delete<IApi.Course.CouseVideoGet.Response>(`/course/${id}/`)
 };
 
 export const CreateCourse = (formData: IApi.Course.Create.Request) =>

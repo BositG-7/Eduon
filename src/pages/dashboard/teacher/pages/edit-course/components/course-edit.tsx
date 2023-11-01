@@ -11,6 +11,8 @@ import ReactQuill from "react-quill";
 // @ts-expect-error
 import video from "../video_2023-10-31_05-14-24.mp4";
 
+import DeleteCourse from "./modal-delete";
+
 // import VideoUpload from "./components/video-upload";
 import "react-quill/dist/quill.snow.css";
 
@@ -196,7 +198,10 @@ const CourseEdit = ({ id }: CourseEditProps) => {
                      onChange={value => handleSelectChange("degree", value)}
                   />
                </Flex>
-               <Button type="submit">Edit Course</Button>
+               <Flex gap={20} justify="center">
+                  <Button type="submit">Edit Course</Button>
+                  <DeleteCourse />
+               </Flex>
             </form>
          </Paper>
       </Container>
