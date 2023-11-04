@@ -108,7 +108,7 @@ function Sidebar() {
          {sidebarVisible && (
             <>
                <div className="blur-overlay" onClick={hideSidebar} />
-               <Navbar sx={{ height: "auto", border: "none", zIndex: 0 }} width={{ sm: 260 }} p="md">
+               <Navbar sx={{ height: "auto", border: "none", zIndex: 0 }} width={{ sm: 200 }} p="md">
                   <Navbar.Section grow>{links}</Navbar.Section>
                </Navbar>
             </>

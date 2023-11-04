@@ -8,9 +8,6 @@ import { useCategory } from "modules/courses/hooks/use-category";
 // eslint-disable-next-line import/order
 import ReactQuill from "react-quill";
 
-// @ts-expect-error
-import video from "../video_2023-10-31_05-14-24.mp4";
-
 import DeleteCourse from "./modal-delete";
 
 // import VideoUpload from "./components/video-upload";
@@ -51,8 +48,6 @@ const CourseEdit = ({ id }: CourseEditProps) => {
       }
 
       const fetch = async () => {
-         console.log(video);
-
          const { data } = await Course.Single(+couseEditId);
 
          console.log(data);

@@ -57,7 +57,6 @@ const SinglePageCourse: FunctionComponent<SinglePageCourseProps> = () => {
                         border: "1px solid transparent"
                      }}
                      autoPlay
-                     loop
                      muted
                      controls
                      src={course.video[0]?.video}
