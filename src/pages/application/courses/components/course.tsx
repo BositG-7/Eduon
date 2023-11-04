@@ -12,24 +12,29 @@ interface CourseProps {
 
 export default function Course({ id, img, name, typeTask = "viewCourse" }: CourseProps) {
    const navigate = useNavigate();
-   let courseName = ''
+   let courseName = "";
 
-   if(name?.length! > 46) {
-    courseName = `${name?.substring(0, 46)!}...`
-   }
-   else {
-      courseName = name!
+   if (name?.length! > 46) {
+      courseName = `${name?.substring(0, 46)!}...`;
+   } else {
+      courseName = name!;
    }
    return (
       <Card w="280px" withBorder radius="md" className={cls.card}>
          <Card.Section className={cls.imageSection}>
-            <Image src={img} alt="kurs-image" onClick={() => navigate(`/courses/course/${id}`)}/>
+            <Image src={img} alt="kurs-image" onClick={() => navigate(`/courses/course/${id}`)} />
          </Card.Section>
          <Text mb="md" mt="sm" className={cls.text}>
             {courseName}
          </Text>
          {typeTask === "viewCourse" ? (
-            <button className={cls.button} onClick={() => navigate(`/courses/course/${id}`)}>
+            <button
+               className={cls.button}
+               onClick={() => {
+                  navigate(`/courses/course/${id}`);
+                  window.location.href = window.location.pathname;
+               }}
+            >
                kursni korish
             </button>
          ) : (

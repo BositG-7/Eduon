@@ -79,6 +79,7 @@ const Courses = () => {
                      />
                   </Flex>
                   <Flex align="center" justify="center" sx={{ flexDirection: "column" }}>
+
                      {isLoading ? (
                         <Loader mt={20} color="blue" />
                      ) : (
