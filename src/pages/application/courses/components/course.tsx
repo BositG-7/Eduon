@@ -35,11 +35,11 @@ export default function Course({ id, img, name, typeTask = "viewCourse" }: Cours
                   window.location.href = window.location.pathname;
                }}
             >
-               kursni korish
+               Kursni korish
             </button>
          ) : (
             <button className={cls.editButton} onClick={() => navigate(`/dashboard/teacher/edit-course/${id}`)}>
-               kursni tahrirlash
+               Kursni tahrirlash
             </button>
          )}
       </Card>
