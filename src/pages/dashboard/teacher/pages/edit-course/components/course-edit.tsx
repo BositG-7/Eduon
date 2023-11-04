@@ -80,6 +80,8 @@ const CourseEdit = ({ id }: CourseEditProps) => {
 
    const handleImageUpload = (files: any) => {
       if (files) {
+         console.log(files);
+
          setCourseData({
             ...courseData,
             // @ts-ignore
@@ -99,13 +101,15 @@ const CourseEdit = ({ id }: CourseEditProps) => {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
 
-      // eslint-disable-next-line prefer-destructuring
-      courseData.image = courseData?.image[0];
+      console.log(courseData.image[0]);
 
       try {
-         const data = await EditCourse({ id: +couseEditId, ...courseData });
+         // @ts-expect-error
+         const data = await EditCourse({ id: +couseEditId, image: courseData.image[0], ...courseData });
       } catch (error: any) {
          console.log(error);
+         console.log(courseData);
+         console.log(id);
 
          notifications.show({ message: error.statusText, color: "red" });
       }

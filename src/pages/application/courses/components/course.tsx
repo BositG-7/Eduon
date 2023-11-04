@@ -22,7 +22,14 @@ export default function Course({ id, img, name, typeTask = "viewCourse" }: Cours
    return (
       <Card w="280px" withBorder radius="md" className={cls.card}>
          <Card.Section className={cls.imageSection}>
-            <Image src={img} alt="kurs-image" onClick={() => navigate(`/courses/course/${id}`)} />
+            <Image
+               src={img}
+               alt="kurs-image"
+               onClick={() => {
+                  navigate(`/courses/course/${id}`);
+                  window.location.href = window.location.pathname;
+               }}
+            />
          </Card.Section>
          <Text mb="md" mt="sm" className={cls.text}>
             {courseName}
