@@ -45,7 +45,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ courseDetailUpload }: VideoUp
       try {
          const response = await Api.VideoUpload(videoData);
 
-         navigete("/dashboard");
+         window.location.href = "/dashboard";
 
          notifications.show({ message: response.statusText, color: "green" });
       } catch (error: any) {
