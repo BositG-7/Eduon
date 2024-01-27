@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"; // React import qilingan
+import React, { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, Menu } from "@mantine/core";
 import { IconLogout, IconMenu, IconSettings, IconUser } from "@tabler/icons-react";

@@ -14,9 +14,10 @@ import Course from "./components/course";
 const Courses = () => {
    const [search, setSearch] = useState("");
    const { course, isLoading } = useList({ search });
-   const { courseTop } = useCourseTop();
+   const { courseTop, isLoading: courseTopLoading } = useCourseTop();
    const [segmentValue, setSegmentValue] = useState("barchasi");
    const [currentPage, setCurrentPage] = useState<number>(1);
+   const [currentPage2, setCurrentPage2] = useState<number>(1);
    const pageSize = 8;
 
    const handleSegmentChange = (value: string) => {
@@ -25,9 +26,12 @@ const Courses = () => {
    const handlePageChange = (page: number) => {
       setCurrentPage(page);
    };
+   const handlePageChange2 = (page: number) => {
+      setCurrentPage2(page);
+   };
 
    const paginatedCourse: Types.IEntity.Course[] = paginate(course, currentPage, pageSize);
-   const paginatedCourseTop: Types.IEntity.ICourseTop[] = paginate(courseTop, currentPage, pageSize);
+   const paginatedCourseTop: Types.IEntity.ICourseTop[] = paginate(courseTop, currentPage2, pageSize);
 
    return (
       <Box mb={50}>
@@ -79,24 +83,49 @@ const Courses = () => {
                      />
                   </Flex>
                   <Flex align="center" justify="center" sx={{ flexDirection: "column" }}>
-
-                     {isLoading ? (
-                        <Loader mt={20} color="blue" />
-                     ) : (
-                        <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
-                           {segmentValue === "barchasi" &&
-                              paginatedCourse.map(item => <Course key={item.id} id={item.id} img={item.image} name={item.name} />)}
-                           {segmentValue === "zo'rlari" &&
-                              paginatedCourseTop.map(item => <Course key={item.id} id={item.id} img={item.image} name={item.name} />)}
-                        </Box>
+                     {segmentValue === "barchasi" && (
+                        <>
+                           {isLoading ? (
+                              <Loader mt={20} color="blue" />
+                           ) : (
+                              <>
+                                 <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
+                                    {paginatedCourse?.map(item => (
+                                       <Course key={item.id} id={item.id} img={item.image} name={item.name} />
+                                    ))}
+                                 </Box>
+                                 <Paginate
+                                    total={course?.length ? course.length : 1}
+                                    onPageChange={handlePageChange}
+                                    pageSize={pageSize}
+                                    currentPage={currentPage}
+                                 />
+                              </>
+                           )}
+                        </>
                      )}
 
-                     <Paginate
-                        total={course?.length ? course.length : 1}
-                        onPageChange={handlePageChange}
-                        pageSize={pageSize}
-                        currentPage={currentPage}
-                     />
+                     {segmentValue === "zo'rlari" && (
+                        <>
+                           {isLoading ? (
+                              <Loader mt={20} color="blue" />
+                           ) : (
+                              <>
+                                 <Box mt={20} sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr 1fr 1fr ", gap: "20px" }}>
+                                    {paginatedCourseTop?.map(item => (
+                                       <Course key={item.id} id={item.id} img={item.image} name={item.name} />
+                                    ))}
+                                 </Box>
+                                 <Paginate
+                                    total={courseTop?.length ? courseTop.length : 1}
+                                    onPageChange={handlePageChange2}
+                                    pageSize={pageSize}
+                                    currentPage={currentPage2}
+                                 />
+                              </>
+                           )}
+                        </>
+                     )}
                   </Flex>
                </Flex>
             </Flex>

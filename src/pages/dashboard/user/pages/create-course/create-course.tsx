@@ -87,7 +87,6 @@ const CourseCreate: React.FC = () => {
 
          notifications.show({ message: data.data.message, color: "green" });
          setCourseDetailUpload(data.data.course_id);
-
       } catch (error: any) {
          console.error(error);
 
@@ -116,14 +115,10 @@ const CourseCreate: React.FC = () => {
                />
                <div className="description-editor">
                   <label>Description</label>
-                  <ReactQuill
-                     value={courseData.description}
-                     onChange={handleDescriptionChange}
-                     placeholder="Write course description"
-                  />
+                  <ReactQuill value={courseData.description} onChange={handleDescriptionChange} placeholder="Write course description" />
                </div>
-               
-               <Flex justify="space-between" pb="md" pt='md'>
+
+               <Flex justify="space-between" pb="md" pt="md">
                   <TextInput
                      label="Whos Course"
                      name="whos_course"
